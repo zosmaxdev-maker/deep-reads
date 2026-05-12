@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第四章 · 自由与隐形财富 — 《金钱心理学》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.7;
+    }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside {
+      position: sticky; top: 0; height: 100vh; overflow: auto;
+      padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0;
+    }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a {
+      display: grid; grid-template-columns: 28px 1fr; gap: 8px;
+      padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none;
+    }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 920px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+    .exercise { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .exercise h4 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exercise textarea, .exercise input[type=text] {
+      width: 100%; margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+      background: #fff; font: inherit; color: var(--ink);
+    }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+    details.quiz { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    details.quiz summary { cursor: pointer; font-weight: 700; list-style: none; }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before { content: "▸ "; color: var(--accent); font-weight: 800; }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: #2e3b3a; }
+    details.quiz .answer strong { color: var(--accent); }
+    .citations { margin: 56px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+    .citations h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">Chapter 4 · The Ultimate Dividend</p>
+      <p class="ch-num">04</p>
+      <p class="ch-title">自由与隐形财富</p>
+      <p class="ch-sub">Freedom &amp; Invisible Wealth · 第四章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>钱具体应该买什么</span></a>
+        <a href="#s1"><span class="num">§1</span><span>Sense of Control 的实证</span></a>
+        <a href="#s2"><span class="num">§2</span><span>$75K 之争 — 钱与幸福</span></a>
+        <a href="#s3"><span class="num">§3</span><span>自由的具体形式</span></a>
+        <a href="#s4"><span class="num">§4</span><span>Rich vs Wealthy</span></a>
+        <a href="#s5"><span class="num">§5</span><span>Stealth Wealth 实证</span></a>
+        <a href="#s6"><span class="num">§6</span><span>应用到你</span></a>
+        <a href="#s7"><span class="num">§7</span><span>三条可行动原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习</span></a>
+        <a href="#qz"><span class="num">?</span><span>自检 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 4 · The Ultimate Dividend</p>
+      <h1 class="lead">金钱最高的股息，是对自己时间的控制权。</h1>
+      <p class="lead-sub">前三章告诉你"行为 &gt; 智能"、"时间 + 长尾 &gt; 选股"、"守富 &gt; 致富"。第四章问一个更尖锐的问题：你存这些钱，是要拿它去<strong>买什么</strong>？大多数人没有真正想过这件事——默认答案是"更好的车、更大的房、更多的物品"。Housel 给出一个不同的答案：<strong>钱的最高用法是买回你时间的支配权</strong>。这一章不是鸡汤，是用 Angus Campbell 的幸福感研究、Kahneman vs Killingsworth 的世纪辩论、Stanley 的 millionaire 实证——把这个论点钉在数据上。</p>
+
+      <div class="quote">
+        "The highest form of wealth is the ability to wake up every morning and say, 'I can do whatever I want today.'"
+        <cite>— Morgan Housel, <em>The Psychology of Money</em>, Chapter 7 (Freedom)</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing</p>
+        <h2 class="unit-h">钱具体应该买什么</h2>
+
+        <p>钱是手段，不是目的。这句话被说烂了，但绝大多数人在<strong>实际行为</strong>里仍然把它反过来用——把"挣更多"当目的，把"花什么"当默认。这一章把这个混乱挑开：钱是手段，那它的目的具体是什么？</p>
+
+        <p>Housel 的答案分两层：</p>
+
+        <ol class="deep">
+          <li><strong>正面</strong>——钱的最高用法是买回<strong>对自己时间的支配权</strong>。这不是抽象的自由，是可量化的：你能不能在一个早上醒来说"今天我不去工作"、"今天我换一个老板"、"今天我搬到另一个城市"。</li>
+          <li><strong>反面</strong>——你以"看得见的有钱"为模板模仿别人的消费，会<strong>系统性地</strong>削弱你买回自由的能力。因为<strong>真正的财富是看不见的</strong>（Wealth is What You Don't See，Ch. 9）——你看到的有钱人，多数其实是 rich（高消费）而不是 wealthy（高净值）。</li>
+        </ol>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>"sense of control"——为什么 Angus Campbell 的研究说它比收入和健康更能预测 well-being？这对你怎么花钱有什么含义？</li>
+            <li>Kahneman 2010 的"$75K 收入饱和"和 Killingsworth 2021 的"幸福继续上升"——这两个看似矛盾的结论调和后告诉你什么？</li>
+            <li>"Wealth is What You Don't See"——为什么我们日常对"有钱"的视觉模型是<strong>系统性偏差</strong>的？这意味着你在 tech 圈应该如何反向思考？</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · Sense of Control</p>
+        <h2 class="unit-h">控制感 — Well-being 最强的单一预测变量</h2>
+
+        <p>1981 年，密歇根大学心理学家 Angus Campbell 出版了 <em>The Sense of Well-Being in America: Recent Patterns and Trends</em>（McGraw-Hill）[1]。这是一本基于近 20 年全国抽样问卷的大型实证研究，目的是回答一个朴素问题：<strong>什么变量最能预测一个美国人是否觉得自己过得好</strong>？</p>
+
+        <p>Campbell 把通常的候选变量都纳入了模型：收入、教育、健康、婚姻状态、地理位置、年龄、种族、就业。结果让人意外——<strong>这些"明面上重要"的变量都不是最强的单一预测</strong>。</p>
+
+        <div class="figure">
+          <strong>Campbell 1981 — Well-being 的预测变量强度（示意排序）</strong>
+          <div class="bar-row"><span>Sense of control</span><div class="bar alt2" style="width:95%"></div><span>最强</span></div>
+          <div class="bar-row"><span>Health</span><div class="bar" style="width:60%"></div><span>中</span></div>
+          <div class="bar-row"><span>Income</span><div class="bar" style="width:50%"></div><span>中</span></div>
+          <div class="bar-row"><span>Marital status</span><div class="bar alt" style="width:45%"></div><span>中</span></div>
+          <div class="bar-row"><span>Education</span><div class="bar alt" style="width:35%"></div><span>较弱</span></div>
+          <div class="figure-cap">来源：Campbell 1981, McGraw-Hill。条目数据为相对强度示意。Campbell 的核心结论："having a strong sense of controlling one's life" 是 well-being 最强的单一预测变量——比收入和身体健康都更强。</div>
+        </div>
+
+        <h3>这意味着什么</h3>
+        <p>"控制感"是一种<strong>主观感知</strong>——我能不能决定明天做什么、跟谁做、做多久。这个变量比客观收入更能预测幸福，原因不是"收入不重要"，而是<strong>收入只在它转化为控制感的时候才有用</strong>。一个年薪 $300K 但每天 6:30 必须 standup、晚上 10 点还要 oncall、随时可能被裁的人，在"控制感"维度上可能<strong>低于</strong>一个年薪 $80K 但能自己安排 schedule 的远程工作者。</p>
+
+        <div class="pullbox idea">
+          <h4>Housel 的链接</h4>
+          <p style="margin:0;">这是 Housel 整本书"Freedom is the highest dividend"论点的<strong>科学基础</strong>。如果 Campbell 是对的——控制感才是 well-being 的核心驱动——那么钱花在<strong>买控制权</strong>上（应急金、低 burn rate、可选性）产生的幸福收益，远高于花在<strong>买物品</strong>上（车、表、奢侈品）。这不是哲学偏好，是基于实证心理学的最优化建议。</p>
+        </div>
+
+        <h3>后续验证</h3>
+        <p>Campbell 之后的几十年里，"控制感"作为 well-being 主要驱动这个发现被反复复现。Edward Deci &amp; Richard Ryan 的<strong>自我决定理论</strong>（Self-Determination Theory，1985 起）把"autonomy / 自主性"列为人类三个核心心理需求之一（另两个是 competence 和 relatedness）[7]。Daniel Pink 在 <em>Drive</em>（2009）中把这套研究普及给大众——"内在动机的三大支柱：autonomy、mastery、purpose"[7]，第一条就是控制权。</p>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · The $75K Debate</p>
+        <h2 class="unit-h">钱与幸福：Kahneman vs Killingsworth 的世纪辩论</h2>
+
+        <p>"钱能不能买幸福"是经济学和心理学交叉处最被讨论的问题。过去 15 年，三篇 PNAS 论文把它从口水仗变成了可定量的实证课题。</p>
+
+        <h3>第一回合：Kahneman &amp; Deaton 2010</h3>
+        <p>Daniel Kahneman（Nobel 2002）和 Angus Deaton（Nobel 2015）在 <em>PNAS</em> 2010 年的论文 <strong>"High Income Improves Evaluation of Life But Not Emotional Well-Being"</strong>[2]，用 Gallup-Healthways Well-Being Index 的 45 万美国成人样本，发现两件事的分裂：</p>
+
+        <ul class="deep">
+          <li><strong>Life evaluation</strong>（你回头评价自己的人生满意度）——随收入<strong>持续上升</strong>，没有看到上限。</li>
+          <li><strong>Emotional well-being</strong>（昨天你笑了吗、忧虑了吗、压力大吗）——随收入上升，但在年家庭收入约 <strong>$75,000</strong>（2009 美国数据）处达到 <strong>plateau</strong>，之后基本不再增加。</li>
+        </ul>
+
+        <p>这篇论文被广泛媒体化为"钱在 $75K 之后就不能再买快乐了"——这是这一辈人最有名的"金钱与幸福"金句之一。</p>
+
+        <h3>第二回合：Killingsworth 2021</h3>
+        <p>11 年后，宾夕法尼亚大学 Matthew Killingsworth 在 <em>PNAS</em> 发表 <strong>"Experienced Well-Being Rises with Income, Even Above $75,000 per Year"</strong>[3]。他用了一个完全不同的方法论——<strong>Experience Sampling Method (ESM)</strong>：通过手机 app（Track Your Happiness）在一天里随机时点提示用户报告"此刻的感受"，收集 33,391 名美国成年员工的 1.7 million 条情绪数据。</p>
+
+        <p>结论：<strong>幸福感（包括 emotional well-being 和 life satisfaction）随收入<strong>持续</strong>上升，至少到 $200K，没有 plateau。</strong>这把 Kahneman-Deaton 的"$75K 饱和点"打回原形。</p>
+
+        <h3>第三回合：调和（Killingsworth, Kahneman &amp; Mellers 2023）</h3>
+        <p>2023 年，三人合作在 <em>PNAS</em> 发表 <strong>"Income and Emotional Well-Being: A Conflict Resolved"</strong>[4]。这是学术界少见的对手联手分析双方原始数据的论文。结论：</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:30%;">人群分组</th><th>幸福随收入的关系</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>"开心多数"（约 80%）</strong></td><td>幸福随收入<strong>持续</strong>上升至少到 $500K，斜率没有大幅下降。Killingsworth 2021 的图主要由这一组贡献。</td></tr>
+            <tr><td><strong>"不快乐少数"（最低 ~15-20%）</strong></td><td>幸福随收入上升，但在 $100K 左右<strong>达到 plateau</strong>——再多的钱也不能解决他们的不快乐。Kahneman-Deaton 2010 的"$75K 饱和"主要由这一组贡献。</td></tr>
+          </tbody>
+        </table>
+
+        <div class="figure">
+          <strong>三篇 PNAS 论文要点对照</strong>
+          <div class="bar-row"><span>Kahneman 2010</span><div class="bar alt" style="width:35%"></div><span>$75K 饱和</span></div>
+          <div class="bar-row"><span>Killingsworth 2021</span><div class="bar" style="width:90%"></div><span>持续上升</span></div>
+          <div class="bar-row"><span>三人 2023 调和</span><div class="bar alt2" style="width:80%"></div><span>分人群</span></div>
+          <div class="figure-cap">来源：PNAS 2010, 2021, 2023[2][3][4]。条形长度为示意。结论：钱<strong>有用</strong>，但有效区间和上限因人而异；底层快乐 baseline 低的人，钱解决不了根本问题。</div>
+        </div>
+
+        <h3>这一章真正要你拿走的</h3>
+        <p>不是"$75K 还是 $200K 哪个对"。是<strong>钱的边际幸福效益高度依赖你怎么花</strong>——三篇论文都暗示同一件事：</p>
+
+        <div class="pullbox idea">
+          <h4>关键洞察</h4>
+          <p style="margin:0;">钱花在<strong>买控制权</strong>上（更长的应急金 = 更少职场恐惧、更短的通勤 = 更多时间、提前还贷 = 拒绝 shitty 工作的能力）产生的边际 well-being 收益，<strong>远高于</strong>花在<strong>买物品</strong>上（升级到豪车、奢侈品、更大的房）。这跟 §1 的 Campbell 数据是同一个论点的两面：控制感 &gt; 物质消费。</p>
+        </div>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · The Shape of Freedom</p>
+        <h2 class="unit-h">自由的具体形式 — Time, Optionality, Right to Say No</h2>
+
+        <p>Housel 第 7 章 <em>Freedom</em> 给"自由"下了一个非常具体的定义：<strong>在你想要的时间，跟你想要的人，做你想要的事，做想要多久就多久</strong>。这不是哲学定义——它可以拆成三个可量化维度：</p>
+
+        <ol class="deep">
+          <li><strong>Time</strong> ——你能否决定今天的几个小时怎么用？</li>
+          <li><strong>Optionality</strong> ——你面前有多少个真实可选的下一步？（换工作、换城市、换行业、不工作）</li>
+          <li><strong>Right to say no</strong> ——你能否拒绝一份你不喜欢的工作 / 一个不公平的老板 / 一个低于你底线的项目？</li>
+        </ol>
+
+        <h3>自由的 4 个级别</h3>
+
+        <table>
+          <thead>
+            <tr><th style="width:18%;">级别</th><th>财务状况</th><th>能拒绝什么</th><th>典型 portrait</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>L0 月光</strong></td><td>0-3 个月生活费</td><td>什么都不能拒绝</td><td>必须接下一份工作；任何意外（房东涨租、车坏）都触发危机</td></tr>
+            <tr><td><strong>L1 缓冲</strong></td><td>6-12 个月生活费</td><td>能拒绝最差的 offer</td><td>可以谈薪、可以等下一个机会，不必接第一个 offer</td></tr>
+            <tr><td><strong>L2 半自由</strong></td><td>2-5 年生活费 (passive 部分覆盖)</td><td>能拒绝任何<strong>糟糕</strong>的工作</td><td>可以 sabbatical、可以创业、可以做兼职、地理灵活</td></tr>
+            <tr><td><strong>L3 FU money</strong></td><td>passive 收入 ≥ 生活成本，或净资产 ≥ 25× 年支出</td><td>能拒绝<strong>任何</strong>工作</td><td>工作变成<strong>选择</strong>，不再是必须；老板对你需求 &gt; 你对老板需求</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Studs Terkel 的实证：人对工作不满 ≠ 钱不够</h3>
+        <p>1972 年 Studs Terkel 出版 <em>Working: People Talk About What They Do All Day and How They Feel About What They Do</em>（Pantheon Books）[10]。这是一本采访了上百位美国不同职业从业者的口述史。Terkel 的反复发现是：人对工作不满主要不是"钱不够"，而是<strong>"被告诉做什么、什么时候做、怎么做"——丧失控制感</strong>。这跟 Campbell 1981 的实证（§1）是同一个论点的两面：人对自己生活的支配感才是 well-being 的核心。</p>
+
+        <h3>Daniel Pink 的内在动机框架</h3>
+        <p>Daniel Pink 在 <em>Drive</em>（2009, Riverhead Books）综合了 Deci &amp; Ryan 的自我决定理论，给出一个被广泛引用的框架[7]：</p>
+
+        <div class="pullbox idea">
+          <h4>真正的内在动机 = Autonomy + Mastery + Purpose</h4>
+          <p style="margin:0;">Autonomy（自主性）= 对自己时间和方法的支配；Mastery（精进）= 在重要事情上变得更好；Purpose（目的）= 服务于比自己更大的目标。Pink 论证：金钱激励对<strong>认知性工作</strong>的边际效用<strong>很快递减</strong>，超过基本生活需求后，autonomy 才是关键变量。这跟 Campbell 1981 的"sense of control"是<strong>同一个发现，不同语言</strong>。</p>
+        </div>
+
+        <div class="pullbox warn">
+          <h4>挑战</h4>
+          <p style="margin:0;">回到自由的 4 个级别表——你<strong>现在</strong>在哪一级？不要往美化方向估计——用净流动资产 ÷ 月必要支出 算一下。如果你 TC 很高但仍在 L0 或 L1，这不是"还在积累"，<strong>这是消费率失控</strong>。高收入和真实自由不是一回事；很多 SWE 一辈子卡在 L1。</p>
+        </div>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · Rich vs Wealthy</p>
+        <h2 class="unit-h">Rich vs Wealthy — Housel 的核心区分</h2>
+
+        <p>Housel 第 9 章 <em>Wealth Is What You Don't See</em> 提出一个看似简单但绝大多数人没认真区分的概念对：</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:18%;">维度</th><th>Rich（"有钱"）</th><th>Wealthy（"富有"）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>本质</strong></td><td>当前现金流高</td><td>没花掉的资产多</td></tr>
+            <tr><td><strong>可见性</strong></td><td>极度可见——豪车、豪宅、奢侈品、社交媒体晒图</td><td>不可见——指数基金账户余额、提前还掉的房贷、没买的那辆 Porsche</td></tr>
+            <tr><td><strong>时间地平线</strong></td><td>当下 / 短期</td><td>未来 / 长期可选权</td></tr>
+            <tr><td><strong>买的是</strong></td><td>物品 + 身份信号</td><td>未来选择权 + 自由 (§3 定义)</td></tr>
+            <tr><td><strong>对外信号</strong></td><td>"我已经成功了"</td><td>"我正在保留可能性"</td></tr>
+            <tr><td><strong>抗风险</strong></td><td>低——现金流断裂立刻崩盘</td><td>高——资产储备能扛多年逆境</td></tr>
+          </tbody>
+        </table>
+
+        <h3>关键悖论</h3>
+        <p>Housel 写："The only way to be wealthy is to <strong>not</strong> spend the money that you do have. It's not just the only way to accumulate wealth; it's the very definition of wealth." 这句话翻成机械语言：<strong>wealthy 的定义是"现在能花但选择不花的钱"</strong>。</p>
+
+        <p>这意味着——你<strong>看到</strong>一个人在花什么，得到的是关于他 rich 程度的信号，<strong>不是</strong>关于他 wealthy 程度的信号。这两个信号在很多情况下<strong>方向相反</strong>：</p>
+
+        <div class="figure">
+          <strong>同样 TC $300K，两种生活路径的财富分化</strong>
+          <div class="bar-row"><span>A. Rich — 高消费</span><div class="bar alt2" style="width:30%"></div><span>NW $0.5M</span></div>
+          <div class="bar-row"><span>B. Wealthy — 高储蓄</span><div class="bar" style="width:90%"></div><span>NW $2.5M</span></div>
+          <div class="figure-cap">10 年时间，同样 $300K TC：A 买了 $90K Tesla + 月供 $7K 房贷 + 奢侈消费，储蓄率 5%；B 开旧 Camry + 租房 + index funds，储蓄率 40%。NW 数字基于储蓄率 × 10 年 + 8% 复合。<strong>外人看到 A 像 wealthy，实际上 B 才是。</strong></div>
+        </div>
+
+        <h3>视觉模型的系统性偏差</h3>
+        <p>这就是为什么我们对"有钱"的视觉模型是<strong>系统性偏差</strong>的。我们的大脑在演化中形成了"看见富人 → 模仿"的本能（社会学习），但<strong>我们能"看见"的从来不是 net worth，只是 spending</strong>。这是一个根本性的观察偏差——你模仿的从来不是真正的有钱人，而是<strong>看起来有钱的人</strong>。这两组人在统计上经常不重合。</p>
+
+        <div class="pullbox warn">
+          <h4>挑战题</h4>
+          <p style="margin:0;">想想你身边 5 个你觉得"很有钱"的人。你怎么知道他们有钱的——是看到他们的<strong>消费</strong>（车、房、衣、旅行）还是看到他们的<strong>资产</strong>（账户余额、投资仓位）？如果只看到前者——<strong>你看到的可能是 rich 的信号，不是 wealthy 的信号</strong>。这两件事在你身上推动的行为是相反的。</p>
+        </div>
+
+        <div class="pullbox idea">
+          <h4>Housel 的提炼</h4>
+          <p style="margin:0;">Wealth is the assets you've <strong>chosen not to convert into stuff yet</strong>. Once converted, it's gone. 这句话最锋利的部分在 "yet"——wealth 是<strong>未实现的可选性</strong>。一旦转换为消费，它就从 wealthy 变成了 rich，然后开始随时间消散。</p>
+        </div>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · Stealth Wealth</p>
+        <h2 class="unit-h">Stealth Wealth — Stanley 的实证 The Millionaire Next Door</h2>
+
+        <p>1996 年，Thomas Stanley 和 William Danko 出版 <em>The Millionaire Next Door: The Surprising Secrets of America's Wealthy</em>（Longstreet Press）[5]。这是基于 20 年面板调查 + 数千 millionaire 焦点访谈的实证研究——他们的发现把美国大众对"百万富翁长什么样"的想象彻底反转。</p>
+
+        <h3>Stanley 的核心发现</h3>
+
+        <table>
+          <thead>
+            <tr><th style="width:30%;">维度</th><th>美国 millionaire（NW ≥ $1M）实际特征</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>居住地</strong></td><td>大多数住在<strong>中产社区</strong>，不是富人区。Stanley 写："The wealthy don't live in upscale neighborhoods to the extent that you might think."</td></tr>
+            <tr><td><strong>开什么车</strong></td><td>调查时点 millionaire 中位购车价 <strong>~$24,800</strong>（1996 美元）。最常买的品牌是 Ford / Chevrolet / Toyota，不是 BMW / Mercedes。</td></tr>
+            <tr><td><strong>消费习惯</strong></td><td>极度节俭。买西装平均 &lt; $400，鞋 &lt; $140，手表 &lt; $235（1996 数字）。</td></tr>
+            <tr><td><strong>职业</strong></td><td>大部分是不起眼的小企业主（焊接、害虫防治、回收、干洗）+ 工程师 / 教师 / 会计——不是律师、医生、CEO。</td></tr>
+            <tr><td><strong>对子女的资助</strong></td><td>大多数 millionaire <strong>不</strong>资助成年子女。他们发现：被资助的子女反而更难积累财富。</td></tr>
+          </tbody>
+        </table>
+
+        <h3>PAW vs UAW 公式</h3>
+        <p>Stanley 给出一个简单但极其实用的工具，把人按"财富积累效率"分成两类：</p>
+
+        <div class="figure" style="text-align:center;">
+          <p class="mono" style="font-size:16px; margin:6px 0;">Expected Net Worth = Age × Pretax Income / 10</p>
+          <div class="figure-cap">这是 Stanley 给出的"一个人到这个年龄、这个收入应该攒到的中位数财富"基准。</div>
+        </div>
+
+        <ul class="deep">
+          <li><strong>PAW (Prodigious Accumulator of Wealth)</strong>: NW ≥ 2 × Expected NW。"远超应得"——同样 TC 的 top 25%。</li>
+          <li><strong>AAW (Average Accumulator)</strong>: NW 在 0.5-2 × Expected NW 区间。</li>
+          <li><strong>UAW (Under Accumulator of Wealth)</strong>: NW &lt; 0.5 × Expected NW。"高现金流但低累积"——典型表现：高 TC + 高消费 + 低 NW。</li>
+        </ul>
+
+        <p><strong>例</strong>：35 岁，年税前 TC $250K → Expected NW = 35 × 250K / 10 = $875K。如果 NW &lt; $437K，是 UAW；&gt; $1.75M，是 PAW。</p>
+
+        <div class="pullbox warn">
+          <h4>这个公式的诊断意义</h4>
+          <p style="margin:0;">Stanley 的关键发现是：<strong>UAW 的人收入并不低</strong>——他们经常是高 TC 的 SWE、医生、律师、广告主管。问题<strong>不是赚不到</strong>，是<strong>赚到的全花掉了</strong>。在 tech 圈，"我赚得多所以我应该有钱"是常见的自我安慰；这个公式直接把它打碎——<strong>NW / Expected NW 才是真正的"财富效率"指标，TC 不是</strong>。</p>
+        </div>
+
+        <h3>Stop Acting Rich（2009）— 续作的核心论点</h3>
+        <p>13 年后，Stanley 在 <em>Stop Acting Rich... and Start Living Like a Real Millionaire</em>（2009）[6]里给出他对中产阶级财富停滞的诊断：</p>
+
+        <div class="pullbox idea">
+          <h4>Stanley 的中产财富停滞理论</h4>
+          <p style="margin:0;">中产 SWE / 律师 / 医生模仿的是"<strong>看起来富裕的邻居</strong>"，而不是"真正富裕的人"。看起来富裕的邻居=高消费的高 TC 群体（rich）。模仿他们的<strong>消费习惯</strong>会持续把钱从你的资产负债表里抽走。Stanley 的话："The way to become rich is to <strong>act poor</strong>; the way to stay middle class is to act rich." 这也是为什么 stealth wealth 是个深刻概念——<strong>不被看见的人在积累，被看见的人在消耗</strong>。</p>
+        </div>
+
+        <h3>冰山隐喻</h3>
+        <p>把这一切压成一张图：</p>
+
+        <div class="figure">
+          <strong>财富的冰山结构</strong>
+          <div class="bar-row"><span>水上 (visible)</span><div class="bar alt2" style="width:15%"></div><span>消费</span></div>
+          <div class="bar-row"><span>水下 (invisible)</span><div class="bar" style="width:85%"></div><span>资产</span></div>
+          <div class="figure-cap">真正支撑财富的是水下部分（资产 / 投资 / 储蓄），但<strong>外人能看到的只有水上部分（消费）</strong>。所以"看起来很有钱"和"真的很有钱"是<strong>不同的两件事</strong>，且经常方向相反。这是 §4 视觉模型偏差的图像化。</div>
+        </div>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · Apply to You</p>
+        <h2 class="unit-h">应用到类似画像（美股 / 30+ / 科技业 / 近年科技裁员幸存者）</h2>
+
+        <p>把这一章的所有发现叠到这类读者的处境上——这一节是这一章对这类画像<strong>最有用</strong>的部分。</p>
+
+        <h3>身份/签证不稳让"自由门槛"系统性更高</h3>
+
+        <table>
+          <thead>
+            <tr><th style="width:22%;">维度</th><th>稳定就业的本地工作者</th><th>身份/签证不稳的科技工作者</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>失业 → 找下份工作的容错</td><td>看现金流和 morale，无外部 deadline</td><td><strong>失业后的找工压力</strong>极大，且可能伴随身份倒计时</td></tr>
+            <tr><td>"FU money" 的真实含义</td><td>"我可以辞职 sabbatical"</td><td>"我可以扛过<strong>裁员 + 身份转换 + 跨境搬迁</strong>这一整个组合"</td></tr>
+            <tr><td>地理灵活性</td><td>境内随便搬</td><td>必须有可雇佣的雇主在那个城市，或者远程工作 + 雇主合规</td></tr>
+            <tr><td>合理应急金</td><td>3-6 个月</td><td><strong>18-24 个月</strong>（cover 失业 + 身份转换的双重不确定）</td></tr>
+            <tr><td>"被裁不可怕"的资本</td><td>NW 1× 年支出 + 解雇遣散</td><td>NW <strong>2× 以上</strong>年支出，否则下一份 offer 谈不出 leverage</td></tr>
+          </tbody>
+        </table>
+
+        <p>近年科技裁员幸存的读者应该<strong>身体性</strong>知道这个差异——当时失业找工压力 + 身份倒计时的紧迫感和稳定就业同事完全不在一个量级。这不是过度焦虑，<strong>这是结构性事实</strong>：身份/签证不稳的工作者的"自由维度"比一般稳定就业者窄一格，所以达到同样"自由级别"需要更厚的资产缓冲。</p>
+
+        <h3>Tech 圈是 visible wealth 的最强诱惑场</h3>
+        <p>湾区 / 西雅图的 tech 圈是 §4 / §5 那个视觉偏差<strong>密度最高</strong>的地方。同事买 $80K 车、$4M 房、Patek Philippe、限量球鞋——这些是 cohort 默认（回到 Ch.1 的 cohort 假说）。如果你不主动反向思考，你会自然地把"成功"等同于"看起来像他们"，然后开始模仿他们的<strong>消费</strong>而不是积累。</p>
+
+        <h3>同样 TC，两种 5 年路径的财富分化</h3>
+
+        <table>
+          <thead>
+            <tr><th style="width:25%;">维度</th><th>路径 A — 模仿 visible wealth</th><th>路径 B — Stealth wealth</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>车</td><td>2024 Tesla Model S Plaid (~$95K)</td><td>2018 Camry (二手 $18K)</td></tr>
+            <tr><td>住</td><td>湾区独栋 $2M 房贷 30 年</td><td>租房或低价 condo</td></tr>
+            <tr><td>消费习惯</td><td>外卖 + 旅行 + 数码 + 表 = 月 $8K+</td><td>外卖 + 必要消费 = 月 $3K</td></tr>
+            <tr><td>储蓄率</td><td>~5-10%</td><td>~40-50%</td></tr>
+            <tr><td>5 年后净流动资产</td><td>~$0.3M</td><td>~$1.5M+</td></tr>
+            <tr><td>5 年后失业容忍</td><td>3-4 个月（强压力）</td><td>30+ 个月（完全自由）</td></tr>
+            <tr><td>对外可见的"成功"</td><td>极强</td><td>弱到几乎无</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>挑战</h4>
+          <p style="margin:0;">你在 tech 圈混了多年——你下意识里把"成功"对标的是路径 A 还是路径 B？如果你没认真想过这件事，<strong>默认值就是 A</strong>，因为 A 是周围所有人在做的。但请记住 §1 Campbell 的发现——A 在"控制感"维度上反而更弱（debt 锁定 + 消费习惯刚性），<strong>它在 well-being 上不仅没赢，是输的</strong>。</p>
+        </div>
+
+        <h3>Trinity Study / FIRE 框架：把"自由"做成数字</h3>
+        <p>Cooley、Hubbard、Walz 1998 在 AAII Journal 发表的 <em>Retirement Savings: Choosing a Withdrawal Rate That Is Sustainable</em>[8]——通常被称为"Trinity Study"——通过历史数据 simulation 提出 <strong>4% rule</strong>：如果你年支出 ≤ 投资组合 4%，组合按 50/50 股债配置，30 年存活概率 ≥ 95%。</p>
+
+        <p>反向算：<strong>FI 数字 = 年支出 × 25</strong>。如果你年必要支出 $80K → FI 数字 $2M。如果是 $50K → $1.25M。这是把"L3 FU money"从模糊变成<strong>具体数字</strong>的唯一方式。</p>
+
+        <div class="pullbox idea">
+          <h4>给你的具体公式</h4>
+          <p style="margin:0;">FreedomLevel = (净流动资产 × 0.04) / (12 × 月必要支出)。<br>
+          - &lt; 0.25 → L0-L1 区间（缓冲不足）<br>
+          - 0.25-0.5 → L2 半自由（能拒绝最差工作）<br>
+          - 0.5-1.0 → 接近 L3，被动可覆盖大部分支出<br>
+          - ≥ 1.0 → L3 FU money（passive ≥ 月支出）<br>
+          每个季度算一次，把数字写到 daily note 里。这把抽象的"自由"变成可追踪的 KPI——回到 Ch.2 的论点：<strong>能量化的事才能被复利</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §7 -->
+      <section class="unit" id="s7">
+        <p class="unit-eyebrow">§7 · Three Actionable Principles</p>
+        <h2 class="unit-h">三条可行动原则</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>把"自由"做成可量化的指标，每季度更新。</strong><br>
+            不要用"我感觉差不多"——用 §6 的 FreedomLevel 公式 + "我能不工作多少个月" + "我能拒绝什么工作"。指标驱动行动；模糊的"努力存钱"不会发生。每季度对比上一季度，看 FreedomLevel 在升还是降——这一个数字就是你的 north star。
+          </li>
+          <li>
+            <strong>用 Stanley 的 PAW 公式做 stealth wealth 自检。</strong><br>
+            每年算一次：你的 NW / Expected NW（= Age × Pretax Income / 10）= ?。如果 &lt; 0.5（UAW 区域），意味着同样 TC 的同行平均比你富一倍——你的<strong>消费</strong>在主导，不是<strong>积累</strong>。然后做对比：你过去 12 个月最大的 5 笔支出有多少是"买控制权"（应急金、教育、健康、身份 buffer），多少是"买物品"？这个比例反过来你能不能改？
+          </li>
+          <li>
+            <strong>钱花在"控制权"上，不是"物品"上——三条具体应用。</strong><br>
+            (a) <strong>买更长的时间地平线</strong>——应急金从 6 个月加到 18-24 个月（对身份/职业不稳的工作者），让"被裁"从恐惧变成 inconvenience。<br>
+            (b) <strong>买拒绝权</strong>——避免 35 年大房贷、避免长期 lease 的奢侈品、避免高 burn rate 的生活方式。每一个长期固定支出都是<strong>未来你能拒绝什么</strong>的负向投票。<br>
+            (c) <strong>买可选性</strong>——地理灵活性（不被房子钉在一个高成本城市）、身份灵活性（NW 厚到能扛跨境）、技能灵活性（不只 depend on 一个雇主）。这些都是<strong>未来你的下一步选项数量</strong>的正向投票。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把这一章压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>财富的最高用途不是变得"看起来很有钱"，是变得"不需要任何人允许才能决定明天做什么"。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Reflection Exercises</p>
+        <h2 class="unit-h">反思练习（写下来，不要在脑子里完成）</h2>
+
+        <p>这一章对你的应用密度最高，下面 4 题<strong>每一题都需要你拿出真实数字</strong>，不要泛泛回答。这一节才是这一章的成果。</p>
+
+        <div class="exercise">
+          <h4>练习 1 — 你的"自由月数"</h4>
+          <p>算你<strong>真实</strong>的自由月数：净流动资产 ÷ 月必要支出 = N（不算房产、不算 401k 不可变现部分、不算未 vest 股票）。这个 N 你满意吗？要达到 N=24（身份/职业不稳画像的自由门槛 = 18-24 个月），你需要再存多少？按你目前储蓄率算，需要几年？</p>
+          <textarea placeholder="例如：净流动资产 $180K，月必要支出 $7K → N ≈ 26 个月。已超此画像的门槛。但要到 L3（passive ≥ 支出），按 4% rule 需要 NW ≥ $7K × 12 × 25 = $2.1M，目前差 $1.92M..."></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — "买物品" vs "买控制权" 比例</h4>
+          <p>列出过去 12 个月最大的 5 笔支出（房租 / 车 / 旅行 / 餐饮 / 订阅 / 数码 / 衣物等）。每一笔标记是"买物品/享受"还是"买控制权"（应急金贡献、健康投资、教育、身份 buffer 等）。算这个比例。这个比例你想改吗？想改到什么数字？</p>
+          <textarea placeholder="例如：1) 房租 $36K (享受/物品)；2) 车 $25K (物品)；3) 旅行 $8K (享受)；4) 餐饮 $7K (享受)；5) 投资账户增加 $50K (控制权)。物品/享受 vs 控制权 = $76K vs $50K = 1.5:1。我想改到 1:2。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — 5 年后的两个场景</h4>
+          <p>想象 5 年后两个场景：<br>
+          <strong>A)</strong> 你 NW $1M，住湾区，开 Tesla，每周通勤 5 天 office；<br>
+          <strong>B)</strong> 你 NW $1.5M，住中部低成本城市远程工作，开 Camry，每周工作 3 天。<br>
+          你 prefer 哪个？为什么？这个 preference 反映了你 rich vs wealthy 的偏好——它跟你<strong>实际</strong>的消费决策一致吗？如果不一致，差距在哪？</p>
+          <textarea placeholder="诚实写。如果你嘴上选 B 但实际行为像 A，那是另一个信号。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 4 — 你的 FU money 数字</h4>
+          <p>写下你的"FU money"数字（让你能拒绝任何工作的净资产 / 被动收入数字）。基于 Trinity 4% rule，把"年必要支出 × 25"算出来。然后：你目前距离它多远？最快的路径是什么——更高 TC，还是更低 burn rate？分别量化这两个路径在你身上的可行性。</p>
+          <textarea placeholder="例如：年必要支出 $84K → FU money = $2.1M。目前 NW $0.4M，差 $1.7M。两条路径：(a) TC 从 $400K → $600K，每年多存 $120K，需要 14 年；(b) burn rate 从 $84K 降到 $60K，FU money 降到 $1.5M，且每年多存 $24K，需要 11 年。后者更快也更可控。"></textarea>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Self-Check Quiz</p>
+        <h2 class="unit-h">自检 Quiz（先答，再展开看解析）</h2>
+
+        <details class="quiz">
+          <summary>Q1. Angus Campbell 1981 研究的核心发现是？</summary>
+          <p>A) 收入是 well-being 的主要预测变量<br>
+          B) 健康是 well-being 的主要预测变量<br>
+          C) "Sense of control" 是 well-being 最强的单一预测变量<br>
+          D) 婚姻是 well-being 的关键</p>
+          <div class="answer"><strong>正确答案：C。</strong>Campbell 在控制了收入、教育、健康、婚姻等变量后发现，"a strong sense of controlling one's life" 是<strong>最强</strong>的单一预测变量，比收入和身体健康都更强。这是 Housel "Freedom is the highest dividend" 论点的科学基础——<strong>钱花在买控制权上的边际幸福收益最大</strong>，因为 well-being 的最强驱动是控制感而非物质消费。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. Kahneman-Deaton 2010 vs Killingsworth 2021 的辩论实质是？</summary>
+          <p>A) 谁的数据更好<br>
+          B) 收入对幸福的边际效应是否在 $75K 后归零<br>
+          C) 钱能不能买快乐<br>
+          D) 美国人是否变穷了</p>
+          <div class="answer"><strong>正确答案：B。</strong>Kahneman 2010 用 Gallup 的"昨天你笑/忧虑了吗"数据发现 emotional well-being 在 $75K 处 plateau；Killingsworth 2021 用手机 ESM 实时采样发现幸福继续上升至少到 $200K 没有 plateau。2023 三人合作论文调和：对大多数人是 Killingsworth 对，对底层不快乐 ~15-20% 群体是 Kahneman 对。<strong>这一题不是"哪边赢"，是承认幸福随收入的曲线形状是分人群的——钱有用，但用法（买控制权 vs 买物品）才决定边际收益。</strong></div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. Housel "Wealth Is What You Don't See" 的核心含义？</summary>
+          <p>A) 财富要保密<br>
+          B) 真正的财富是没花掉的资产，所以从消费观察会系统性误判<br>
+          C) 富人都低调<br>
+          D) 隐形资产比可见资产更值钱</p>
+          <div class="answer"><strong>正确答案：B。</strong>A 和 C 是表面理解；D 是过度引申。Housel 的真正论点是<strong>认识论</strong>层面的：你能"看到"的只是 spending，<strong>不是</strong> net worth；所以你模仿别人的消费，模仿到的是 rich（高现金流）的信号而不是 wealthy（高净值）的信号。这两件事在统计上经常方向相反——<strong>看起来最有钱的人，往往不是真正最富有的人</strong>。这构成对"以可见消费为模板"的根本性反驳，也是 §5 Stanley 实证的呼应。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. Stanley 的 PAW 公式 (Net Worth = Age × Income / 10) 用途是？</summary>
+          <p>A) 预测寿命<br>
+          B) 区分高 NW 累积者 (PAW) 和高现金流但低累积者 (UAW)<br>
+          C) 计算退休金<br>
+          D) 给出理财建议</p>
+          <div class="answer"><strong>正确答案：B。</strong>Stanley 的关键洞察是：<strong>UAW 的人收入并不低</strong>——常常是高 TC 的 SWE / 律师 / 医生，问题不是"赚不到"而是"全花掉了"。这个公式的诊断意义在于把"我赚得多所以我应该有钱"这种自我安慰<strong>打碎</strong>——NW / Expected NW 才是真正的"财富效率指标"，TC 不是。在 tech 圈，UAW 比例可能比一般职业群体更高，因为 cohort 消费压力更大。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5. 对身份/签证不稳的科技工作者，"自由"的特殊门槛是？</summary>
+          <p>A) 跟一般稳定就业者一样 (3-6 个月应急金)<br>
+          B) 房贷还清就够了<br>
+          C) 应急金需要支撑失业 + 身份转换的双重不确定，至少 18-24 个月<br>
+          D) 拿到长期身份就行</p>
+          <div class="answer"><strong>正确答案：C。</strong>身份/签证不稳的工作者失业后通常有较短的找工窗口，超过就可能失去身份。这意味着这类画像的"FU money 门槛"<strong>结构性高于</strong>一般稳定就业者——你需要扛"失业 + 找雇主 + 身份转换"的整个组合，可能还要加跨境搬迁。18-24 个月的应急金不是过度焦虑，而是这个签证类别下的<strong>结构性事实</strong>。同样 TC 的稳定就业同事 6 个月够用，不等于这类画像 6 个月够用——cohort 不可移植（这一点也是 Ch.1 的呼应）。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读</h3>
+        <ol>
+          <li>Campbell, A. (1981). <em>The Sense of Well-Being in America: Recent Patterns and Trends</em>. McGraw-Hill. — Sense of control 作为 well-being 最强单一预测的实证基础。</li>
+          <li>Kahneman, D., &amp; Deaton, A. (2010). <em>High Income Improves Evaluation of Life But Not Emotional Well-Being</em>. Proceedings of the National Academy of Sciences, 107(38), 16489-16493. — "$75K 饱和点"原始论文。</li>
+          <li>Killingsworth, M. A. (2021). <em>Experienced Well-Being Rises with Income, Even Above $75,000 per Year</em>. PNAS, 118(4), e2016976118. — ESM 方法的反驳论文。</li>
+          <li>Killingsworth, M. A., Kahneman, D., &amp; Mellers, B. (2023). <em>Income and Emotional Well-Being: A Conflict Resolved</em>. PNAS, 120(10), e2208661120. — 三人合作的调和论文。</li>
+          <li>Stanley, T. J., &amp; Danko, W. D. (1996). <em>The Millionaire Next Door: The Surprising Secrets of America's Wealthy</em>. Longstreet Press. — Stealth wealth + PAW/UAW 公式 + millionaire 实证调查。</li>
+          <li>Stanley, T. J. (2009). <em>Stop Acting Rich... and Start Living Like a Real Millionaire</em>. John Wiley &amp; Sons. — 中产财富停滞理论。</li>
+          <li>Pink, D. H. (2009). <em>Drive: The Surprising Truth About What Motivates Us</em>. Riverhead Books. — Autonomy/Mastery/Purpose 框架；综合 Deci &amp; Ryan 的自我决定理论。</li>
+          <li>Cooley, P. L., Hubbard, C. M., &amp; Walz, D. T. (1998). <em>Retirement Savings: Choosing a Withdrawal Rate That Is Sustainable</em>. AAII Journal, 10(3). — Trinity Study，4% rule 来源。</li>
+          <li>Housel, M. (2020). <em>The Psychology of Money</em>, Chapter 7 (Freedom) &amp; Chapter 9 (Wealth Is What You Don't See). Harriman House.</li>
+          <li>Terkel, S. (1972). <em>Working: People Talk About What They Do All Day and How They Feel About What They Do</em>. Pantheon Books. — 工作不满 ≠ 钱不够；缺乏控制感才是核心。</li>
+        </ol>
+        <p style="margin-top:18px;color:var(--muted);">下一步：第五章 · 储蓄、节俭与定义"足够"——Enough / Margin of Safety / Saving 的心理学。</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

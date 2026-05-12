@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>能力地图 — 《Die With Zero》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); line-height: 1.7; }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0; }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none; }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 980px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+
+    .pyramid { display: grid; gap: 6px; margin: 22px 0; }
+    .layer { display: grid; grid-template-columns: 90px 1fr 200px; gap: 14px; align-items: center; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); transition: transform .15s; }
+    .layer:hover { transform: translateX(2px); }
+    .layer.l1 { background: linear-gradient(90deg, #fbf3f1 0%, var(--paper) 100%); border-left: 5px solid var(--challenge); }
+    .layer.l2 { background: linear-gradient(90deg, #f9ecd5 0%, var(--paper) 100%); border-left: 5px solid #c97a2b; }
+    .layer.l3 { background: linear-gradient(90deg, #e9f0ed 0%, var(--paper) 100%); border-left: 5px solid var(--accent); }
+    .layer.l4 { background: linear-gradient(90deg, #e3ebe6 0%, var(--paper) 100%); border-left: 5px solid #2f7a5d; }
+    .layer.l5 { background: linear-gradient(90deg, #d8e3df 0%, var(--paper) 100%); border-left: 5px solid #4a6b85; }
+    .layer.l6 { background: linear-gradient(90deg, #cdd9e2 0%, var(--paper) 100%); border-left: 5px solid #2c4a6b; }
+    .layer-num { font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 36px; line-height: 1; color: var(--ink); font-weight: 800; }
+    .layer-name { font-size: 17px; font-weight: 700; }
+    .layer-desc { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+    .layer-ch { color: var(--accent); font-size: 13px; font-weight: 700; text-align: right; }
+
+    .cap-card { margin: 18px 0; padding: 18px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+    .cap-card header { display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; margin-bottom: 6px; }
+    .cap-card .cap-id { display: inline-block; padding: 2px 9px; border-radius: 4px; background: var(--accent); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; }
+    .cap-card h3 { margin: 0; font-size: 19px; }
+    .cap-card .cap-en { color: var(--muted); font-size: 14px; }
+    .cap-card .cap-link { margin-left: auto; font-size: 13px; color: var(--accent-2); }
+    .cap-card .cap-def { margin: 6px 0 12px; font-size: 15px; color: #2e3b3a; padding-left: 12px; border-left: 3px solid var(--mark); }
+    .cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .cap-grid .signals, .cap-grid .dangers { padding: 10px 12px; border-radius: 6px; font-size: 14px; }
+    .cap-grid .signals { background: var(--soft); border-left: 3px solid var(--accent); }
+    .cap-grid .dangers { background: #fbf3f1; border-left: 3px solid var(--challenge); }
+    .cap-grid h4 { margin: 0 0 6px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
+    .cap-grid .signals h4 { color: var(--accent); }
+    .cap-grid .dangers h4 { color: var(--challenge); }
+    .cap-grid ul { padding-left: 18px; margin: 0; }
+    .cap-grid li { margin: 4px 0; }
+
+    .self-check { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .self-check h4 { margin: 0 0 10px; color: var(--accent); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
+    .self-check label { display: grid; grid-template-columns: 24px 1fr; gap: 8px; padding: 6px 0; border-bottom: 1px solid #e2ecea; cursor: pointer; font-size: 14.5px; }
+    .self-check label:last-child { border-bottom: 0; }
+    .self-check input[type=checkbox] { margin-top: 4px; transform: scale(1.15); accent-color: var(--accent); }
+
+    .path-step { display: grid; grid-template-columns: 60px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .path-step:last-child { border-bottom: 0; }
+    .path-step .step-num { font-family: "Iowan Old Style", serif; font-size: 30px; color: var(--accent); font-weight: 800; line-height: 1; }
+    .path-step h4 { margin: 0 0 6px; font-size: 16.5px; }
+    .path-step .step-out { margin-top: 6px; padding: 8px 10px; background: var(--soft); border-radius: 5px; font-size: 13.5px; color: #2e3b3a; }
+
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .layer { grid-template-columns: 60px 1fr; }
+      .layer-ch { grid-column: 2; text-align: left; font-size: 12px; }
+      .cap-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">Die With Zero</p>
+      <p class="ch-num">∎</p>
+      <p class="ch-title">能力地图</p>
+      <p class="ch-sub">Capability Map · 这本书要在你身上构建什么</p>
+      <nav aria-label="目录">
+        <a href="#s0"><span class="num">§0</span><span>读这本书的真正目的</span></a>
+        <a href="#s1"><span class="num">§1</span><span>能力金字塔（6 层）</span></a>
+        <a href="#s2"><span class="num">§2</span><span>6 种能力详解</span></a>
+        <a href="#s3"><span class="num">§3</span><span>能力依赖关系</span></a>
+        <a href="#s4"><span class="num">§4</span><span>Self-Assessment</span></a>
+        <a href="#s5"><span class="num">§5</span><span>三种失败路径</span></a>
+        <a href="#s6"><span class="num">§6</span><span>推荐学习路径</span></a>
+        <a href="#s7"><span class="num">§7</span><span>"已掌握"的判定</span></a>
+        <a href="outline.html"><span class="num">→</span><span>章节大纲</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Capability Map · Cross-Chapter Synthesis</p>
+      <h1 class="lead">让"死时归零"变成日常决策，不只是哲学口号。</h1>
+      <p class="lead-sub">这本书的全部 9 章 + Conclusion + Appendix 浓缩成 6 章深读教材，再浓缩成 <strong>6 种能力</strong>。能力是<strong>行为</strong>，不是<strong>共识</strong>——你点头同意 ≠ 你拥有。这一页是地图：每一章在你身上盖什么砖、谁压在谁上、怎么知道你已经盖好。</p>
+
+      <div class="quote">
+        "I want to maximize how well I sleep at night, not my annual returns."
+        <cite>— Morgan Housel（金钱心理学第 20 章），跟 Perkins 的论点互为镜像</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · The Real Goal</p>
+        <h2 class="unit-h">读这本书的真正目的</h2>
+
+        <p>多数人读完 <em>Die With Zero</em> 的反应是：「啊有道理」→ 第二天回去继续 autopilot 攒钱。这不是因为他们不懂——是因为他们把这本书当<strong>知识</strong>读，不当<strong>能力训练</strong>读。两者差别如下：</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:20%;"></th><th>把它当知识读</th><th>把它当能力建</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>问的问题</strong></td><td>这章讲了什么？</td><td>这章在我身上长什么能力？</td></tr>
+            <tr><td><strong>验证</strong></td><td>能复述 memory dividend</td><td>能在加薪诱惑下<strong>主动</strong>不工作那个加班</td></tr>
+            <tr><td><strong>测试</strong></td><td>跟朋友引用一句</td><td>你今年实际上比去年少存了多少？</td></tr>
+            <tr><td><strong>结果</strong></td><td>下次读理财书有"似曾相识"</td><td>portfolio 行为有可观察的改变</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>这一页的承诺</h4>
+          <p style="margin:0;">读完这一页，你应该能用<strong>能力清单</strong>（不是章节清单）回答："我目前在第几层？""我没有这个能力会怎么死？"——如果做不到，6 章 deep-read 等于白读。</p>
+        </div>
+      </section>
+
+      <!-- §1 Pyramid -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · The Stack</p>
+        <h2 class="unit-h">能力金字塔（6 层，自下而上）</h2>
+
+        <p>下面 6 层<strong>必须按顺序建造</strong>。L1 是地基，L6 是 capstone。跳层会塌——这是 §5 详细讲的失败模式。</p>
+
+        <div class="pyramid">
+          <div class="layer l6">
+            <div class="layer-num">L6</div>
+            <div>
+              <div class="layer-name">主动决策 · Deliberate Decisions</div>
+              <div class="layer-desc">把前 5 层工具组装成<strong>主动选择</strong>，停止 autopilot；接受 literal-zero 是 aspiration 不是 target</div>
+            </div>
+            <div class="layer-ch">Ch.6 · Be Bold</div>
+          </div>
+          <div class="layer l5">
+            <div class="layer-num">L5</div>
+            <div>
+              <div class="layer-name">规划工具 · Planning Tools</div>
+              <div class="layer-desc">Time Buckets（按年龄切分体验）+ Net Worth Peak as date（不是 number）</div>
+            </div>
+            <div class="layer-ch">Ch.5 · Time Buckets + Peak</div>
+          </div>
+          <div class="layer l4">
+            <div class="layer-num">L4</div>
+            <div>
+              <div class="layer-name">三角平衡 · Resource Triangle</div>
+              <div class="layer-desc">健康 / 金钱 / 时间三角随年龄漂移；用 abundant 资源买 scarce 资源</div>
+            </div>
+            <div class="layer-ch">Ch.4 · Health · Money · Time</div>
+          </div>
+          <div class="layer l3">
+            <div class="layer-num">L3</div>
+            <div>
+              <div class="layer-name">时机感 · Timing Sense</div>
+              <div class="layer-desc">给孩子 / 慈善 / 自己——时机决定钱的实际效用；"等死后"是 autopilot 兜底</div>
+            </div>
+            <div class="layer-ch">Ch.3 · Kids &amp; Charity</div>
+          </div>
+          <div class="layer l2">
+            <div class="layer-num">L2</div>
+            <div>
+              <div class="layer-name">数学清醒 · Mathematical Sobriety</div>
+              <div class="layer-desc">接受 Modigliani LCH 论证；用 annuities / 寿命计算器 / Final Countdown 把死亡变 actionable</div>
+            </div>
+            <div class="layer-ch">Ch.2 · Math + Tools</div>
+          </div>
+          <div class="layer l1">
+            <div class="layer-num">L1</div>
+            <div>
+              <div class="layer-name">生命能量觉醒 · Life Energy Awakening</div>
+              <div class="layer-desc">看清钱 = 已死生命的化石；接受 memory dividend；做读者门槛自检</div>
+            </div>
+            <div class="layer-ch">Ch.1 · Life Energy</div>
+          </div>
+        </div>
+
+        <div class="pullbox idea">
+          <h4>三对关系</h4>
+          <p style="margin:0;">
+            L1-L2 是<strong>认知层</strong>（看清世界和自己）<br>
+            L3-L4 是<strong>价值层</strong>（决定<strong>要什么</strong>、<strong>给谁</strong>）<br>
+            L5-L6 是<strong>执行层</strong>（具体工具 + 主动决策）
+          </p>
+          <p style="margin:8px 0 0;">三对各有不同训练方式：认知层靠读 + 反思；价值层靠写下来 + 跟家人对话；执行层靠规则化 + 真实 calendar 上的复盘。</p>
+        </div>
+      </section>
+
+      <!-- §2 6 capabilities -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · The Six</p>
+        <h2 class="unit-h">6 种能力详解</h2>
+
+        <p>每一项给：定义 + 已建立的信号（你看到这些说明它 working）+ 没建立的危险信号。</p>
+
+        <article class="cap-card" id="c1">
+          <header>
+            <span class="cap-id">L1 · C1</span>
+            <h3>生命能量觉醒</h3>
+            <span class="cap-en">Life Energy Awakening</span>
+            <a class="cap-link" href="ch1-life-energy.html">→ Ch.1</a>
+          </header>
+          <p class="cap-def">看清钱不是目标——是你不可再生的生命时间的化石。接受体验产生 memory dividend，物品产生贬值。做读者门槛自检（你是 over-saver 还是 under-saver？）。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>消费前会把美元换算成"小时生命能量"</li>
+                <li>能区分"体验"和"物品"的边际效用差异</li>
+                <li>承认 White Coat Investor 的读者门槛批评适用于<strong>哪些人</strong>，不适用于哪些</li>
+                <li>知道自己 over-save 还是 under-save，不是模糊"我应该多存点"</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>看到价格只想"贵不贵"不想"几小时生命"</li>
+                <li>把 latte factor 当公理（"小消费节省 → 退休金 ×10"）</li>
+                <li>不知道自己属于哪个储蓄群体</li>
+                <li>"以后我会有时间陪家人"——但已经 5 年没做了</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="cap-card" id="c2">
+          <header>
+            <span class="cap-id">L2 · C2</span>
+            <h3>数学清醒</h3>
+            <span class="cap-en">Mathematical Sobriety</span>
+            <a class="cap-link" href="ch2-die-with-zero-math.html">→ Ch.2</a>
+          </header>
+          <p class="cap-def">把"死时归零"从口号变成数学论证。接受 Modigliani LCH 的逻辑结论。理解为什么你不是好的 insurance agent。用寿命计算器把死亡变成具体日期，让 decision making 从"以后"变"哪一年"。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>能算出"Elizabeth 数字"——你死时如果留 $X，相当于多少小时免费工作</li>
+                <li>知道 self-insurance 比 annuities 贵在哪里（不是 free）</li>
+                <li>已经用过 longevityillustrator.org 知道自己的 50%/25%/10% 寿命</li>
+                <li>承认 literal-zero impossible 但 aspirational target 仍然改变决策</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>"死了之后的钱归子女" = 心里已经接受死时有大笔余额</li>
+                <li>从没认真看过 annuities（连产品都没研究过）</li>
+                <li>不知道自己预期寿命的概率分布——只有一个模糊"80 多吧"</li>
+                <li>把"我要多存点"当默认，没有量化"多少够"</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="cap-card" id="c3">
+          <header>
+            <span class="cap-id">L3 · C3</span>
+            <h3>时机感</h3>
+            <span class="cap-en">Timing Sense</span>
+            <a class="cap-link" href="ch3-kids-and-charity.html">→ Ch.3</a>
+          </header>
+          <p class="cap-def">钱的<strong>时机</strong>决定它的实际效用。给孩子 60 岁继承 vs 28 岁首付——金额一样、效用差 80%。慈善今年捐 vs 死后捐——前者多救 30 年的人。把"什么时候"从遗嘱条款升级成<strong>主动决策</strong>。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>有<strong>书面</strong> plan 在孩子 26-35 岁时给一笔大钱（不是"等我死"）</li>
+                <li>开始 in-vivo charity（每月 / 每季度），不只签了遗嘱</li>
+                <li>跟孩子<strong>谈过</strong>家族金钱传承哲学，不 taboo</li>
+                <li>知道 the three Rs（random amount / random timing / random recipients）的具体含义</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>"等我死后 trust fund 给孩子" = autopilot 兜底</li>
+                <li>慈善捐赠还在"等以后再捐多点"模式</li>
+                <li>没跟孩子讨论过金钱（甚至 taboo）</li>
+                <li>用"防止宠坏"作为不给的<strong>正当化</strong>，而不是认真设计给的方式</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="cap-card" id="c4">
+          <header>
+            <span class="cap-id">L4 · C4</span>
+            <h3>三角平衡</h3>
+            <span class="cap-en">Resource Triangle</span>
+            <a class="cap-link" href="ch4-health-money-time.html">→ Ch.4</a>
+          </header>
+          <p class="cap-def">健康 · 金钱 · 时间三角随年龄漂移：每个阶段两个 abundant、一个 scarce。优化 = 用 abundant 资源<strong>买</strong> scarce 资源。健康不是因子——是<strong>乘数</strong>。买时间 &gt; 买物品。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>知道自己当前阶段哪 2 个 abundant、哪 1 个 scarce</li>
+                <li>有<strong>书面</strong> outsource 清单（清洁 / 烹饪 / 通勤）—— 真在做</li>
+                <li>健康每月固定 % 支出（不是"等有空再说"）</li>
+                <li>能区分 risk-averse vs scared 的 marshmallow 倾向</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>50-30-20 rule 当公理，跟年龄不挂钩</li>
+                <li>"等退休再健身" = 健康投资延期到无效区</li>
+                <li>不 outsource 任何 chores 因为"钱省一点"——但时薪 ≫ outsource 成本</li>
+                <li>买物品（车 / 家具 / 设备）比买时间（service / 灵活性）多 10×</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="cap-card" id="c5">
+          <header>
+            <span class="cap-id">L5 · C5</span>
+            <h3>规划工具</h3>
+            <span class="cap-en">Planning Tools</span>
+            <a class="cap-link" href="ch5-time-buckets-and-peak.html">→ Ch.5</a>
+          </header>
+          <p class="cap-def">Time Buckets 把余生切成 5-10 年的桶，每桶填具体 experiences（按 health/age constraint）。Net Worth Peak as date（不是 number）—— 一个具体年龄过后 actively spend down。Survival Threshold 公式让你知道 floor。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>有写下来的 time buckets（每个桶 3-5 个具体 experiences + 时间窗口）</li>
+                <li>有 written net worth peak date（一个具体年龄）</li>
+                <li>算过自己的 survival threshold；知道 floor 在哪</li>
+                <li>承认 Bronnie Ware 5 regrets 0 个关于钱——这事实改变你的优先级</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>"等我退休再 plan" = 把规划推到 capabilities decline 后</li>
+                <li>有 bucket list 但没 time bucket（dreams 不对应年龄）</li>
+                <li>把"够养老的数字"当目标，不是"哪一年开始花"</li>
+                <li>没算过 survival threshold——所以不知道 over-save 多少</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="cap-card" id="c6">
+          <header>
+            <span class="cap-id">L6 · C6</span>
+            <h3>主动决策</h3>
+            <span class="cap-en">Deliberate Decisions</span>
+            <a class="cap-link" href="ch6-be-bold.html">→ Ch.6</a>
+          </header>
+          <p class="cap-def">把前 5 层工具<strong>装配</strong>成主动决策系统。识别"风险厌恶" vs "scared"的差异。承认 boldness option value 随年龄衰减——年轻时不行动的 cost &gt; 行动失败的 cost。Literal-zero 是 aspiration，不是 literal target。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>每年 1 次 deliberate review（不是 autopilot 续费）</li>
+                <li>能区分"我 risk-averse"（理性）和"我 scared"（恐惧扭曲）</li>
+                <li>有 boldness budget——知道留给哪几年用</li>
+                <li>把 literal-zero 当 aspiration，停止把净资产当 score</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>"明年再说"用过 3 年以上</li>
+                <li>自称 risk-averse 但拒绝 spreadsheet 算 downside</li>
+                <li>每年净资产增长 = 主要 satisfaction 来源</li>
+                <li>没写下任何<strong>"绝不"清单</strong>（autopilot 没有 stop sign）</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- §3 Dependencies -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · Dependency</p>
+        <h2 class="unit-h">能力依赖关系（为什么必须按顺序）</h2>
+
+        <p>这 6 种能力<strong>不是平行清单</strong>。它们有严格的前置关系。</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:14%;">能力</th><th>需要的前置</th><th>跳过会怎样</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>L1 生命能量觉醒</strong></td><td>无（地基）</td><td>—</td></tr>
+            <tr><td><strong>L2 数学清醒</strong></td><td>L1</td><td>没接受钱 = 生命能量，"死时归零"听起来像挥霍——你只会接受为<strong>口号</strong>，不接受为<strong>数学结论</strong></td></tr>
+            <tr><td><strong>L3 时机感</strong></td><td>L1 + L2</td><td>没数学清醒——会用"等我退休再决定" autopilot 兜底所有"什么时候给"</td></tr>
+            <tr><td><strong>L4 三角平衡</strong></td><td>L1 + L3</td><td>没时机感——三角变成 static rule（50-30-20），跟年龄解耦</td></tr>
+            <tr><td><strong>L5 规划工具</strong></td><td>L1 + L2 + L3 + L4</td><td>Time Buckets 没下面 4 层基础——变成 "bucket list"（无时机的 dreams）；Peak as date 变成"够养老的 magic number"</td></tr>
+            <tr><td><strong>L6 主动决策</strong></td><td>全部 L1-L5</td><td>capstone：直接抄一个"投资告白"压力下崩——因为下面 5 层是空的</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>最常见的跳层错误</h4>
+          <p style="margin:0;">读完书直接写"我的死时归零 plan"——抄一个 70/30 portfolio，立 3 条规则，宣告"我有计划了"。<strong>这是假装的 L6</strong>。三个月后 portfolio -25% 时计划会失效，因为下面 5 层是空的。<strong>真正的 L6 是从 L1 一层一层盖上来的副产品。</strong></p>
+        </div>
+      </section>
+
+      <!-- §4 Self-Assessment -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · Self-Assessment</p>
+        <h2 class="unit-h">你目前在第几层？</h2>
+
+        <p>勾选你<strong>真的</strong>能做到的（不是"我觉得我懂"）。每一层至少需要勾 3 项才算建立。</p>
+
+        <div class="self-check">
+          <h4>L1 · 生命能量觉醒</h4>
+          <label><input type="checkbox"> 我消费前会把美元换算成"小时生命能量"</label>
+          <label><input type="checkbox"> 我能区分"体验"和"物品"的边际效用差异，并据此选 default</label>
+          <label><input type="checkbox"> 我做过 White Coat Investor 的读者门槛自检，知道自己属于哪组</label>
+          <label><input type="checkbox"> 我承认 memory dividend 是<strong>复利</strong>，并主动制造可分享的体验</label>
+        </div>
+
+        <div class="self-check">
+          <h4>L2 · 数学清醒</h4>
+          <label><input type="checkbox"> 我能算出我自己的"Elizabeth 数字"</label>
+          <label><input type="checkbox"> 我用过寿命计算器，知道自己 50%/25%/10% 概率寿命</label>
+          <label><input type="checkbox"> 我认真研究过 annuities 产品（不是排除，是<strong>评估</strong>）</label>
+          <label><input type="checkbox"> 我接受 literal-zero impossible 但 aspirational target 仍然改变我的决策</label>
+        </div>
+
+        <div class="self-check">
+          <h4>L3 · 时机感</h4>
+          <label><input type="checkbox"> 我有书面 plan 在孩子 26-35 岁给一笔大钱（不是"等我死"）</label>
+          <label><input type="checkbox"> 我开始 in-vivo charity（每月 / 每季度，不只签遗嘱）</label>
+          <label><input type="checkbox"> 我跟孩子谈过家族金钱传承哲学</label>
+          <label><input type="checkbox"> 我能解释 the three Rs（random amount / timing / recipients）</label>
+        </div>
+
+        <div class="self-check">
+          <h4>L4 · 三角平衡</h4>
+          <label><input type="checkbox"> 我知道我当前阶段哪 2 个 abundant、哪 1 个 scarce</label>
+          <label><input type="checkbox"> 我有书面 outsource 清单，真在做</label>
+          <label><input type="checkbox"> 我健康每月固定 % 支出，不是"有空再说"</label>
+          <label><input type="checkbox"> 我能区分自己的 risk-averse 倾向是 rational 还是 scared</label>
+        </div>
+
+        <div class="self-check">
+          <h4>L5 · 规划工具</h4>
+          <label><input type="checkbox"> 我写下了 time buckets（每桶 3-5 个 specific experiences + 时间窗口）</label>
+          <label><input type="checkbox"> 我有 written peak date（一个具体年龄）</label>
+          <label><input type="checkbox"> 我算过自己的 survival threshold</label>
+          <label><input type="checkbox"> 我承认 Bronnie Ware 5 regrets 0 个关于钱——并据此调整优先级</label>
+        </div>
+
+        <div class="self-check">
+          <h4>L6 · 主动决策</h4>
+          <label><input type="checkbox"> 我每年 1 次 deliberate review 自己的 plan</label>
+          <label><input type="checkbox"> 我有"绝不"清单（autopilot 的 stop sign）</label>
+          <label><input type="checkbox"> 我把 literal-zero 当 aspiration，不是 score</label>
+          <label><input type="checkbox"> 我能 quantify 一个 bold decision 的 worst case + 恢复路径</label>
+        </div>
+
+        <div class="pullbox idea">
+          <h4>评分</h4>
+          <ul class="deep" style="margin:0;">
+            <li><strong>0-1 层建立</strong>（多数人）：从 L1 开始，老老实实做 ch1 反思练习。<strong>这是真正的起点</strong>。</li>
+            <li><strong>2-3 层</strong>：你有认知层 + 价值层。下一步是 L4-L5 的规划工具——这一层在你 hand 上有数字才有效。</li>
+            <li><strong>4-5 层</strong>：你接近 capstone。剩下的是 L6 的<strong>主动 review 节奏</strong>——把年度 review 加进 calendar。</li>
+            <li><strong>6 层全部</strong>：你已经把这本书装进身体。下一步不是再读理财书，是<strong>对照 Bill 的论点开始挑战他</strong>（White Coat Investor 的批评、Bogleheads 的反对——你能 hold both 才是真 mastery）。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- §5 Failure Modes -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · Common Failures</p>
+        <h2 class="unit-h">三种最常见的失败路径</h2>
+
+        <h3>失败 A · "我懂了"综合症（跳过 L1）</h3>
+        <p>读完书觉得"啊体验比物品好"——但<strong>从未做过 L1 的真实换算</strong>。能复述 memory dividend 但没改任何消费决策。<strong>知识在你身上独立存在，但没接到行为。</strong></p>
+        <p><em>解药：</em>停止阅读新书。回到 ch1 的 4 道反思练习，认真<strong>写下来</strong>。算你的真实时薪。</p>
+
+        <h3>失败 B · 模板抄袭（跳过 L1-L5 直接到 L6）</h3>
+        <p>读完书觉得"我要主动 spend down 了"——抄一个 70/30 portfolio，宣告完成。<strong>这是假装的 L6</strong>。Bill 自己警告过：literal-zero impossible——但抄模板的人没有 L2 数学清醒、没 L5 规划工具，第一次 -25% drawdown 时计划会失效。</p>
+        <p><em>解药：</em>承认 L6 是从 L1 一层一层盖上来的副产品。回到 §4 self-assessment 诚实评估，如果 L1-L5 加起来没勾够 14 个，<strong>不要</strong>写 L6 实际行动计划——它是假的。</p>
+
+        <h3>失败 C · 错位处方（不属于隐含读者群）</h3>
+        <p>这是这本书最严重的失败模式——也是 Bill 自己<strong>没充分警告</strong>的。如果你 paycheck-to-paycheck、应急金不到 3 个月——这本书的处方<strong>有毒</strong>。你需要的是 Vicki Robins 的 FI 路径或 Dave Ramsey 的债务清零课，不是 Die with Zero。</p>
+        <p><em>解药：</em>读 ch1 的"读者门槛"段。诚实分类自己。如果错位，把这本书放下，回头再读。Die with Zero 不是 universal 处方。</p>
+
+        <div class="pullbox warn">
+          <h4>检查你正在哪一种里</h4>
+          <p style="margin:0;">未来 7 天观察自己：(a) 是不是引用书中名言但没改 portfolio——你在 A；(b) 是不是写了 plan 但没经过 §4 的 24 个 checkbox——你在 B；(c) 是不是 6 章读得越来越焦虑而不是清晰——你可能在 C（处方错位）。<strong>这三个失败是默认路径</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §6 Recommended Path -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · Recommended Path</p>
+        <h2 class="unit-h">推荐学习路径（4 个 Phase，4-6 周）</h2>
+
+        <div class="path-step">
+          <div class="step-num">P1</div>
+          <div>
+            <h4>Phase 1 · 认知层（L1+L2）— 1-2 周</h4>
+            <p>读：<a href="ch1-life-energy.html">ch1 生命能量</a> + <a href="ch2-die-with-zero-math.html">ch2 数学+工具</a>。每章<strong>必须</strong>完成反思练习 + Quiz。算你的 Elizabeth 数字。用 longevityillustrator.org 算 50%/25%/10% 寿命。</p>
+            <div class="step-out"><strong>产出：</strong>"我的时薪 + 真实工时 + Elizabeth 数字" 笔记 + 一张写下来的寿命概率分布。</div>
+          </div>
+        </div>
+
+        <div class="path-step">
+          <div class="step-num">P2</div>
+          <div>
+            <h4>Phase 2 · 价值层（L3+L4）— 1-2 周</h4>
+            <p>读：<a href="ch3-kids-and-charity.html">ch3 时机决定一切</a> + <a href="ch4-health-money-time.html">ch4 三角平衡</a>。重点输出：跟<strong>真实家人</strong>聊一次金钱传承（不写文档，是<strong>对话</strong>）。算自己当前阶段的三角 + 决定一个 outsource 项目本周启动。</p>
+            <div class="step-out"><strong>产出：</strong>家庭金钱传承对话纪要 + 当周已启动的 outsource 项目 + 每月健康预算。</div>
+          </div>
+        </div>
+
+        <div class="path-step">
+          <div class="step-num">P3</div>
+          <div>
+            <h4>Phase 3 · 规划工具（L5）— 1 周</h4>
+            <p>读：<a href="ch5-time-buckets-and-peak.html">ch5 Time Buckets + Peak</a>。这一章必须<strong>停下来写</strong>——写出每个 5-10 年桶的 3-5 个具体 experiences + 算 survival threshold + 写下 peak date。</p>
+            <div class="step-out"><strong>产出：</strong>一份完整的 time buckets 表 + 一个具体的 peak date + survival threshold 数字。</div>
+          </div>
+        </div>
+
+        <div class="path-step">
+          <div class="step-num">P4</div>
+          <div>
+            <h4>Phase 4 · 整合（L6）— 1 周（capstone）</h4>
+            <p>读：<a href="ch6-be-bold.html">ch6 Be Bold + 整合</a>。完成 quiz + 4 个反思练习。<strong>写下"绝不"清单</strong>。在 calendar 上加 annual review（一个具体日期）。</p>
+            <div class="step-out"><strong>产出：</strong>"绝不"清单 + calendar 上的 annual review 日期 + 6 章笔记整理成单一文档。</div>
+          </div>
+        </div>
+
+        <div class="path-step">
+          <div class="step-num">P5</div>
+          <div>
+            <h4>Phase 5 · 上线（持续）— 6 个月观察</h4>
+            <p>不再读新书。<strong>真正执行</strong> 6 个月。每月 1 次 quick review：我违反过几条规则？哪些规则压力下不可执行？6 个月后写 v0.2。</p>
+            <div class="step-out"><strong>产出：</strong>v0.2 plan + 实际执行 6 个月的 portfolio。这才是这本书<strong>真正的 ROI</strong>。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- §7 Mastery -->
+      <section class="unit" id="s7">
+        <p class="unit-eyebrow">§7 · Mastery Test</p>
+        <h2 class="unit-h">"已掌握"的 5 个客观判定</h2>
+
+        <p>判断你是否真的吸收这本书——不是问你能不能复述，是看 5 个具体行为信号。</p>
+
+        <ol class="deep">
+          <li><strong>你能在 30 秒内说出你的 Elizabeth 数字 + peak date。</strong>不是模糊"我会少存点"，是<strong>具体数字 + 具体年份</strong>。</li>
+          <li><strong>你今年实际<strong>少</strong>存了，而不是<strong>多</strong>存了。</strong>（前提：你不属于失败 C 的处方错位群体。）行为有可观察的改变。</li>
+          <li><strong>你跟孩子 / 家人谈过传承哲学。</strong>不是签了遗嘱（autopilot），是真的<strong>对话</strong>过。</li>
+          <li><strong>你的 calendar 上有 annual review 的具体日期。</strong>不是"以后再说"。</li>
+          <li><strong>你能 hold 两个矛盾的观点同时：(a) Bill 的核心论点 + (b) White Coat Investor 的批评<strong>都对</strong>。</strong>这是 capstone mastery——拒绝 cheerleading，接受 nuanced position。</li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>最简单的 mastery 测试</h4>
+          <p style="margin:0;font-size:16px;">把这 5 项展示给一个你信任的人，请他随机抽问一项。如果你需要思考超过 30 秒——你还在路上。如果你能立刻给出有数字的具体回答——你已经把这本书装进身体了。</p>
+        </div>
+
+        <p style="margin-top:32px; padding-top:18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px;">
+          导览：<a href="outline.html">章节大纲</a> ·
+          <a href="ch1-life-energy.html">从 Ch.1 开始 →</a>
+        </p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

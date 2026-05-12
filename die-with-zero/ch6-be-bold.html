@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第六章 · Be Bold + 整合 — 《Die With Zero》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); line-height: 1.7; }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0; }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none; }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 920px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+    .exercise { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .exercise h4 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exercise textarea, .exercise input[type=text] { width: 100%; margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: #fff; font: inherit; color: var(--ink); }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+    details.quiz { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    details.quiz summary { cursor: pointer; font-weight: 700; list-style: none; }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before { content: "▸ "; color: var(--accent); font-weight: 800; }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: #2e3b3a; }
+    details.quiz .answer strong { color: var(--accent); }
+    .citations { margin: 56px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+    .citations h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+    .citations .tag { display: inline-block; padding: 1px 6px; margin-right: 6px; border-radius: 3px; background: #efebe0; color: #34302a; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">Die With Zero</p>
+      <p class="ch-num">06</p>
+      <p class="ch-title">Be Bold + 整合</p>
+      <p class="ch-sub">Capstone · 第六章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>Framing — 你 nodded along 5 章了</span></a>
+        <a href="#s1"><span class="num">§1</span><span>Asymmetric Risk — Cuban &amp; Cohen</span></a>
+        <a href="#s2"><span class="num">§2</span><span>Younger = Bolder（option value 衰减）</span></a>
+        <a href="#s3"><span class="num">§3</span><span>Quantify the Fear</span></a>
+        <a href="#s4"><span class="num">§4</span><span>Risk-Averse vs Scared</span></a>
+        <a href="#s5"><span class="num">§5</span><span>整合 — 6 个工具 = 一个系统</span></a>
+        <a href="#s6"><span class="num">§6</span><span>"Literal Zero" Reframe</span></a>
+        <a href="#s7"><span class="num">§7</span><span>三条 capstone 原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习</span></a>
+        <a href="#qz"><span class="num">?</span><span>自检 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 6 · Be Bold + 整合（Capstone）</p>
+      <h1 class="lead">不行动是最贵的赌注——只是账单递交得慢一点。</h1>
+      <p class="lead-sub">前 5 章告诉你"该做什么"——这一章告诉你"为什么大多数人不会做"。核心论点：你的恐惧让你以为不行动是 zero-risk 选项——其实它是<strong>最大的隐藏成本</strong>，因为它默认你"以后会做"——而你已经知道 later 是个谎言。</p>
+
+      <div class="quote">
+        "When you're young, take more risks. There's far less downside than you imagine, and the upside compounds for the rest of your life."
+        <cite>— Bill Perkins, <em>Die With Zero</em>, Chapter 9</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing — Capstone</p>
+        <h2 class="unit-h">为什么这一章把你架在火上烤</h2>
+
+        <p>你刚读完 5 章。你大概点了 30 次头。你脑子里现在装着 life energy 等式、memory dividend、Modigliani LCH、giving while living、健康-金钱-时间三角、time buckets、net worth peak as date。每一个你都"认同"。</p>
+
+        <p>这一章问一个让你不舒服的问题：<strong>你打算怎么办？</strong></p>
+
+        <p>前 5 章是 <em>what</em>。这一章是 <em>why most people won't do it</em>。如果你读完前 5 章只是 nodded along——这一章要把你从沙发上拽起来。Bill 这章用的标题是 "Be Bold—Not Foolish"，副标题里隐藏着一句更狠的话：<strong>多数所谓的"谨慎"在数学上是 foolishness，只是它的代价以你不能直接观察的形式（错过的体验、未发生的人生）出现</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个硬问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>你的"风险厌恶"是 <strong>rational</strong> 还是 <strong>fear</strong>？你能 spreadsheet 出 downside 还是你<strong>拒绝</strong> spreadsheet？</li>
+            <li>过去 12 个月，哪些 boldness 已经被 autopilot 偷走了？你<strong>具体</strong>能数出来吗？</li>
+            <li>读完前 5 章你打算 actually 做什么——还是 just nodded along？说出 3 件具体事、3 个具体 deadline。</li>
+          </ol>
+        </div>
+
+        <div class="pullbox note">
+          <h4>这一章的语气警告</h4>
+          <p style="margin:0;">前 5 章我尽量平衡——给框架、给反对意见、给边界条件。<strong>这一章我不平衡</strong>。因为这本书的最大风险不是你不同意——是你同意完了什么也不做。我宁可这一章让你不舒服，也不要它让你<strong>感觉良好地翻篇</strong>。如果你读到一半想"作者太激进"——很好，那个不适感正是这一章的产物。</p>
+        </div>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · Asymmetric Risk</p>
+        <h2 class="unit-h">Mark Cuban &amp; Jeff Cohen — 两种"赌赢了"</h2>
+
+        <p>Bill 在 Ch9 开篇讲两个故事——表面上一个是巨富、一个是中产律师。但 Bill 选这两个故事并排放，<strong>因为它们论证的是同一个机制</strong>：年轻时不行动的 cost 远大于行动失败的 cost。</p>
+
+        <h3>故事一：Mark Cuban — 一个 broke 22 岁的算账</h3>
+
+        <p>1982 年，Cuban 22 岁，刚从 Indiana University 毕业。没钱、没工作、没人脉。他做了什么——他<strong>搬到 Dallas</strong>（一个他没去过、也没工作 offer 的城市），住朋友家地板，6 个人一套 3 卧公寓。后来他在 PC 软件公司打工被炒——他没找下一份工，<strong>直接开公司</strong>（MicroSolutions）。</p>
+
+        <p>常人 view：这是 reckless。Bill 的 view：这是 Cuban<strong>算明白了 asymmetric risk</strong>——</p>
+
+        <div class="figure">
+          <strong>22 岁 Cuban 的 downside vs upside（asymmetric 赌注）</strong>
+          <div class="bar-row"><span>最坏 downside</span><div class="bar" style="width:15%"></div><span>低</span></div>
+          <div class="bar-row"><span>恢复成本</span><div class="bar" style="width:18%"></div><span>低</span></div>
+          <div class="bar-row"><span>上行 upside</span><div class="bar alt2" style="width:95%"></div><span>无界</span></div>
+          <div class="bar-row"><span>剩余年数（复利）</span><div class="bar alt2" style="width:90%"></div><span>60+</span></div>
+          <div class="figure-cap">22 岁没钱没家庭——最坏结果是"回家住爸妈家几个月再找工"。Upside 是开局所有可能轨道——其中一条最终通向<strong>Dallas Mavericks 老板 + Shark Tank</strong>。<strong>这不是赌博——是数学上唯一理性的选择</strong>。</div>
+        </div>
+
+        <p>Cuban 后来自己说："最坏的情况就是回家住爸妈家——这不是 catastrophic。"<strong>他的恐惧被他正确地 quantify 了</strong>——而正确 quantify 之后，那个恐惧就缩到了"几个月不舒服"的尺度。</p>
+
+        <h3>故事二：Jeff Cohen — 一个"没死撑"的 Chunk</h3>
+
+        <p>Jeff Cohen [53] 11 岁演了 1985 的 <em>The Goonies</em> 里的 Chunk——那个胖男孩，全片最爱的喜剧角色。多数人记得 Chunk，<strong>没有人</strong>记得 Jeff Cohen——为什么？因为 puberty 来了，他不再胖了、不再可爱了，好莱坞不要他了。</p>
+
+        <p>这是<strong>经典童星陷阱</strong>。多数童星的反应是<strong>死撑</strong>——继续 audition，相信自己会"回来"，10 年过去，依然在试镜，依然没工作，最后破产 / 嗑药 / 自杀（看看那个时代多少童星结局）。</p>
+
+        <p>Cohen 没死撑。他 25 岁<strong>转律师</strong>——Berkeley 法学院，专攻 entertainment law。今天他是 Cohen Gardner LLP 的 entertainment partner，代理影视交易，<strong>赚的钱可能比死撑当演员的<em>所有童星总和</em>还多</strong>。</p>
+
+        <div class="pullbox idea">
+          <h4>Cuban 和 Cohen 论证同一件事</h4>
+          <p style="margin:0;">两个故事表面相反——Cuban<strong>跳进</strong>不确定，Cohen<strong>跳出</strong>已有但贬值的轨道。但本质相同：<strong>年轻时的 boldness 不是"愿意承受 downside"——是看清 downside 是<em>可恢复的</em>，看清不行动的 cost 才是<em>永久的</em></strong>。Cohen 25 岁转律师恢复成本是 3 年学费 + delayed earnings；Cohen 死撑当演员到 35 岁的恢复成本是<strong>整个职业轨道</strong>。后者远大。</p>
+        </div>
+
+        <h3>反向 thought experiment：你的恐惧给你算错了哪个方向？</h3>
+
+        <p>你的大脑做风险评估时有一个系统性错误：它<strong>过度权衡行动失败的 visible cost</strong>，<strong>低估不行动的 invisible cost</strong>。原因是演化——可见的 loss 立刻威胁生存（失业、破产被部落驱逐）；不可见的 loss（错过的人生、错过的窗口）不威胁生存。你的大脑没演化成评估它。</p>
+
+        <p>但今天的世界<strong>已经不是部落了</strong>。失业不死人——美国有失业救济、有 6 个月 buffer 时间找下一份工。错过<strong>整段人生窗口</strong>才真正不可逆。你的大脑还在算<strong>错的那张表</strong>。</p>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · Option Value Declines with Age</p>
+        <h2 class="unit-h">Younger = Bolder — 不是性格，是数学</h2>
+
+        <p>"年轻人更勇敢"是个 lazy 解释。Bill 不喜欢它。真实机制：<strong>年轻人勇敢的边际成本低</strong>——所以理性的年轻人<strong>应该</strong>更勇敢。这跟性格无关，跟数学有关。</p>
+
+        <h3>Option value 衰减曲线</h3>
+
+        <p>金融里 "option value" 是个具体概念——选项的价值随<strong>到期日</strong>缩短而衰减。你人生中的 bold action 也是 option——它的到期日是<strong>你能恢复的剩余年数</strong>。</p>
+
+        <table>
+          <thead>
+            <tr><th>年龄</th><th>典型 bold action</th><th>downside（最坏）</th><th>恢复成本</th><th>剩余复利年数</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>25</td><td>辞职 backpack 一年</td><td>履历断 1 年</td><td>~6 个月找工补回</td><td>40+</td></tr>
+            <tr><td>35</td><td>转行</td><td>同行收入降 30%</td><td>2-3 年爬回</td><td>30</td></tr>
+            <tr><td>45</td><td>创业</td><td>失败 + 还房贷</td><td>3-5 年财务恢复</td><td>20</td></tr>
+            <tr><td>55</td><td>辞职做副业</td><td>难再就业</td><td>可能<strong>永久</strong> career derailment</td><td>10</td></tr>
+            <tr><td>65</td><td>大手术</td><td>意外结局</td><td>~5 年体力下滑</td><td>5-15（且体力衰退）</td></tr>
+          </tbody>
+        </table>
+
+        <p>看这张表——同样一个动作（辞职），25 岁的"成本"完全在<strong>可恢复范围</strong>，55 岁的"成本"可能是<strong>永久的 career derailment</strong>。这就是为什么 Bill 说每 10 年 boldness 的 option value 衰减约 50%——不是夸张，是<strong>恢复时间</strong>占剩余年数的比例在爆涨。</p>
+
+        <div class="figure">
+          <strong>同一个 bold action 的"实际成本占剩余年数"百分比</strong>
+          <div class="bar-row"><span>25 岁辞职 1 年</span><div class="bar" style="width:5%"></div><span>~2%</span></div>
+          <div class="bar-row"><span>35 岁辞职 1 年</span><div class="bar" style="width:12%"></div><span>~4%</span></div>
+          <div class="bar-row"><span>45 岁辞职 1 年</span><div class="bar" style="width:28%"></div><span>~10%</span></div>
+          <div class="bar-row"><span>55 岁辞职 1 年</span><div class="bar alt2" style="width:50%"></div><span>~20%</span></div>
+          <div class="bar-row"><span>65 岁辞职 1 年</span><div class="bar alt2" style="width:80%"></div><span>~33%</span></div>
+          <div class="figure-cap">同样一年的"辞职探索"，在剩余年数里占的<strong>比例</strong>在指数上升。25 岁的 1 年是你余生的 2%；65 岁的 1 年是你余生的 33%。<strong>这就是 option value 衰减</strong>——同一个动作，价格越来越贵。</div>
+        </div>
+
+        <h3>不可逆推论：boldness 是<em>有 budget</em> 的</h3>
+
+        <p>多数人觉得"年轻时存钱、老年时尽情冒险"——这是<strong>反方向用 boldness budget</strong>。你应该在 25 岁、不在 65 岁辞职去欧洲。65 岁的"勇敢"在数学上不便宜——它便宜的是<strong>社会赞许</strong>（"哇 65 岁还创业"），但<strong>个人</strong>层面的恢复成本极高。</p>
+
+        <p>这个推论延伸到 Ch5 的 time buckets——把 bold action 系统性地 front-load 到 20-40 岁的 buckets。<strong>不是因为这是年轻人的事</strong>，是因为只有年轻人能<strong>负担得起</strong>失败。</p>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · Quantify the Fear</p>
+        <h2 class="unit-h">把"风险"从脑子里掏出来放到表格上</h2>
+
+        <p>Bill 给的工具简单到 insulting——但它有用：</p>
+
+        <div class="pullbox idea">
+          <h4>Bill 的 "fear quantification" 工具</h4>
+          <ol class="deep" style="margin:0;">
+            <li>写下你考虑做的 <strong>bold action</strong>（不要嘴说 — 写下来）</li>
+            <li>列<strong>最坏 outcome</strong>（不要心想 — 写下来）</li>
+            <li>问：这个 worst case 是 <strong>recoverable</strong> 还是 <strong>permanent</strong>？</li>
+            <li>如果 recoverable — 算<strong>恢复时间 + 恢复成本</strong>（具体数字，不是"很久"）</li>
+            <li>如果 permanent — 这个 outcome <strong>真</strong> permanent 吗？还是只是你想象的 permanent？</li>
+          </ol>
+        </div>
+
+        <p>这个工具的<strong>核心力量</strong>不在结果——在<strong>过程</strong>。多数所谓"风险"在 actually quantify 后 shrinks dramatically，因为你的大脑给"恐惧"配的是模糊的 catastrophe 画面，不是具体的 outcome list。一旦你强迫自己<strong>列具体</strong>——catastrophe 缩到了"3 个月没收入 + 投简历"这种<strong>可管理</strong>的尺度。</p>
+
+        <h3>多数人的 fear 在 quantify 后崩塌的例子</h3>
+
+        <table>
+          <thead>
+            <tr><th>Bold action</th><th>模糊恐惧</th><th>Quantified worst case</th><th>实际恢复成本</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>辞职 gap year</td><td>"履历废了"</td><td>简历断 12 个月</td><td>2-4 个月找下一份工，可能稍降职级</td></tr>
+            <tr><td>30 岁转行</td><td>"完蛋"</td><td>2 年收入降 40%</td><td>5 年后通常追回 + 长期满意度高</td></tr>
+            <tr><td>带父母环球旅行</td><td>"花太多钱"</td><td>$15K-30K 一次性</td><td>1-2 年储蓄进度，但 memory dividend 永久</td></tr>
+            <tr><td>30 岁创业</td><td>"破产"</td><td>失败率 ~70%，亏个人投入</td><td>1-3 年回大公司，且<strong>履历加成</strong>不是减分</td></tr>
+            <tr><td>跟暗恋的人表白</td><td>"社死"</td><td>对方说不</td><td>1 周尴尬，然后是<strong>多年的不再 wondering</strong></td></tr>
+          </tbody>
+        </table>
+
+        <p>看这个表——每一行的"实际恢复成本"都是 actionable 的<strong>有限</strong> cost。但"模糊恐惧"列的内容是<strong>无限</strong>的 catastrophe imagery。<strong>这就是 fear 和 risk 的差别</strong>：fear 拒绝边界，risk 有数字。</p>
+
+        <h3>Vohs-Aaker-Catapano 2019 [52] — negative experience 加意义</h3>
+
+        <p>Vohs 等人在 <em>Current Opinion in Psychology</em> 2019 做了一系列研究 [52]，主题：<strong>negative experiences add meaning to life</strong>。被试报告生命中最 meaningful 的时刻——<strong>多数包含负面元素</strong>（失败、丢失、困难）。Pure positive 的时刻被记成"开心"——但被试不把它们列为"meaningful"。</p>
+
+        <p>含义对 boldness：<strong>失败的尝试比 safe 的不尝试给生命更多<em>叙事</em>意义</strong>。Cohen 转律师的失败可能是"我做演员到 25 岁被拒了 200 次"——但那段经历 makes him who he is。如果他从来没试——他的故事是<strong>没有故事</strong>。这是 fear 算不进的隐藏 value。</p>
+
+        <div class="pullbox idea">
+          <h4>把这一节压成一个心算</h4>
+          <p style="margin:0;">遇到一个你害怕做的事——逼自己<strong>列 5 个具体 worst case</strong>，每个加<strong>恢复时间 + 成本数字</strong>。如果你能写出来——它就不是 catastrophe 而是<strong>风险</strong>。如果你抗拒写——警报响了：你不是 risk-averse，你是 <strong>scared</strong>（下一节）。</p>
+        </div>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · Risk-Averse vs Scared</p>
+        <h2 class="unit-h">两种相似的回避，本质完全不同</h2>
+
+        <p>这是这一章最重要的 distinction。多数人自称"我是 risk-averse"——其实他们是 <strong>scared</strong>。两者表面看起来都是"不做"——但内在机制和处方完全不同。</p>
+
+        <table>
+          <thead>
+            <tr><th></th><th>Risk-Averse（理性）</th><th>Scared（非理性）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>对 downside</strong></td><td>能<strong>具体算出</strong>大小</td><td><strong>拒绝</strong>具体算</td></tr>
+            <tr><td><strong>决策基础</strong></td><td>低 variance 偏好（有数）</td><td>高估 worst case + 低估恢复能力</td></tr>
+            <tr><td><strong>当被问"最坏会怎样"</strong></td><td>给具体场景 + 概率</td><td>"反正不好"/"想都不敢想"</td></tr>
+            <tr><td><strong>遇到 spreadsheet</strong></td><td>愿意 calmly 算</td><td><strong>抗拒</strong>算 / 找借口跳过</td></tr>
+            <tr><td><strong>核心情绪</strong></td><td>清醒、 cool</td><td>焦虑、回避</td></tr>
+            <tr><td><strong>论证</strong></td><td>"考虑到 X 概率和 Y 后果，我选择不做"</td><td>"我就是不想做"/"感觉不对"</td></tr>
+            <tr><td><strong>处方</strong></td><td>尊重——理性偏好是合法的</td><td><strong>逼自己 quantify</strong>——破除扭曲</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Bill 的 self-test</h3>
+
+        <div class="pullbox warn">
+          <h4>Risk-Averse vs Scared — 自检</h4>
+          <p style="margin:0;">让自己 <strong>spreadsheet out</strong> 一个 bold decision 的 expected value——列 outcome / 概率 / utility。<br><br>
+          <strong>若你 calmly 把它算完</strong>，得出"不值得"——你是 risk-averse。这是<strong>理性偏好</strong>，应该被尊重。<br><br>
+          <strong>若你抗拒打开 spreadsheet</strong>——找各种理由不算 / 算了一半放弃 / 拒绝考虑 best case / 拒绝考虑 recovery 后的状态——你是 <strong>scared</strong>。这是<strong>认知扭曲</strong>，应该被治疗，不是被尊重。</p>
+        </div>
+
+        <h3>为什么这个 distinction 不让你舒服</h3>
+
+        <p>因为多数读者读完这一节，会发现自己之前自称的"理性谨慎"其实是 scared。这<strong>不是侮辱</strong>——是<strong>诊断</strong>。诊断之后才有处方。</p>
+
+        <p>处方很简单也很难：<strong>逼自己 quantify</strong>。把每个你 wave-off 的 bold idea 写下来，列 worst case，列恢复成本。第一次做时你的大脑会强烈抗拒——这个抗拒本身就是 scared 的指纹。坚持做 3-5 次，你会发现自己以前自称的"理性"里有 70% 是恐惧。</p>
+
+        <div class="pullbox idea">
+          <h4>不要陷入另一极端</h4>
+          <p style="margin:0;">这一节<strong>不是</strong>说"恐惧不合法所以一切勇敢"。它说"<strong>把恐惧当 input 而非 output</strong>"。Risk-averse 的人 calmly 算出"不值得"是<strong>合法决定</strong>。Bill 不要你莽撞——他要你能<strong>区分</strong>"我已经算过、不值得"和"我没算就拒绝"。后者才是这本书要打击的对象。</p>
+        </div>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · The Integration</p>
+        <h2 class="unit-h">6 个工具不是 list — 是一个系统</h2>
+
+        <p>这一节是 capstone 的核心。你前 5 章学了 6 个工具——但如果你以为它们是<strong>独立工具的清单</strong>，你只学到了 30%。它们是<strong>互相强化的系统</strong>，每个工具<strong>都依赖于</strong>另外几个工具，也<strong>都增强</strong>另外几个。</p>
+
+        <h3>6 个工具回顾</h3>
+
+        <table>
+          <thead>
+            <tr><th>#</th><th>工具</th><th>来自</th><th>核心问题</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Life energy 等式</td><td>Ch1</td><td>这笔钱<strong>多少小时的生命</strong>换的？</td></tr>
+            <tr><td>2</td><td>Memory dividend + 体验 &gt; 物品</td><td>Ch1</td><td>这笔支出<strong>有 ongoing yield</strong> 吗？</td></tr>
+            <tr><td>3</td><td>Modigliani LCH + annuities + Final Countdown</td><td>Ch2</td><td>我的<strong>消费曲线</strong>在哪个方向跑偏？</td></tr>
+            <tr><td>4</td><td>Giving while living + charity timing</td><td>Ch3</td><td>给孩子 / 慈善的<strong>最佳时机</strong>是何时？</td></tr>
+            <tr><td>5</td><td>健康-金钱-时间三角动态平衡</td><td>Ch4</td><td>当前阶段哪个<strong>最稀缺</strong>？</td></tr>
+            <tr><td>6</td><td>Time Buckets + Net Worth Peak as date</td><td>Ch5</td><td>什么体验必须在<strong>哪个 bucket</strong> 完成？</td></tr>
+          </tbody>
+        </table>
+
+        <h3>它们怎么互相 reinforce</h3>
+
+        <div class="figure">
+          <strong>6 个工具的依赖图（简化）</strong>
+          <p class="mono" style="margin:8px 0; font-size:13.5px; line-height:1.6;">
+          [1] Life energy 等式 ─┬─→ 把美元变成"我生命的小时数"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─→ 决定[2]的"值不值"判断<br>
+          [2] Memory dividend ─┬─→ 偏向产生 ongoing yield 的支出<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─→ 喂[6] time buckets 的填充<br>
+          [3] Modigliani LCH ───→ 揭示 over/under-saving 方向<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─→ 决定[6] net worth peak as date<br>
+          [4] Giving while living ─→ 改变[6] 的支出曲线（提前给）<br>
+          [5] H-M-T 三角 ───→ 决定每个 bucket 该 prioritize 什么<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─→ 也调节[3] 的消费 ramp<br>
+          [6] Time buckets + Peak ─→ <strong>统一容器</strong>——上面 5 个都在这里 land
+          </p>
+          <div class="figure-cap">看这个图：<strong>所有 5 个工具最终 land 到工具 6</strong>（time buckets + net worth peak as date）。time buckets 是这本书的<strong>实战界面</strong>——其他 5 个工具都是 input。没有 time buckets——其他 5 个工具是孤立的 insight，不是<strong>决策系统</strong>。</div>
+        </div>
+
+        <h3>关键 insight：你必须最后<em>建</em> time buckets</h3>
+
+        <p>这就是为什么 Ch5 是 Ch5 不是 Ch1。如果你 Day 1 就建 time buckets 但还没有 [1]-[5] 的输入——你的 buckets 是空的或者填的是<strong>未经检视的 default</strong>（"环游世界"、"买车"——别人的 dream，不是你的）。</p>
+
+        <p>正确顺序：先用 [1] 看清"钱 = 生命的化石"；再用 [2] 看清"什么支出有 ongoing yield"；再用 [3] 知道你的总曲线该怎么走；再用 [4] 决定 inheritance 时机；再用 [5] 看每个阶段哪个资源最稀缺；<strong>然后</strong>用 [6] 把所有上面 land 成<strong>具体 buckets + peak 日期</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>多数读者会犯的"偷懒"错误</h4>
+          <p style="margin:0;">读完书 — 直接跳到 time buckets，列一个 "before 40 / before 60 / before 80" 的 bucket list — 觉得自己"懂了"。<strong>这是最大错误</strong>。Time buckets 不是 input，是 <strong>output</strong>。你的 buckets <em>该填什么</em>由前 5 个工具决定。跳过前 5 个，buckets 就是又一份 Pinterest list。<strong>你前 5 章读的不是历史背景——是 buckets 的 fill material</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · The "Literal Zero" Reframe</p>
+        <h2 class="unit-h">Bill 自己说的：精确归零不可能</h2>
+
+        <p>这本书最容易被误读的地方在<strong>结尾</strong>——Bill 在 Conclusion 自己说：<strong>精确死时归零不可能</strong>。你不知道 exact 死亡日，所以你不可能精确花光最后一块钱。这是数学事实——connect 一个未知日期到一个精确余额是不可能的。</p>
+
+        <p>那为什么书名还是 <em>Die With Zero</em>？为什么 Bill 整本书坚持这个目标？答案：<strong>Aspirational target，不是 literal target</strong>。</p>
+
+        <h3>这本书的论点不是"真的归零"</h3>
+
+        <p>Bill 的真实论点：<strong>追求</strong>这个目标的 process <strong>本身</strong>就改变你的决策——它让你停止 autopilot 攒钱。<strong>过程</strong>是产品，<strong>结果</strong>是副产品。</p>
+
+        <div class="figure">
+          <strong>"Aspirational zero" 的真实机制</strong>
+          <p class="mono" style="margin:8px 0; font-size:14px; line-height:1.7;">
+          目标："死时归零"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+          强迫你问："这一年我打算怎么花生命能量？"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+          强迫你问："为什么 net worth 还在涨？"<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+          强迫你做<strong>主动决策</strong>而不是 autopilot<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+          <strong>结果</strong>：你死时可能剩 $X — 但 $X 远小于你 autopilot 的<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;场景下会剩的金额
+          </p>
+          <div class="figure-cap">Bill 不要你<strong>真的</strong>归零；他要你<strong>停止"把净资产当 score"</strong>的 autopilot。Aspirational target 的作用是<strong>给行为提供方向</strong>——而不是给数字一个 target。</div>
+        </div>
+
+        <h3>这是为什么 White Coat Investor 等批评有点 miss the point</h3>
+
+        <p>White Coat Investor 等人的批评 [9] 主要攻击：(a) literal 归零不可能；(b) 通胀挂钩 SPIA 在美国买不到；(c) 长寿风险下归零是 reckless。这些<strong>都对</strong>——但都在攻击 literal 解读。Bill 自己已经在 Conclusion 拒绝了 literal 解读。</p>
+
+        <p>但 White Coat Investor 的<strong>另一个</strong>批评是真的有力：<strong>这本书的隐含读者是 over-saver</strong>，但 58% 美国人 under-save。对这后一群人，"aspirational zero" 也是反药——他们的 autopilot 不是过度存钱，是过度不存钱。这本书<strong>不是给所有人</strong>的——我们在 Ch1 已经强调过这个读者门槛，capstone 章再次确认。</p>
+
+        <div class="pullbox note">
+          <h4>给两种读者的不同 takeaway</h4>
+          <ul class="deep" style="margin:0;">
+            <li><strong>Over-saver（应急金 12+ 月，401k 满额，还在 autopilot 存）</strong>——Die with Zero 是给你的：aspirational zero 帮你停止 autopilot。</li>
+            <li><strong>Under-saver / paycheck-to-paycheck</strong>——Die with Zero 的<strong>结果</strong>不是处方，但<strong>过程</strong>（time buckets / memory dividend / 健康优先）仍然有用。先 stabilize 财务（Dave Ramsey / FI 路径），再来读这本书的<strong>支出策略</strong>章节。</li>
+            <li><strong>中间档</strong>（应急金 3-12 月）——这本书 80% 适用，但要把"aspirational zero"调成"aspirational <strong>低于 autopilot 50%</strong>"。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- §7 -->
+      <section class="unit" id="s7">
+        <p class="unit-eyebrow">§7 · Three Capstone Principles</p>
+        <h2 class="unit-h">从这一章 — 从这本书 — 带走的 3 条</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>你的 default 必须是<strong>主动决策</strong>，不是 autopilot。</strong><br>
+            每年 1 次<strong>deliberate review</strong>——坐下来回答："我今年的 time buckets / 支出 / health investment 跟去年差在哪？哪些是我主动调的？哪些是 autopilot 飘的？" 这个 review 不是<strong>规划</strong>，是<strong>诊断 drift</strong>。drift 是默认状态——主动是<strong>反默认</strong>，必须靠仪式维持。Bill 的整本书可以压成这一句：<strong>autopilot 是这本书的真正敌人</strong>。死时归零、time buckets、memory dividend——所有概念服务于"停止 autopilot"这一个目标。
+          </li>
+          <li>
+            <strong>Bold 行动有 budget——别在 50 岁后 hoard 它给 70 岁。</strong><br>
+            年轻人勇敢不是性格——是<strong>边际成本低</strong>。这意味着 bold 行动有 age-weighted budget：<strong>20-40 岁是最便宜的窗口</strong>。这个 budget 在 60 岁以后大幅缩水——不是因为你"不能"做，是因为<strong>同样动作的真实成本</strong>已经不一样了。所以 boldness 必须 <strong>front-load</strong> 到年轻 buckets。如果你 35 岁还把"以后再说"挂嘴边——这个"以后"在数学上不存在的：你说的"以后"是 boldness budget 已经 50% 减半的版本。
+          </li>
+          <li>
+            <strong>死时归零是<strong>aspiration</strong>，不是<strong>literal target</strong>——衡量的是你停止 autopilot 的程度。</strong><br>
+            不要纠结你死时账户里有 $200K 还是 $0——纠结你<strong>今年的支出</strong>是不是 deliberate 选择的结果。<strong>Aspirational zero 的真正 metric 不是死时余额，是 "今年我有多少支出 / 时间是我主动选的，多少是 autopilot 的"</strong>。如果你能把这个比例从 30% 主动提到 60% 主动——你已经达到了这本书 80% 的价值，不管死时账户余额是多少。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把整本书压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>你不是在 optimize 死时余额——你是在 optimize "我活着的每一年是主动选择的"。前者是结果，后者是过程。这本书要换掉的是过程，不是结果。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Reflection Exercises — Capstone</p>
+        <h2 class="unit-h">反思练习（这 4 题是整本书的体检）</h2>
+
+        <p>这一章的最大风险：你读完 6 章，感觉"哇 enlightening"——然后第二天回去继续 autopilot 存钱。这 4 个练习不是练习——是<strong>contract</strong>。你写下答案的瞬间，你跟自己签了字。</p>
+
+        <div class="exercise">
+          <h4>练习 1 — Bold 决定 vs 错过的对账（过去 5 年）</h4>
+          <p>列你过去 5 年最 bold 的 1-2 个决定（job change / move / 关系 / 创业 / 花钱）。再列你最未 bold 的<strong>错过</strong>（你想做但没做的 1-2 件事——以及 5 年后看，那个机会窗口还在不在）。诚实回答：哪个 cost 更大？bold 决定的 worst case 落地了吗？没落地的"未 bold"今天还能不能补？</p>
+          <textarea placeholder="例：bold = 2021 接了一个 startup offer，半年后失败，回大公司——总损失 6 个月 + 25% 收入 dip。未 bold = 没辞职带爸妈去日本，2023 老爸膝盖手术后不能长距离行走。前者的 cost 是 6 个月；后者的 cost 是<strong>永久</strong>。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — 今年最想做但还没做的 bold action（quantify 它）</h4>
+          <p>写下 1 件你今年最想做的 bold action（不是"以后想做"——<strong>今年</strong>）。用 §3 的工具 quantify 它：(a) worst case 是什么？(b) recoverable 还是 permanent？(c) 恢复时间 + 成本？(d) 跟"不做"的 long-term cost 比，哪个大？写完后 — 你现在还推迟它吗？为什么？把"为什么"写下来——这一句话是你的<strong>实际</strong>恐惧模式。</p>
+          <textarea placeholder="不要给"答案"——给<strong>quantified 表格</strong>。如果你抗拒填表格，那个抗拒就是 §4 的诊断结果。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — Risk-Averse vs Scared 自检</h4>
+          <p>从练习 2 写的 bold action 看——你的回避是 risk-averse（理性算清后拒绝）还是 scared（拒绝算）？用 §4 的 self-test：你愿不愿意打开一个 spreadsheet，列 outcome × 概率 × utility？如果<strong>愿意</strong>且 calmly 算了——你是 risk-averse，尊重自己的决定。如果<strong>不愿意</strong>或<strong>算了一半放弃</strong>——你是 scared，那个抗拒就是诊断指纹。承认这一点不是软弱——是<strong>第一步</strong>。</p>
+          <textarea placeholder="如果你写"我就是不想算"——很好，这就是 scared。下一步：硬着头皮算一次，看你能不能撑过来。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 4 — 整合 — 这 6 章读完，你 actually 打算做哪 3 件具体事？</h4>
+          <p>这是这本书的<strong>唯一 hard test</strong>。写 3 件具体事（不是"我要更 mindful"——是"我 6 月辞职"、"我 7 月跟父母订日本机票"、"我 8 月把 emergency fund 设到 6 个月"）。每件加 <strong>deadline</strong>（精确到月份）。每件加<strong>第一步</strong>（今天 / 本周能做的具体动作）。<br><br>没有 deadline 的 commitment 是 wish，不是 plan。<strong>没有第一步的 deadline 是焦虑，不是 plan</strong>。</p>
+          <textarea placeholder="3 件事 × (具体事 + deadline + 本周第一步)。少于 3 件可以——多于 3 件不行（精力 dilution）。"></textarea>
+        </div>
+
+        <div class="pullbox warn">
+          <h4>这 4 题如果你跳过了——这本书 80% 浪费了</h4>
+          <p style="margin:0;">前 5 章的<strong>价值兑现</strong>在这 4 个 exercise 里。你读了 6 章而没做这 4 题——你拿了知识，没拿决策。<strong>这本书的全部 ROI 取决于练习 4</strong>。如果"具体事 + deadline + 第一步"这三栏你只填了 1 件——好，<strong>那一件就是这本书给你的全部价值</strong>。这比填 10 件但没 deadline 都强得多。</p>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Self-Check Quiz</p>
+        <h2 class="unit-h">自检 Quiz（最后 5 题——别 cheat）</h2>
+
+        <details class="quiz">
+          <summary>Q1. "Asymmetric risk" 在 Bill 论点里的精确含义是？</summary>
+          <p>A) 高风险高回报的常识<br>
+          B) <strong>Downside 有 floor（最坏可恢复），upside 没有 ceiling — 加上年轻时 downside 的"占剩余年数比例"特别低，使 expected value 严重偏向"做"</strong><br>
+          C) 用 options 对冲下行<br>
+          D) 多元化投资</p>
+          <div class="answer"><strong>正确答案：B。</strong>A 是表面解读 — Bill 的 asymmetric risk 不是"高风险高回报"——是<strong>downside bounded, upside unbounded</strong>。加上年轻时这个不对称<strong>放大</strong>（因为剩余年数长 + 恢复成本低），所以 Cuban 22 岁搬 Dallas 不是 reckless 而是<strong>数学唯一理性</strong>。多数人没看清这个不对称，把 bounded downside 当 catastrophic downside 算——大脑给的恐惧画面是无界的，所以算错。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. Jeff Cohen Goonies 故事的真正 takeaway 是？</summary>
+          <p>A) 童星都没好下场<br>
+          B) 演员转律师比当律师厉害<br>
+          C) <strong>"不死撑"——25 岁 quit 已有但贬值的轨道，恢复成本（3 年法学院）远小于"35 岁还在试镜" 的永久 career derailment</strong><br>
+          D) 法学院是好选择</p>
+          <div class="answer"><strong>正确答案：C。</strong>Cohen 的故事不是"演员变律师"的励志——是<strong>boldness 的另一种形态</strong>。Cuban 是"跳进不确定"；Cohen 是"跳出贬值轨道"。两者论证同一个原理：<strong>年轻时不行动（死撑无效路径）的 cost 远大于年轻时行动（quit + 转向）的 cost</strong>。多数人看 Cohen 故事只看到 "happy ending"——错过了"如果他 35 岁还在 audition" 的反事实——那个反事实是<strong>真</strong>的 catastrophic outcome，且没人能恢复。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. Risk-averse 和 scared 的<strong>关键</strong>区别是？</summary>
+          <p>A) Risk-averse 有钱，scared 没钱<br>
+          B) <strong>Risk-averse <em>能</em> spreadsheet downside，scared <em>拒绝</em> spreadsheet downside。前者是理性决策，后者是认知扭曲——处方完全不同</strong><br>
+          C) Risk-averse 老，scared 年轻<br>
+          D) 没什么区别</p>
+          <div class="answer"><strong>正确答案：B。</strong>这是 Ch6 最重要的 distinction。两者表面都是"不做"，但内在机制完全不同。Risk-averse = 算清楚后偏好低 variance（合法 / 应该尊重）。Scared = 拒绝算 + 高估 worst case + 低估恢复能力（认知扭曲 / 应该治疗）。多数人自称 risk-averse 其实是 scared——他们没算过，只是用 risk-averse 当 escape hatch。处方：逼自己 quantify，如果你抗拒 quantify 本身——警报响了。这就是 Bill 的 self-test。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. 为什么 Bill 自己说 literal-zero impossible，但还坚持书名 <em>Die With Zero</em>？</summary>
+          <p>A) 营销原因<br>
+          B) 他改主意了<br>
+          C) <strong>Aspirational target，不是 literal target。Process 才是产品——追求 zero 的<em>过程</em>强迫你停止 autopilot，<em>结果</em>是副产品（你的死时余额可能 $X 但远小于 autopilot 场景下的余额）</strong><br>
+          D) 他没法预测寿命</p>
+          <div class="answer"><strong>正确答案：C。</strong>这是这本书最容易被误读的地方。White Coat Investor 等批评攻击 literal 解读——但 Bill 在 Conclusion 自己<strong>拒绝</strong> literal 解读。Aspirational zero 的作用是<strong>给行为提供方向</strong>——使你每年 review、每年问"为什么 net worth 还在涨"。这个 review 仪式才是产品。死时余额是 metric——不是目标。读这本书的人如果停在"我要死时归零"这个 literal 目标——错过了 80% 内容。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5. 6 个工具中哪个必须最后做？为什么？</summary>
+          <p>A) Life energy 等式（Ch1）<br>
+          B) Modigliani LCH（Ch2）<br>
+          C) Memory dividend（Ch1）<br>
+          D) <strong>Time buckets + Net Worth Peak as date（Ch5）— 它是 output 不是 input，依赖前 5 个工具提供的 fill material。Day 1 就建会填错</strong></p>
+          <div class="answer"><strong>正确答案：D。</strong>Time buckets 是这本书的<strong>实战界面</strong>——其他 5 个工具的<strong>land 处</strong>。前 5 个工具是 input：[1] 教你算 life energy → 决定每笔支出值不值；[2] 教你识别 ongoing-yield 支出 → 决定 buckets 该填什么；[3] 教你看消费曲线方向 → 决定 peak 在何时；[4] 教你 charity timing → 决定 inheritance bucket；[5] 教你 H-M-T 三角 → 决定每个 bucket 的 priority。<strong>Time buckets 不是先建后填——是 input 完了才长出来</strong>。多数读者跳过前 5 直接列 bucket list——结果填的是 Pinterest list，不是<strong>自己的</strong>体验组合。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读（Capstone — 含 contrarian voices）</h3>
+        <ol>
+          <li><span class="tag">实证</span>Vohs, K. D., Aaker, J., &amp; Catapano, R. (2019). It's Not Going to Be That Fun: Negative Experiences Can Add Meaning to Life. <em>Current Opinion in Psychology</em>, 26, 11-14. — negative experience 加 meaning 的核心实证，支持 §3 的"失败的尝试也有 narrative value"论点。</li>
+          <li><span class="tag">书评</span>Cohen, J. (interview). The Chunk &gt; The Lawyer: From Goonies to Entertainment Law Partner. <em>Chambers Associate</em>. — Cohen 自述童星到律师的转向，§1 用到。</li>
+          <li><span class="tag">理论</span>Modigliani, F. (1950s onwards). Life-Cycle Hypothesis. — 整本书的数学基础，capstone 章再次引用以强调 over/under-save 双向问题。</li>
+          <li><span class="tag">书评</span>White Coat Investor. (2020+). Problems I Have with the Die with Zero Philosophy. <a href="https://www.whitecoatinvestor.com/die-with-zero-criticism/">whitecoatinvestor.com</a> — 最系统的批评，§6 引用以承认 literal-zero 不可能 + 读者门槛。</li>
+          <li><span class="tag">书评</span>Bogleheads forum thread on Die With Zero. <a href="https://www.bogleheads.org/forum/viewtopic.php?t=429807">bogleheads.org</a> — FIRE 投资者社群对"无限存钱安全"的辩护，capstone 章值得参照对照。</li>
+          <li><span class="tag">书评</span>Accidentally Retired. (2024). Die With Zero Book Review: "Meh". <a href="https://accidentallyretired.com/resources/book-reviews/die-with-zero-book-review/3189">accidentallyretired.com</a> — FIRE 社群反方意见，认为"花到精光"违背 FI 原则。</li>
+          <li><span class="tag">延伸</span>MadFientist. Bill Perkins Interview — Memory Dividends, Time Buckets, and Maximizing Net Fulfillment. <a href="https://www.madfientist.com/bill-perkins-interview/">madfientist.com</a> — Bill 本人在 FIRE 社群最 nuanced 的访谈，处理"FI vs Die with Zero"的张力。</li>
+          <li><span class="tag">书评</span>Sloww. 9 Money Rules from Die With Zero. <a href="https://www.sloww.co/die-with-zero-book/">sloww.co</a> — 把 Bill 9 个章节压成 9 条规则的 summary。</li>
+          <li><span class="tag">延伸</span>Ali Abdaal. Die With Zero Book Notes. <a href="https://aliabdaal.com/book-notes/die-with-zero/">aliabdaal.com</a> — YouTube 作者的 actionable summary，可作为 capstone 章 exercise 4 的 worked example。</li>
+          <li><span class="tag">延伸</span>Kiplinger. The 'Die With Zero' Rule of Retirement. <a href="https://www.kiplinger.com/retirement/retirement-planning/the-die-with-zero-rule-of-retirement">kiplinger.com</a> — mainstream 退休理财媒体的解读，注意它<strong>软化</strong>了 Bill 的论点（典型主流财经媒体倾向）。</li>
+        </ol>
+        <p style="margin-top:18px;color:var(--muted);">这是 capstone 章——也是这套深读的终点。下一步不在 reading list 里：<strong>翻回练习 4，把 3 件具体事 + deadline + 第一步真的写下来</strong>。这本书的全部 ROI 在那一张纸上。</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第三章 · 给孩子和慈善 — 《Die With Zero》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); line-height: 1.7; }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0; }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none; }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 920px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+    .exercise { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .exercise h4 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exercise textarea, .exercise input[type=text] { width: 100%; margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: #fff; font: inherit; color: var(--ink); }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+    details.quiz { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    details.quiz summary { cursor: pointer; font-weight: 700; list-style: none; }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before { content: "▸ "; color: var(--accent); font-weight: 800; }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: #2e3b3a; }
+    details.quiz .answer strong { color: var(--accent); }
+    .citations { margin: 56px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+    .citations h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+    .citations .tag { display: inline-block; padding: 1px 6px; margin-right: 6px; border-radius: 3px; background: #efebe0; color: #34302a; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">Die With Zero</p>
+      <p class="ch-num">03</p>
+      <p class="ch-title">给孩子和慈善</p>
+      <p class="ch-sub">Kids &amp; Charity · 第三章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>为什么"给"是动词</span></a>
+        <a href="#s1"><span class="num">§1</span><span>The Three Rs — 继承是随机的</span></a>
+        <a href="#s2"><span class="num">§2</span><span>钱的 Peak Utility — 26-35 sweet spot</span></a>
+        <a href="#s3"><span class="num">§3</span><span>真正的 Legacy ≠ 钱</span></a>
+        <a href="#s4"><span class="num">§4</span><span>Chuck Feeney — 慈善不能等</span></a>
+        <a href="#s5"><span class="num">§5</span><span>Sylvia Bloom — 等太久的代价</span></a>
+        <a href="#s6"><span class="num">§6</span><span>"宠坏孩子" 的反驳</span></a>
+        <a href="#s7"><span class="num">§7</span><span>三条可行动原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习</span></a>
+        <a href="#qz"><span class="num">?</span><span>自检 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 3 · Kids &amp; Charity</p>
+      <h1 class="lead">钱在 60 岁继承到——晚了 30 年。"给"是动词，不是遗嘱条款。</h1>
+      <p class="lead-sub">大多数人把 inheritance 当成"死后才发生的事"——这是 autopilot 的极端。Bill 论点：钱给孩子和慈善的时机<strong>决定它的实际效用</strong>，而最优时机几乎从不在你死的那天。这一章逼你承认一个让人不舒服的事：你嘴上说爱孩子、关心慈善——行为上把支票延迟 30 年才开出。这<strong>不是慷慨，是拖延</strong>。</p>
+
+      <div class="quote">
+        "Giving money or property to your kids only after you die means leaving the amount and the timing to chance. I'd rather give my children something I'm sure of, than tell them what they'll get—someday, maybe."
+        <cite>— Bill Perkins, <em>Die With Zero</em>, Chapter 5</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing</p>
+        <h2 class="unit-h">为什么"给"必须是动词</h2>
+
+        <p>读到这章你大概已经接受了 Ch1 的 life-energy 等式和 Ch2 的 die-with-zero 数学论点。那个论点有一个所有人立即跳出来的反驳：</p>
+
+        <div class="pullbox warn">
+          <h4>读者的第一反应（也是最常见的免责声明）</h4>
+          <p style="margin:0;">"OK Bill，我可以理解'死时账户清零'——<strong>除了</strong>给孩子和慈善的部分。那部分我必须留下来。所以 die-with-zero 对我不适用。"</p>
+        </div>
+
+        <p>Bill 在这一章把这个免责声明<strong>彻底拆掉</strong>。他的反击不是"别给孩子"——是<strong>把"给"和"死"在你脑子里强行解绑</strong>。多数人下意识地把"给孩子"和"我死后"画了等号——这个等号是 autopilot 的最大化版本。你从来没有<strong>主动决定</strong>什么时候给、给多少、给的形式——你只是默认"等我死了再说"。</p>
+
+        <p>这一章要把这个默认值撕掉。Bill 的核心论点很简单：<strong>"给"和"死"是两个独立的决策</strong>。把它们绑在一起的不是逻辑，是<strong>懒</strong>——立遗嘱比每年决定给多少容易得多。</p>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>你现在脑子里给孩子的钱——计划在<strong>什么时间点</strong>给？如果答案是"我死后"——为什么？这是<strong>选择</strong>还是 default？</li>
+            <li>慈善捐赠的"早一年 vs 晚一年" 实际效用差距有多大？time-value-of-charity 跟 time-value-of-money 在数学上是<strong>一致</strong>的吗？</li>
+            <li>"早给会宠坏孩子" 是真正的反驳，还是被用来正当化拖延的<strong>幌子</strong>？怎么区分？</li>
+          </ol>
+        </div>
+
+        <div class="pullbox note">
+          <h4>这一章语气会比前两章更狠</h4>
+          <p style="margin:0;">原因：这一章的论点天然有 emotional weight——多数人在"孩子"这个话题上特别容易自我感动，特别擅长把<strong>不作为</strong>包装成<strong>爱</strong>。Bill 不让步——这一章对应原书 Ch5，是<strong>整本书最锋利的一章</strong>。你嘴上说爱孩子、关心慈善——但你的行为模式是把钱留到死后<strong>随机分配</strong>。这两件事在逻辑上是冲突的。这一章你会有几次想合上书。请坚持读完。</p>
+        </div>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · The Three Rs</p>
+        <h2 class="unit-h">继承是随机的 — The Three Rs</h2>
+
+        <p>Bill 给"死后才给孩子"这种主流做法起了一个具体的名字：<strong>the three Rs</strong>。</p>
+
+        <div class="pullbox idea">
+          <h4>The Three Rs</h4>
+          <ol class="deep" style="margin:0;">
+            <li><strong>Random recipients</strong> — 取决于你死的时候<strong>哪些孩子还活着</strong>。</li>
+            <li><strong>Random amount</strong> — 取决于你死前花了多少（你活到 95 还是 75 决定剩多少）。</li>
+            <li><strong>Random timing</strong> — 取决于<strong>你什么时候死</strong>，而这跟孩子的人生需要<strong>毫无关系</strong>。</li>
+          </ol>
+        </div>
+
+        <p>把这三个 random 放在一起看——你会发现"死后继承"作为一个 transfer mechanism <strong>糟糕到令人发指</strong>。任何 financial advisor 给你设计这种产品你都会拒绝：</p>
+
+        <ul class="deep">
+          <li><strong>金额不确定</strong>（最多差几倍——取决于你的医疗 / longevity）；</li>
+          <li><strong>时机不确定</strong>（孩子可能在 35 岁等你死，也可能在 65 岁等你死——这两个年龄段对一笔钱的<strong>边际效用</strong>完全不同）；</li>
+          <li><strong>接收人不确定</strong>（你可能比某个孩子活得久——尤其在多子女家庭、健康差异大的情况下）。</li>
+        </ul>
+
+        <h3>实证：美国继承的 peak age 是 60 岁</h3>
+
+        <p>Feiveson-Sabelhaus 2018 [22] 用 Federal Reserve 的 Survey of Consumer Finances 跨年数据，给出了美国家庭<strong>接收 inheritance 的年龄分布</strong>。Wolff-Gittleman 2014 [23] 用 PSID（Panel Study of Income Dynamics）做了类似的横向研究。两份研究的结论一致——也是 Bill 在书里反复引用的：</p>
+
+        <div class="figure">
+          <strong>美国家庭接收 inheritance 的概率密度（按接收人年龄，示意基于 [22][23]）</strong>
+          <div class="bar-row"><span>20-29 岁</span><div class="bar" style="width:8%"></div><span>低</span></div>
+          <div class="bar-row"><span>30-39 岁</span><div class="bar" style="width:22%"></div><span>偏低</span></div>
+          <div class="bar-row"><span>40-49 岁</span><div class="bar" style="width:55%"></div><span>中</span></div>
+          <div class="bar-row"><span>50-59 岁</span><div class="bar alt2" style="width:88%"></div><span>高</span></div>
+          <div class="bar-row"><span>60-69 岁</span><div class="bar alt2" style="width:100%"></div><span>peak</span></div>
+          <div class="bar-row"><span>70+ 岁</span><div class="bar alt" style="width:35%"></div><span>偏低</span></div>
+          <div class="figure-cap">美国 inheritance receipt 的<strong>modal age 落在 60 岁附近</strong> [22][23]。意思是：<strong>多数美国人接到爸妈钱的时候，他们自己已经是祖父母了</strong>。他们的 mortgage 已经付完、孩子已经上完大学、职业最高峰已经过去。这笔钱来到一个对它<strong>边际效用最低</strong>的人生阶段。</div>
+        </div>
+
+        <p>这不是 Bill 的修辞——是<strong>财政部数据</strong>。把它和你的直觉对比：你脑子里"给孩子留钱"的画面，孩子是几岁？大多数人想象的是 25 岁结婚、30 岁买房、35 岁带孩子那个阶段——但<strong>统计上你死的时候你的孩子是 60</strong>。你不是"给 30 岁的孩子留钱"——你是"给 60 岁的孩子留钱"，只是你不愿意承认。</p>
+
+        <div class="pullbox warn">
+          <h4>把数字说穿</h4>
+          <p style="margin:0;">假设你现在 60 岁，孩子 30 岁。如果你活到美国男性 average life expectancy（76）—— 孩子接钱时 46 岁；如果你活到 85（你的家族 longevity 不错）—— 孩子接钱时 55 岁；如果你活到 95（不罕见）—— 孩子接钱时 65 岁。<strong>你不主动 transfer，钱到孩子手里时他多半已经过了用钱最有效的人生阶段</strong>。这不是"也许"，这是<strong>期望值</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · Peak Utility of Money</p>
+        <h2 class="unit-h">同一笔钱给 26 岁 vs 60 岁 — 效用差 80%</h2>
+
+        <p>Bill 在这一章最重要的具体主张：<strong>钱给孩子的最优年龄段是 26-35 岁</strong>。这不是拍脑袋——是基于"什么钱在什么人生阶段能买到什么"的效用判断。</p>
+
+        <h3>26-35 岁能买到、60 岁买不到的东西</h3>
+
+        <table>
+          <thead>
+            <tr><th style="width:24%;">资源类型</th><th>26-35 岁的用途</th><th>60 岁的用途</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$50K-$100K 首付</td><td>买房，复利 30 年；早一年上车 = 早一年 build equity</td><td>已经有房（或永远没有），这笔钱进存款</td></tr>
+            <tr><td>$30K-$80K 创业 seed</td><td>承担 risk（年轻、负担少、可重来），创业失败也<strong>不影响轨道</strong></td><td>已经过了可创业窗口；输不起</td></tr>
+            <tr><td>$20K-$50K 教育 / training</td><td>转专业、读研、技能转型——剩 30 年职业曲线吃 ROI</td><td>剩 5 年职业，培训 ROI 几乎归零</td></tr>
+            <tr><td>$10K-$30K 长途旅行</td><td>背包 / gap year / 度蜜月——身体好、时间灵活、memory dividend 复利 50 年</td><td>体力下降、家庭责任增加、复利只剩 15 年</td></tr>
+            <tr><td>$5K-$20K 育儿支持</td><td>请育儿嫂、付孩子早教——直接换回父母的<strong>陪伴时间</strong></td><td>孙辈已经大了，这笔钱无处投放</td></tr>
+          </tbody>
+        </table>
+
+        <p>Bill 的论点：同一笔 $100K——给 26 岁的孩子能<strong>改变人生轨迹</strong>；给 60 岁的孩子是<strong>"不错的 bonus"</strong>。这个差距是数量级的。</p>
+
+        <div class="figure">
+          <strong>$100K 在不同年龄段的边际效用（示意）</strong>
+          <div class="bar-row"><span>26 岁接收</span><div class="bar" style="width:100%"></div><span>1.00×</span></div>
+          <div class="bar-row"><span>35 岁接收</span><div class="bar" style="width:75%"></div><span>0.75×</span></div>
+          <div class="bar-row"><span>45 岁接收</span><div class="bar alt" style="width:45%"></div><span>0.45×</span></div>
+          <div class="bar-row"><span>60 岁接收</span><div class="bar alt2" style="width:20%"></div><span>0.20×</span></div>
+          <div class="bar-row"><span>70 岁接收</span><div class="bar alt2" style="width:10%"></div><span>0.10×</span></div>
+          <div class="figure-cap">同一笔钱——给 26 岁 vs 60 岁 = 效用差 80%。这不是"差一点"，是<strong>能不能改变人生</strong>的差。Bill 推荐<strong>26-35 岁阶段</strong>给一笔大的（首付 / 创业 / 教育）—— 这是钱的 peak utility window。</div>
+        </div>
+
+        <h3>Krakovsky 2019 的 case study — Virginia Colin</h3>
+
+        <p>Knowable Magazine 的 Krakovsky 2019 [24] 报道了 Virginia Colin 的故事。Virginia 在 49 岁的时候继承了 $130K——她的反应被作者记录下来，几乎是 Bill 论点的活体证据：</p>
+
+        <div class="quote">
+          "If this had come 20 years earlier, it would have changed my life. Now, it's a nice bonus."
+          <cite>— Virginia Colin, 49 岁继承 $130K 后（Krakovsky 2019, [24]）</cite>
+        </div>
+
+        <p>"改变人生" vs "不错的 bonus"——这是同一笔钱、同一个人，<strong>时机不同</strong>。20 年前她正在 build career、养孩子、付 mortgage——$130K 在那个时点是<strong>结构性 unlock</strong>。20 年后她已经搭好了所有结构——这笔钱只是<strong>加在已稳定的存款上</strong>。父母多活 20 年没有把"礼物"变得更大——只是把它变得<strong>更不重要</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>残酷的算术</h4>
+          <p style="margin:0;">如果你 60 岁有 $1M 想留给孩子——<strong>现在</strong>给 25 岁的孩子 $200K（首付 / 学费 / 创业 seed），自己用剩下 $800K——比让孩子在 60 岁继承 $1M 在<strong>效用</strong>上多 3-4 倍。你"少留" $200K——但你给的钱<strong>实际产生的好</strong>更多。多数人不做这个交换不是因为算不出——是因为"等死了再说"在情绪上太省力了。</p>
+        </div>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · Real Legacy</p>
+        <h2 class="unit-h">真正的 Legacy ≠ 钱</h2>
+
+        <p>到这里有一个聪明的读者要反驳：" OK Bill，我同意时机重要——但<strong>给钱</strong>不是我留给孩子的核心 legacy 啊。"对。这一节就要把这个聪明反驳拆穿：你嘴上说"legacy 不是钱"——<strong>但你的行为分配（时间 vs 工时 vs 留给孩子的内容）暗示你认为 legacy 就是钱</strong>。</p>
+
+        <h3>Chopik &amp; Edelstein 2019 — 父母 affection memories 是更强的 wellbeing 预测变量</h3>
+
+        <p>Health Psychology 上 Chopik &amp; Edelstein 2019 [25] 的纵向研究问了一个看起来简单的问题：成年人 mid-life 的<strong>身心健康 / relationship satisfaction / 心理幸福感</strong>，被哪些"父母 input"<strong>预测</strong>？</p>
+
+        <p>他们追踪了 7,000+ 成年人，retrospectively 评估他们对父母的<strong>感情记忆</strong>（perceived warmth, affection, presence）vs 父母提供的<strong>物质资源</strong>（收入、是否资助大学、是否留 inheritance）。中位数受访者已经 50+ 岁——这是<strong>长效</strong> outcome，不是即时反应。</p>
+
+        <div class="pullbox idea">
+          <h4>Chopik &amp; Edelstein 2019 的核心发现 [25]</h4>
+          <p style="margin:0;">报告 <strong>父母 affection memories</strong> 高的成年人——mid-life 的 mental health、relationship satisfaction、self-reported physical health 都<strong>显著更好</strong>。父母提供的<strong>物质 / 财务 input</strong> 在控制了 affection memory 之后——预测力<strong>大幅下降甚至变得不显著</strong>。意思是：钱的"legacy effect"<strong>大部分通过 affection 这个中介传递</strong>——它不是独立的来源。</p>
+        </div>
+
+        <h3>Heinrich 2014 — 父母在场时间是更强预测变量</h3>
+
+        <p>Future of Children 的 Heinrich 2014 [26] 论文的视角不一样——研究<strong>父母工作时长 / shift work 模式</strong>对孩子 wellbeing 的影响。研究跨越多个发达国家——核心发现：</p>
+
+        <ul class="deep">
+          <li><strong>父母可控的、可预测的、在孩子作息时间内的在场</strong>——是孩子学业 / 行为问题 / 后期幸福的强预测变量。</li>
+          <li>父母赚的<strong>收入</strong>对孩子 outcome 的影响——在控制了"在场时间 / 互动质量"之后<strong>明显减弱</strong>。</li>
+          <li>"父母多赚钱补偿没空陪孩子"的策略——实证上<strong>不成立</strong>。钱<strong>不能 buy back</strong> 失去的童年在场时间。</li>
+        </ul>
+
+        <div class="pullbox warn">
+          <h4>这两份研究合在一起说的</h4>
+          <p style="margin:0;">你给孩子留下什么——<strong>钱的部分远不如你想象的重要</strong>。决定你孩子成年后是不是过得好的——是你<strong>过去在他们生活里出现多少次</strong>。Bill 把这句话甩在所有"我加班是为孩子"的父母脸上：你<strong>不是</strong>为孩子加班——你是为自己加班，因为加班比陪孩子<strong>容易</strong>。陪孩子要面对自己的无聊和挫败；加班是"做正事"，社会会赞美你。<strong>两者你都选了对自己舒服的</strong>。</p>
+        </div>
+
+        <p>含义：你的"legacy 不是钱"如果是真的——你的<strong>日历应该证明这件事</strong>。你每周陪孩子的小时数、你过去 5 年错过的孩子的事件、你下班后是不是 present——这些是 legacy 的真正度量单位。<strong>钱只是 fallback——是你时间投入不够的时候，事后用财富做的赔偿</strong>。</p>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · Charity Can't Wait</p>
+        <h2 class="unit-h">Chuck Feeney 模式 — 慈善的 time-value</h2>
+
+        <p>"那慈善呢？大多数人不是同样把慈善留到死后？"对。这一节论点：<strong>time-value-of-charity</strong> 跟 time-value-of-money 是<strong>一样的数学</strong>——只是大多数人没把它当数学问题处理。</p>
+
+        <h3>Chuck Feeney — Giving While Living 的标杆</h3>
+
+        <p>Chuck Feeney 是 Duty Free Shoppers (DFS) 的联合创始人，1980s 已经积累 $8B+ 财富。他做了一件 billionaire 圈子里极罕见的事：<strong>在活着的时候几乎把全部财富捐出去</strong>。到 2020 年（他 89 岁）—— Atlantic Philanthropies（他的 foundation）正式 wind down，财富归零。他自己住租来的小公寓，戴 $10 的卡西欧手表。</p>
+
+        <div class="quote">
+          "I see little reason to delay giving when so much good can be achieved through supporting worthwhile causes today."
+          <cite>— Chuck Feeney</cite>
+        </div>
+
+        <p>Bill 在书里把 Feeney 视为"giving while living"运动的标杆。这个运动的核心论点很简单：</p>
+
+        <div class="pullbox idea">
+          <h4>Time-Value-of-Charity 论点</h4>
+          <p style="margin:0;">$1M 现在捐给 medical research → 现在<strong>开始</strong>救命；$1M 死后 30 年捐给同一个 research → <strong>晚 30 年</strong>开始救命。复利方向反了——但<strong>delay cost</strong> 同样真实。每延迟一年，就有一年的人<strong>没有</strong>受惠于这笔钱可以买到的研究 / 干预 / 教育 / 食物。</p>
+        </div>
+
+        <h3>Robert F. Smith 2019 Morehouse 案例</h3>
+
+        <p>2019 年 Morehouse College 毕业典礼上，Robert F. Smith（Vista Equity Partners 创始人）现场宣布<strong>替整届毕业生（396 人）还清学生贷款</strong>——总额约 $34M。这笔钱在<strong>毕业当天</strong>砸到学生头上的影响——跟 Smith 死后通过 foundation 捐 $34M 给 scholarship 的影响——<strong>完全不同</strong>。</p>
+
+        <ul class="deep">
+          <li><strong>当天</strong>——396 个 20+ 岁的年轻人 immediately 减少 $50K-$100K 债务负担，可以选择更冒险的事业路径（创业、社会工作、读 PhD），而不是被迫立即去高薪 corporate job 还贷。</li>
+          <li><strong>30 年后</strong>——同样 $34M 通过 scholarship 散给后来的学生——这些人是受惠了，但<strong>1996 届那批人</strong>已经活完了人生最重要的<strong>20-50 岁阶段</strong>，错过的轨迹改变 unrecoverable。</li>
+        </ul>
+
+        <p>同样的钱、同样的善意——<strong>因时机差 30 年</strong>，影响的人和影响的方式完全不同。Smith 选择了<strong>in-vivo</strong>（活着的时候）。</p>
+
+        <h3>实证：早捐的 ROI 在多个领域可量化</h3>
+
+        <p>Jansen-Katz 2002 [29] 在 McKinsey Quarterly 写过 "For Nonprofits, Time Is Money"——把 nonprofit 的运营效率和资金时机分析得很清楚。核心论点：<strong>提前一年的资金</strong>让 nonprofit 能<strong>提前规划 / 招人 / 启动项目</strong>——这个时间差直接换算成"早多少受益人"。</p>
+
+        <p>Grant-Buxton 2018 [30] 在 BMJ Open 上的 paper "Economic Returns to Medical Research Funding"——给 medical research funding 的<strong>time-shifted impact</strong> 算了模型。结论：每延迟 1 年的 research funding——预期可挽救的 life-years 比例减少 ~3-7%（取决于研究领域）。<strong>研究项目的 yield curve 跟你的退休账户一样有复利——但反向</strong>：延迟资金不是"少赚利息"，是<strong>少救命</strong>。</p>
+
+        <div class="figure">
+          <strong>慈善延迟 30 年 vs 立即捐：累计 impact 示意（基于 [29][30] 框架）</strong>
+          <div class="bar-row"><span>立即捐 · 第1年</span><div class="bar" style="width:18%"></div><span>start</span></div>
+          <div class="bar-row"><span>立即捐 · 第10年</span><div class="bar" style="width:50%"></div><span>已积累</span></div>
+          <div class="bar-row"><span>立即捐 · 第30年</span><div class="bar" style="width:95%"></div><span>巨大</span></div>
+          <div class="bar-row"><span>死后捐 · 第1年</span><div class="bar alt2" style="width:1%"></div><span>0</span></div>
+          <div class="bar-row"><span>死后捐 · 第10年</span><div class="bar alt2" style="width:1%"></div><span>0</span></div>
+          <div class="bar-row"><span>死后捐 · 第30年</span><div class="bar alt2" style="width:1%"></div><span>0</span></div>
+          <div class="figure-cap">"我活着的时候我用钱，死后给慈善"——你在<strong>30 年的时间窗口里</strong>，<strong>选了零 impact</strong>。这不是中性选择——是<strong>主动放弃</strong>了一笔可以救命的资本积累。</div>
+        </div>
+
+        <p>Callahan 2018 [2] 给这种 billionaire 集体延迟行为下了一个判断：美国 2000 个最富家庭<strong>年均捐赠率只占财富的 1%</strong>——他们以"等条件成熟" / "等 foundation 设好" / "等下一代准备好"为由<strong>拖延</strong>。Bill 的反问：<strong>条件什么时候算成熟？</strong>等成熟那天你已经死了，钱归 foundation 也是<strong>另一群机构人员</strong>替你做选择——这<strong>不是你的慈善</strong>，是 institutional 接管。</p>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · The Sylvia Bloom Problem</p>
+        <h2 class="unit-h">Sylvia Bloom — 等太久的代价</h2>
+
+        <p>2018 年 New York Times 发表了一个被广为传颂的故事——Sylvia Bloom 的故事。Sylvia 是布鲁克林一家律所的<strong>秘书</strong>，活到 96 岁，从未结婚，没孩子。她去世后家人发现她攒下了 <strong>$8.2M</strong>——通过几十年观察老板做投资，自己默默 mirror。她在遗嘱里把<strong>绝大部分</strong>捐给了 Henry Street Settlement（一个为低收入家庭提供奖学金的非营利）。</p>
+
+        <p>NYT 把这故事描述成 <em>"epitome of selflessness"</em>——榜样级的人物。读者评论一片感动。Bill Perkins 看到这故事的反应跟绝大多数读者<strong>完全相反</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>Bill 对 Sylvia Bloom 故事的反驳</h4>
+          <p style="margin:0;">"她<strong>不是 selfless</strong>——她是<strong>过度延迟</strong>。如果她在 75 岁就开始 phased giving——同样的 $8.2M 在 1997-2018 这 21 年间<strong>每年</strong>资助一批 Henry Street 的孩子，她<strong>能亲眼看到几代毕业生</strong>，能<strong>跟受助者建立关系</strong>，能根据反馈<strong>调整捐赠策略</strong>。她选了死后一次性 dump——她<strong>放弃</strong>了 21 年的 in-vivo impact + 21 年她本可以见证的故事。<strong>死了你给不出礼物</strong>——遗赠本质是法律强制转移，跟 generosity 不是同一个动词。"</p>
+        </div>
+
+        <p>这个反驳听起来冷血——但仔细想：如果"晚 21 年才开始给钱"是更慷慨的——那 Chuck Feeney 80 岁前就把 $8B 给完，<strong>是不是更不慷慨</strong>？显然不是。Bill 的判断标准是 consistent 的：<strong>慷慨 = 主动 transfer，越早越能见证 / 调整 / 关系化</strong>；遗赠 = 默认 transfer，<strong>不主动选择就发生的事</strong>。后者在道德语义上和前者<strong>不同</strong>。</p>
+
+        <h3>Education ROI — 早投早复利</h3>
+
+        <p>Bill 这里用的支撑数据是 education 投资的 social return rates：</p>
+
+        <ul class="deep">
+          <li><strong>Behrman &amp; Stacey 1997 [27]</strong> 在 <em>The Social Benefits of Education</em> 中综述：教育的 private + social return 加起来——年化 <strong>10%+</strong>。这是 social benefit（不止接受教育的个人受益，整个社会受益）。</li>
+          <li><strong>Psacharopoulos &amp; Patrinos 2018 [28]</strong> 在 World Bank Working Paper 8402 中给出全球数据 update：低中收入国家教育投资 social return 仍在 <strong>8-15% / 年</strong>区间，发达国家 5-10%。</li>
+        </ul>
+
+        <div class="pullbox idea">
+          <h4>把数字接上 Sylvia Bloom 的故事</h4>
+          <p style="margin:0;">假设 Sylvia 75 岁时（1997）—— $4M（她当时积累的一部分）开始捐给 Henry Street，每年发奖学金。21 年 × 8-10% social return = 这笔本金在<strong>21 年内复利</strong>产生的 social impact 是<strong>5-7 倍</strong>原始本金。她选了"死后一次性 $8M"——但她<strong>放弃</strong>了 21 年的复利窗口。<strong>数学上她少捐了几倍价值</strong>，只是没人这么算过。</p>
+        </div>
+
+        <p>这一节最难接受的不是 Bill 反对 Sylvia——而是承认：<strong>"等死后捐"在数学上跟"年轻时不存钱、年老时全靠运气"是同一种 autopilot 错误</strong>。两者都是"把决策推到不可控的未来"。前者社会赞美你（"selfless"），后者社会责怪你（"irresponsible"）——但<strong>结构是一样的</strong>。</p>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · The "Spoiling" Question</p>
+        <h2 class="unit-h">"早给会宠坏孩子" — 真反驳 vs 拖延借口</h2>
+
+        <p>到这里读者会反弹：" OK Bill，我接受你的所有数据。但我不<strong>早给</strong>钱不是因为我懒——是因为<strong>给早了孩子会被宠坏</strong>。这是真理。"</p>
+
+        <p>Bill 没回避这个反驳。他的回答分两层。</p>
+
+        <h3>第一层：宠坏的真正原因不是"早"——是"没结构"</h3>
+
+        <p>Krakovsky 2019 [24] 在 Knowable Magazine 引述了 inheritance research 的核心结论：<strong>spoiling 的强预测变量不是金额或时机——是"是否有 deliberate 的 transfer 框架"</strong>。被宠坏的孩子的共同点：</p>
+
+        <ul class="deep">
+          <li>父母给钱<strong>没有附加期望</strong>（不需要 milestone、不需要 plan、不需要 reciprocity）；</li>
+          <li>父母给钱<strong>没有透明度</strong>（孩子不知道总额，所以无法 plan；只知道"按需要可以问爸妈"）；</li>
+          <li>父母给钱<strong>覆盖了基本生活</strong>（房租、日常 expense）——这破坏了孩子<strong>自给自足的内驱力</strong>。</li>
+        </ul>
+
+        <p>这三个条件<strong>跟时机无关</strong>——可以在 20 岁犯、可以在 40 岁犯、也可以在父母死后用 trust fund 犯。<strong>autopilot transfer 反而是宠坏的最高风险形式</strong>——因为它没有任何结构和条件。</p>
+
+        <h3>第二层：deliberate transfer vs autopilot 兜底</h3>
+
+        <p>Bill 的真正建议不是"早给"——是<strong>"结构化地给"</strong>。给的方式区分如下：</p>
+
+        <table>
+          <thead>
+            <tr><th>维度</th><th>好版本（deliberate）</th><th>坏版本（autopilot）</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>时机</td>
+              <td>具体 milestone trigger（大学毕业、第一次买房、结婚、生孩子）</td>
+              <td>"等我死时候"——时间随机，跟孩子的人生阶段无关</td>
+            </tr>
+            <tr>
+              <td>金额</td>
+              <td>预定总额 + 分阶段分配（一辈子计划给 $300K——分到 4 个 milestone 各 $75K）</td>
+              <td>"剩多少给多少"——金额随机，孩子无法 plan</td>
+            </tr>
+            <tr>
+              <td>透明度</td>
+              <td>跟孩子<strong>讨论</strong>金额和时机——他知道能预期什么</td>
+              <td>遗嘱保密——孩子要么过度依赖（假设很多）要么过度怀疑（假设零）</td>
+            </tr>
+            <tr>
+              <td>用途</td>
+              <td>限定方向（首付、教育、创业 seed）——力量集中在<strong>资本性</strong>用途</td>
+              <td>无限制——容易流向消费性用途（车、奢侈品、高消费生活方式）</td>
+            </tr>
+            <tr>
+              <td>反馈</td>
+              <td>给完<strong>跟进</strong>——这笔首付用得好不好？创业失败教训是什么？</td>
+              <td>给完不存在反馈——你已经死了</td>
+            </tr>
+            <tr>
+              <td>形式</td>
+              <td>结构化转账（一次性 / 分期 / 匹配孩子储蓄）——清晰 boundary</td>
+              <td>"我的就是你的"——boundary 模糊，宠坏温床</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>左列的<strong>deliberate transfer</strong> 在 26-35 岁这个 peak utility window 给——<strong>不会</strong>宠坏。右列的 autopilot 兜底——<strong>无论什么时候给</strong>都有宠坏风险。所以"早给会宠坏"是一个<strong>真问题但答错了诊断</strong>——真正的问题是 deliberate vs autopilot，不是早 vs 晚。</p>
+
+        <div class="pullbox warn">
+          <h4>诚实自问</h4>
+          <p style="margin:0;">如果你嘴上说"我担心早给宠坏孩子"——你<strong>对孩子真的有意识地讨论过</strong>金钱观吗？你和孩子讨论过你计划给他多少、什么时机、什么前提吗？如果<strong>没有</strong>——那你不是在"防止宠坏"，是<strong>用"防止宠坏"这个 fancy 词来正当化"不想谈"</strong>。给孩子留 $0 / $50K / $500K 是不同的人生 — 但<strong>你拒绝讨论</strong>，孩子无法 plan，<strong>这才是真正的伤害</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §7 -->
+      <section class="unit" id="s7">
+        <p class="unit-eyebrow">§7 · Three Actionable Principles</p>
+        <h2 class="unit-h">从这一章带走的三条原则</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>写下一辈子计划给孩子的总金额 — 分到 milestone，每个有<strong>具体 trigger</strong> 不是"等我死"。</strong><br>
+            坐下来，今晚，写一个数字：你计划一辈子给孩子的总额。然后分到 4-6 个 milestone：大学学费 / 研究生 / 第一次买房首付 / 婚礼 / 生孩子 / 创业 seed。每个 milestone 有<strong>具体触发条件</strong>（比如"孩子结婚那天 + $50K"，不是"看情况"）。把这个 plan<strong>跟伴侣对齐</strong>、<strong>跟孩子讨论</strong>。<strong>autopilot 的反义词是 written plan</strong>。
+          </li>
+          <li>
+            <strong>选一个慈善 cause——开始<strong>monthly</strong> in-vivo giving，不是写遗嘱。</strong><br>
+            从今年开始，每月给一个你<strong>真的关心</strong>的 cause 一笔小钱（$50, $200, $500——金额次要）。Recurring + visible（你能看到）。$5,000 / 年捐 20 年 = $100K——其中<strong>21 年</strong>你都能看到 impact、跟受益人通信、调整方向。<strong>$100K 死后捐</strong>等于零见证年。Time-value-of-charity 跟 time-value-of-money 是同一个数学[29][30]。
+          </li>
+          <li>
+            <strong>跟孩子<strong>明确</strong>讨论金钱传承哲学——多数家庭这个话题 taboo，结果谁都没准备。</strong><br>
+            找一个晚上，跟孩子（如果已经 18+）直接聊：你打算一辈子给他多少、什么时机、什么期望。如果孩子还小——跟伴侣讨论清楚 + 写下来，等孩子 18 岁告诉他。<strong>金钱传承 taboo</strong> 是 generation 传 generation 的——你不打破，你的孩子也不会跟他的孩子讨论。Chopik-Edelstein 2019 [25] 显示：最重要的 legacy 是<strong>关系 + 信息</strong>，不是钱本身。<strong>讨论钱本身就是关系</strong>——你的拒绝讨论才是疏离。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把这一章压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>"给"是动词，不是遗嘱条款。每延迟一年，钱的效用降一档、慈善的 impact 少一年、孩子能用上的窗口窄一寸。autopilot 的最高代价不是钱浪费——是你<strong>错过了见证 own 自己的慷慨</strong>。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Reflection Exercises</p>
+        <h2 class="unit-h">反思练习（写下来，不要在脑子里完成）</h2>
+
+        <p>这一章最大的风险：你点头同意"早给比晚给好"——然后第二天回去 autopilot 把钱留到遗嘱里。这 3 个练习是把概念 ground 在你具体生活的<strong>唯一方法</strong>。</p>
+
+        <div class="exercise">
+          <h4>练习 1 — 你父母给你的最重要的"礼物"是什么</h4>
+          <p>回顾你 0-30 岁——你父母给你的<strong>最重要的一件礼物</strong>是什么？是钱（学费、首付、婚礼）？还是非钱（时间、教育、陪伴、某次关键对话）？如果你 today 跟朋友 / 配偶讲你的童年——你会先讲哪个？这个答案改变了你打算给自己孩子的<strong>资源分配比例</strong>吗？Chopik-Edelstein 2019 [25] 的研究在你身上是否成立？</p>
+          <textarea placeholder="例：我父母没多少钱——但我妈每晚陪我读书，我爸周末教我下棋。今天回想，这些时间 vs 他们给我的学费——我先讲哪个？这个答案告诉我什么？"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — 列出你计划给孩子的金额和时机</h4>
+          <p><strong>现在就写</strong>——不要"以后再想"。列：(a) 你一辈子计划给孩子的<strong>总金额</strong>（无论是 $0 还是 $5M——诚实数字）；(b) 这个总金额分到几个 milestone（大学 / 婚礼 / 首付 / 创业 seed / 孙辈出生）；(c) 每个 milestone 的<strong>具体 trigger</strong>（不是"看情况"，是"X 事件发生时给 $Y"）。<strong>关键检查</strong>：你的 plan 里有没有"等我死"这个 milestone？如果有——那部分是 autopilot——你能换成具体 trigger 吗？</p>
+          <textarea placeholder="例：总额 $400K。大学毕业 $40K、第一次买房首付 $100K、结婚 $20K、第一个孙辈出生 $30K——剩 $210K 留给"等我死"。诚实点：这 $210K 是真有意为之，还是我不敢决定？"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — 你最关心的慈善 cause + 今年实际行动</h4>
+          <p>三问：(a) 列出你<strong>最关心的 1-3 个慈善 cause</strong>（教育、医疗研究、流浪动物、本地社区、特定群体——是你真在乎的，不是社会期待的）；(b) 过去 12 个月你实际<strong>捐了多少</strong>给这些 cause？（包括 monthly 自动扣款 + 一次性捐赠）(c) 你的遗嘱 / "心里的计划" 里给慈善留了多少？(b) 和 (c) 的<strong>比例</strong>——告诉你什么？如果你心里"准备捐 $100K 给某 cause"——但每年实际只捐 $0——那 $100K 在数学上等于"延迟 30 年的 $100K"——按 Grant-Buxton 2018 [30]，这意味着实际 impact 损失多少？</p>
+          <textarea placeholder="承认数字。$0 in-vivo + $100K 遗嘱承诺 ≠ "我关心这个 cause"——它是"我以为我关心，但行为上选择了延迟"。"></textarea>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Self-Check Quiz</p>
+        <h2 class="unit-h">自检 Quiz（先答，再展开看解析）</h2>
+
+        <details class="quiz">
+          <summary>Q1. Bill 说的 "the three Rs" 是什么？</summary>
+          <p>A) Reduce, Reuse, Recycle<br>
+          B) <strong>Random recipients / Random amount / Random timing —— 死后继承机制的三个 random 维度</strong><br>
+          C) Risk, Return, Resilience<br>
+          D) Relationship, Reward, Responsibility</p>
+          <div class="answer"><strong>正确答案：B。</strong>Bill 给"死后继承"这种主流做法起了一个具体的名字：the three Rs。三个 random 维度合起来意味着：作为一个 transfer mechanism，"死后才给"<strong>本质是不可靠的</strong>——金额、时机、接收人都不在你控制之下。Feiveson-Sabelhaus 2018 [22] + Wolff-Gittleman 2014 [23] 给出实证：美国 inheritance receipt 的 peak age 是 60——多数继承人已经过了能用得最好的年龄。这不是"也许"，是<strong>期望值</strong>。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. Bill 推荐给孩子大笔钱的最优年龄段？为什么？</summary>
+          <p>A) 18-22 岁（大学时期）<br>
+          B) <strong>26-35 岁——这是钱的 peak utility window（首付、创业 seed、教育、生育）</strong><br>
+          C) 50+ 岁（孩子也是父母了，理解钱的价值）<br>
+          D) 不要早给——会宠坏</p>
+          <div class="answer"><strong>正确答案：B。</strong>26-35 岁是钱能<strong>改变人生轨迹</strong>的窗口——首付（早一年上车 = 早一年 build equity）、创业 seed（年轻可承担 risk）、教育（剩 30 年职业曲线吃 ROI）、生育期支持（直接换回父母时间）。同样 $100K 给 26 岁 vs 给 60 岁——效用差 80%（Bill 论点 + Krakovsky 2019 [24] Virginia Colin 案例支持："改变人生" vs "不错的 bonus"）。A 太早（孩子还在 build identity，结构化能力不够）；C 太晚（钱进存款而非 unlock 人生节点）；D 是把"deliberate vs autopilot"和"早 vs 晚"混淆了——见 §6。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. Chopik-Edelstein 2019 [25] 的核心发现意味着什么？</summary>
+          <p>A) 父母收入越高，孩子心理健康越好<br>
+          B) 父母留 inheritance 比不留好<br>
+          C) <strong>父母 affection memories 是 mid-life wellbeing 的更强预测变量；控制 affection 后，物质 input 的预测力大幅下降</strong><br>
+          D) 父母双全比单亲家庭好</p>
+          <div class="answer"><strong>正确答案：C。</strong>Chopik-Edelstein 追踪 7,000+ 成年人 mid-life outcome，发现：<strong>父母 affection memories</strong>（warmth, presence, affection 的 retrospective 评估）是 mental health、relationship satisfaction、self-reported physical health 的更强预测变量。父母提供的物质资源（收入、是否资助大学、是否留 inheritance）<strong>在控制了 affection memory 之后预测力大幅下降甚至变得不显著</strong>。Heinrich 2014 [26] 在工时 / 在场时间的视角也得到类似结论。含义：你 legacy 中"钱的部分"远不如你以为的重要——决定你孩子成年后是不是过得好的，是你<strong>过去在他们生活里出现多少次</strong>。这把"我加班是为孩子"这种自我安慰的逻辑<strong>砸碎</strong>。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. Sylvia Bloom 故事的真正教训是？</summary>
+          <p>A) 节俭的力量——秘书也能攒 $8M<br>
+          B) 慷慨是最高美德<br>
+          C) <strong>死后捐赠在道德语义上和"giving while living"不同——遗赠是默认 transfer，不是主动选择；过度延迟 = 放弃了几十年的 in-vivo impact + 几十年她本可见证的故事</strong><br>
+          D) 投资跟着老板做最稳</p>
+          <div class="answer"><strong>正确答案：C。</strong>NYT 把 Sylvia Bloom 描述成 "epitome of selflessness"——Bill 反驳。如果 Sylvia 75 岁就开始 phased giving——$8M 在 21 年间每年资助 Henry Street Settlement，她能<strong>亲眼看到几代毕业生 / 跟受助者建立关系 / 根据反馈调整捐赠策略</strong>。她选了死后一次性 dump——放弃了 21 年的 in-vivo impact + 21 年她本可见证的故事。按 Behrman-Stacey 1997 [27] + Psacharopoulos-Patrinos 2018 [28]——education 投资 social return 8-10%+/年——21 年复利 = 几倍 multiplier。<strong>"死了你给不出礼物"——遗赠本质是法律强制转移，跟 generosity 不是同一个动词</strong>。这听起来冷血——但 Chuck Feeney 80 岁前清空 $8B 给慈善，是 consistent 的对照样本：慷慨 = 主动 transfer + 越早能见证 / 调整 / 关系化。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5（加分题）. "早给孩子钱会宠坏" 这个反驳，Bill 的回应是？</summary>
+          <p>A) 接受这个反驳，所以确实应该等死后再给<br>
+          B) <strong>反驳错了诊断——spoiling 的强预测变量不是早晚，是 deliberate vs autopilot；deliberate transfer（结构化、有 trigger、透明、限定用途）在 26-35 岁给不会宠坏，autopilot 兜底（"剩多少给多少"）无论什么时候都有宠坏风险</strong><br>
+          C) 孩子被宠坏是社会问题，不是父母责任<br>
+          D) 只要不告诉孩子有 inheritance 就不会宠坏</p>
+          <div class="answer"><strong>正确答案：B。</strong>Krakovsky 2019 [24] 引述的 inheritance research 显示：spoiling 的预测变量是"是否有 deliberate transfer 框架"——具体维度包括是否有<strong>milestone trigger / 总额透明度 / 用途限制 / 反馈 / boundary</strong>。这些维度跟时机无关——可以在 20 岁犯、可以在 40 岁犯、也可以在父母死后用 trust fund 犯。autopilot transfer 反而是宠坏的<strong>最高风险形式</strong>——因为它没有任何结构和条件。Bill 的真正建议不是"早给"——是"<strong>结构化地早给</strong>"。所以"早给会宠坏孩子"经常是一个真问题但答错了诊断——真正的问题是 deliberate vs autopilot，不是早 vs 晚。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读</h3>
+        <ol>
+          <li><span class="tag">书评</span>Callahan, D. (2018). The Richest Americans Are Sitting on $4 Trillion. How Can They Be Spurred to Give More of it Away? <em>Inside Philanthropy</em>. — 美国 2000 个最富家庭年捐赠率约 1%，billionaire 集体延迟行为的实证 + 道德分析。 [2]</li>
+          <li><span class="tag">实证</span>Feiveson, L., &amp; Sabelhaus, J. (2018). How Does Intergenerational Wealth Transmission Affect Wealth Concentration? <em>FEDS Notes</em>, Board of Governors of the Federal Reserve System. — 用 SCF 跨年数据给出美国家庭接收 inheritance 的年龄分布；美国 inheritance peak age 落在 60 岁附近。 [22]</li>
+          <li><span class="tag">实证</span>Wolff, E. N., &amp; Gittleman, M. (2014). Inheritances and the Distribution of Wealth or Whatever Happened to the Great Inheritance Boom? <em>Journal of Economic Inequality</em>, 12(4), 439-468. — 用 PSID 给出 inheritance 接收的横向分布；和 Feiveson-Sabelhaus 互为 robustness check。 [23]</li>
+          <li><span class="tag">书评</span>Krakovsky, M. (2019). The Inheritance Enigma. <em>Knowable Magazine</em>. — Virginia Colin "20 年前 = 改变人生; 现在 = 不错的 bonus" 的 case study；inheritance 研究综述 + spoiling 的真正预测变量分析。 [24]</li>
+          <li><span class="tag">实证</span>Chopik, W. J., &amp; Edelstein, R. S. (2019). Retrospective Memories of Parental Care and Health from Mid- to Late Life. <em>Health Psychology</em>, 38(1), 84-93. — 7,000+ 成年人纵向研究：父母 affection memories 比物质 input 更强预测 mid-life mental/physical health 和 relationship satisfaction。 [25]</li>
+          <li><span class="tag">实证</span>Heinrich, C. J. (2014). Parents' Employment and Children's Wellbeing. <em>The Future of Children</em>, 24(1), 121-146. — 父母工作时长 / shift work 对孩子 wellbeing 的影响；在场时间是更强预测变量；钱不能 buy back 失去的童年在场。 [26]</li>
+          <li><span class="tag">理论</span>Behrman, J. R., &amp; Stacey, N. (Eds.). (1997). <em>The Social Benefits of Education</em>. Ann Arbor: University of Michigan Press. — 教育投资的 social return 综述；private + social return 加起来年化 10%+。 [27]</li>
+          <li><span class="tag">实证</span>Psacharopoulos, G., &amp; Patrinos, H. A. (2018). Returns to Investment in Education: A Decennial Review of the Global Literature. <em>World Bank Working Paper</em> 8402. — 全球教育投资 return 最新综述；低中收入国家 social return 8-15%，发达国家 5-10%。 [28]</li>
+          <li><span class="tag">理论</span>Jansen, P. J., &amp; Katz, D. M. (2002). For Nonprofits, Time Is Money. <em>McKinsey Quarterly</em>, February. — nonprofit 运营效率 + 资金时机分析；提前一年的资金 = 提前一批受益人。 [29]</li>
+          <li><span class="tag">实证</span>Grant, J., &amp; Buxton, M. J. (2018). Economic Returns to Medical Research Funding. <em>BMJ Open</em>, 8(9), e022131. — medical research funding 的 time-shifted impact 模型；每延迟 1 年 funding，预期挽救的 life-years 比例减少 3-7%。 [30]</li>
+        </ol>
+        <p style="margin-top:18px;color:var(--muted);">下一步：第四章 · 健康 · 金钱 · 时间 — 平衡三角（如何在三种资源之间做时间敏感的 swap；50-30-20 critique；buying time as happiness lever）。</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

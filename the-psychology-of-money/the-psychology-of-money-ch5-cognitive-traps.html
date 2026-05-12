@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第五章 · 认知偏差与陷阱 — 《金钱心理学》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.7;
+    }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside {
+      position: sticky; top: 0; height: 100vh; overflow: auto;
+      padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0;
+    }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a {
+      display: grid; grid-template-columns: 28px 1fr; gap: 8px;
+      padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none;
+    }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 920px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+    .exercise { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .exercise h4 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exercise textarea, .exercise input[type=text] {
+      width: 100%; margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+      background: #fff; font: inherit; color: var(--ink);
+    }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+    details.quiz { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    details.quiz summary { cursor: pointer; font-weight: 700; list-style: none; }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before { content: "▸ "; color: var(--accent); font-weight: 800; }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: #2e3b3a; }
+    details.quiz .answer strong { color: var(--accent); }
+    .citations { margin: 56px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+    .citations h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">The Psychology of Money</p>
+      <p class="ch-num">05</p>
+      <p class="ch-title">认知偏差与陷阱</p>
+      <p class="ch-sub">Reasonable, Surprises &amp; Pessimism · 第五章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>三个让"理性策略"失效的陷阱</span></a>
+        <a href="#s1"><span class="num">§1</span><span>合理 vs 理性 — Markowitz 悖论</span></a>
+        <a href="#s2"><span class="num">§2</span><span>历史的局限 — Surprise! 的科学</span></a>
+        <a href="#s3"><span class="num">§3</span><span>悲观主义的诱惑</span></a>
+        <a href="#s4"><span class="num">§4</span><span>三个陷阱的合谋</span></a>
+        <a href="#s5"><span class="num">§5</span><span>应用到类似画像（美股 / 30+ / 科技业）</span></a>
+        <a href="#s6"><span class="num">§6</span><span>三条可行动原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习</span></a>
+        <a href="#qz"><span class="num">?</span><span>自检 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 5 · Cognitive Traps</p>
+      <h1 class="lead">理性的策略，多数人执行不下来。</h1>
+      <p class="lead-sub">第三章教你不被一次性事件清零；第四章教你看清财富的真目的（自由）。第五章要拆解三个让"理性策略"在实战里失效的认知陷阱：(1) 数学最优 vs 行为可执行的鸿沟；(2) 把过去当未来的归纳谬误；(3) 悲观比乐观更易得人信任的硬件偏差。如果前面四章是地图，这一章是雷区告示——你不绕开它们，你的复利曲线就会被自己的脑子拦腰截断。</p>
+
+      <div class="quote">
+        "Optimism sounds like a sales pitch. Pessimism sounds like someone trying to help you."
+        <cite>— Morgan Housel, <em>The Psychology of Money</em>, Ch. 17 (The Seduction of Pessimism)</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing</p>
+        <h2 class="unit-h">三个让"理性策略"失效的陷阱</h2>
+
+        <p>到这里你已经吸收了：行为 &gt; 智能（ch1）、长尾 + 时间是核心（ch2）、不归零（ch3）、财富的目的是自由（ch4）。每一章给的都是<strong>正确的事</strong>。但<strong>知道</strong>正确和<strong>做到</strong>正确之间，隔着 3 个无法绕开的认知陷阱：</p>
+
+        <ol class="deep">
+          <li><strong>数学最优 ≠ 行为可执行。</strong>就算 MPT 的发明者本人，也不按 MPT 配置自己的退休金。原因不是他不懂——他是数学最优的<strong>制定者</strong>。原因是他知道：能拿得住的策略才是真策略。</li>
+          <li><strong>历史样本里没出现过的事件，不代表它不会发生。</strong>金融模型默认正态分布，但市场是厚尾的。"10-sigma event"按高斯模型每 10<sup>23</sup> 年发生一次，实际每 5-10 年来一次。</li>
+          <li><strong>悲观叙事在认知上系统性地比乐观叙事更"可信"。</strong>这不是文化偏见，是大脑硬件——演化上"看不到老虎"的代价远高于"错过水果"。结果是你在底部最容易卖、最难买。</li>
+        </ol>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>"数学上最优"和"对你最优"为什么经常<strong>不是同一件事</strong>？怎么测量你的真实承受力？</li>
+            <li>如果未来 30 年里至少发生 1-2 次历史样本里没有过的事件，你的策略<strong>设计上</strong>包不包括这种可能？</li>
+            <li>你最近一次因为坏新闻而<strong>改变仓位</strong>是什么时候？事后看那次改变是赚还是亏？</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · Reasonable &gt; Rational</p>
+        <h2 class="unit-h">合理 vs 理性 — Markowitz 自己不用 MPT 的悖论</h2>
+
+        <p>1952 年，Harry Markowitz 在 <em>Journal of Finance</em> 发表 14 页的论文 <strong>"Portfolio Selection"</strong>[1]，建立了现代投资组合理论 (Modern Portfolio Theory, MPT) 的全部数学基础——均值-方差优化、有效前沿、相关系数下的分散化收益。这套理论统治了未来 70 年的资产管理行业；1990 年 Markowitz 因此获得诺贝尔经济学奖。</p>
+
+        <p>但 1998 年，<em>Money</em> magazine 的 Jason Zweig 采访 Markowitz——问他<strong>自己的</strong>退休账户是怎么配的。回答如下：</p>
+
+        <div class="quote">
+          "I should have computed the historical covariances of the asset classes and drawn an efficient frontier. Instead, I visualized my grief if the stock market went way up and I wasn't in it — or if it went way down and I was completely in it. My intention was to minimize my future regret. So I split my contributions fifty-fifty between bonds and equities."
+          <cite>— Harry Markowitz, interview with Jason Zweig, <em>Money</em>, 1998 [2]</cite>
+        </div>
+
+        <p>把这段话翻译成大白话：<strong>"MPT 的发明者，自己的钱不按 MPT 配置。他用的是'两种极端情景下都不后悔'的 50/50。"</strong> 这不是花絮，<strong>这是这一节的全部论点</strong>：数学最优是一个外部目标函数（最大化 Sharpe ratio），但当事人真正优化的是<strong>未来的后悔</strong>——一个完全不同的目标函数。Markowitz 没有犯错，他只是诚实。</p>
+
+        <h3>"合理 (Reasonable)" vs "理性 (Rational)"</h3>
+        <p>Housel 在第 11 章 <em>Reasonable &gt; Rational</em> [8] 给出这个区分：</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:22%;">维度</th><th>Rational（理性 / 数学最优）</th><th>Reasonable（合理 / 行为最优）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>目标函数</strong></td><td>最大化期望收益 / Sharpe ratio</td><td>最大化"持续 30 年不放弃"的概率</td></tr>
+            <tr><td><strong>约束</strong></td><td>预算 / 流动性</td><td>预算 + <strong>情绪承受力</strong> + 家庭关系 + 睡眠质量</td></tr>
+            <tr><td><strong>数据基础</strong></td><td>历史方差矩阵</td><td>"我下次 -40% 时还能不卖吗？"</td></tr>
+            <tr><td><strong>评估时机</strong></td><td>事前（建模）</td><td>事中（压力下还在执行吗？）</td></tr>
+            <tr><td><strong>失败模式</strong></td><td>纸面漂亮，实战割肉</td><td>稍微保守一点，但<strong>真的</strong>跑完 30 年</td></tr>
+          </tbody>
+        </table>
+
+        <h3>实证旁证：散户的"自折腾损失"</h3>
+        <p>这不只是 Markowitz 一个人的态度。Vanguard 多次内部研究 + 业界 DALBAR QAIB 系列年报 [7] 长期追踪这个事实：<strong>"自己折腾"的散户系统性跑输"买完就放着不动"的散户</strong>。具体差距视年份和方法论而异，但量级一致——年化 1.5-3 个百分点的"行为成本"，在 30 年复利下放大到惊人的差距。</p>
+
+        <div class="figure">
+          <strong>40 年复利下，行为成本 2 个百分点的代价（粗算）</strong>
+          <div class="bar-row"><span>"放着不动" 8%/yr</span><div class="bar" style="width:99%"></div><span>~21.7×</span></div>
+          <div class="bar-row"><span>"自己折腾" 6%/yr</span><div class="bar alt2" style="width:46%"></div><span>~10.3×</span></div>
+          <div class="figure-cap">同样的初始 $10,000、同样的 40 年——只是中间多"操作"了几次，终值差 <strong>~2 倍</strong>。这就是 Markowitz 选 50/50 而不是数学最优的原因：他知道自己没"动手"的额度。</div>
+        </div>
+
+        <div class="pullbox idea">
+          <h4>关键提炼</h4>
+          <p style="margin:0;">"持得住"<strong>本身</strong>就是一个独立的收益来源。它的边际贡献经常超过"选对资产"的边际贡献。这就是为什么 Markowitz 选 50/50：他不是在偷懒，他是在<strong>把"持得住"加进了优化目标</strong>。你的策略<strong>必须</strong>能让你在 -50% drawdown 时拿得住——否则数学有多漂亮都白搭。</p>
+        </div>
+
+        <div class="pullbox warn">
+          <h4>挑战题</h4>
+          <p style="margin:0;">回想你自己——过去几年里，<strong>有没有一次</strong>你的"理性策略"（write down 的那种）和你<strong>真实做的</strong>不一致？那次差异里，"理性"被什么打败了？把那个变量记下来——下一次设计策略时，把它<strong>显式</strong>当成约束放进去。</p>
+        </div>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · The Limits of History</p>
+        <h2 class="unit-h">历史的局限 — Surprise! 的科学</h2>
+
+        <p>Housel 第 12 章 <em>Surprise!</em> [8] 引用 Daniel Kahneman 的一句话：</p>
+
+        <div class="quote">
+          "The correct lesson to learn from surprises is that the world is surprising."
+          <cite>— Daniel Kahneman，转引自 Housel <em>The Psychology of Money</em>, Ch. 12 [5]</cite>
+        </div>
+
+        <p>这句话的精确含义不是"未来不可知"——这是废话。精确含义是：<strong>从过去 surprises 里能学到的<em>不是</em> "下一次具体哪件事会重演"，而是<em>"会发生我们没预料到的事"</em>这件事本身会重演。</strong> 大多数依赖历史回测的人学的是错的那一类。</p>
+
+        <h3>Black Swan 的三个特征</h3>
+        <p>Nassim Taleb 在 <em>The Black Swan</em>（2007）[3] 里给"黑天鹅事件"的定义有三条——这三条<strong>同时成立</strong>才算：</p>
+
+        <ul class="deep">
+          <li><strong>极端罕见</strong>——超出常规预期，不在历史样本里。</li>
+          <li><strong>影响巨大</strong>——一次冲击足以改变一个行业、一个国家、一个组合的命运。</li>
+          <li><strong>事后可被叙事化解释</strong>——"我早就觉得不对劲"。这个特征是关键陷阱：因为事后可解释，人误以为<strong>事前可预测</strong>。</li>
+        </ul>
+
+        <h3>具体案例与高斯模型的失败</h3>
+
+        <table>
+          <thead>
+            <tr><th>事件</th><th>事前主流共识</th><th>事后金融模型说什么</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1929 大萧条</td><td>"a permanently high plateau"（Irving Fisher，1929 年 10 月）</td><td>多次"百年一遇"事件叠加</td></tr>
+            <tr><td>1987 Black Monday（-22.6%/天）</td><td>正态分布下日均波动 ~1%</td><td>~22-sigma event；按高斯每 10<sup>50</sup> 年一次</td></tr>
+            <tr><td>1998 LTCM 崩盘</td><td>两位诺奖得主管理；模型说他们当时遭遇的是 "10-sigma event"</td><td>按正态分布每 10<sup>23</sup> 年发生一次——但<strong>实际上市场每 5-10 年都有一次类似冲击</strong></td></tr>
+            <tr><td>2001-09-11</td><td>不在任何金融模型里</td><td>事后归因到地缘风险</td></tr>
+            <tr><td>2008 GFC</td><td>"housing prices nationally have never declined"（Bernanke / 业界 PM 共识）</td><td>"once in 100 years" 重置 risk model</td></tr>
+            <tr><td>2020 COVID</td><td>2020-01 主流共识：影响有限，stocks all-time high</td><td>S&amp;P 4 周 -34%，史上最快熊市</td></tr>
+          </tbody>
+        </table>
+
+        <p>把这张表的 column 3 连起来看——<strong>每一代金融人都说"这次是特殊事件"</strong>。但当"特殊事件"以每 5-10 年一次的频率出现时，它就<strong>不</strong>特殊了——特殊的是<strong>你的模型</strong>。</p>
+
+        <h3>数学层面的根因：厚尾</h3>
+        <p>金融市场回报<strong>不是</strong>正态分布，是<strong>厚尾</strong>（fat-tailed / leptokurtic）。这意味着极端事件的真实概率比高斯模型预测的高出几个数量级。</p>
+
+        <div class="figure">
+          <strong>正态分布 vs 真实市场分布（示意，简化）</strong>
+          <div class="bar-row"><span>±1σ 内出现</span><div class="bar" style="width:68%"></div><span>~68%</span></div>
+          <div class="bar-row"><span>±3σ 外（高斯预测）</span><div class="bar alt" style="width:0.3%"></div><span>~0.3%</span></div>
+          <div class="bar-row"><span>±3σ 外（实际市场）</span><div class="bar alt2" style="width:3%"></div><span>~1-3%</span></div>
+          <div class="figure-cap">"3-sigma 事件"在高斯模型里 ~0.3% 概率，在真实市场里频率高 5-10 倍。所谓 "10-sigma event"——按高斯每 10<sup>23</sup> 年一次——在金融市场每个十年就来一次。</div>
+        </div>
+
+        <h3>厚尾的实证旁证</h3>
+        <p>第二章我们引过 Bessembinder 2018 [9]——美股 1926-2016，前 4% 的股票贡献 100% 净财富，96% 的股票合计净贡献为 0。这<strong>本身就是</strong>厚尾分布的实证：上行的回报集中在尾部。下行也一样——崩盘集中在尾部。<strong>金融的整个故事是用尾部讲完的</strong>，但建模这件事的人却在用正态分布。</p>
+
+        <div class="pullbox warn">
+          <h4>挑战题</h4>
+          <p style="margin:0;">如果你的投资模型基于"美股年化 10% / 波动率 16%"——这是一个<strong>正态分布假设</strong>。在你<em>真实</em>的 30 年里，至少会有一次 "model 里说不可能"的事件发生。你的策略在那一次<strong>还能活</strong>吗？还是会在历史样本以外的事件下被清零？</p>
+        </div>
+
+        <div class="pullbox idea">
+          <h4>关键提炼</h4>
+          <p style="margin:0;">依赖<strong>历史数据</strong>建模未来的人，会系统性低估"前所未见"事件的概率——不是因为他们不聪明，是因为这些事件按定义<strong>没出现在历史样本里</strong>。这是统计学的根本限制，不是技术债。<strong>解药不是更好的模型，是给"未知"留 budget</strong>——这是 §6 第 2 条原则的来源。</p>
+        </div>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · The Seduction of Pessimism</p>
+        <h2 class="unit-h">悲观主义的诱惑 — 为什么坏消息听起来更聪明</h2>
+
+        <p>这是 Housel 第 17 章的题目，也是这本书<strong>最反直觉</strong>的一章。前两节告诉你"别迷信数学" "别迷信历史"——你可能下意识就觉得"那悲观是对的"。<strong>错。</strong> 这一节恰好要拆这个反应——悲观本身也是一种偏差，且是更<strong>难看见</strong>的那种，因为它伪装成"清醒"。</p>
+
+        <h3>实证基础：Bad is Stronger than Good</h3>
+        <p>Roy Baumeister 等 2001 年在 <em>Review of General Psychology</em> 5(4), 323-370 发表的综述论文 <strong>"Bad is Stronger than Good"</strong> [4]——综述了几百项实验研究，结论极其稳健：</p>
+
+        <ul class="deep">
+          <li>负面信息在<strong>注意力</strong>分配上权重显著高于同等强度的正面信息。</li>
+          <li>负面经历在<strong>记忆</strong>中持久更久、提取更快。</li>
+          <li>负面信息在<strong>决策</strong>中权重更大——同等概率的损失影响 &gt; 同等概率的收益。</li>
+          <li>这种不对称<strong>跨文化、跨年龄、跨情境</strong>稳定存在——它是大脑硬件，不是文化教化。</li>
+        </ul>
+
+        <p>演化上的解释是显然的：错过一颗水果的代价是少吃一顿；忽略一只老虎的代价是死。所以不对称是适应性的——但它在金融里反过来害你。</p>
+
+        <h3>Loss Aversion 的量化</h3>
+        <p>第一章我们已经引过 Kahneman &amp; Tversky [5]——同等金额的<strong>损失痛苦</strong>约为<strong>收益快乐</strong>的 2-2.25 倍。这是 Bad is Stronger 在金钱场景里的具体量化。</p>
+
+        <div class="figure">
+          <div class="bar-row"><span>赚 $100 的快乐</span><div class="bar" style="width:40%"></div><span>≈ 1.0×</span></div>
+          <div class="bar-row"><span>亏 $100 的痛苦</span><div class="bar alt2" style="width:90%"></div><span>≈ 2.25×</span></div>
+          <div class="figure-cap">同等金额的损失，主观痛苦是收益快乐的 ~2.25 倍。来源：Tversky &amp; Kahneman 1992 修订估计 [5]。</div>
+        </div>
+
+        <h3>媒体层面：悲观叙事的不对称传播</h3>
+        <p>Bad is Stronger 在媒体生态里被进一步放大：</p>
+
+        <ul class="deep">
+          <li><strong>Clicks 不对称</strong>——财经媒体的悲观标题（"危机""崩盘""泡沫"）系统性获得更高 click-through 比同等强度的乐观标题。</li>
+          <li><strong>credibility 不对称</strong>——悲观预测者听起来"严肃""有洞察"；乐观预测者听起来"naïve""卖书"。</li>
+          <li><strong>错误成本不对称</strong>——悲观预测错了无人记得（"市场更疯狂了"）；乐观预测错了被永远嘲笑（"你不是说会涨吗？"）。</li>
+        </ul>
+
+        <h3>事实层面：世界其实在变好</h3>
+        <p>Steven Pinker 在 <em>Enlightenment Now</em>（2018）[6] 用数据展示：</p>
+
+        <table>
+          <thead>
+            <tr><th>指标</th><th>1820 年（约 200 年前）</th><th>近年（2015-2020）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>全球极端贫困率</td><td>~90%</td><td>~10%</td></tr>
+            <tr><td>全球预期寿命</td><td>~30 岁</td><td>~70+ 岁</td></tr>
+            <tr><td>全球识字率</td><td>~12%</td><td>~85%</td></tr>
+            <tr><td>美国 GDP 实际值</td><td>(基准)</td><td>~100×</td></tr>
+            <tr><td>全球儿童死亡率（&lt;5 岁）</td><td>~43%</td><td>~4%</td></tr>
+          </tbody>
+        </table>
+
+        <p>但<strong>每当问普通人"世界是变好还是变坏"，&gt;70% 答"变坏"</strong>（多次跨国调查；Pinker 引用 YouGov / Ipsos / Gapminder 数据）。这是 negativity bias 的直接表现——客观事实和主观感受系统性背离。</p>
+
+        <div class="pullbox idea">
+          <h4>对投资的含义</h4>
+          <p style="margin:0;">长期看美国 GDP / S&amp;P 都呈指数增长趋势——但每天财经新闻都在播"危机"。如果你按新闻频率调整仓位，你会<strong>系统性地少持仓</strong>——因为坏消息频率假象高于实际频率。注意这个逻辑：<strong>不是</strong>"市场永远涨所以乐观"，<strong>是</strong>"你接收的悲观信号被系统性放大，所以你的下意识仓位决定是低估真实期望"。</p>
+        </div>
+
+        <h3>Housel 的金句</h3>
+        <p>把这一节压成一句话，是 Housel 的原话：</p>
+
+        <div class="quote">
+          "Optimism sounds like a sales pitch. Pessimism sounds like someone trying to help you."
+          <cite>— Morgan Housel, <em>The Psychology of Money</em>, Ch. 17 [8]</cite>
+        </div>
+
+        <p>这就是为什么"听起来聪明"的财经评论<strong>系统性偏向悲观</strong>。你被这种语调吸引，不是因为你判断准确——是因为你的大脑硬件优先注意威胁信号。</p>
+
+        <div class="pullbox warn">
+          <h4>挑战题</h4>
+          <p style="margin:0;">tech 圈的财经讨论充满"AI 泡沫""中美脱钩""估值崩盘"——这些标题让你<strong>觉得自己在思考</strong>，实际上你在被 negativity bias 牵着走。挑战：<em>找出最近 6 个月里，你看过的最悲观的 3 篇财经文章</em>——它们的预测有几个真的兑现了？没兑现的，作者今天还在讲什么？</p>
+        </div>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · The Conspiracy</p>
+        <h2 class="unit-h">三个陷阱的合谋 — 为什么聪明人也会同时撞上</h2>
+
+        <p>这一章要点不是"有 3 个独立的陷阱"——是"3 个陷阱<strong>同时作用</strong>时会产生超出每一个单独效应的破坏"。三者之间不是并列，是<strong>合谋</strong>：</p>
+
+        <ol class="deep">
+          <li><strong>陷阱 1（数学完美的策略）</strong>给你一个错觉："我有计划"。但这个计划没把"-40% 时我会不会卖"算进去。</li>
+          <li><strong>陷阱 2（漂亮的回测）</strong>给你一个错觉："这次和过去类似"。但当事件超出历史样本时，回测变成误导而非指导。</li>
+          <li><strong>陷阱 3（媒体悲观叙事）</strong>给你一个错觉："这次真的不一样"。在底部，新闻 + 损失厌恶 + 朋友的恐慌共同作用，让你<strong>恰好在最不该卖的时刻卖</strong>。</li>
+        </ol>
+
+        <h3>散户的典型路径</h3>
+
+        <table>
+          <thead>
+            <tr><th style="width:18%;">市场阶段</th><th>媒体叙事</th><th>散户情绪</th><th>典型动作</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>牛市顶部</td><td>"新范式""AI 革命""错过就晚了"</td><td>FOMO + 过度自信</td><td>加杠杆，追高加仓</td></tr>
+            <tr><td>下跌 -10%</td><td>"调整健康"</td><td>淡定</td><td>不动</td></tr>
+            <tr><td>下跌 -25%</td><td>"开始担心"</td><td>焦虑</td><td>减少新买入</td></tr>
+            <tr><td>下跌 -40%</td><td>"危机""范式转移""这次真的不一样"</td><td>恐慌 + Loss aversion 满血</td><td><strong>割肉</strong>，转现金/债券</td></tr>
+            <tr><td>反弹 +20%</td><td>"死猫跳"</td><td>怀疑（仍在场外）</td><td>不敢回</td></tr>
+            <tr><td>反弹 +50%</td><td>"假牛市""泡沫又来了"</td><td>后悔但仍犹豫</td><td>等"回调再进"</td></tr>
+            <tr><td>新高</td><td>"新一轮繁荣"</td><td>FOMO 重新出现</td><td>高位重新加仓</td></tr>
+          </tbody>
+        </table>
+
+        <p>这就是 DALBAR QAIB 报告 [7] 里散户跑输市场的<strong>结构性原因</strong>——不是"散户笨"，是 3 个陷阱在每一个阶段都精准刺激他们。注意一件事：<strong>每一步都"听起来合理"</strong>。这就是合谋的可怕——它让错误决策<strong>在当时</strong>看起来都是理性的。</p>
+
+        <h3>三个陷阱的应对工具对照</h3>
+
+        <table>
+          <thead>
+            <tr><th>陷阱</th><th>表现</th><th>应对工具</th><th>关键问题</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>陷阱 1</strong><br>数学最优 ≠ 行为可执行</td>
+              <td>纸上 100% 股票最优，但 -40% 时你会卖</td>
+              <td>降低仓位到<strong>能拿得住</strong>的水平（哪怕数学上"次优"）</td>
+              <td>"上次 -30% 我做了什么？"</td>
+            </tr>
+            <tr>
+              <td><strong>陷阱 2</strong><br>历史不代表未来</td>
+              <td>用 1980-2024 年化 10% 假设规划 30 年</td>
+              <td>给"未知"留 black swan budget；测试 -50% 情景下策略是否仍可执行</td>
+              <td>"如果未来 30 年发生 1-2 次 -50%，我现在的仓位还活吗？"</td>
+            </tr>
+            <tr>
+              <td><strong>陷阱 3</strong><br>悲观叙事的不对称放大</td>
+              <td>每天看新闻，仓位被情绪驱动调整</td>
+              <td>媒体节食（每周一次定时摘要，删 push 通知）</td>
+              <td>"我最近一次因坏新闻调仓——事后看赚还是亏？"</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>聪明人为什么会全中？</h4>
+          <p style="margin:0;">三个陷阱里，<strong>每一个都<em>看起来</em>是"严谨"的表现</strong>：用数学（陷阱 1）、用历史数据（陷阱 2）、关注风险（陷阱 3）——都是<em>受过训练的</em>本能。<strong>智力恰好是这三个陷阱的入场券</strong>，不是免疫力。这呼应第一章 Fuscone 的故事：聪明人破产不是偶然，是因为他们更可能同时撞上这三个陷阱。</p>
+        </div>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · Apply to You</p>
+        <h2 class="unit-h">应用到类似画像（美股 / 30+ / 科技业 / 经历近年科技裁员）</h2>
+
+        <p>这一章对这类读者<strong>不是抽象理论</strong>。如果你经历过一次完整的"聪明人撞陷阱"——只是发生在职场层面而非投资层面，把它映射回投资上就能看清。</p>
+
+        <h3>三个陷阱在你身上的具体形态</h3>
+
+        <table>
+          <thead>
+            <tr><th style="width:22%;">陷阱</th><th>你的处境冲击</th><th>具体审视方法</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>§1 合理 vs 理性</strong></td>
+              <td>近年科技裁员后，这类读者大概率有"全仓现金安全感"的冲动——这是<strong>行为合理</strong>但<strong>数学不优</strong>的。问题不是"哪个对"——问题是它有没有<strong>过度</strong>合理。</td>
+              <td><em>诚实测试：</em>如果你保留 12 个月生活费的 emergency fund + 身份缓冲（再加 6 个月以防身份转换期），剩余的钱投不投股票？如果你的"现金感"超出这个量级很多，多余部分可能是<strong>过度合理</strong>，是被近年裁员经历压印的，不是当前真实风险。</td>
+            </tr>
+            <tr>
+              <td><strong>§2 历史的局限</strong></td>
+              <td>你的投资模型如果基于"美股年化 10%"——这是 1926-2024 美国数据。在<strong>你的</strong>未来 30 年里这个数字依然成立吗？日本 1989 年 Nikkei 顶点 38,915，<strong>30 多年后</strong>才重新逼近这个水平。</td>
+              <td><em>反事实问题：</em>什么情境下美国会变成日本？人口老化（已发生）+ 长期通缩 + 全球货币地位易主。每一条都不是必然，但每一条概率都不是 0。你的策略<strong>在"美国变日本"情景下</strong>能活吗？这不要求你预测，只要求你<strong>包含这种可能</strong>。</td>
+            </tr>
+            <tr>
+              <td><strong>§3 悲观诱惑</strong></td>
+              <td>tech 圈的财经讨论生态对你尤其危险——你的同事 / Twitter / Reddit 充满"AI 泡沫""估值崩盘""中美脱钩"。这些声音听起来比"长期持有 VOO"<em>聪明</em>，但 §3 已经告诉你这种"聪明感"是 negativity bias 的伪装。</td>
+              <td><em>具体测试：</em>你最近一次因为坏新闻改变仓位是什么时候？事后看那个改变赚还是亏？记下答案。绝大多数人发现：他们因为坏新闻调仓的胜率<strong>低于 50%</strong>——意味着这部分"思考"在<strong>负贡献</strong>。</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>你的 portfolio 自检：行为可执行 vs 数学最优</h3>
+
+        <table>
+          <thead>
+            <tr><th>持仓</th><th>数学最优视角</th><th>行为可执行视角</th><th>冲突时认哪个</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>VOO/VTI 等宽基指数</td><td>核心，70%+</td><td>容易拿住（不需要单股盯盘）</td><td>两者一致 ✓</td></tr>
+            <tr><td>QQQ / 科技重仓</td><td>历史回报高，但波动也高</td><td>你 -40% 时拿得住吗？2022 实测过一次（QQQ -33%）——你那时怎么操作的？</td><td>认真实测过的承受力</td></tr>
+            <tr><td>单股（NVDA / TSLA / 等）</td><td>satellite，&lt;20%</td><td>容易过度自信，跌时容易找"叙事"卖</td><td>预先<strong>书面承认</strong>：这部分大概率跑输；不允许超过总仓 20%</td></tr>
+            <tr><td>现金 / HYSA</td><td>"机会成本高"</td><td>身份/职业不稳 + 失业缓冲是<strong>真实</strong>约束。Emergency fund 12-18 个月不是过度保守</td><td>认行为可执行（这类画像的身份/职业风险是真的）</td></tr>
+            <tr><td>债券 / Bonds</td><td>对 30+ 来说"配置低效"</td><td>降低组合波动 → 提高你"拿得住"的概率（Markowitz 50/50 的逻辑）</td><td>视你的真实承受力。不要因为"理论上不需要"就 0 配置</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>对你最危险的认知幻觉</h4>
+          <p style="margin:0;">你是受过训练的工程师——你<strong>会</strong>建模、<strong>会</strong>读数据、<strong>会</strong>批判性思考。这三种能力在 §4 三个陷阱面前<strong>恰好都是入场券，不是免疫力</strong>。Markowitz 也"会"建模——他是 MPT 的发明者。他依然选 50/50。<strong>你身上"会建模"和"会执行"的差距，比你想象的大</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · Three Actionable Principles</p>
+        <h2 class="unit-h">三条可行动原则</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>永远选你<em>能执行</em>的策略，不是数学最优的。</strong><br>
+            如果"全仓股票"数学最优但你 -30% 时会割肉，那 60/40（或 70/30）让你拿得住才是<strong>真</strong>最优。Markowitz 50/50 的逻辑是：把"持得住"放进目标函数。你需要做的是：写下你过去最难熬的一次（2022 / 2020 / 2018）你<em>实际</em>怎么操作的——这是你的真实承受力，不是想象的。<strong>策略要为这个真实承受力设计</strong>。
+          </li>
+          <li>
+            <strong>给历史模型加一个 "black swan budget"。</strong><br>
+            假设未来 30 年至少有 1-2 次 -50% 大跌（按历史频率，这是合理估计——大萧条、二战、滞胀、2008、2020 这类级别事件每代人都会撞 1-2 次）。把你的仓位<strong>压力测试</strong>一遍：在 -50% 时，你的现金缓冲够覆盖 12-18 个月生活费吗？你的身份/工作在那种宏观下还稳吗？你的非投资资产能否独立扛？如果任一答案是"不"——<strong>当前仓位需要调整</strong>，不是"等出事再说"。
+          </li>
+          <li>
+            <strong>实施"媒体节食"。</strong><br>
+            删掉所有财经 push 通知；每周一固定时间（比如 9am）看一次市场摘要 ≤ 10 分钟；不看每日行情；不刷 Twitter / Reddit 财经版。这<strong>不是逃避——是主动屏蔽 negativity bias 的工程方案</strong>。同时给自己留一个 "research window"——每月一次专门读年报 / 研究报告 / Housel 这种长篇——长内容受 negativity bias 影响远小于碎片新闻。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把这一章压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>你的策略不是为最聪明版本的你设计的，是为最难熬时刻的你设计的——后者才会真的执行它。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection Exercises -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Reflection Exercises</p>
+        <h2 class="unit-h">反思练习（写下来，不要在脑子里完成）</h2>
+
+        <p>这一章的三个陷阱都是<strong>看不见自己</strong>的——只有把它们<em>写下来</em>，才能跨年对比、暴露 bias。请认真做完 4 题。</p>
+
+        <div class="exercise">
+          <h4>练习 1 — 行为最优 vs 数学最优自检</h4>
+          <p>写下你目前的资产配置（VOO / QQQ / 现金 / Bonds / 单股 各占百分比）。诚实判断：这是<strong>数学最优</strong>还是<strong>行为最优</strong>？情境测试：如果市场明天 -40%，你会改变这个比例吗？如果会改变——那现在的比例不是真稳态，是被乐观情绪虚抬的。</p>
+          <textarea placeholder="例如：VOO 50% / QQQ 20% / 现金 25% / 单股 5%。-40% 时我会从 QQQ 减仓到现金 → 说明 QQQ 这 20% 是数学最优而非行为可执行的。需要往 VOO 调或往 Bond 调。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — 你过去 5 年的 financial surprises</h4>
+          <p>列出你过去 5 年遭遇的 <strong>3 件 financial "surprises"</strong>（裁员、突发支出、投资暴涨/暴跌、身份变化等）。这些事件你<em>事前</em>预料到了吗？这个事实对你"未来 30 年"应该<strong>预案多少种情境</strong>是什么影响？提示：如果过去 5 年你都预料不到 3 件事，未来 30 年至少会有 ~18 件类似事件——你的策略<strong>设计</strong>是不是包括这种密度的意外？</p>
+          <textarea placeholder="例如：1) 2022 一轮科技裁员；2) 2020 COVID 4 周 -34%；3) 2023 SVB 破产引发科技公司现金恐慌。三件我事前都没预料。这意味着我应该为'每 18 个月一次重大意外'设计仓位，而不是为'稳态'设计。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — 媒体节食 7 天实验</h4>
+          <p>给自己做"媒体节食"实验：未来 7 天<strong>不看任何财经新闻、不打开 brokerage app</strong>（401k 看一次也行）。第 8 天复盘：你<strong>担心</strong>什么？什么都没发生时你的<em>焦虑来源</em>是什么？把它写下来——这个练习的目的不是验证"市场涨跌"，是让你看见你的焦虑里有多少是<strong>新闻 induced</strong> 而非<strong>真实风险</strong>。</p>
+          <textarea placeholder="第 8 天复盘——例如：第 3 天我开始焦虑'是不是错过了什么'；第 5 天我打开了 Twitter 想偷看市场；第 7 天发现什么都没发生，但我的焦虑感不减。这说明焦虑独立于市场实际，主要是 information addiction。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 4 — 重写你的 Investment Policy Statement (IPS)</h4>
+          <p>针对 3 种情境，<strong>事先</strong>写下你的预定动作。事先写下来比临场决定更不容易被三个陷阱劫持。</p>
+          <ul class="deep" style="margin-top:6px;">
+            <li><strong>情境 A：市场 +50%（牛市顶）</strong>——你做什么？（再平衡？不动？加仓？）</li>
+            <li><strong>情境 B：市场 -40%（GFC 级别熊市）</strong>——你做什么？（继续定投？暂停？卖？提供具体阈值。）</li>
+            <li><strong>情境 C：失业 6 个月 + 身份倒计时（如适用）</strong>——动用什么资产？什么资产<em>绝不</em>动？</li>
+          </ul>
+          <textarea placeholder="A: 不动，但不再加仓单股；保持原定再平衡日不变。B: 继续定投不变；如果 -40% 时还有现金且 emergency fund 充足，额外动用 'opportunity bucket' 的 50%。C: 动 emergency fund + HYSA；绝不卖 brokerage 股票（除非 emergency fund 耗尽 + 无新工作 9 个月以上）。"></textarea>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Self-Check Quiz</p>
+        <h2 class="unit-h">自检 Quiz（先答，再展开看解析）</h2>
+
+        <details class="quiz">
+          <summary>Q1. Markowitz 自己不用 MPT 配置退休金，最核心的含义是？</summary>
+          <p>A) MPT 在数学上是错的<br>
+          B) 经济学家不实用<br>
+          C) 数学最优 ≠ 行为可执行；情绪和后悔是真实约束<br>
+          D) 50/50 是最优答案</p>
+          <div class="answer"><strong>正确答案：C。</strong>A 错——MPT 数学上没问题，Markowitz 自己拿了诺贝尔奖。B 错——这是抹黑式归因。D 错——50/50 不是普适答案，它<strong>只是 Markowitz 个人的</strong>合理点。C 才是这一节的论点：<em>数学最优是一个目标函数，"持得住"是另一个目标函数；后者经常压过前者</em>。这意味着任何抄"理论最优"配置（包括抄 Bogleheads）的人都需要先问："这个对<strong>我</strong>合理吗？"</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. Black Swan 三特征中<strong>不</strong>包括下面哪一项？</summary>
+          <p>A) 极端罕见（超出常规预期）<br>
+          B) 影响巨大<br>
+          C) 事前可计算概率<br>
+          D) 事后可被叙事化解释</p>
+          <div class="answer"><strong>正确答案：C。</strong>Taleb 的定义恰好相反——黑天鹅<strong>事前不可计算概率</strong>。这是 §2 最关键的提醒：你能在事后说"应该料到的"，不代表事前真的能料到。"事后可叙事化"（D）是黑天鹅的特征<strong>之一</strong>，而且是<strong>陷阱</strong>——它让人误以为下次也能预测。如果你选了 C 而不是其他——你已经把 §2 的核心听进去了。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. Negativity bias 在投资中最常见的破坏方式是？</summary>
+          <p>A) 让人完全不投资<br>
+          B) 让人在悲观叙事下减仓，错过反弹<br>
+          C) 让人选股变保守<br>
+          D) 让人买黄金对冲</p>
+          <div class="answer"><strong>正确答案：B。</strong>A 是少数极端表现。C/D 都是 second-order 现象。B 是真正的<strong>结构性破坏</strong>——参考 §4 的"散户路径"表：在 -40% 那一行割肉，反弹时 +50% 仍在场外。这是 DALBAR 报告 [7] 里散户跑输市场年化 1.5-3 个百分点的<strong>主要驱动力</strong>。注意一个反直觉点：<em>不是负面信息让你不投资，是负面信息让你"在错误时间点"调仓</em>——这比"完全不投"更隐蔽。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. 下列哪个是 "reasonable &gt; rational" 思维的<strong>对立面</strong>（即典型的<em>过度</em> rational）？</summary>
+          <p>A) 长期持有 VOO 不动<br>
+          B) 用 Excel 算出最优 Sharpe ratio 配置，但 -30% 时全部割肉<br>
+          C) 60/40 配置<br>
+          D) 不看每日新闻</p>
+          <div class="answer"><strong>正确答案：B。</strong>A、C、D 都是<strong>合理</strong>的表现——它们牺牲了一些数学最优性，换来"持得住"。B 是典型的<em>纸上理性、实战脆弱</em>——Sharpe 最优配置需要的是<strong>持续 30 年</strong>不间断，而不是"建模时最优"。如果模型让你在 -30% 时割肉，那它<strong>实际 Sharpe ratio 是负数</strong>——只是你不知道，因为你没把"未来的自己会卖"算进去。这正是 §1 Markowitz 的洞察。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5. "Black swan budget" 在你的策略里应该怎么落地？</summary>
+          <p>A) 永远持有看跌期权对冲<br>
+          B) 假设未来 30 年至少 1-2 次 -50% drawdown，确保仓位在那时仍可执行（emergency fund 充足、能继续定投、不被迫卖底）<br>
+          C) 减少股票仓位到 30% 以下<br>
+          D) 加大债券和黄金配置</p>
+          <div class="answer"><strong>正确答案：B。</strong>A 错——长期持有 puts 是负 carry，会蚕食回报；这是把"对冲尾部"做过了。C/D 是<em>具体战术</em>选择，不是 budget 的本质——<strong>budget 是设计哲学，不是仓位比例</strong>。B 才是 §6 第 2 条原则的精确含义：<em>承认</em>未来 30 年至少会撞 1-2 次"-50% 级别"事件，并<strong>压力测试</strong>你的策略在那种情境下还能活——这不强制特定配置，但要求<strong>所有配置都通过这个测试</strong>。这才是把 §2 历史的局限<strong>变成可操作的</strong>方法。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读</h3>
+        <ol>
+          <li>Markowitz, H. (1952). <em>Portfolio Selection</em>. Journal of Finance, 7(1), 77-91. — 现代投资组合理论奠基论文。</li>
+          <li>Markowitz quote: 来自 Jason Zweig 1998 年在 <em>Money</em> magazine 对 Markowitz 退休账户配置的采访（后续在 CFA Institute Conference Proceedings 等处被多次重印转引）。Housel 在 Ch. 11 引用。</li>
+          <li>Taleb, N. N. (2007). <em>The Black Swan: The Impact of the Highly Improbable</em>. Random House. — 黑天鹅三特征定义。</li>
+          <li>Baumeister, R. F., Bratslavsky, E., Finkenauer, C., &amp; Vohs, K. D. (2001). <em>Bad is Stronger than Good</em>. Review of General Psychology, 5(4), 323-370. — Negativity bias 的综述论文。</li>
+          <li>Kahneman, D., &amp; Tversky, A. (1979). <em>Prospect Theory: An Analysis of Decision under Risk</em>. Econometrica, 47(2), 263-291. + Kahneman, D. (2011). <em>Thinking, Fast and Slow</em>. Farrar, Straus and Giroux. — Loss aversion 系数 ~2.25 估计。</li>
+          <li>Pinker, S. (2018). <em>Enlightenment Now: The Case for Reason, Science, Humanism, and Progress</em>. Viking. — 长期人类指标改善数据 + 普通人感受相反的现象。</li>
+          <li>DALBAR Inc. — <em>Quantitative Analysis of Investor Behavior (QAIB)</em> 年度报告系列。— 散户行为成本（具体年化差距视年份和方法论而异，通常报告为年化 1.5-3 个百分点；该数据近年被一些学者批评有方法论局限，但<strong>方向</strong>得到 Vanguard / Morningstar 等独立分析的支持）。</li>
+          <li>Housel, M. (2020). <em>The Psychology of Money</em>. Harriman House. Ch. 11 (Reasonable &gt; Rational), Ch. 12 (Surprise!), Ch. 17 (The Seduction of Pessimism). — 本章原文。</li>
+          <li>Bessembinder, H. (2018). <em>Do Stocks Outperform Treasury Bills?</em> Journal of Financial Economics, 129(3), 440-457. — 厚尾分布的实证（4% 股票 = 100% 净财富）。</li>
+        </ol>
+        <p style="margin-top:18px;color:var(--muted);">下一步：第六章 · 自由的代价 — 不确定性的费用 / 房屋的位置 / 表演 vs 隐形的财富。</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

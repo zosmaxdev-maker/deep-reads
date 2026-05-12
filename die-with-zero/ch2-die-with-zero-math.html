@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第二章 · Die With Zero 的数学 — 《Die With Zero》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); line-height: 1.7; }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0; }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none; }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 920px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+    .exercise { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .exercise h4 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exercise textarea, .exercise input[type=text] { width: 100%; margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: #fff; font: inherit; color: var(--ink); }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+    details.quiz { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    details.quiz summary { cursor: pointer; font-weight: 700; list-style: none; }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before { content: "▸ "; color: var(--accent); font-weight: 800; }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: #2e3b3a; }
+    details.quiz .answer strong { color: var(--accent); }
+    .citations { margin: 56px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+    .citations h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+    .citations .tag { display: inline-block; padding: 1px 6px; margin-right: 6px; border-radius: 3px; background: #efebe0; color: #34302a; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">Die With Zero</p>
+      <p class="ch-num">02</p>
+      <p class="ch-title">Die With Zero 的数学</p>
+      <p class="ch-sub">The Math &amp; The Toolkit · 第二章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>为什么这一章是论点核心</span></a>
+        <a href="#s1"><span class="num">§1</span><span>Elizabeth — 浪费生命的数学</span></a>
+        <a href="#s2"><span class="num">§2</span><span>Modigliani Life-Cycle Hypothesis</span></a>
+        <a href="#s3"><span class="num">§3</span><span>你不是好的保险代理人</span></a>
+        <a href="#s4"><span class="num">§4</span><span>Annuity Puzzle</span></a>
+        <a href="#s5"><span class="num">§5</span><span>Final Countdown — 把死亡变成日期</span></a>
+        <a href="#s6"><span class="num">§6</span><span>Literal Zero 不可能 — 重新定义目标</span></a>
+        <a href="#s7"><span class="num">§7</span><span>三条可行动原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习</span></a>
+        <a href="#qz"><span class="num">?</span><span>自检 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 2 · The Math of Dying With Zero</p>
+      <h1 class="lead">死时账户里每一块剩钱，都是你已经死去的某段生命换的——没兑现。</h1>
+      <p class="lead-sub">第一章说钱 = 生命能量。这一章把这个等式推到逻辑极限：如果钱真的是已死生命的化石——那么死时账户余额 = 已浪费的生命时间。Bill 给出数学论证 + 实证数据 + 工具集（annuities / 寿命计算器 / Final Countdown app），让你能<strong>精确接近 zero</strong>而不真破产。</p>
+
+      <div class="quote">
+        "Every dollar you save beyond what you can possibly spend is a piece of life you exchanged for nothing."
+        <cite>— Bill Perkins, <em>Die With Zero</em>, Chapter 3-4 框架转述</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing</p>
+        <h2 class="unit-h">为什么这一章是论点核心</h2>
+
+        <p>第一章给你<strong>价值观转换</strong>——把钱重新看成生命能量。但价值观不约束行为——多数读者点头同意，第二天回去 autopilot 攒钱。这一章把第一章的等式<strong>翻译成数学</strong>，并且给你<strong>工具</strong>——因为"我不知道还能活多久"是大多数人 over-save 最常用的借口。</p>
+
+        <p>Bill 在这一章做三件事：(1) 算给你看死时余额<strong>具体值多少生命时间</strong>——把抽象的 "$130K 储蓄" 变成 "2.5 年 50-小时-周加班"；(2) 援引经济学正统理论（Modigliani LCH）证明<strong>归零</strong>不是他的怪癖——是经济学 70 年默认的理性解；(3) 给你具体工具——annuities、寿命计算器、Final Countdown app——把"不知道何时死"这个借口<strong>掐死</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>"死时归零"是 Bill 的口号还是有<strong>经济学正统理论</strong>支持？理论叫什么、谁提的？</li>
+            <li>你能不能<strong>self-insure</strong>自己的寿命风险（活得太久没钱）？数学上为什么不能？</li>
+            <li>既然 literal zero 不可能精确实现——这本书剩下的论点还成立吗？Bill 真正的"目标"到底是什么？</li>
+          </ol>
+        </div>
+
+        <div class="pullbox note">
+          <h4>先承认一个张力</h4>
+          <p style="margin:0;">这一章的工具集（annuities 尤其）在<strong>美国市场上的可得性</strong>远低于 Bill 描述的理想状态。通胀挂钩 SPIA（Single Premium Immediate Annuity）几乎买不到，普通 SPIA 又被通胀慢慢蚕食。White Coat Investor 在书评里专门挑这一点 [9]。读完本章你会知道<strong>annuities 在理论上为什么对</strong>——但落地时你得自己评估市场上能买到什么。这本书是<strong>思想模型</strong>，不是 product recommendation。</p>
+        </div>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · The Math of Wasted Life Energy</p>
+        <h2 class="unit-h">Elizabeth — 一个具体数字告诉你浪费的生命</h2>
+
+        <p>Bill 在 Ch3 用一个虚构但<strong>统计上典型</strong>的美国人当 case study。她叫 Elizabeth：45 岁，Austin 的文员，年薪 $60,000（约 $19.56 / 工作小时）。她按"标准退休建议"行事——每月存退休金、买长期险、保守投资。85 岁时她安详离世，账户里还有 <strong>$130,000</strong>。她的家人觉得她"理财成功"。</p>
+
+        <p>Bill 拒绝这个结论。他做这个算术：</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:40%;">数量</th><th>计算</th><th style="width:24%;">结果</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Elizabeth 的真实时薪</td><td>$60K 年薪 ÷ ~3,000 真实工时（含通勤、加班）</td><td>≈ <strong>$19.56 / 小时</strong></td></tr>
+            <tr><td>她死时账户剩余</td><td>退休金 + 房产权益 + 储蓄</td><td><strong>$130,000</strong></td></tr>
+            <tr><td>这些钱代表多少小时工作</td><td>$130,000 ÷ $19.56 / 小时</td><td>≈ <strong>6,646 小时</strong></td></tr>
+            <tr><td>换算成 50-小时-工作周</td><td>6,646 ÷ (50 × 50 周/年)</td><td>≈ <strong>2.5 年</strong></td></tr>
+            <tr><td>含义</td><td>她为账户里<strong>从未花出去的钱</strong>免费工作了</td><td><strong>2.5 年</strong></td></tr>
+          </tbody>
+        </table>
+
+        <p>这不是隐喻。Elizabeth <strong>真的</strong>把人生中 2.5 年的时间——大约 6,646 个早晨起床、通勤、开会、修文件、回家累瘫的小时——交给了一个<strong>永远不会兑现的余额</strong>。如果她 60 岁就停止那部分工作、用那部分钱去花——她的儿女守灵时余额会是 $0，但她<strong>多过了 2.5 年自己的生活</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>这是这本书的中心数学等式</h4>
+          <p style="margin:0;"><strong>死时余额 / 真实时薪 = 已浪费的生命小时数。</strong> 把你自己的数字代进去。这个数字大概率比你以为的<strong>大得多</strong>——因为(1) 你的真实时薪比你以为的低（参见 Ch1 练习 1）；(2) 你的预期死时余额比你以为的高（401k 复利会让 30 岁的 $X 在 80 岁变成 $5X-$10X）。</p>
+        </div>
+
+        <h3>Elizabeth 不是异类——她是<strong>美国中位数</strong></h3>
+
+        <p>这里有人会反驳："Elizabeth 是虚构的。"——但她的<strong>数字是实证的</strong>。Bricker et al. 2017 的 Federal Reserve Bulletin 数据 [10] 显示：美国 65-74 岁家庭的<strong>中位净资产是 $224K</strong>，75+ 岁是 $264K。家庭<strong>净资产在退休后不下降反上升</strong>。也就是说——美国中位退休家庭<strong>不在花</strong>退休金，他们在<strong>继续攒</strong>。</p>
+
+        <p>Banerjee 2018 EBRI Issue Brief 447 [11] 用面板数据追踪同一批 retiree 20 年——发现退休 18 年后，<strong>中位家庭只花掉了退休时资产的 1/3</strong>。也就是 2/3 的钱<strong>没花就死了</strong>。Foster 2015 BLS 数据 [13] 进一步显示消费<strong>随年龄下降</strong>：55-64 岁年消费约 $65K，65-74 岁降到约 $55K，75+ 岁降到约 $42K。</p>
+
+        <div class="figure">
+          <strong>美国家庭消费 vs 净资产，按年龄（BLS + Fed 数据示意）</strong>
+          <div class="bar-row"><span>55-64 岁 · 消费</span><div class="bar" style="width:80%"></div><span>$65K</span></div>
+          <div class="bar-row"><span>65-74 岁 · 消费</span><div class="bar" style="width:68%"></div><span>$55K</span></div>
+          <div class="bar-row"><span>75+ 岁 · 消费</span><div class="bar" style="width:52%"></div><span>$42K</span></div>
+          <div class="bar-row"><span>65-74 岁 · 净资产</span><div class="bar alt" style="width:90%"></div><span>$224K</span></div>
+          <div class="bar-row"><span>75+ 岁 · 净资产</span><div class="bar alt" style="width:100%"></div><span>$264K</span></div>
+          <div class="figure-cap">消费曲线<strong>下降</strong>但净资产曲线<strong>上升</strong>——这是 Die With Zero 论点的实证基础 [10][11][13]。 多数美国老人不是花太多——是死前花得太少、攒得太多。</div>
+        </div>
+
+        <p>"但他们留给孩子了！"——会是 Ch3 的话题。剧透：留给孩子也错了时机（典型继承年龄 60+，太晚，已不是 high-utility window）。这一章先 close the loop on：<strong>多数美国老年家庭手里有大笔钱根本来不及花</strong>。</p>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · The Theoretical Backing</p>
+        <h2 class="unit-h">Modigliani Life-Cycle Hypothesis — 经济学家 70 年前就告诉你了</h2>
+
+        <p>"死时归零"听起来像 Bill 的怪癖。其实<strong>这是经济学 1950 年代的默认理性解</strong>。Franco Modigliani [54]（后来获 Nobel）提出 Life-Cycle Hypothesis (LCH)：</p>
+
+        <div class="pullbox idea">
+          <h4>Modigliani LCH 的核心 prediction</h4>
+          <p style="margin:0;">理性的 utility-maximizer 应该规划消费——使<strong>财富在死亡日精确归零</strong>。任何死时正余额都意味着没把生命周期 utility 最大化（你本可以多消费）；任何死时负余额意味着借了死后无力偿还（不可能成立）。所以唯一最优解：<strong>归零</strong>。</p>
+        </div>
+
+        <p>Hurd 1992 [8] 把 LCH 形式化、用真实数据测试。结论：<strong>实证上美国老人远远偏离 LCH 最优解</strong>——他们<strong>不</strong> dissave，反而在<strong>继续 save</strong>。Hurd 的论文标题就叫 "Wealth Depletion and Life-Cycle Consumption by the Elderly"——但实证数据显示<strong>没有 depletion</strong>。</p>
+
+        <h3>Shefrin-Thaler 1991 的修正</h3>
+
+        <p>Shefrin &amp; Thaler 1991 [9] 提出 <strong>Behavioral Life-Cycle Hypothesis</strong> 解释这个偏离。他们论点：经典 LCH 假设人是<strong>完美理性的最大化者</strong>——但真实人有：</p>
+
+        <ul class="deep">
+          <li><strong>Mental accounting</strong>——退休账户被"心理隔离"为"不可动"，即便最优解要求动它</li>
+          <li><strong>Self-control 问题</strong>——退休前过度 save 是 over-shooting，但退休后想反过来是<strong>需要 active rule-breaking</strong>，而老人 inertia 强</li>
+          <li><strong>"It's hard to teach an old household new rules"</strong>——Shefrin-Thaler 直接的原话。40 年养成的攒钱习惯不会因为退休就 reverse</li>
+          <li><strong>Bequest motive</strong>——想留遗产的愿望让 dissave 显得"自私"</li>
+          <li><strong>Precautionary saving</strong>——对医疗费 / 长寿的不确定性的恐惧（Palumbo 1999 [15] 实证：医疗不确定性能解释美国老人 1/3 的过度储蓄）</li>
+        </ul>
+
+        <div class="figure">
+          <strong>LCH 理论 vs 美国实证：财富随年龄</strong>
+          <div class="bar-row"><span>理论 · 25 岁</span><div class="bar" style="width:15%"></div><span>低</span></div>
+          <div class="bar-row"><span>理论 · 45 岁</span><div class="bar" style="width:75%"></div><span>peak</span></div>
+          <div class="bar-row"><span>理论 · 65 岁</span><div class="bar" style="width:55%"></div><span>下降</span></div>
+          <div class="bar-row"><span>理论 · 85 岁</span><div class="bar" style="width:3%"></div><span>≈ 0</span></div>
+          <div class="bar-row"><span>实证 · 25 岁</span><div class="bar alt" style="width:10%"></div><span>低</span></div>
+          <div class="bar-row"><span>实证 · 45 岁</span><div class="bar alt" style="width:50%"></div><span>中</span></div>
+          <div class="bar-row"><span>实证 · 65 岁</span><div class="bar alt" style="width:85%"></div><span>continues up</span></div>
+          <div class="bar-row"><span>实证 · 85 岁</span><div class="bar alt" style="width:95%"></div><span>peak（死时）</span></div>
+          <div class="figure-cap">理论曲线在退休后<strong>下降到零</strong>。实证曲线<strong>持续上升直到死亡</strong>。这两个差距就是 Die With Zero 论点的 target——Bill 想让你的曲线<strong>更接近理论</strong>，不一定到零，但起码停止攀升。[8][9][10][11]</div>
+        </div>
+
+        <h3>这意味着什么</h3>
+
+        <p>意味着 Bill 的论点不是 contrarian eccentricity——他在援引<strong>70 年的经济学正统</strong>。如果你觉得"死时归零"听起来太激进——你真正在反对的是 Modigliani 的 Nobel-winning 框架。多数人对"归零"的本能抗拒来自<strong>行为偏差</strong>（mental accounting / loss aversion / 习惯）而非<strong>对理论的实质性反驳</strong>。这区分重要——你可以选择不照 LCH 做，但要诚实承认你<strong>知道</strong>自己在偏离 utility-maximizing 解。</p>
+
+        <div class="pullbox warn">
+          <h4>但 Palumbo 1999 给了 LCH 一个硬反驳</h4>
+          <p style="margin:0;">Palumbo 1999 [15] 实证显示：美国老人过度储蓄的<strong>很大一部分是理性的 precautionary saving</strong>——针对<strong>不可保的医疗费用</strong>（尤其 long-term care）。在没有全民医保 / SPIA 不普及的美国，老人攒钱<strong>不是非理性</strong>——是<strong>对市场失灵的合理反应</strong>。Chou-Liu-Hammitt 2003 [14] 用台湾的全民医保 introduction 做自然实验——发现引入全民医保后家庭储蓄率<strong>显著下降</strong>——证实医疗不确定性确实驱动 precautionary saving。这意味着：在美国 spend down 比在有全民医保的国家<strong>风险更大</strong>。Bill 没充分讨论这点。</p>
+        </div>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · The Self-Insurance Problem</p>
+        <h2 class="unit-h">你不是好的保险代理人</h2>
+
+        <p>多数人对"为什么不能归零"的第一反应："<strong>万一活到 95 岁怎么办？</strong>"——这是 longevity risk。Bill 的回应：你试图自己 insure 这个风险——但<strong>你做不好</strong>。这一节解释为什么数学上你 self-insure 必然<strong>过度准备</strong>。</p>
+
+        <h3>保险的核心机制：risk pooling</h3>
+
+        <p>保险公司不是预测谁会出事——是<strong>把数百万人的不确定性 pool 在一起</strong>。每个人的最坏情况不能预测，但<strong>群体的平均</strong>可以预测得相当准。这就让保险公司能为每个人按<strong>预期成本 + 小溢价</strong>定价，而不是按<strong>每个人的最坏情况</strong>定价。</p>
+
+        <p>你 self-insure 时<strong>没有 pool</strong>——你只有<strong>一个样本</strong>（你自己）。你不能"平均"自己。所以你必须按你自己的<strong>最坏情况</strong>准备。最坏情况是什么？比如你身体健康、有长寿基因——你可能活到 100 岁。你必须按 100 岁<strong>之前不能破产</strong>准备。这意味着 65 岁你必须有 35 年生活费的资产。</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:32%;">情境</th><th>需要多少年资金</th><th>实际死亡年龄</th><th>浪费</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Self-insure to age 100</td><td>35 年生活费</td><td>实际 82 岁</td><td><strong>18 年生活费</strong>没花到</td></tr>
+            <tr><td>Self-insure to age 95</td><td>30 年生活费</td><td>实际 82 岁</td><td><strong>13 年生活费</strong>没花到</td></tr>
+            <tr><td>Self-insure to age 90</td><td>25 年生活费</td><td>实际 82 岁</td><td><strong>8 年生活费</strong>没花到</td></tr>
+            <tr><td>Pool with annuity 公司</td><td>按 expected longevity (~85)</td><td>实际 82 岁</td><td><strong>≈ 0</strong>（你买的就是保险）</td></tr>
+          </tbody>
+        </table>
+
+        <p>含义：<strong>self-insurance 本质是过度准备</strong>。你<strong>必须</strong>过度准备，因为你不能预测自己。你越是想<strong>稳妥</strong>——越要把"活到 95 岁"当 baseline——你就 over-save 越多。结果：你为永远不会到来的 30 年免费工作。</p>
+
+        <h3>美国人已经在买另一种保险——为什么不买 longevity 保险？</h3>
+
+        <p>Statista 2019 [17] 数据：约 60% 美国成年人有寿险（life insurance）。寿险保的是"<strong>过早死</strong>"——你死太早、留下家人没收入。但 <strong>annuity 是它的镜像</strong>——保的是"<strong>活太久</strong>"——你活到 95 没收入。Lieber 2018 NYT 文章 [18] 称这是"<strong>逆向人寿险</strong>"——你给保险公司一笔钱，他们承诺<strong>只要你活着就发钱给你</strong>。</p>
+
+        <p>逻辑上 annuity 比寿险<strong>更普遍需要</strong>——因为多数有家庭责任的人都在工作年龄需要 longevity protection 多于 mortality protection（你的家人在你早死时有政府/家人 safety net；你活太久没人帮你）。但美国 annuity 持有率<strong>远低于</strong>寿险持有率。这是下一节的话题。</p>
+
+        <div class="pullbox idea">
+          <h4>把 self-insure 的真实成本算出来</h4>
+          <p style="margin:0;">你试图 self-insure longevity 的"成本"<strong>不是 0</strong>。它是：(你按 95 岁准备的资金 - 你按 85 岁准备的资金) × 时间贴现 = 多年的生命能量。多数人 self-insure 是因为他们<strong>没把这笔成本算清楚</strong>——他们觉得"多攒一点没坏处"。错。多攒一点的成本是<strong>具体的、可以算的生命时间</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · The Annuity Puzzle</p>
+        <h2 class="unit-h">Annuity Puzzle — 数学最优、但没人买</h2>
+
+        <p>Richard Thaler 2011 在 NYT 写了一篇著名 op-ed [19]，名字就叫 "The Annuity Puzzle"。困惑是：经济学家几十年来证明 annuity 是<strong>longevity risk 的最优解</strong>——但绝大多数<strong>非强制 annuity 市场</strong>的渗透率极低。理性模型预测人们会买，行为不匹配。</p>
+
+        <h3>Thaler 列出的可能解释</h3>
+
+        <ol class="deep">
+          <li><strong>失去 principal 的心理障碍</strong>——你交 $200K 给保险公司，他们承诺每月给你钱直到你死。但你<strong>不再有那 $200K</strong>。如果你 2 年后死——你"亏了"。这种"亏了"的感受是 mental accounting 失误（你买的是<strong>保险</strong>不是<strong>投资</strong>，本来就不该期待 principal 回收）但情绪上极强。</li>
+          <li><strong>不信任保险公司</strong>——担心 50 年后保险公司破产、监管不到位、合同执行有问题。Bill 没充分讨论这点，但 White Coat Investor [9] 把这个挑得很尖锐。</li>
+          <li><strong>Bequest motive</strong>——想给孩子留遗产。Annuity 买完——你死时它<strong>归零</strong>（保险公司 keep it）。和"想留遗产"直接冲突。但 Bill 在 Ch5 会论证"<strong>留遗产的最优时机不是死后</strong>"——这会回头帮你松开 bequest motive 对 annuity 的阻碍。</li>
+          <li><strong>误以为自己能自己投资得更好</strong>——典型 retail 投资者的 overconfidence。但 annuity 的 yield 不是<strong>投资 yield</strong>——是<strong>mortality credit</strong>（其他买家先死、他们的钱补贴你）。这是任何个人投资都<strong>不能复制的</strong>。</li>
+        </ol>
+
+        <h3>Becker-Murphy-Philipson 2007 的反向论证</h3>
+
+        <p>Becker, Murphy &amp; Philipson 2007 [20] NBER 论文 "The Value of Life Near Its End" 提出一个反直觉但严密的论证：临终前几年大量 spending（医疗、临终护理、最后一次度假）<strong>是理性的</strong>——因为<strong>剩余生命 utility 集中在那段</strong>，所以边际美元在那段的 utility 比中年高得多。这给了一个 annuity 的另一面论点：你不只该 pool longevity 风险——你该<strong>把支出向生命末端倾斜</strong>。Annuity 自然做这件事（你越老每月领的越多——因为你提取期累积）。</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:30%;">策略</th><th>longevity risk 处理</th><th>死时余额</th><th>主要成本</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Self-insure（攒钱 + 投资）</td><td>按最坏情况准备</td><td>大概率正余额（活不到最坏情况）</td><td>过度准备 = 多年生命能量</td></tr>
+            <tr><td>Annuity（数学最优）</td><td>pool 给保险公司</td><td>≈ 0（按设计）</td><td>失 principal 的心理 + 公司风险</td></tr>
+            <tr><td>Hybrid（部分 annuitize）</td><td>部分 pool</td><td>取决于 annuitize 比例</td><td>折中——多数 advisor 推荐 30-50% annuitize</td></tr>
+            <tr><td>什么都不做（多数人）</td><td>无意识 self-insure</td><td>实证：中位剩 2/3 退休时资产 [11]</td><td><strong>最大的浪费</strong>——没意识到自己在 over-prepare</td></tr>
+          </tbody>
+        </table>
+
+        <h3>美国市场的现实：理论好、产品差</h3>
+
+        <p>这一节必须诚实讲：理论上 annuity 是 longevity risk 的最优解——但<strong>美国市场上能买到的产品有几个深问题</strong>：</p>
+
+        <div class="pullbox warn">
+          <h4>White Coat Investor 对 Bill 的 annuity 论点的核心反驳 [9]</h4>
+          <ul class="deep" style="margin:0;">
+            <li><strong>通胀挂钩 SPIA 在美国基本买不到</strong>。普通 nominal SPIA 在 30 年的退休期里被通胀蚕食——你 65 岁买的"每月 $3K"到 85 岁实际购买力可能只剩一半。Bill 的理论模型假设 inflation-protected annuity 普遍可得——现实不是。</li>
+            <li><strong>保险公司破产风险</strong>——州 guaranty fund 通常只 cover $250K-$500K，超出的部分有真实风险</li>
+            <li><strong>fees 和 spread</strong>——非营利的 fair-mortality-credit 在零售市场被 markup 吞掉相当一部分</li>
+            <li><strong>不可逆性</strong>——一旦 annuitize，遇到突发现金需求（家人医疗、机会投资）无法 access principal</li>
+          </ul>
+          <p style="margin:8px 0 0 0;">所以这一节不是劝你"赶紧买 annuity"——是让你<strong>看清你 self-insure 的真实成本</strong>。即便你最终决定不买——你应该是<strong>知情地选择 self-insure</strong>，不是 default into it。</p>
+        </div>
+
+        <p>实操建议：跟<strong>无佣金</strong>顾问（fee-only fiduciary）做一次 annuity quote——不是为了买，是为了<strong>把数字摆在桌上</strong>。看完你大概率会发现自己原计划的 35 年 self-insure 储蓄需求<strong>远高于</strong> partial annuitize + 20 年储蓄需求的组合。差额 = 你能 aggressive spend 的部分。</p>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · Final Countdown</p>
+        <h2 class="unit-h">把死亡变成 actionable date</h2>
+
+        <p>"我不知道何时死"是 over-save 最大的借口。Bill 的回应：你确实不知道<strong>精确日期</strong>，但你可以知道<strong>概率分布</strong>。而<strong>概率分布</strong>足够 actionable。</p>
+
+        <h3>三个具体工具</h3>
+
+        <ol class="deep">
+          <li><strong>Society of Actuaries Longevity Illustrator</strong>（<code>longevityillustrator.org</code>）——免费、由实际寿命统计师维护。输入年龄 / 性别 / 吸烟 / 健康自评——输出你活到各年龄的概率。这是<strong>非营销</strong>工具——它不卖 annuity，没有偏向。</li>
+          <li><strong>Living to 100 Calculator</strong>——基于波士顿大学 New England Centenarian Study 数据，输入更详细的生活方式因素。</li>
+          <li><strong>Final Countdown app</strong> [21]——ThangBom LLC 2013 出品。输入你的预期死亡日期（用上面两个工具算出来）——它在你 phone 主屏上显示"<strong>You have 14,832 days left</strong>"，每天减 1。Bill 自己用了——他说这彻底改变了他对当下决策的态度。</li>
+        </ol>
+
+        <h3>为什么"具体日期" matters</h3>
+
+        <p>大脑对"<strong>未来某时</strong>"和"<strong>2058 年 4 月 17 日</strong>"的处理方式不同。前者激活抽象思维 → 拖延；后者激活具体规划 → 行动。这是行为经济学反复证明的"<strong>specificity effect</strong>"。Bill 用 Final Countdown 把这个 effect 武器化——你每次解锁手机都被提醒<strong>具体剩多少天</strong>。一周看 100 次后，你的决策框架会变。</p>
+
+        <div class="figure">
+          <strong>60 岁、健康一般的人：寿命分布 + 对应的 spend-down 速率（示意，基于 SoA Longevity Illustrator 典型输出）</strong>
+          <div class="bar-row"><span>50% 概率活到</span><div class="bar" style="width:85%"></div><span>~85 岁</span></div>
+          <div class="bar-row"><span>25% 概率活到</span><div class="bar alt" style="width:91%"></div><span>~91 岁</span></div>
+          <div class="bar-row"><span>10% 概率活到</span><div class="bar alt2" style="width:96%"></div><span>~96 岁</span></div>
+          <div class="figure-cap">如果按 25 年（活到 85）规划——你有 50% 概率会"过日子"。按 36 年（活到 96）规划——你有 90% 安全 margin 但 over-save 了 11 年。Annuity 让你不用做这个选择——保险公司 pool 之后你就按 expected (~85) 规划，不用承担长尾风险。这就是 §3-§4 的具体应用。</div>
+        </div>
+
+        <h3>把概率翻译成 spend-down 速率</h3>
+
+        <p>假设你 60 岁，资产 $1M，预期死亡 85 岁（25 年）。三种 confidence interval 下的 spend-down 不同：</p>
+
+        <table>
+          <thead>
+            <tr><th>目标 confidence</th><th>规划年数</th><th>年支出（假设 4% real return）</th><th>注</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>50%（按中位寿命）</td><td>25 年</td><td>≈ $64K / 年</td><td>有 50% 概率最后几年 broke</td></tr>
+            <tr><td>75%</td><td>30 年</td><td>≈ $58K / 年</td><td>典型 advisor 推荐</td></tr>
+            <tr><td>90%</td><td>36 年</td><td>≈ $53K / 年</td><td>"safe"——但 over-save 概率高</td></tr>
+            <tr><td>Hybrid（partial annuitize 40%）</td><td>按 expected lifespan</td><td>≈ $60K + 终身 floor</td><td><strong>Bill 推荐方向</strong>：annuity 提供 floor，剩余 self-managed 上层</td></tr>
+          </tbody>
+        </table>
+
+        <p>关键 insight：<strong>多 1 年规划 = 少几千美元年支出</strong>。你为多准备的每一年支付了具体的当下生活质量。这不是抽象的——Final Countdown 让你<strong>每天</strong>看到这个 tradeoff。</p>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · The Reframe</p>
+        <h2 class="unit-h">Bill 自己承认：literal zero 不可能</h2>
+
+        <p>这一节是这本书最容易被误解的部分。Bill 在 Conclusion 里直接承认：</p>
+
+        <div class="quote">
+          "Of course, in practice, you can't actually die with literally zero dollars... The goal is to <em>approach</em> zero, to die with as little as possible while still being responsible."
+          <cite>— Bill Perkins, <em>Die With Zero</em>, Conclusion 转述</cite>
+        </div>
+
+        <p>"<strong>Die With Zero</strong>" 是一个<strong>方向</strong>，不是一个<strong>终点</strong>。Bill 真正的目标不是让你死时 $0——是让你<strong>停止 autopilot 攒钱</strong>，<strong>主动决定何时开始 decumulate</strong>。多数人从来不做这个 transition——他们一辈子 accumulate，死时余额 = peak。Bill 想让 accumulate 阶段有个明确终点，之后<strong>反向流动</strong>。</p>
+
+        <h3>Stein 1998 的 go-go / slow-go / no-go 框架</h3>
+
+        <p>Michael Stein 1998 [12] 在 <em>The Prosperous Retirement</em> 提出一个被广泛引用的 decumulation 模型，把退休分三段：</p>
+
+        <ol class="deep">
+          <li><strong>Go-go years (~65-75 岁)</strong>——身体还能 travel、entertain、active hobbies。<strong>消费高 peak</strong>。</li>
+          <li><strong>Slow-go years (~75-85 岁)</strong>——能量下降、travel 减少、社交圈缩小。<strong>消费 25-30% 下降</strong>。</li>
+          <li><strong>No-go years (~85+ 岁)</strong>——可能 mobility 受限、cognitive 下降、医疗成为主要支出。<strong>discretionary 消费几乎归零</strong>，但医疗可能 spike。</li>
+        </ol>
+
+        <div class="figure">
+          <strong>Stein 三段 decumulation curve（示意）</strong>
+          <div class="bar-row"><span>Go-go (65-75)</span><div class="bar" style="width:90%"></div><span>peak</span></div>
+          <div class="bar-row"><span>Slow-go (75-85)</span><div class="bar alt" style="width:65%"></div><span>↓ 25-30%</span></div>
+          <div class="bar-row"><span>No-go (85+)</span><div class="bar alt2" style="width:35%"></div><span>↓↓ discretionary</span></div>
+          <div class="figure-cap">Foster 2015 BLS [13] 实证印证：65-74 岁年消费 $55K vs 75+ 岁 $42K（约 24% 下降）。Stein 的三段不是 prescription——是<strong>描述大多数人自然发生的事</strong>。健康和兴趣<strong>自然下降</strong>意味着<strong>你无法在 80 岁花掉 50 岁能花掉的钱</strong>——即便你想。</div>
+        </div>
+
+        <h3>这对你的 plan 意味着什么</h3>
+
+        <p>Stein 模型 + 你的概率分布 = 一个具体 decumulation schedule。具体说：</p>
+
+        <ul class="deep">
+          <li><strong>65-75 岁是你 spending 的<strong>最高利率窗口</strong></strong>——身体好、时间多、记忆力强、memory dividend 复利期最长。这是你最该 aggressive spend 的 10 年。</li>
+          <li><strong>75-85 岁是 self-care + 关系 spending</strong>——长 travel 减少但 quality time / 跟孙辈相处增加。</li>
+          <li><strong>85+ 岁主要是<strong>医疗 reserve</strong></strong>——这部分你<strong>需要</strong>保险（Medicare + supplemental + 可能 long-term care insurance）覆盖，而<strong>不是 self-insure</strong>。</li>
+        </ul>
+
+        <div class="pullbox idea">
+          <h4>"Die with zero" 重新定义</h4>
+          <p style="margin:0;"><strong>Die With Zero ≠ 死时账户 $0</strong>。<br>
+          <strong>Die With Zero = 死时账户里没有<strong>你本可以用来增加生命体验</strong>的钱</strong>。<br>
+          剩下<em>医疗 reserve、合理 buffer、安排好的 bequest</em>——那些不是"浪费"，是 specific purpose 的资金。"Zero" 是<strong>discretionary surplus</strong> 那一部分的目标。这是 Bill 实际想说的，比 marketing title 更准确。</p>
+        </div>
+      </section>
+
+      <!-- §7 -->
+      <section class="unit" id="s7">
+        <p class="unit-eyebrow">§7 · Three Actionable Principles</p>
+        <h2 class="unit-h">从这一章带走的三条原则</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>算你的 longevity number — 知道你在 self-insure 多少。</strong><br>
+            上 <code>longevityillustrator.org</code> 输入数据。记下你的 50% / 25% / 10% 寿命。再算 minimum survival cost（如果 discretionary 全砍只留住房 + 食物 + 医保 + 基本交通——年支出多少？）。<strong>longevity number × minimum survival</strong> = 你<strong>无论如何不能动</strong>的部分。其余 = 你能 aggressive spend 的部分。多数人没做这个区分——他们把整个净资产当"应急金"对待。
+          </li>
+          <li>
+            <strong>严肃 evaluate annuities —— 不是为了买，是为了看清自己 self-insure 的真实成本。</strong><br>
+            跟<strong>fee-only fiduciary</strong>（不靠 commission 的顾问）做一次 annuity quote。把"如果我 partial-annuitize 40% 的退休资产，剩下 60% self-manage" 跟"100% self-manage" 两个 plan 摆在一起比。你会看到：annuity 选项的<strong>当下可支出</strong>反而<strong>更多</strong>（因为不需要 self-insure 长尾）。即便你最后选择不买——你是<strong>知情</strong>的选择，不是 default into self-insurance。
+          </li>
+          <li>
+            <strong>装 Final Countdown app —— 把抽象死亡变成日历。</strong><br>
+            Bill 这条建议听起来像噱头——但行为效果<strong>实证</strong>。每天解锁手机看到"剩 14,832 天"会改变你对"再加班一年"的反应。一年后这个数字会变成 14,467——你会真切地感受 365 天<strong>不是 abstract 的</strong>。如果 app 太 morbid——至少在日历上标一个"<strong>预期死亡日</strong>"，每年生日往回算。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把这一章压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>"我不知道何时死"不是 over-save 的借口——它是<strong>买保险</strong>的理由。你能 pool 长寿风险，不必为最坏情况免费工作 2.5 年。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Reflection Exercises</p>
+        <h2 class="unit-h">反思练习（写下来，不要在脑子里完成）</h2>
+
+        <p>这一章的最大风险：你接受论点，但<strong>没具体算自己的数字</strong>。算式不算不出洞察。这 4 个练习把数学落到你身上。</p>
+
+        <div class="exercise">
+          <h4>练习 1 — 你自己的 Elizabeth 数字</h4>
+          <p>用 Ch1 练习 1 算出的真实时薪，× 你 5 年内最可能的"过度储蓄" amount（你目前的 net worth peak projection - 你认为足够 cover 余生的数字 = surplus）。这个 surplus ÷ 真实时薪 = 你<strong>为余额免费工作的小时数</strong>。把这个数字写下来。它跟 Elizabeth 的 6,646 小时比怎样？</p>
+          <textarea placeholder="例：真实时薪 $25。projected net worth peak (65 岁) ≈ $1.5M。我认为余生 + 医疗 reserve 需要 $900K。surplus = $600K → $600K / $25 = 24,000 小时 → 4,800 周 50 小时班 → ~96 周 → 约 2 年免费工作。这值吗？我打算怎么 deflate 这个 surplus？"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — 你的真实寿命分布</h4>
+          <p>上 <code>longevityillustrator.org</code>（免费）输入你的数据。记下 50% / 25% / 10% 寿命概率。这个分布跟你目前的 retirement plan 用的"规划寿命"差多少？如果你目前按 95 岁规划——但 50% 概率你活到 87、10% 概率到 96——这意味着你的 plan 有多少<strong>over-prepare</strong> margin？这个 margin 价值多少年的生活？</p>
+          <textarea placeholder="不需要给"我会改 plan"的答案——给"我目前 over-prepare 多少年"的数字。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — 你的父母 / 祖父母临终前的 spending pattern</h4>
+          <p>诚实回顾：你父母 / 祖父母（已故或在世晚期）在 75+ 岁之后<strong>实际</strong>花了什么钱？什么没花（即便有能力花）？他们手上死时还有多少？这个观察告诉你什么——关于消费在 75+ 岁后的<strong>自然下降</strong>？关于 Stein "go-go / slow-go / no-go" 在你家族里的具体表现？</p>
+          <textarea placeholder="这个练习不是为了 judge 长辈——是为了用真实样本校准你对"老年消费"的假设。多数人发现：老人花得比自己以为的少很多。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 4 — 你 5 年后的 spending gap</h4>
+          <p>预测你 5 年后的净资产（projected）- 5 年后你的真实生存成本 × 剩余生命预期 = surplus gap。这个 gap 你打算<strong>具体怎么花</strong>？写出至少 3 个 specific items（不要"travel more"——要"2028 年带父母去欧洲 3 周，预算 $X"）。哪些是 memory dividend 高的？哪些是 status-driven？</p>
+          <textarea placeholder="如果你写不出 3 个 specific spend——这意味着你<strong>没真在 plan how to spend</strong>，只在 plan how to save。这本书想让你 reverse 这个方向。"></textarea>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Self-Check Quiz</p>
+        <h2 class="unit-h">自检 Quiz（先答，再展开看解析）</h2>
+
+        <details class="quiz">
+          <summary>Q1. Modigliani Life-Cycle Hypothesis 的核心 prediction 是？</summary>
+          <p>A) 退休前消费应平稳<br>
+          B) 高收入年应多储蓄<br>
+          C) <strong>理性 utility-maximizer 应规划消费——使财富在死亡日精确归零</strong><br>
+          D) 应在 65 岁前还清房贷</p>
+          <div class="answer"><strong>正确答案：C。</strong>LCH 的核心是"<strong>归零</strong>"——任何死时正余额都意味着没把生命周期 utility 最大化。Hurd 1992 [8] 把它形式化、用数据测试。实证发现美国人远偏离这个最优解——这就是 Shefrin-Thaler 1991 [9] 用 behavioral LCH 修正的对象。Bill 的"Die With Zero" 不是 contrarian——是援引 Modigliani 70 年的经济学正统。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. "Annuity puzzle" (Thaler 2011) 是？</summary>
+          <p>A) annuity 数学很复杂<br>
+          B) <strong>经济学理论预测多数人应买 annuity（longevity risk 最优解），但实际购买率极低——这个差距称为 puzzle</strong><br>
+          C) annuity 在中国不可得<br>
+          D) annuity 比 bond 收益低</p>
+          <div class="answer"><strong>正确答案：B。</strong>Thaler 2011 NYT op-ed [19] 提的核心困惑：理论上 longevity risk 应该 pool（像 mortality risk 通过寿险 pool 一样），但 60% 美国人买寿险、远少买 annuity。可能解释：失 principal 心理、不信保险公司、bequest motive、overconfidence。Becker-Murphy-Philipson 2007 [20] 用临终 high-utility 论点为 annuity 加了一个正面理由——临终前 marginal $1 effect 比中年大。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. Elizabeth 的故事真正的点是？</summary>
+          <p>A) 文员应该谈加薪<br>
+          B) Austin 生活成本低<br>
+          C) <strong>死时余额 $130K ÷ 真实时薪 $19.56 = 6,646 小时 = 2.5 年 50-小时-班——她为<strong>从未兑现的余额</strong>免费工作了 2.5 年人生</strong><br>
+          D) 应该早点退休</p>
+          <div class="answer"><strong>正确答案：C。</strong>Elizabeth 不是异类——Bricker 2017 [10] + Banerjee 2018 [11] 实证：美国中位退休家庭 18 年只花 1/3 退休资产，2/3 没花就死了。Foster 2015 BLS [13] 数据印证消费随年龄下降。这个 "wasted life energy" 数字是 Die With Zero 论点的核心数学——它把"剩 $X 万"翻译成"<strong>具体的多少年生命浪费</strong>"。把你自己的数字代进去（练习 1）会很有冲击力。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. Bill 在 Conclusion 自己承认 literal zero 不可能——为什么还坚持这个目标？</summary>
+          <p>A) 因为他没想清楚<br>
+          B) 因为出版社坚持<br>
+          C) <strong>"Die With Zero" 是<strong>方向</strong>不是终点——它的真正目的是让你停止 autopilot accumulate、主动决定 decumulate 的时机和速率</strong><br>
+          D) 因为他相信精确归零真能做到</p>
+          <div class="answer"><strong>正确答案：C。</strong>Bill 在 Conclusion 明确说："The goal is to <em>approach</em> zero." 真正的目标不是 $0 余额——是<strong>区分 discretionary surplus（应该 spend down）和必要 reserve（医疗 / 合理 bequest / buffer）</strong>。"Zero" 指的是 discretionary surplus 那一部分。这个 reframe 让 annuity / Final Countdown / decumulation schedule 这些工具都有意义——它们不是要把你账户清空，是要让 surplus 那部分流回你的<strong>当下生活</strong>而不是<strong>死后余额</strong>。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5. Stein 1998 的 "go-go / slow-go / no-go" 三段对 retirement plan 有什么含义？</summary>
+          <p>A) 退休早晚都一样<br>
+          B) 75 岁后应停止投资<br>
+          C) <strong>消费<strong>自然</strong>随年龄下降（go-go peak → slow-go ↓25-30% → no-go discretionary 接近 0），所以 retirement plan 不该按"匀速消费 30 年"做——该把支出向 go-go 倾斜</strong><br>
+          D) 应该买长期险</p>
+          <div class="answer"><strong>正确答案：C。</strong>Foster 2015 BLS [13] 实证印证：65-74 岁年消费 $55K，75+ 岁降到 $42K。这<strong>不是因为没钱</strong>——是因为<strong>能量 / 兴趣 / mobility 自然下降</strong>。含义：你在 50 岁规划"保住 30 年生活费"是<strong>错的</strong>——前 10 年（go-go）该 spend 多得多，后 10 年（no-go）需要的 discretionary 几乎归零（但医疗 reserve 该 separate）。Bill 想让你<strong>aggressive spend go-go years</strong>——那是 memory dividend 复利期最长的窗口。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读</h3>
+        <ol>
+          <li><span class="tag">理论</span>Modigliani, F. (1950s onward). Life-Cycle Hypothesis. Nobel Prize 1985. — "Die With Zero" 的经济学正统出处。理性 utility-maximizer 应让财富死亡日归零。</li>
+          <li><span class="tag">理论</span>Hurd, M. D. (1992). Wealth Depletion and Life-Cycle Consumption by the Elderly. In <em>Topics in the Economics of Aging</em>, University of Chicago Press. — LCH 的形式化 + 实证测试，发现美国老人偏离最优解。</li>
+          <li><span class="tag">理论</span>Shefrin, H. M., &amp; Thaler, R. H. (1991). The Behavioral Life-Cycle Hypothesis. <em>Economic Inquiry</em>, 26(4), 609-643. — 用 mental accounting / self-control / inertia 解释为什么人偏离 LCH。"It's hard to teach an old household new rules."</li>
+          <li><span class="tag">实证</span>Bricker, J., et al. (2017). Changes in U.S. Family Finances from 2013 to 2016. <em>Federal Reserve Bulletin</em> 103. — 美国家庭按年龄分组的中位净资产数据。65-74 岁 $224K、75+ 岁 $264K——净资产<strong>不下降反上升</strong>。</li>
+          <li><span class="tag">实证</span>Banerjee, S. (2018). Asset Decumulation or Asset Preservation? <em>EBRI Issue Brief</em> 447. — 面板数据追踪 retiree 20 年。中位家庭 18 年只花 1/3 资产，2/3 没花就死了。Die With Zero 论点的核心实证之一。</li>
+          <li><span class="tag">理论</span>Stein, M. K. (1998). <em>The Prosperous Retirement: Guide to the New Reality</em>. — 提出 go-go / slow-go / no-go 三段 decumulation 框架。被几乎所有 retirement planner 引用。</li>
+          <li><span class="tag">实证</span>Foster, A. C. (2015). Consumer Expenditures Vary by Age. <em>BLS Beyond the Numbers</em> 4(14). — 按年龄分组的实际消费数据。55-64 岁 $65K → 65-74 岁 $55K → 75+ 岁 $42K，印证 Stein 三段。</li>
+          <li><span class="tag">实证</span>Chou, S.-Y., Liu, J.-T., &amp; Hammitt, J. K. (2003). National Health Insurance and Precautionary Saving: Evidence from Taiwan. <em>Journal of Public Economics</em> 87. — 台湾全民医保自然实验。引入后家庭储蓄率显著下降——证实医疗不确定性驱动 precautionary saving。</li>
+          <li><span class="tag">实证</span>Palumbo, M. G. (1999). Uncertain Medical Expenses and Precautionary Saving Near the End of the Life Cycle. <em>Review of Economic Studies</em> 66. — 美国数据：医疗费不确定性能解释美国老人 1/3 的过度储蓄。Bill 没充分讨论的 LCH 反驳。</li>
+          <li><span class="tag">实证</span>Statista (2019). Distribution of Life Insurance Ownership in the United States. — ~60% 美国成年人有寿险。但 annuity 持有率远低——这就是 annuity puzzle 的实证 setup。</li>
+          <li><span class="tag">书评</span>Lieber, R. (2018). The Simplest Annuity Explainer. <em>The New York Times</em>. — 把 annuity 描述为"逆向人寿险"——保活太久而非死太早。可读性最高的入门解释。</li>
+          <li><span class="tag">理论</span>Thaler, R. H. (2011). The Annuity Puzzle. <em>The New York Times</em>, June 4. — 行为经济学 framing：为什么数学最优的 annuity 实际购买率极低。这是这一章 §4 的核心理论 reference。</li>
+          <li><span class="tag">实证</span>Becker, G. S., Murphy, K. M., &amp; Philipson, T. J. (2007). The Value of Life Near Its End and Terminal Care. NBER Working Paper 13333. — 临终前 spending（医疗 / 临终护理）是<strong>理性的</strong>——剩余生命 utility 集中在那段，边际美元 utility 比中年高。为 annuity 加了正面理由。</li>
+          <li><span class="tag">案例</span>"Final Countdown Timer" app, v1.8.2, ThangBom LLC, 2013. — Bill 推荐的具体工具，主屏显示"You have N days left"。把抽象死亡变成 actionable date。</li>
+          <li><span class="tag">延伸</span>AARP (2018). 5 Things You Should Know About Long-Term Care Insurance. — 美国 LTC 保险的现实——价格高、cover 不全、保险公司退出市场。Bill 没解决但你需要知道的细节。</li>
+          <li><span class="tag">书评</span>White Coat Investor. (2020+). Problems I Have with the Die With Zero Philosophy. — 对 §4 annuity 论点的核心反驳：通胀挂钩 SPIA 在美国基本不可得，保险公司破产风险，fees。读完 Bill 之后必读的反向 reality check。</li>
+        </ol>
+        <p style="margin-top:18px;color:var(--muted);">下一步：第三章 · 给孩子和慈善 — 时机决定一切（继承 peak age 60 问题、giving while living、peak utility of money）。</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

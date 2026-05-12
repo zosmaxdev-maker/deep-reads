@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第一章 · 行为胜过智能 — 《金钱心理学》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      padding: 28px 22px;
+      border-right: 1px solid var(--line);
+      background: #efebe0;
+    }
+
+    .crumb {
+      margin: 0 0 4px;
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .ch-num {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino", "Georgia", serif;
+      font-size: 56px;
+      line-height: 1;
+      color: var(--challenge);
+    }
+
+    .ch-title {
+      margin: 6px 0 0;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .ch-sub {
+      margin: 6px 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    nav { display: grid; gap: 4px; }
+
+    nav a {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 8px;
+      padding: 7px 9px;
+      border-radius: 6px;
+      color: #34302a;
+      font-size: 13.5px;
+      text-decoration: none;
+    }
+
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    main {
+      padding: 44px clamp(22px, 5vw, 64px) 96px;
+      max-width: 920px;
+    }
+
+    h1.lead {
+      margin: 0 0 8px;
+      font-family: "Iowan Old Style", "Palatino", "Georgia", serif;
+      font-size: clamp(34px, 4.6vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+
+    .lead-sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .quote {
+      margin: 22px 0 0;
+      padding: 14px 18px;
+      border-left: 4px solid var(--accent);
+      background: var(--soft);
+      font-style: italic;
+      color: #2e3b3a;
+    }
+
+    .quote cite {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-style: normal;
+      font-size: 13.5px;
+    }
+
+    section.unit {
+      margin: 56px 0 0;
+      scroll-margin-top: 24px;
+    }
+
+    .unit-eyebrow {
+      margin: 0;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h2.unit-h {
+      margin: 4px 0 14px;
+      font-family: "Iowan Old Style", "Palatino", "Georgia", serif;
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin: 26px 0 10px;
+      font-size: 18.5px;
+      font-weight: 700;
+    }
+
+    p { margin: 10px 0; }
+
+    .pullbox {
+      margin: 16px 0;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+
+    .pullbox h4 {
+      margin: 0 0 6px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+    .pullbox.warn h4 { color: var(--challenge); }
+
+    table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 14.5px;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #efebe0;
+      font-weight: 700;
+      color: #34302a;
+    }
+
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+
+    .figure {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+
+    /* simple bar chart */
+    .bar-row {
+      display: grid;
+      grid-template-columns: 130px 1fr 80px;
+      gap: 10px;
+      align-items: center;
+      margin: 6px 0;
+      font-size: 14px;
+    }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+
+    .exercise {
+      margin: 18px 0;
+      padding: 16px 18px;
+      border: 1px dashed var(--accent);
+      border-radius: 8px;
+      background: #f3f8f6;
+    }
+    .exercise h4 {
+      margin: 0 0 6px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .exercise textarea, .exercise input[type=text] {
+      width: 100%;
+      margin-top: 8px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      font: inherit;
+      color: var(--ink);
+    }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+
+    details.quiz {
+      margin: 12px 0;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+    details.quiz summary {
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+    }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before {
+      content: "▸ ";
+      color: var(--accent);
+      font-weight: 800;
+    }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      color: #2e3b3a;
+    }
+    details.quiz .answer strong { color: var(--accent); }
+
+    .citations {
+      margin: 56px 0 0;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    .citations h3 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">The Psychology of Money</p>
+      <p class="ch-num">01</p>
+      <p class="ch-title">行为胜过智能</p>
+      <p class="ch-sub">Behavior &gt; Intelligence · 第一章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>为什么这一章值得花两小时</span></a>
+        <a href="#s1"><span class="num">§1</span><span>一个加油站工人 vs 一个哈佛 MBA</span></a>
+        <a href="#s2"><span class="num">§2</span><span>金融为什么是软实力</span></a>
+        <a href="#s3"><span class="num">§3</span><span>大脑的 7 个 bug</span></a>
+        <a href="#s4"><span class="num">§4</span><span>没人是疯子：cohort 假说</span></a>
+        <a href="#s5"><span class="num">§5</span><span>你被刻进了什么默认设置</span></a>
+        <a href="#s6"><span class="num">§6</span><span>三条可行动原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习</span></a>
+        <a href="#qz"><span class="num">?</span><span>自检 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 1 · Core Premise</p>
+      <h1 class="lead">行为胜过智能。</h1>
+      <p class="lead-sub">这本书的第一章不是技巧课，是一次审判：它指控你过去十年关于"投资靠脑子"的全部直觉。如果你想成为顶级投资者，第一步不是学更多，而是承认——智力可能根本不是这个游戏的入场券。</p>
+
+      <div class="quote">
+        "Doing well with money has little to do with how smart you are and a lot to do with how you behave. And behavior is hard to teach, even to really smart people."
+        <cite>— Morgan Housel, <em>The Psychology of Money</em>, Introduction</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing</p>
+        <h2 class="unit-h">为什么这一章值得花两小时</h2>
+
+        <p>大多数投资书在第一章会说"让我们从复利讲起"。Housel 不。他从一个看似无关的问题开始——<strong>为什么医学、工程、物理这些领域里，外行永远赢不了内行；而在金融里，一个加油站工人能跑赢一群常春藤毕业的对冲基金经理？</strong></p>
+
+        <p>这不是个鸡汤问题。这是整本书的<strong>结构性前提</strong>：如果金融真的是一门像物理一样的硬科学，那么"学得多 = 赚得多"应该成立。可现实是反过来的。这意味着我们对"投资"这件事的<strong>底层模型搭错了</strong>——我们以为它是知识竞赛，其实它是行为竞赛。</p>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>为什么 IQ 高、信息多、模型复杂在金融里<strong>不一定</strong>转化为收益？</li>
+            <li>"没人是疯子"是道德主张还是<strong>实证假说</strong>？它的科学证据在哪？</li>
+            <li>你自己被时代和经历刻进了哪些<strong>金钱默认设置</strong>，这些设置在未来 30 年是资产还是负债？</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · The Disturbing Observation</p>
+        <h2 class="unit-h">一个加油站工人 vs 一个哈佛 MBA</h2>
+
+        <p>Housel 在序言里讲了两个真实人物的对照。这不是寓言，是公开记录。</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:20%;"></th><th>Ronald Read</th><th>Richard Fuscone</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>职业</strong></td><td>佛蒙特州加油站员工 + 百货公司清洁工</td><td>Merrill Lynch 高管，Forbes《40 under 40》入选者</td></tr>
+            <tr><td><strong>教育</strong></td><td>高中毕业（家里第一个）</td><td>Harvard MBA，Dartmouth 本科，芝加哥大学博士读过一段</td></tr>
+            <tr><td><strong>结局（&#x2248;2014）</strong></td><td>2014 年去世，遗产 <strong>~$8M</strong>，捐给医院和图书馆</td><td>2008 金融危机后房产 <strong>foreclosure</strong>，破产，妻子离婚</td></tr>
+            <tr><td><strong>策略</strong></td><td>极简：买蓝筹股，持有几十年，分散到 95+ 个公司，从不卖</td><td>高杠杆豪宅、复杂金融工程、跟随同行的炫耀性消费</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox idea">
+          <h4>关键观察</h4>
+          <p style="margin:0;">在<strong>任何其他领域</strong>这种对调都不可能。一个清洁工不会在心脏手术上跑赢哈佛医生；不会在法庭上跑赢哈佛律师；不会在火箭设计上跑赢 NASA 工程师。<strong>但在金融里，他赢了。</strong>这不是噪音——这是信号。</p>
+        </div>
+
+        <h3>这告诉我们什么</h3>
+        <p>金融领域里，"知道得多"和"赚得多"之间的<strong>相关系数远低于</strong>其他专业领域。Read 缺乏 Fuscone 知道的几乎所有专业知识——衍生品、估值模型、宏观分析。但他<strong>有 Fuscone 没有的东西</strong>：耐心、储蓄率、不去比较、不被牛市/熊市搬动情绪。这些不是"软技能"的修饰说法，<strong>它们就是</strong>这个游戏的核心技能。</p>
+
+        <div class="pullbox warn">
+          <h4>挑战自己</h4>
+          <p style="margin:0;">Fuscone 的失败是<strong>偶然</strong>吗？也许 2008 没那么糟，也许他能挺过去——这只是一个样本？回到 §3 看 Daniel Kahneman 的研究：<em>不是个例。</em>聪明人破产是一个<strong>有规律的现象</strong>，因为聪明人更容易：高估自己、用杠杆、相信复杂模型、在下跌时改变剧本。智商从"必要"变成"充分"了——它甚至成了陷阱。</p>
+        </div>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · Why Finance Is a Soft Skill</p>
+        <h2 class="unit-h">金融为什么是软实力</h2>
+
+        <p>要看清这一点，要把金融与一门"硬"科学并排放。这不是修辞，是有结构性差异的。</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:22%;">维度</th><th>物理学（硬科学的范式）</th><th>金融（软实力的范式）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>规则</strong></td><td>不变。引力 1900 年和 2026 年是同一个数。</td><td>变。1929、1987、2008、2020 每次"已知规则"都重写。</td></tr>
+            <tr><td><strong>实验</strong></td><td>可重复。同样条件给同样结果。</td><td>不可重复。每次"市场底"出现的语境都不同。</td></tr>
+            <tr><td><strong>参与者</strong></td><td>原子不会因为你观察它而改变行为。</td><td>市场会。你的买入<strong>就是</strong>价格的一部分；其他人的恐惧也是。</td></tr>
+            <tr><td><strong>胜出的核心</strong></td><td>更精确的模型 + 更准的测量。</td><td>在压力下不偏航的能力。</td></tr>
+            <tr><td><strong>知识与表现的关系</strong></td><td>线性、单调递增。</td><td>非单调，甚至倒 U 型——某个点之后<strong>越懂反而越输</strong>（过度自信、过度交易）。</td></tr>
+          </tbody>
+        </table>
+
+        <h3>学术界的两条路线</h3>
+        <p>不是 Housel 一个人这么说。从 1970 年代开始，经济学界就分裂成两条路线：</p>
+
+        <ul class="deep">
+          <li><strong>Eugene Fama 的有效市场假说（EMH，1970）</strong>——价格已经反映所有信息，市场是理性的，你赢不了它。这是"硬科学"路线 [1]。</li>
+          <li><strong>Robert Shiller 的非理性繁荣（Irrational Exuberance，2000）</strong>——市场被叙事、情绪、社会传染驱动，价格可以长期偏离基本面 [2]。这是"软实力"路线。</li>
+        </ul>
+
+        <p>2013 年诺贝尔经济学奖<strong>同时</strong>颁给了 Fama 和 Shiller——委员会承认两个矛盾的范式都有道理。然后 2017 年又颁给 <strong>Richard Thaler</strong>——行为经济学的奠基人之一 [3]。这意味着：经济学界自己已经投降了，承认<strong>纯理性模型解释不了真实市场</strong>。</p>
+
+        <div class="pullbox idea">
+          <h4>给你的提炼</h4>
+          <p style="margin:0;">如果连诺贝尔委员会都不能在"市场是不是理性的"这个问题上给出单一答案，<strong>你凭什么相信自己更聪明就能跑赢</strong>？真正的答案是：你跑赢市场的概率，不取决于你的智力，而取决于你能不能<strong>在别人慌乱时不慌</strong>——这是一种行为能力，不是认知能力。</p>
+        </div>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · Cognitive Bugs</p>
+        <h2 class="unit-h">大脑的 7 个 bug（你不能 debug 的固件）</h2>
+
+        <p>下面这些不是 self-help，是过去 50 年实验心理学和行为经济学积累出来的可重复发现。把这一节当作<strong>你交易系统里的"已知 bug 列表"</strong>——你不能修，只能围绕它们设计 process。</p>
+
+        <h3>Bug #1 — Loss Aversion（损失厌恶）</h3>
+        <p>Daniel Kahneman 和 Amos Tversky 1979 年在 <em>Econometrica</em> 发表的 <strong>Prospect Theory</strong> [4] 是行为经济学的奠基论文。核心发现：</p>
+
+        <div class="figure" aria-label="损失与收益的心理强度对比">
+          <div class="bar-row"><span>赚 $100 的快乐</span><div class="bar" style="width:40%"></div><span>≈ 1.0×</span></div>
+          <div class="bar-row"><span>亏 $100 的痛苦</span><div class="bar alt2" style="width:90%"></div><span>≈ 2.25×</span></div>
+          <div class="figure-cap">来源：Tversky &amp; Kahneman, 1992 修订估计。同等金额的损失痛苦约为收益快乐的 <strong>2-2.5 倍</strong>。</div>
+        </div>
+
+        <p>含义：在 -30% 的市场里，你<strong>感觉</strong>到的痛苦相当于上涨 60% 的快乐被抹掉。这就是为什么人会在底部割肉——不是不知道要长期持有，而是<strong>身体扛不住</strong>。</p>
+
+        <h3>Bug #2 — Recency Bias（近因偏差）</h3>
+        <p>大脑给最近发生的事更高的权重。2020 年 3 月（疫情暴跌）之后的人会高估"市场可能崩盘"的概率；2021 年牛市后的人会低估。证据：Greenwood &amp; Shleifer 2014 用<strong>消费者预期调查</strong>显示——人对未来一年股票收益的预测，与<strong>过去 12 个月的收益</strong>高度相关，而不是与估值（CAPE）相关。换言之：散户预测的方向和理性预测<strong>系统性相反</strong>。</p>
+
+        <h3>Bug #3 — Overconfidence（过度自信）</h3>
+        <p>Barber &amp; Odean 2000 年研究了 65,000 个真实散户账户 6 年的交易记录 [5]。结论：</p>
+        <ul class="deep">
+          <li>交易越频繁，跑输市场越多。</li>
+          <li>男性比女性交易频率高 45%，年化跑输市场<strong>多 1.4 个百分点</strong>。</li>
+          <li>不是"信息不足"——是"过度自信于自己的信息"。</li>
+        </ul>
+
+        <h3>Bug #4 — Herding（从众）</h3>
+        <p>Robert Shiller 调查泡沫期间的投资者，几乎所有人都说"我知道这可能是泡沫，但我看到别人在赚钱"。这不是愚蠢，是<strong>社会脑</strong>的硬连接——脱离群体在演化上意味着死亡。</p>
+
+        <h3>Bug #5 — Mental Accounting（心理账户）</h3>
+        <p>Thaler 的核心贡献。同样一笔 $1,000，如果是工资，你舍不得花；如果是中奖/退税，你会立刻消费。资产的<strong>来源</strong>不应改变它的购买力，但你的大脑认为它会。</p>
+
+        <h3>Bug #6 — Hindsight Bias（后视偏差）</h3>
+        <p>市场跌完之后，你觉得"我早就感觉到了"。但你交易记录里并没有 short。后视偏差让你<strong>高估自己的预测能力</strong>，导致下一次更敢下注。</p>
+
+        <h3>Bug #7 — Narrative Hunger（叙事饥渴）</h3>
+        <p>Shiller 2017 年 AEA 主席演讲 <em>Narrative Economics</em> [6]：经济决策大量被"故事"驱动而非数据驱动。"AI 革命""通胀失控""中国崩溃"——这些故事的传染速度比基本面变化快得多，且能<strong>独立地</strong>移动价格。</p>
+
+        <div class="pullbox warn">
+          <h4>关键不是消除 bug，而是承认它存在</h4>
+          <p style="margin:0;">7 个 bug 没有一个可以靠"我知道了所以我不会犯"来修复。Kahneman 自己说过：<em>"I've been studying these biases for 40 years, and I'm no better at avoiding them than anyone else."</em> 顶级投资者不是没有这些 bug，他们是<strong>设计了 process 来绕过它们</strong>——比如自动定投、机械再平衡、不看每日行情。这就是为什么<strong>纪律 &gt; 智力</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · No One's Crazy</p>
+        <h2 class="unit-h">"没人是疯子" — 不是道德主张，是实证假说</h2>
+
+        <p>Housel 的第一章正题叫 <em>No One's Crazy</em>。听起来像鸡汤——"理解他人"、"共情"。但这不是道德课，<strong>这是一个可以用数据检验的假说</strong>：人对金钱的态度，主要由他们 <strong>10-30 岁亲身经历</strong>的经济环境塑造，而不是教育或理论决定。如果这个假说是真的，那么"看似疯狂的金钱决定"在当事人的 cohort 视角里<strong>都是合理的</strong>——而且更重要的是，<strong>你自己也有这样的疯狂默认设置</strong>，只是看不见。</p>
+
+        <h3>实证证据：Malmendier &amp; Nagel 2011</h3>
+        <p>Ulrike Malmendier（伯克利）和 Stefan Nagel（斯坦福）在 <em>Quarterly Journal of Economics</em> 发表的论文 <strong>"Depression Babies: Do Macroeconomic Experiences Affect Risk Taking?"</strong> [7] 用 1960-2007 美国 SCF（消费者金融调查）50 年面板数据测试这个假说。</p>
+
+        <div class="figure">
+          <strong>核心发现</strong>
+          <ul class="deep" style="margin-top:6px;">
+            <li>一个人一生中亲身经历过的<strong>股票回报均值</strong>，<strong>显著</strong>影响他当下持有股票的意愿——回报经历每<strong>低 1 个百分点</strong>，持股比例平均下降几个百分点（论文 Table 4，统计显著至 p&lt;0.01）。</li>
+            <li>这个效应<strong>独立于</strong>财富、年龄、教育、收入等控制变量。</li>
+            <li>近期经历的权重<strong>大于</strong>久远经历——但久远经历也有持续效应。</li>
+            <li>对债券同样成立：经历过高通胀的人，余生持有较少长期债券。</li>
+          </ul>
+          <div class="figure-cap">含义：1929 年大萧条后成长起来的美国人，<strong>30 年后</strong>仍然显著少买股票。这不是文化偏见，是<strong>经历压印</strong>。</div>
+        </div>
+
+        <h3>把这个假说应用到不同 cohort</h3>
+        <p>下面是 Housel 在书中举的几个例子，用 cohort 思维重述：</p>
+
+        <table>
+          <thead>
+            <tr><th>Cohort</th><th>10-30 岁经历</th><th>余生默认设置</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1929 大萧条 babies（&#x2248;1920 出生）</td><td>父母失业、银行挤兑、25% 失业率</td><td>不信银行，不买股票，囤现金，反对消费贷</td></tr>
+            <tr><td>1970s 美国青年</td><td>滞胀、油价飙、股市 10 年横盘</td><td>认为股票是垃圾，黄金/房地产才是真财富</td></tr>
+            <tr><td>1990s 美国青年</td><td>科技牛市、S&amp;P 年化 18%</td><td>认为长期持股必赚，<em>buy the dip</em></td></tr>
+            <tr><td>德国魏玛 babies</td><td>1923 年通胀峰值<strong>每月 30,000%</strong></td><td>余生反通胀基因——德国央行至今是全球最鹰派</td></tr>
+            <tr><td>日本 1990 后 cohort</td><td>资产泡沫破裂，30 年通缩</td><td>极高储蓄率，极低股票配置，对"长期持股必赚"完全不信</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox idea">
+          <h4>这就是为什么"理性建议"在 cohort 之间不可移植</h4>
+          <p style="margin:0;">你给一个 1990s 出生的日本人讲"美国 S&amp;P 长期年化 10%，所以你应该满仓股票"——他不会听，<strong>因为他亲身经历的市场不是这样的</strong>。他不是不懂数学，他是被 30 年通缩压印了。同样道理反过来用在你身上：你接受的"投资常识"里，有多少是你<strong>真的相信</strong>，有多少是<strong>你的 cohort 替你相信的</strong>？</p>
+        </div>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · Apply to You</p>
+        <h2 class="unit-h">你被刻进了什么默认设置</h2>
+
+        <p>这是这一章对你<strong>最重要的应用</strong>。前面是理论；这里要诚实做一次审查。</p>
+
+        <h3>你的 cohort 时间线（粗略推断）</h3>
+        <table>
+          <thead>
+            <tr><th style="width:30%;">时期</th><th>你大概率经历过的事</th><th>可能形成的默认设置</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1990 年代童年（新兴市场）</td><td>家庭储蓄文化、房产升值传奇、亲戚"炒股一夜暴富/被套"故事</td><td>"现金为王"+"房产是真财富"+"股票是赌博"的混合心智</td></tr>
+            <tr><td>2000 年代青年（新兴市场）</td><td>GDP 双位数增长、房价单边上涨、本币升值</td><td>对"增长不会停"的隐性乐观；对房地产的过度信任</td></tr>
+            <tr><td>2010 年代科技业早期</td><td>FANG 股票暴涨、TC 通胀、stock vesting 神话</td><td>对科技股的<strong>认同偏差</strong>（你的圈子都重仓 FANG）</td></tr>
+            <tr><td>2022-2023 科技裁员潮</td><td>多轮科技裁员、TC 缩水、失业 + 身份压力</td><td><strong>极强的现金安全感需求</strong>、对"复利的耐心"和"应急金优先"的拉扯</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>挑战题（请认真回答）</h4>
+          <ol class="deep" style="margin:0;">
+            <li>你父母对"借钱投资"的态度是什么？这个态度对你今天考虑要不要 margin 买美股<strong>有没有影响</strong>？</li>
+            <li>不同成长地的朋友对房产的看法<strong>系统性</strong>不同。哪一组的看法更接近"理性"？还是说"理性"本身就是 cohort dependent？</li>
+            <li>近年科技裁员对你冲击多大？这个冲击<strong>正在</strong>如何塑造你未来 10 年的现金/股票比例？这是真正的风险评估，还是被压印的过度反应？</li>
+          </ol>
+        </div>
+
+        <p>这些不是修辞问句。<strong>真去想 5 分钟</strong>。Housel 最容易被误读的就是这一章——读者把它当鸡汤"我们要互相理解"，其实它的真正用途是<strong>对自己做考古</strong>。</p>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · Three Actionable Principles</p>
+        <h2 class="unit-h">从这一章带走的三条可行动原则</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>不靠 willpower，靠 process。</strong><br>
+            既然 7 个认知 bug 不可修复，唯一的解是把决定<strong>外包给系统</strong>：自动定投（不依赖每月你的勇气）、机械再平衡（不依赖你的市场判断）、固定的现金缓冲规则（不依赖你恐惧时的临场决定）。Ronald Read 的方法<strong>本质上就是把人脑从循环里去掉了</strong>。
+          </li>
+          <li>
+            <strong>对"聪明人的投资建议"加一个折扣率。</strong><br>
+            §1 的 Fuscone、Long-Term Capital Management（两个诺贝尔得主管理的对冲基金，1998 年破产）、2008 年的 Bear Stearns——金融史里最聪明的人爆掉的频率，远高于他们应有的概率。如果你听到"哈佛博士的高级策略"，<strong>问的不是"逻辑对不对"，而是"它在情绪压力下还能不能执行"</strong>。
+          </li>
+          <li>
+            <strong>对自己的"金钱默认设置"做一次年度考古。</strong><br>
+            每年 1 次（建议放在 1 月或生日），写 1 页：我现在的金钱观是什么？哪些来自我亲身经历，哪些来自我父母的经历，哪些来自最近读的内容？把它和上一年的版本对比。这是<strong>唯一</strong>能让你看见自己 cohort 偏差的方法——因为 bias 在你身上时是隐形的，<strong>只有跨年对比才会暴露</strong>。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把这一章压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>顶级投资者的核心能力，不是预测市场，是了解自己——并且围绕自己的局限性建造系统。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection Exercises -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Reflection Exercises</p>
+        <h2 class="unit-h">反思练习（写下来，不要在脑子里完成）</h2>
+
+        <p>认知科学里有个一致结论：<strong>不写下来等于没想过</strong>。下面 4 题，每题至少写 50 字。这一节是这一章<strong>真正的成果</strong>，前面所有内容都是为了让你能认真回答这 4 题。</p>
+
+        <div class="exercise">
+          <h4>练习 1 — Read vs Fuscone</h4>
+          <p>如果让你穿越回 2007 年，给当时的 Richard Fuscone 一句话警告（只能一句），你说什么？这句话能不能也<strong>同时</strong>适用于今天的你？</p>
+          <textarea placeholder="写在这里（页面不会保存——请同时复制到你的笔记 app）"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — 你的 7 个 bug 中最危险的是哪 2 个？</h4>
+          <p>不是"理论上最危险"，是<strong>对你个人</strong>。回顾过去 3 年你的金钱决策（买/卖/不买/不卖），列出你认为是 bug 驱动而不是分析驱动的<strong>两个具体决定</strong>，并标出对应的 bug 编号。</p>
+          <textarea placeholder="例如：2024 年 Q1 看到 NVDA 涨了 100% 不敢加仓 = Bug #1 损失厌恶 + Bug #6 后视偏差"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — 你的 cohort 默认设置</h4>
+          <p>列 3 个你自己的"金钱默认设置"（你下意识相信但从未真正检验过的金钱观念），然后对每一个标注：<strong>来源是什么 cohort 经历</strong>，以及<strong>它在未来 30 年是资产还是负债</strong>。</p>
+          <textarea placeholder="例如：1) 我相信房产永远涨——来源：1990 年代家庭叙事——未来 30 年：在美国市场可能是负债，因为美国房产年化回报历史只有 1% 实际收益（Shiller 数据）"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 4 — Process &gt; Willpower 的设计</h4>
+          <p>给自己设计 <strong>1 个</strong>具体的"把人脑从循环里去掉"的机制。要可执行：写出触发条件、动作、频率、何时复盘。不要超过 3 行。</p>
+          <textarea placeholder="例如：每月 15 日发薪后 24 小时内，自动转 X% 到 brokerage 买 VOO；如果当月股市跌超 10%，再额外手动加 50%；每年 1 月复盘 X 是否还合理。"></textarea>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Self-Check Quiz</p>
+        <h2 class="unit-h">自检 Quiz（先答，再展开看解析）</h2>
+
+        <details class="quiz">
+          <summary>Q1. 下列哪一项<strong>不是</strong> Housel 在 §1 用 Read/Fuscone 对照想说明的核心点？</summary>
+          <p>A) 智力在金融里的边际回报远低于其他领域<br>
+          B) 复杂金融工程在长期里通常输给极简持有<br>
+          C) 哈佛 MBA 在统计上更容易破产<br>
+          D) 行为习惯是金融成功的真正变量</p>
+          <div class="answer"><strong>正确答案：C。</strong>Housel 没有也不会做这种统计声明——这是常见误读。他想说的是 A、B、D。如果你选了 C，说明你把<strong>个例</strong>当成了<strong>分布</strong>——这本身就是一种思维偏差（<em>availability heuristic</em>，可得性启发），值得记下。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. Loss aversion 系数 ≈2 意味着：</summary>
+          <p>A) 损失会让人决策错误<br>
+          B) 同等金额的损失带来的心理痛苦约为同等收益快乐的 2 倍<br>
+          C) 投资者应该避免任何亏损<br>
+          D) 风险厌恶是不理性的</p>
+          <div class="answer"><strong>正确答案：B。</strong>这是 Kahneman-Tversky 1992 年修订估计。注意不是"损失=2倍重要"，是<strong>主观痛苦</strong>=2倍。这个区分很重要——客观决策应该等权处理损益（如果效用函数线性），但你的大脑做不到。<strong>这就是为什么定投这种"剥夺你择时权"的机制有效</strong>——它让你不必在每次下跌时调用大脑。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. Malmendier-Nagel 2011 的"Depression Babies"假说，最颠覆性的含义是：</summary>
+          <p>A) 老人比年轻人更保守<br>
+          B) 个人投资行为受经历的形塑超过受教育/理论的形塑<br>
+          C) 大萧条让美国人不买股票<br>
+          D) 通胀经历会改变债券持仓</p>
+          <div class="answer"><strong>正确答案：B。</strong>A、C、D 都是细节或推论，B 是结构性论点。这意味着：<strong>金融教育的传播效率远低于经历的传播效率</strong>。这也是为什么"读完《金钱心理学》"和"做到《金钱心理学》"中间隔着十年——你需要让书里的理论<strong>变成你身上的某种类经历</strong>，比如通过反思练习去接近它。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. 如果"行为 &gt; 智能"是真的，下面哪个推论<strong>错了</strong>？</summary>
+          <p>A) 散户应该减少交易频率<br>
+          B) 复杂模型在长期不一定比简单规则赢<br>
+          C) 高 IQ 是金融成功的劣势<br>
+          D) 自动化机制（定投、再平衡）是核心工具</p>
+          <div class="answer"><strong>正确答案：C。</strong>"行为 &gt; 智能"不等于"智能是劣势"。智能仍然是有用的——只是<strong>不充分</strong>，且如果没有行为约束，智能反而被放大成自我毁灭（过度自信 + 杠杆）。这是一道防止你走极端的题：<strong>顶级投资者通常智商也在前 10%，他们的差别在于行为约束</strong>，不在于他们故意装笨。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5. 你的同事跟你说"现在 AI 泡沫很大，应该 short NVDA"——基于这一章，你的第一反应应该是？</summary>
+          <p>A) 立刻分析 NVDA 估值<br>
+          B) 问他自己仓位怎么操作了<br>
+          C) 问他过去 3 次类似判断的胜率<br>
+          D) 先想：他来自哪个 cohort，这是不是他的默认 narrative</p>
+          <div class="answer"><strong>正确答案：D（其次 C）。</strong>这一章的核心训练就是<strong>把"建议"放回它的 cohort 语境里</strong>。"AI 泡沫"叙事在不同 cohort 里有完全不同的可信度——经历过 2000 dot-com 泡沫的人和没经历过的人会给出系统性不同的判断。C 是好补充（追问历史胜率），但 D 才是这一章独有的训练。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读</h3>
+        <ol>
+          <li>Fama, E. F. (1970). <em>Efficient Capital Markets: A Review of Theory and Empirical Work</em>. Journal of Finance, 25(2), 383-417.</li>
+          <li>Shiller, R. J. (2000). <em>Irrational Exuberance</em>. Princeton University Press.</li>
+          <li>Thaler, R. H. (2015). <em>Misbehaving: The Making of Behavioral Economics</em>. W.W. Norton. （2017 年诺贝尔经济学奖得主自述）</li>
+          <li>Kahneman, D., &amp; Tversky, A. (1979). <em>Prospect Theory: An Analysis of Decision under Risk</em>. Econometrica, 47(2), 263-291. — 行为经济学奠基论文。</li>
+          <li>Barber, B. M., &amp; Odean, T. (2000). <em>Trading Is Hazardous to Your Wealth: The Common Stock Investment Performance of Individual Investors</em>. Journal of Finance, 55(2), 773-806. — 65,000 散户账户实证。</li>
+          <li>Shiller, R. J. (2017). <em>Narrative Economics</em>. American Economic Review, 107(4), 967-1004. — AEA 主席演讲。</li>
+          <li>Malmendier, U., &amp; Nagel, S. (2011). <em>Depression Babies: Do Macroeconomic Experiences Affect Risk Taking?</em> Quarterly Journal of Economics, 126(1), 373-416. — Cohort 假说核心实证。</li>
+          <li>Housel, M. (2020). <em>The Psychology of Money</em>. Harriman House. — 本章原文：Introduction + Ch. 1。</li>
+          <li>Kahneman, D. (2011). <em>Thinking, Fast and Slow</em>. Farrar, Straus and Giroux. — 7 个 bug 的更深入处理。</li>
+        </ol>
+        <p style="margin-top:18px;color:var(--muted);">下一步建议：读完本章 + 完成 4 个反思练习后，再进入<strong>第二章：运气与风险</strong>。不要跳——这一章是后面 19 章的认识论基础。</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

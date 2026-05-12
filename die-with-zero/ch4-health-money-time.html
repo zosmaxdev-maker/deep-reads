@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第四章 · 健康 · 金钱 · 时间 — 《Die With Zero》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); line-height: 1.7; }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0; }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none; }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 920px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+    .exercise { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .exercise h4 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exercise textarea, .exercise input[type=text] { width: 100%; margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: #fff; font: inherit; color: var(--ink); }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+    details.quiz { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    details.quiz summary { cursor: pointer; font-weight: 700; list-style: none; }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before { content: "▸ "; color: var(--accent); font-weight: 800; }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: #2e3b3a; }
+    details.quiz .answer strong { color: var(--accent); }
+    .citations { margin: 56px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+    .citations h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+    .citations .tag { display: inline-block; padding: 1px 6px; margin-right: 6px; border-radius: 3px; background: #efebe0; color: #34302a; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">Die With Zero</p>
+      <p class="ch-num">04</p>
+      <p class="ch-title">健康 · 金钱 · 时间</p>
+      <p class="ch-sub">Balance Your Life · 第四章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>三个硬问题</span></a>
+        <a href="#s1"><span class="num">§1</span><span>50-30-20 规则的根本错误</span></a>
+        <a href="#s2"><span class="num">§2</span><span>三角随年龄漂移</span></a>
+        <a href="#s3"><span class="num">§3</span><span>金钱效用的衰减曲线</span></a>
+        <a href="#s4"><span class="num">§4</span><span>健康不是因素 — 是乘数</span></a>
+        <a href="#s5"><span class="num">§5</span><span>用钱买时间</span></a>
+        <a href="#s6"><span class="num">§6</span><span>Personal Interest Rate</span></a>
+        <a href="#s7"><span class="num">§7</span><span>三条可行动原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习</span></a>
+        <a href="#qz"><span class="num">?</span><span>自检 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 4 · Balance Your Life</p>
+      <h1 class="lead">你的钱、时间、健康——任意一个为零，其余都没用。</h1>
+      <p class="lead-sub">多数理财书把钱当独立变量。Bill 的论点：钱只在<strong>跟时间 + 健康</strong>组合时才有用——任何一个为零，其他两个的边际价值归零。这一章给你这个三角的<strong>动态平衡</strong>规则。</p>
+
+      <div class="quote">
+        "Your ability to extract enjoyment from your money declines with age. So the optimal use of your wealth is not a fixed ratio — it shifts as your health and time shift."
+        <cite>— Bill Perkins, <em>Die With Zero</em>, Chapter 6</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing</p>
+        <h2 class="unit-h">这一章你必须能回答的 3 个问题</h2>
+
+        <p>第一章把钱重新定义为生命能量。第二章给出"die with zero"的数学。第三章把孩子和慈善从遗嘱里挪出来。但所有这些假设你<strong>知道现在该花多少</strong>。这一章解决"现在"的问题——而且它的解法不是公式，是<strong>三角动力学</strong>。</p>
+
+        <p>多数理财书的最终输出是<strong>一个百分比</strong>："存收入的 X%"。Bill 的论点：任何脱离年龄、健康、时间结构的固定百分比都是<strong>谎言</strong>——因为同样一块钱，在 25 岁、45 岁、75 岁能买到的<strong>体验集合完全不同</strong>。一个对 75 岁有用的储蓄率，对 25 岁是<strong>过度自虐</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>50-30-20 rule（最流行的预算公式）<strong>错在哪里</strong>？错的不是数字——是它的<strong>结构</strong>。</li>
+            <li>健康为什么不是三角中的一个变量——而是<strong>乘数</strong>？乘数和加数的区别在哪？</li>
+            <li>"花钱买时间"vs"花钱买物品"——为什么前者对幸福的提升是后者的几倍？Whillans 2017 PNAS [37] 的实验设计精妙在哪？</li>
+          </ol>
+        </div>
+
+        <div class="pullbox note">
+          <h4>这一章是 Die With Zero 最实用的一章</h4>
+          <p style="margin:0;">前几章给你<strong>世界观</strong>。这一章给你<strong>操作系统</strong>——你<strong>今晚就能改</strong>的决策规则：哪些 chores 立刻 outsource、哪笔健康投资不能再推迟、你的真实 personal discount rate 是多少。如果整本书你只严肃做一章的练习——做这一章。</p>
+        </div>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · The 50-30-20 Critique</p>
+        <h2 class="unit-h">50-30-20 规则的根本错误</h2>
+
+        <p>Elizabeth Warren 跟女儿 Amelia Tyagi 2006 年 <em>All Your Worth</em> [32] 提出了"Balanced Money Formula"：</p>
+
+        <div class="figure" style="text-align:center;">
+          <p class="mono" style="font-size:18px; margin:6px 0;">50% needs · 30% wants · 20% savings</p>
+          <div class="figure-cap">这本书火到 Reddit / TikTok / 几乎所有理财 app 都把它当 default。听起来稳——它<strong>错在哪</strong>？</div>
+        </div>
+
+        <h3>错误不在数字 — 在"固定"二字</h3>
+
+        <p>50-30-20 假设一个生命周期里这三个比例<strong>常数</strong>。但你的<strong>边际效用结构</strong>不是常数——它随年龄系统性地变。</p>
+
+        <ul class="deep">
+          <li><strong>25 岁的你</strong>：未来 30 年薪水会涨（合理预期）。今天的 20% 储蓄是<strong>把贫穷年的钱转给富足年的你</strong>——反 Modigliani 消费平滑方向（Ch1 §2 提过）。同时你的健康 + 时间 + 余生最长，体验复利窗口最大——这 20% 储蓄换掉的<strong>不是无聊的当下消费</strong>，是 40 年的 memory dividend。</li>
+          <li><strong>55 岁的你</strong>：薪水可能已到顶或开始下降；退休还有 10-15 年。20% 储蓄可能<strong>不够</strong>——你需要 30-40%。</li>
+          <li><strong>70 岁的你</strong>：你<strong>不该再存了</strong>——你该在<strong>decumulate</strong>（Ch2 §3 的核心论点）。任何储蓄率都是错的方向。</li>
+        </ul>
+
+        <div class="pullbox warn">
+          <h4>50-30-20 的隐藏代价</h4>
+          <p style="margin:0;">这个规则的可怕之处不是"数字不准"——是它给你一种<strong>已经在理财</strong>的错觉。你每月 20% 进 401k，感觉"在做对的事"——但你<strong>没问</strong>这 20% 是否对应你<strong>这个年龄</strong>的最优储蓄率。多数人一辈子都没问过这个问题。这是<strong>autopilot 储蓄</strong>的最大伪装。</p>
+        </div>
+
+        <h3>Bill 引用的经济学家共识</h3>
+
+        <p>Bill 在书里转述了 2013 年 Freakonomics podcast [31] 上 Steven Levitt 谈到的一段——Levitt 跟 José Scheinkman（普林斯顿经济学家、Milton Friedman 的学生）的对话：</p>
+
+        <div class="quote">
+          "我们这些经济学家给年轻人最一致的建议是：<strong>你现在应该花得比你以为该花的多</strong>。不是因为我们鼓励挥霍，是因为<strong>消费平滑</strong>——年轻时收入低未来高，理性人应该从未来借给现在用。"
+          <cite>— Levitt 转述 Scheinkman / Friedman 的共识，Freakonomics 2013 [31]</cite>
+        </div>
+
+        <p>Bill 自己的老板 Joe Farrell（Ch1 §2 那段）骂他"f***ing idiot"是<strong>同一个论点的粗暴版本</strong>。问题不在 Joe 没读 Friedman——是<strong>整个经济学专业</strong>跟<strong>整个理财行业</strong>给的处方<strong>方向相反</strong>。理财行业说"年轻多存"；经济学说"年轻少存（甚至借）"。</p>
+
+        <div class="pullbox idea">
+          <h4>这本书隐含的"年龄分段储蓄"</h4>
+          <p style="margin:0;">Bill 没给一个精确公式（他刻意不给），但他的处方近似于<strong>U 型储蓄率</strong>：20s 接近 0%（甚至轻度借贷做高复利体验）；30-40s 升到 25-40%（赚钱能力高峰 + 准备 net worth peak）；50s 开始<strong>消耗</strong>；65 岁后<strong>纯 decumulate</strong>。这跟 50-30-20 的"全程 20%"是<strong>结构性矛盾</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · Shifting Balance with Age</p>
+        <h2 class="unit-h">三角随年龄漂移 — 哪两个 abundant、哪个 scarce</h2>
+
+        <p>Bill 的核心观察：在你生命的每个阶段，健康 / 金钱 / 时间三者中<strong>恰好有一个是 scarce、其他两个 abundant</strong>。最优策略是<strong>用你 abundant 的去买你 scarce 的</strong>——这个 swap 的方向<strong>随年龄翻转</strong>。</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="width:18%;">年龄阶段</th>
+              <th style="width:14%;">健康</th>
+              <th style="width:14%;">时间</th>
+              <th style="width:14%;">金钱</th>
+              <th>Scarce 资源 → 该用什么换</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>20s</strong></td>
+              <td>✓✓ 最强</td>
+              <td>✓ 充裕</td>
+              <td>✗ 紧缺</td>
+              <td><strong>钱是 scarce</strong>。用<strong>健康 + 时间</strong>换钱（密集工作、学技能）；但<strong>不要</strong>让 chasing 钱占满全部时间——留窗口做高复利体验（趁健康还在）。</td>
+            </tr>
+            <tr>
+              <td><strong>30-40s</strong></td>
+              <td>✓ 仍好</td>
+              <td>✗✗ 最紧</td>
+              <td>✓ 渐多</td>
+              <td><strong>时间是 scarce</strong>——被工作 + 孩子吃掉。用<strong>钱</strong>换时间（outsource chores、孩子帮手、通勤优化）。这是 Whillans 2017 [37] 的核心适用阶段。</td>
+            </tr>
+            <tr>
+              <td><strong>50-60s</strong></td>
+              <td>✗ 开始下滑</td>
+              <td>✓ 渐多（孩子离家）</td>
+              <td>✓✓ 高峰</td>
+              <td><strong>健康开始 scarce</strong>。用<strong>钱 + 时间</strong>买健康——大量医疗 / 健身 / 营养投入；<strong>趁还能做的体验立刻做</strong>（剧烈运动 / 长途旅行的最后窗口）。</td>
+            </tr>
+            <tr>
+              <td><strong>70+</strong></td>
+              <td>✗✗ 严重受限</td>
+              <td>✓ 充裕</td>
+              <td>✓ 多于需要</td>
+              <td><strong>健康极度 scarce</strong>——但<strong>不可逆</strong>。钱在这个阶段<strong>买不回</strong>能力。最优策略：保持轻度体验、关注质量而非冒险；把多余的钱<strong>转移</strong>给孩子 / 慈善（Ch3 论点）。</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>关键洞察：<strong>scarce 资源在 4 个阶段中是不同的</strong>——20s 缺钱、30-40s 缺时间、50-60s 缺健康、70+ 健康不可逆。这意味着<strong>同一笔可支配资源</strong>在不同年龄应该流向<strong>不同方向</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>多数人在这个 swap 上做反了</h4>
+          <p style="margin:0;">25 岁多数人在<strong>存钱</strong>（保护他们 abundant 的钱）而不是<strong>用时间 + 健康去赚 + 体验</strong>；35 岁多数人继续存钱而<strong>不 outsource</strong>（继续花他们 scarce 的时间清扫 / 通勤）；55 岁多数人<strong>还在存</strong>而不是<strong>投入健康</strong>。每个阶段都<strong>保护 abundant 的、消耗 scarce 的</strong>——刚好<strong>反</strong>了。</p>
+        </div>
+
+        <h3>这张表怎么用</h3>
+
+        <p>不要把它当生活规划——当<strong>诊断工具</strong>。回看你过去一年的钱的 destination——这些钱主要在保护 abundant 资源（如多存的 cash buffer），还是在补 scarce 资源（如 outsource、健身、医疗）？后者占比高 → 你在正确 swap 方向；前者占比高 → 你在 autopilot。</p>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · The Declining Utility Curve</p>
+        <h2 class="unit-h">金钱效用的衰减曲线</h2>
+
+        <p>"我退休后再花。" — 这是过度储蓄的最强 cope。Bill 的反驳很硬：<strong>你 80 岁能用钱买的体验集合，比 50 岁能买的小一个数量级</strong>。</p>
+
+        <h3>Nyaupane-McCabe-Andereck 2008 的实证</h3>
+
+        <p>2008 年 Nyaupane 等人在 <em>Tourism Analysis</em> [33] 调查老年游客的 travel constraints（旅行限制因素）——问 65+ 岁的人："是什么阻止你旅行得更多？"</p>
+
+        <p>反直觉的发现：<strong>钱不是主要约束</strong>。健康、配偶健康、体力——这三项的频率远高于"没钱"。意味着：他们<strong>有钱</strong>（多数老人净资产高峰在 60-70 [10]），但<strong>买不到他们要的旅行</strong>——因为关节、心脏、平衡、配偶状态把<strong>能去的地方 / 能做的事</strong>结构性地砍掉了。</p>
+
+        <div class="figure">
+          <strong>同样 $5,000 在不同年龄能买到的"旅行体验密度"（示意）</strong>
+          <div class="bar-row"><span>25 岁</span><div class="bar" style="width:95%"></div><span>极高</span></div>
+          <div class="bar-row"><span>40 岁</span><div class="bar" style="width:80%"></div><span>高</span></div>
+          <div class="bar-row"><span>55 岁</span><div class="bar" style="width:60%"></div><span>中</span></div>
+          <div class="bar-row"><span>70 岁</span><div class="bar alt" style="width:35%"></div><span>低</span></div>
+          <div class="bar-row"><span>80 岁</span><div class="bar alt2" style="width:15%"></div><span>极低</span></div>
+          <div class="figure-cap">25 岁 $5K 可以背包 3 个月跨 8 国 / 学冲浪 / 露营徒步；80 岁 $5K 可能买到的是 7 天豪华邮轮——舒适，但能做的项目集合是 25 岁的零头。<strong>不是钱在贬值，是能用钱换的体验集合在贬值</strong>。</div>
+        </div>
+
+        <h3>这条曲线在 60-70 之后 drops</h3>
+
+        <p>Bill 在书里画了一条 "utility of money 随年龄" 曲线——20s 中等、40-50s 高峰、60s 仍高、<strong>70+ 急剧下滑</strong>。Finkelstein 等 2013 [1]（Ch1 引用过）的实证支持这一点：健康受损的人对消费的边际效用<strong>显著低于</strong>健康人——疾病<strong>削减</strong>钱的购买力。</p>
+
+        <div class="pullbox idea">
+          <h4>"我以后再花" 隐含的算术错误</h4>
+          <p style="margin:0;">假设你 50 岁，把 $50K 存到 80 岁。$50K 复利到 ~$130K（按 S&amp;P 历史 ~10% / 年 [38] 不调通胀）。看起来"翻倍多"——但你<strong>真要拿这 $130K 做什么</strong>？在 80 岁你的 utility-of-money 大约是 50 岁的 30-40%（按 Bill 的曲线粗估）——意味着 <strong>$130K @ 80 岁</strong> 的实际效用约 ~$45K @ 50 岁。你<strong>没翻倍——你贬值了</strong>。这是 die-with-zero 数学的微观版本。</p>
+        </div>
+
+        <h3>这个论点的极限</h3>
+
+        <p>Bill 的曲线不否认<strong>晚年的医疗需求</strong>——70+ 岁钱的 utility 在"buying experiences" 维度下降，但在 "buying medical care + caregiver" 维度<strong>上升</strong>。White Coat Investor 的批评 [Ch1 §3 引用过] 在这里相关：Bill 把"晚年钱效用低"过度泛化了；实际上你<strong>仍需要一笔储备</strong>覆盖医疗 / 长期护理 / 通胀。Bill 自己承认这一点（Ch4 原书讲 annuities 那段）——但本章的核心论点关注<strong>体验效用</strong>，不是<strong>生存效用</strong>。</p>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · Health as Multiplier</p>
+        <h2 class="unit-h">健康不是因素 — 是<strong>乘数</strong></h2>
+
+        <p>这是这一章最颠覆的论断。Bill 反对把健康跟金钱、时间并列成"三个变量之一"——他说健康是<strong>乘数</strong>，不是<strong>加数</strong>。</p>
+
+        <div class="figure" style="text-align:center;">
+          <p class="mono" style="font-size:17px; margin:6px 0;">总人生满足 ≈ <strong>健康</strong> × (金钱 + 时间)</p>
+          <div class="figure-cap">不是 健康 + 金钱 + 时间。是健康<strong>乘以</strong>(金钱+时间)。健康 = 0 → 总满足 = 0，无论钱和时间多少。健康 ×2 → 钱和时间的购买力都 ×2。</div>
+        </div>
+
+        <h3>Sapolsky 1998 "Open Season" 的论点</h3>
+
+        <p>Robert Sapolsky 1998 年在 <em>New Yorker</em> 写过一篇 "Open Season" [34]——核心论点：人体的衰老不是线性的，是<strong>阶梯式</strong>的——某个年龄之后，可逆性的窗口关闭，新的疾病 cascade 启动。骨密度、肌肉量、心血管弹性——每一个都有<strong>不可逆点</strong>。50 岁前的健康投资<strong>处于可逆区</strong>，能产生显著 ROI；70 岁后<strong>多数</strong>处于不可逆区。</p>
+
+        <div class="pullbox warn">
+          <h4>多数人对健康的态度</h4>
+          <p style="margin:0;">"等我退休就开始锻炼。" — 这是把健康投资<strong>推到不可逆区</strong>。Sapolsky 的论点是：你 40 岁开始<strong>系统训练</strong>能在 70 岁仍跑 5K；70 岁开始<strong>系统训练</strong>多数情况下挽不回 40 岁的 baseline。这不是劝你今天就办健身卡——是劝你认识到健康投资有一个<strong>结构性的窗口</strong>，错过就关闭。</p>
+        </div>
+
+        <h3>Stephen Stern 的反例（Honeyman 2016）</h3>
+
+        <p>Bill 提到 Honeyman 2016 [35] 报道的 Stephen Stern——65 岁的医生，长期久坐 + 超重。通过系统的力量训练 + 饮食调整，2 年内<strong>逆转</strong>了多项 fitness 指标：体脂从 30% 降到 15%，1RM 翻倍，VO2 max 显著提升。论点：<strong>"窗口"不是绝对的——但代价随年龄陡升</strong>。30 岁达到 Stern 的体能 = 6 个月 + 中等投入；65 岁 = 2 年 + 高强度投入 + 高复发风险。</p>
+
+        <h3>Bill 自己的 Staples bet</h3>
+
+        <p>Bill 自己也下注 — 跟 Jaime &amp; Matt Staples 兄弟打的 <strong>$150K weight-loss bet</strong> [36]。规则：如果 Jaime 跟 Matt 在一段时间内同时把体重控制在指定区间——Bill 输 $150K；做不到——Bill 赢。Cross 2018 在 PokerNews 报道这场赌局。Bill 输了——Staples 兄弟完成了——但他<strong>故意</strong>把赌注设这么高：他相信对当事人来说，<strong>$150K 是足够触发健康行为改变的</strong> stake。</p>
+
+        <div class="quote">
+          "I would gladly trade some of my net worth right now for a healthier 60-year-old future me. Money can do a lot — but a body that doesn't work isn't fixable by money."
+          <cite>— Bill Perkins，关于健康投资的优先级</cite>
+        </div>
+
+        <h3>"50 岁前每一块健康投资 > 50 岁后每一块体验投资"</h3>
+
+        <p>Bill 给的最强排序：在 50 岁之前——<strong>健康支出的每一块钱产生的 lifetime ROI &gt; 体验支出的每一块钱</strong>。逻辑：</p>
+
+        <ol class="deep">
+          <li>50 岁前的健康投资<strong>放大</strong>之后 30-40 年所有体验的质量（健康乘数）；</li>
+          <li>体验只放大<strong>该体验</strong>的 memory dividend；</li>
+          <li>所以投资健康 = 投资<strong>未来所有体验的乘数</strong> &gt; 投资<strong>一次体验</strong>。</li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>这个论点对你的钱意味着什么</h4>
+          <p style="margin:0;">如果你 30-50 岁、月可支配预算 $2,000——Bill 的处方是：<strong>先把健康预算填到合理水平</strong>（私教 / 营养师 / 体检 / 设备）——这部分可能 $300-500/月；<strong>之后</strong>才轮到体验、物品。多数人把这个顺序倒过来了——健康是 leftover，体验拿大头。这是 multiplier vs additive 的概念区别——你不会先花钱买球员再考虑发工资。</p>
+        </div>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · Buying Time</p>
+        <h2 class="unit-h">用钱买时间 — Whillans 2017 PNAS</h2>
+
+        <p>30-40s 的 scarce 资源是<strong>时间</strong>——但多数人不<strong>买</strong>时间。他们把时间当成<strong>不可购买的</strong>常量。Whillans, Dunn, Smeets, Bekkers, Norton 2017 年在 PNAS 发表的论文 [37] 直接拆穿这个假设。</p>
+
+        <h3>实验设计</h3>
+
+        <p>Whillans 等人发现：花钱买时间（如 outsource 清洁、打包、烹饪、通勤优化）跟花钱买物品（同样金额）对幸福感的影响——<strong>前者显著更高</strong>。</p>
+
+        <ul class="deep">
+          <li>研究包含跨国调研（美国、加拿大、丹麦、荷兰）—— 4,000+ 人样本——问受访者最近一周花钱在哪里、当前幸福水平。</li>
+          <li>关键变量：<strong>是否用钱减少了"做不喜欢的事"的时间</strong>（清洁、通勤、跑腿、文书）。</li>
+          <li>结果：<strong>买时间的人在生活满意度上显著高于</strong>同收入买物品的人。</li>
+          <li>更强的部分：他们做了一个<strong>实验</strong>——给被试 $40，随机分两组：一组用来买物品、一组用来买时间。两周后再测——<strong>买时间组幸福感显著上升</strong>。</li>
+        </ul>
+
+        <div class="pullbox idea">
+          <h4>实验结论的精妙</h4>
+          <p style="margin:0;">这<strong>不是 correlational study</strong>（"幸福的人恰好买时间"）。是<strong>实验</strong>——同样的 $40，随机分配——结果有显著差异。说明<strong>因果方向</strong>是"买时间 → 幸福"，不是反过来。这是为什么 PNAS 接受了这篇论文。</p>
+        </div>
+
+        <h3>为什么多数人不这样做</h3>
+
+        <p>Whillans 论文里指出：尽管效果显著，<strong>受访者中只有少数</strong>报告经常用钱买时间。原因：</p>
+
+        <ol class="deep">
+          <li><strong>Marketing 把物品做成 default</strong>——你看到 $40 的衣服广告比 $40 / 月的清洁服务多 100 倍；</li>
+          <li><strong>Outsource 触发 guilt</strong>——"这是我应该自己做的事"——文化包袱；</li>
+          <li><strong>不会算自己的时薪</strong>——所以无法判断 outsource 是否划算。</li>
+        </ol>
+
+        <h3>Bill 的简单测试</h3>
+
+        <div class="figure" style="text-align:center;">
+          <p class="mono" style="font-size:16px; margin:6px 0;">if (outsource_cost &lt; 你的真实时薪 × 这件事花的时间)</p>
+          <p class="mono" style="font-size:16px; margin:6px 0;">then <strong>outsource</strong>; else 自己做</p>
+          <div class="figure-cap">如果你时薪 $50，每周花 2 小时清洁——这 2 小时的"机会成本"是 $100。请人清洁 $80——<strong>必 outsource</strong>。这不是奢侈，是<strong>套利</strong>——你用低价时间换回高价时间。</div>
+        </div>
+
+        <p>这个测试的力量在于：它把<strong>道德判断</strong>（"我应该自己做"）替换成<strong>经济计算</strong>。当数字出现，guilt 多数情况会让步。</p>
+
+        <div class="pullbox warn">
+          <h4>但是 — 注意这个公式的陷阱</h4>
+          <p style="margin:0;">公式假设你<strong>会用回收的时间做高价值的事</strong>。如果你 outsource 了清洁 → 多了 2 小时 → 但你拿来刷 TikTok——你<strong>没买到时间</strong>，你买了 2 小时刷手机。Whillans 论文里也提到这个——买时间的幸福提升<strong>条件于你怎么用这些时间</strong>。这是为什么 §6 的 personal interest rate 跟这个公式必须配套——你得对"时间值什么"有 clear answer。</p>
+        </div>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · Personal Interest Rate</p>
+        <h2 class="unit-h">算你的 Personal Interest Rate</h2>
+
+        <p>多数理财讨论用<strong>市场</strong>利率（S&amp;P 历史 ~10% [38]、国债 4-5%、通胀 3%）。但 Bill 的论点是：你的<strong>个人</strong> discount rate 才是决策真正的输入——它可能跟市场利率<strong>完全脱钩</strong>。</p>
+
+        <h3>Marshmallow Test 提供 baseline</h3>
+
+        <p>Walter Mischel 在 Stanford 1960s 做的著名实验 [55]：3-5 岁孩子面前放 1 个棉花糖——"现在吃 1 个，或等 15 分钟拿 2 个"。多数孩子能等。能等的孩子在数十年后<strong>学业、收入、健康</strong>指标都更好。</p>
+
+        <p>把这个实验<strong>翻转到成年人</strong>——多数成年人在<strong>大额、长期</strong>的等待中<strong>等不了</strong>。常见症状：</p>
+
+        <ul class="deep">
+          <li>信用卡欠款（用 20% 利率换今天消费）；</li>
+          <li>提前消费的 lease / financing；</li>
+          <li>把退休账户取出来用（10% penalty + 税）；</li>
+          <li>"想了想还是先享受" 的旅游账单累积。</li>
+        </ul>
+
+        <p>这是<strong>over-discount</strong>——你给未来打的折太狠。Bill 把这种叫 "myopia"（近视）—— Behavioral Life-Cycle Hypothesis (Shefrin-Thaler 1991, Ch2 引用) 给的概念。</p>
+
+        <h3>反方向的 myopia — Over-saver</h3>
+
+        <p>但这本书的 unique 论点：<strong>over-saver 也是 myopia</strong>——只是方向反过来。他对<strong>当下</strong>过度 discount，把所有 utility 推到一个<strong>不一定到来的未来</strong>。</p>
+
+        <div class="figure">
+          <strong>两种 myopia 的对比</strong>
+          <div class="bar-row"><span>当下 utility</span><div class="bar" style="width:90%"></div><span>Over-saver 严重 under-weight</span></div>
+          <div class="bar-row"><span>未来 utility</span><div class="bar alt" style="width:30%"></div><span>Over-saver 过度 over-weight</span></div>
+          <div class="bar-row"><span>当下 utility</span><div class="bar alt2" style="width:30%"></div><span>Over-spender 过度 over-weight</span></div>
+          <div class="bar-row"><span>未来 utility</span><div class="bar alt2" style="width:90%"></div><span>Over-spender 严重 under-weight</span></div>
+          <div class="figure-cap">两者都是 myopia——都偏离了"当前 utility = 未来 utility（折现后）"的理性 baseline。<strong>多数理财书只警告 over-spender；这本书警告 over-saver</strong>。两者都有病——但社会只给一种诊断了名字。</div>
+        </div>
+
+        <h3>怎么算你的 Personal Interest Rate</h3>
+
+        <p>Bill 没给精确公式，但思路很简单。问自己：</p>
+
+        <div class="pullbox idea">
+          <h4>诊断问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>给你 $1,000 现在，或 $X 一年后——X 需要多大你才愿意等？X = $1,030 → 你的折现率 ≈ 3%（接近通胀，理性 baseline）。</li>
+            <li>X = $1,200 → 折现率 20% (over-discount = 短期偏好 = over-spender 倾向)。</li>
+            <li>X = $1,005 → 折现率 0.5% (under-discount = 过度推迟享受 = over-saver 倾向)。</li>
+          </ol>
+        </div>
+
+        <p>S&amp;P 历史回报 ~10%/年 [38] 是个 useful reference point——它告诉你"市场愿意给你 10% 等一年"。如果你的个人 rate 远高于 10% → 你应该多消费（你的当下太饥饿）；远低于 10% → 你应该多消费（你的未来太被高估）。</p>
+
+        <p>关键观察：<strong>over-saver 的个人 rate 接近 0 甚至负数</strong>——他们对"未来"赋予比"现在"更高的 utility，这违反所有金融逻辑。但<strong>多数 FIRE 信徒在做这件事</strong>——把当前压成最低消费，把所有 utility 推到 65 岁退休后的某个抽象未来。Bill 的全书针对这种倾向。</p>
+
+        <div class="pullbox warn">
+          <h4>不是叫你 over-spend — 是叫你<strong>诚实</strong></h4>
+          <p style="margin:0;">这一节<strong>不是处方</strong>——是<strong>诊断</strong>。算完你的 personal rate 后，行动取决于你的具体情况。如果你应急金 &lt; 3 个月 + 房贷 + 三个孩子——你的 over-discount 可能<strong>是理性</strong>（生存优先）。如果你应急金 12 个月 + 401k 满额 + 还在攒——你的 under-discount 多半是 autopilot。<strong>诊断 → 再判断处方</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §7 -->
+      <section class="unit" id="s7">
+        <p class="unit-eyebrow">§7 · Three Actionable Principles</p>
+        <h2 class="unit-h">从这一章带走的三条原则</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>用你的真实时薪决定 outsource 哪些 chores。</strong><br>
+            重做 Ch1 的"真实时薪"计算（含通勤 / 加班 / 邮件 / 心理负担）。然后列出过去一个月你<strong>自己做</strong>的、可 outsource 的 chores（清洁、洗衣、烹饪、跑腿、报销、文书）——每项的"自己做"成本 = 真实时薪 × 该项耗时。如果<strong>outsource 报价 &lt; 自己做成本</strong> → 立刻 outsource。Whillans 2017 [37] 的实验是你的实证后盾——这<strong>不是奢侈</strong>，是<strong>有数据支持</strong>的幸福套利。
+          </li>
+          <li>
+            <strong>把健康投资当 portfolio 的<strong>第一笔</strong>——不是 leftover。</strong><br>
+            健康是乘数——它放大你<strong>未来所有</strong>体验的 utility。这意味着 50 岁前的每一块健康投资在 lifetime ROI 上 dominate 几乎所有其他支出。具体：每周固定时间 + 钱投入（私教 / 营养咨询 / 年度体检 / 设备）。不要"等我有时间"——这是 Sapolsky [34] 的"窗口"在你脸上关上。把健康预算<strong>放在固定 fixed cost</strong>那一栏（跟房租同级别），不要放在<strong>discretionary</strong> 那一栏。
+          </li>
+          <li>
+            <strong>算你的 personal interest rate — 决定 over-save 还是 over-spend。</strong><br>
+            做一次"$1,000 今天 vs $X 一年后"测试——记下你的 X。跟 S&amp;P 历史回报 ~10% [38] + 通胀 ~3% 对比。<strong>诚实接受诊断</strong>——如果你 X 接近 $1,000（折现率近 0） → 你是 over-saver，本书的处方对你 directly relevant；如果 X &gt; $1,200（折现率 &gt;20%）→ 你是 over-spender，本书的处方对你<strong>反向</strong>。这一步<strong>决定</strong>你怎么读后面 2 章。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把这一章压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>钱 + 时间 + 健康构成乘法等式——任意为零总积为零。多数人 default 保护 abundant 资源、消耗 scarce 资源——你的工作是反过来。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Reflection Exercises</p>
+        <h2 class="unit-h">反思练习（写下来，不要在脑子里完成）</h2>
+
+        <p>这一章的最大风险：你点头同意"三角"——然后第二天继续保护 abundant 资源。下面 4 个练习把概念绑定到你<strong>本月</strong>的具体决策。</p>
+
+        <div class="exercise">
+          <h4>练习 1 — 你的 abundant × scarce 三角</h4>
+          <p>根据你当前年龄阶段（参考 §2 表）写下哪两个资源 abundant、哪一个 scarce。然后回看过去 12 个月你的<strong>钱的去向</strong>——你的钱主要在 (a) 保护 abundant 资源（如多攒应急金、多存退休账户）、还是 (b) 补 scarce 资源（如 outsource 时间、健身、医疗）？比例如何？</p>
+          <textarea placeholder="例如：35 岁，时间是 scarce（孩子 + 工作）。但过去 12 个月我钱的主要流向：401k +$18K、应急金 +$8K、HSA +$3K——共 $29K 在保护已经 abundant 的钱；outsource cleaning $1,200 + meal kit $2,400——共 $3,600 在补 scarce 的时间。比例 8:1，完全反了。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — Buying time vs buying stuff 审计</h4>
+          <p>列过去 12 个月你花在 (A) <strong>买物品</strong>（衣服、电子产品、家具、家居用品）vs (B) <strong>买时间</strong>（outsource、便利服务、premium 通勤）的钱。比例多少？Whillans 2017 [37] 说后者对幸福贡献远高——你的比例支持还是反对这个结论？该调吗？</p>
+          <textarea placeholder="不要避重就轻——把 Amazon 订单和 Visa 账单翻一遍真实算。多数人会发现 buying stuff 是 buying time 的 5-10 倍。问题：你<strong>愿意</strong>把这个比例倒过来吗？阻力在哪里？"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — 你的健康投资 audit</h4>
+          <p>算你过去 12 个月在<strong>健康</strong>上的总支出（健身房 / 私教 / 营养咨询 / 体检 / 装备 / 健康食品 premium）。再算总消费。健康 / 总消费比例是多少？对比：你买物品的支出 vs 健康支出的比例如何？如果健康是乘数——你的 portfolio 是否把第一笔预算分给了它？</p>
+          <textarea placeholder="例如：年度健康 $2,400 (健身房 + 体检 + 蛋白粉)；年度物品 $14,000 (含两个 iPhone + 衣服 + 家具)。比例 1:6——但健康是乘数、物品大多 7 年内贬值到 0。这个比例理性吗？"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 4 — 你的 Marshmallow Test</h4>
+          <p>诚实做 §6 那个测试：$1,000 现在 vs $X 一年后——你的 X 是多少？X &lt; $1,050 → 你是 over-saver 倾向；X $1,050-$1,150 → 接近理性 baseline；X &gt; $1,200 → over-spender 倾向。给出 X 之后——问自己：你的 X 是基于<strong>具体的当下需求</strong>（房贷 / 孩子 / 医疗）还是 autopilot 习惯？你的方向（over-save / over-spend）跟你<strong>嘴上</strong>声称的偏好一致吗？</p>
+          <textarea placeholder="多数 FIRE 信徒嘴上"我害怕没钱"，但 marshmallow 测试中 X 接近 $1,005——他们的实际 discount 行为是 over-saver。错位需要承认。"></textarea>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Self-Check Quiz</p>
+        <h2 class="unit-h">自检 Quiz（先答，再展开看解析）</h2>
+
+        <details class="quiz">
+          <summary>Q1. Warren-Tyagi 2006 [32] 的 50-30-20 规则最大 limitation 是什么？</summary>
+          <p>A) 50% 太多<br>
+          B) 20% 太少<br>
+          C) <strong>固定百分比跟年龄解耦——同一比例在 25 / 45 / 70 岁的最优性完全不同</strong><br>
+          D) 该规则只适用美国</p>
+          <div class="answer"><strong>正确答案：C。</strong>50-30-20 的错误不在数字——在<strong>结构</strong>。它假设储蓄率应该<strong>常数</strong>，但 Modigliani consumption-smoothing + Bill 的边际效用衰减都指向<strong>储蓄率应该随年龄陡变</strong>——20s 接近 0%、30-40s 中高、50-60s 高峰、65+ 转 decumulate。Freakonomics 2013 [31] 转述 Friedman / Scheinkman 的经济学共识跟 Warren-Tyagi 给出的"理财行业共识"<strong>方向相反</strong>——但理财书更普及，所以多数人按错的版本生活。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. Whillans 2017 PNAS [37] 的核心发现是什么？</summary>
+          <p>A) 富人比穷人幸福<br>
+          B) <strong>实验证明同样金额"买时间"（outsource chores）比"买物品"对幸福贡献显著更高——且是因果方向</strong><br>
+          C) 旅游比购物快乐<br>
+          D) 北欧人更幸福</p>
+          <div class="answer"><strong>正确答案：B。</strong>关键不是"buying time 跟幸福相关"——是 Whillans 等人做了<strong>实验</strong>：给被试 $40，随机分两组（买时间 / 买物品），两周后测幸福——<strong>买时间组显著上升</strong>。这是因果，不是相关。这是为什么 PNAS 发表它。实践含义：if outsource cost &lt; 你的真实时薪 × 耗时 → outsource。多数人不这样算因为 marketing 把物品做成 default + outsource 触发文化 guilt。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. Bill 说"health is a multiplier" 是什么意思？</summary>
+          <p>A) 健康让你赚更多钱<br>
+          B) <strong>总人生满足 ≈ 健康 ×（金钱+时间）—— 健康 = 0 时总满足 = 0，健康 ×2 时金钱和时间的购买力都 ×2</strong><br>
+          C) 健康人更长寿<br>
+          D) 健康保险很重要</p>
+          <div class="answer"><strong>正确答案：B。</strong>区别在"加数 vs 乘数"。如果健康是<strong>加数</strong> (满足 = 健康 + 钱 + 时间)——健康再差，钱和时间仍能贡献。但 Bill 的论点：实证上健康<strong>放大</strong>所有其他变量。健康好 = 钱和时间都 ×2；健康差 = 钱和时间都贬值。Finkelstein 2013 [1] 实证支持：健康受损的人对消费的边际效用<strong>显著低于</strong>健康人。Sapolsky [34] 的"open season"指出健康有<strong>不可逆窗口</strong>——50 岁前的投资 dominate 50 岁后。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. Personal interest rate 是什么？为什么 Bill 让你算它？</summary>
+          <p>A) 你的房贷利率<br>
+          B) 你的信用卡利率<br>
+          C) <strong>你愿意为"等一年"放弃多少 % 当前消费——诊断你是 over-spender (rate 高) 还是 over-saver (rate 低) 倾向</strong><br>
+          D) S&amp;P 500 的回报率</p>
+          <div class="answer"><strong>正确答案：C。</strong>个人 discount rate = 你对未来 vs 当下的相对估值。$1,000 现在 vs $X 一年后——X = $1,030 → rate 3%（接近理性 baseline，跟通胀齐）；X = $1,200 → rate 20%（over-discount 未来 = over-spender / myopic）；X = $1,005 → rate 0.5%（over-discount 当下 = over-saver）。S&amp;P 历史 ~10% [38] 是市场 reference。<strong>关键论点：两个方向都是 myopia</strong>——多数理财书只警告 over-spender。这本书警告 over-saver——因为 Bill 的隐含读者是已经过度积累的中产 / 上中产。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5. Bill 推荐的 abundant→scarce swap，在 50s 应该是什么方向？</summary>
+          <p>A) 用时间换钱<br>
+          B) 用钱换物品<br>
+          C) <strong>用钱 + 时间买健康（健康开始 scarce、不可逆窗口接近）；趁还能做的剧烈体验立刻做</strong><br>
+          D) 用钱买退休保险</p>
+          <div class="answer"><strong>正确答案：C。</strong>50-60s 三角：金钱 ✓✓（高峰）、时间 ✓（孩子离家）、健康 ✗（开始下滑）。最优 swap：把<strong>两个 abundant 资源（钱 + 时间）</strong>同时投入到<strong>scarce 资源（健康）</strong>——大量医疗 / 健身 / 营养，加上趁还能做的体验立刻做（爬山 / 长途旅行的最后窗口，参考 Nyaupane 2008 [33] 的 senior travel constraints）。多数人在 50s 仍在<strong>存钱</strong>（保护已 abundant 的钱）——这是 swap 方向反了。Stephen Stern 案例（Honeyman 2016 [35]）证明 65 岁还能逆转——但代价远高于 50 岁就开始。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读</h3>
+        <ol>
+          <li><span class="tag">书评</span>[31] Dubner, S. J., &amp; Levitt, S. D. (2013). Freakonomics Radio episode — 引 Levitt &amp; José Scheinkman 关于"年轻人应该花得比以为该花的多"的经济学共识。— Bill 用以论证 50-30-20 规则跟经济学方向相反。</li>
+          <li><span class="tag">理论</span>[32] Warren, E., &amp; Tyagi, A. W. (2006). <em>All Your Worth: The Ultimate Lifetime Money Plan</em>. Free Press. — "Balanced Money Formula" (50-30-20) 的出处。Bill 反对的固定百分比理财教条的最知名代表。</li>
+          <li><span class="tag">实证</span>[33] Nyaupane, G. P., McCabe, J. T., &amp; Andereck, K. L. (2008). Seniors' Travel Constraints: Stepwise Logistic Regression Analysis. <em>Tourism Analysis</em>, 13. — 实证证明老年游客的主要 travel constraint 是健康（不是钱），支撑 Bill 的"金钱效用衰减曲线"。</li>
+          <li><span class="tag">书评</span>[34] Sapolsky, R. M. (1998). Open Season. <em>The New Yorker</em>. — 衰老的阶梯式不可逆窗口论。Bill 用以论证"50 岁前的健康投资 ROI dominate 50 岁后"。</li>
+          <li><span class="tag">案例</span>[35] Honeyman, A. (2016). Proof That 65 Is Never Too Late. GMB Fitness. — Stephen Stern 医生 65 岁逆转 fitness 的案例。证明窗口不是绝对的，但代价随年龄陡升。</li>
+          <li><span class="tag">案例</span>[36] Cross, B. (2018). Jaime and Matt Staples Win $150K Weight Loss Bet from Bill Perkins. <em>PokerNews</em>. — Bill 自己下的 $150K 减重赌注。证明 Bill 把<strong>金钱当工具</strong>触发健康行为改变。</li>
+          <li><span class="tag">实证</span>[37] Whillans, A. V., Dunn, E. W., Smeets, P., Bekkers, R., &amp; Norton, M. I. (2017). Buying Time Promotes Happiness. <em>PNAS</em>, 114(32), 8523-8527. — 实验证明同样金额买时间比买物品对幸福贡献显著更高。本章 §5 的核心实证。</li>
+          <li><span class="tag">实证</span>[38] Maverick, J. B. (2019). What Is the Average Annual Return for the S&amp;P 500? <em>Investopedia</em>. — S&amp;P 历史回报 ~10%/年作为 personal interest rate 的市场 reference。</li>
+          <li><span class="tag">实证</span>[55] Mischel, W. Stanford Marshmallow Experiment (1960s-1970s). — 经典 delayed-gratification 测试。Bill 用作 personal discount rate 概念的引子；翻转应用论证 over-saver 也是 myopia。</li>
+        </ol>
+        <p style="margin-top:18px;color:var(--muted);">下一步：第五章 · Time Buckets + 你的 Net Worth Peak — 把"什么时候做什么"具体到具体年龄段；你的财富高峰应该是<strong>日期</strong>不是数字。</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

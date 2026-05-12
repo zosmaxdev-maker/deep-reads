@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《金钱心理学》阅读大纲</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      padding: 28px 22px;
+      border-right: 1px solid var(--line);
+      background: #efebe0;
+    }
+
+    .brand {
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    nav {
+      display: grid;
+      gap: 6px;
+      margin-top: 22px;
+    }
+
+    nav a {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 8px;
+      align-items: start;
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: #34302a;
+      font-size: 14px;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background: var(--paper);
+      outline: 1px solid var(--line);
+    }
+
+    .num {
+      color: var(--accent);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    main {
+      padding: 42px clamp(22px, 5vw, 72px) 72px;
+    }
+
+    .intro {
+      max-width: 980px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .intro h2 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .intro p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      gap: 12px;
+      max-width: 980px;
+      margin: 22px 0 0;
+    }
+
+    .meta {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .meta strong {
+      display: block;
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    .meta span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .section-title {
+      margin: 38px 0 14px;
+      color: var(--accent);
+      font-size: 16px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 16px;
+      max-width: 1180px;
+    }
+
+    .chapter {
+      min-height: 310px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      scroll-margin-top: 24px;
+    }
+
+    .chapter header {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: grid;
+      place-items: center;
+      flex: 0 0 38px;
+      height: 38px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--accent);
+      font-weight: 800;
+      font-size: 14px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .chapter h3 {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .chapter .en {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .prompt {
+      margin: 12px 0;
+      padding: 10px 12px;
+      border-left: 4px solid var(--mark);
+      background: #fff7e5;
+      color: #4c4030;
+      font-size: 14px;
+    }
+
+    .chapter h4 {
+      margin: 14px 0 6px;
+      color: var(--accent-2);
+      font-size: 13px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 3px 0;
+    }
+
+    .notes {
+      min-height: 66px;
+      margin-top: 12px;
+      padding: 10px 12px;
+      border: 1px dashed #c8bdab;
+      border-radius: 8px;
+      color: var(--muted);
+      background: #fbf7ed;
+      font-size: 14px;
+    }
+
+    .track {
+      display: grid;
+      gap: 10px;
+      max-width: 980px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .track-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(35, 100, 103, .18);
+    }
+
+    .track-row:last-child {
+      border-bottom: 0;
+    }
+
+    .track-row strong {
+      color: var(--accent);
+    }
+
+    footer {
+      max-width: 980px;
+      margin-top: 42px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        display: block;
+      }
+
+      aside {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      nav {
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      }
+
+      main {
+        padding: 28px 18px 54px;
+      }
+
+      .meta-grid,
+      .track-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="brand">
+        <p class="eyebrow">Reading Map</p>
+        <h1>《金钱心理学》</h1>
+        <p class="subtitle">按目录建立的阅读大纲。每章先抓一个问题，再沉淀一个可行动的金钱原则。</p>
+      </div>
+      <nav aria-label="章节目录">
+        <a href="#ch00"><span class="num">00</span><span>导言：地球上最伟大的表演</span></a>
+        <a href="#ch01"><span class="num">01</span><span>没有人是疯子</span></a>
+        <a href="#ch02"><span class="num">02</span><span>运气与风险</span></a>
+        <a href="#ch03"><span class="num">03</span><span>永远不够</span></a>
+        <a href="#ch04"><span class="num">04</span><span>复利的反直觉</span></a>
+        <a href="#ch05"><span class="num">05</span><span>致富与守富</span></a>
+        <a href="#ch06"><span class="num">06</span><span>尾部事件决定胜负</span></a>
+        <a href="#ch07"><span class="num">07</span><span>自由</span></a>
+        <a href="#ch08"><span class="num">08</span><span>车中人的悖论</span></a>
+        <a href="#ch09"><span class="num">09</span><span>财富是你看不见的东西</span></a>
+        <a href="#ch10"><span class="num">10</span><span>存钱</span></a>
+        <a href="#ch11"><span class="num">11</span><span>合理胜过理性</span></a>
+        <a href="#ch12"><span class="num">12</span><span>意外</span></a>
+        <a href="#ch13"><span class="num">13</span><span>安全边际</span></a>
+        <a href="#ch14"><span class="num">14</span><span>你会改变</span></a>
+        <a href="#ch15"><span class="num">15</span><span>没有免费的午餐</span></a>
+        <a href="#ch16"><span class="num">16</span><span>你和我</span></a>
+        <a href="#ch17"><span class="num">17</span><span>悲观主义的诱惑</span></a>
+        <a href="#ch18"><span class="num">18</span><span>你什么时候会相信任何事</span></a>
+        <a href="#ch19"><span class="num">19</span><span>汇总起来</span></a>
+        <a href="#ch20"><span class="num">20</span><span>我的投资告白</span></a>
+        <a href="#postscript"><span class="num">PS</span><span>后记：美国消费者思维简史</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="intro" id="intro">
+        <h2>把投资从“算得更准”，转成“活得更稳”。</h2>
+        <p>这本书的主线不是复杂金融技巧，而是人如何在不确定、比较、欲望、恐惧和时间中做金钱决策。阅读时重点记录：哪些心理机制会影响我的投资动作，哪些规则能让我在未来的自己不稳定时仍然不偏航。</p>
+        <div class="meta-grid" aria-label="阅读信息">
+          <div class="meta"><strong>20</strong><span>核心章节</span></div>
+          <div class="meta"><strong>4</strong><span>主线主题：行为、风险、自由、长期主义</span></div>
+          <div class="meta"><strong>1</strong><span>最终目标：形成自己的金钱规则</span></div>
+          <div class="meta"><strong>30m</strong><span>建议每次阅读一个章节块</span></div>
+        </div>
+      </section>
+
+      <h2 class="section-title">阅读主线</h2>
+      <section class="track">
+        <div class="track-row"><strong>行为偏差</strong><span>第 1-3 章：不同经历造就不同金钱观；别把结果完全归因于能力；“够了”是防止毁灭的上限。</span></div>
+        <div class="track-row"><strong>长期生存</strong><span>第 4-6 章：复利需要时间；守富比致富更依赖谦逊；少数大赢家会覆盖大量平庸结果。</span></div>
+        <div class="track-row"><strong>自由与储蓄</strong><span>第 7-11 章：金钱最强的回报是掌控时间；看不见的财富来自没有花掉的钱；可坚持的方案比数学最优更重要。</span></div>
+        <div class="track-row"><strong>不确定性</strong><span>第 12-18 章：世界会不断给出意外；计划需要安全边际；叙事会让人在压力下相信过度简化的故事。</span></div>
+        <div class="track-row"><strong>个人规则</strong><span>第 19-20 章：把全书原则压缩成自己的行为准则，并对自己的投资、消费、储蓄做一次诚实告白。</span></div>
+      </section>
+
+      <h2 class="section-title">章节大纲</h2>
+      <section class="chapter-grid">
+        <article class="chapter" id="ch00">
+          <header><span class="badge">00</span><div><h3>导言：地球上最伟大的表演</h3><p class="en">The Greatest Show on Earth</p></div></header>
+          <p class="prompt">核心问题：为什么懂金融知识，不等于能做出好的金钱决策？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>金钱行为是心理、身份、历史和现实压力的混合物。</li><li>投资不是纯智力竞赛，而是长期行为管理。</li><li>本书要研究的是人，而不只是公式。</li></ul>
+          <div class="notes">我的笔记：写下我现在最想修正的一个金钱行为。</div>
+        </article>
+
+        <article class="chapter" id="ch01">
+          <header><span class="badge">01</span><div><h3>没有人是疯子</h3><p class="en">No One's Crazy</p></div></header>
+          <p class="prompt">核心问题：我的金钱观里，哪些其实来自我自己的时代、家庭、职业和运气？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>每个人都用有限经历解释金钱世界。</li><li>看似荒唐的决策，常常在当事人的背景里自洽。</li><li>理解差异比急着评价更有用。</li></ul>
+          <div class="notes">我的笔记：记录 3 个我从成长经历带来的金钱默认设置。</div>
+        </article>
+
+        <article class="chapter" id="ch02">
+          <header><span class="badge">02</span><div><h3>运气与风险</h3><p class="en">Luck &amp; Risk</p></div></header>
+          <p class="prompt">核心问题：我怎样避免把好运误认成能力，把坏运误认成愚蠢？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>成功和失败都包含不可控变量。</li><li>评价结果时要看样本、路径和基准。</li><li>投资计划要承认自己可能错，但仍能活下来。</li></ul>
+          <div class="notes">我的笔记：写下当前投资计划里最依赖运气的部分。</div>
+        </article>
+
+        <article class="chapter" id="ch03">
+          <header><span class="badge">03</span><div><h3>永远不够</h3><p class="en">Never Enough</p></div></header>
+          <p class="prompt">核心问题：什么数字对我来说已经足够？我愿意为了更多冒多大风险？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>没有“够了”的边界，收益会诱导过度下注。</li><li>社会比较会抬高欲望的地板。</li><li>最贵的错误是拿已经重要的东西去赌不必要的更多。</li></ul>
+          <div class="notes">我的笔记：定义“不能拿去赌”的东西：家庭、健康、身份、现金流。</div>
+        </article>
+
+        <article class="chapter" id="ch04">
+          <header><span class="badge">04</span><div><h3>复利的反直觉</h3><p class="en">Confounding Compounding</p></div></header>
+          <p class="prompt">核心问题：我是否真正尊重时间，而不是只迷恋收益率？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>复利的关键变量是持续时间。</li><li>长期收益往往来自少犯致命错误。</li><li>越想加速，越容易破坏复利。</li></ul>
+          <div class="notes">我的笔记：把“持有时间”写入资产配置规则，而不只写目标收益。</div>
+        </article>
+
+        <article class="chapter" id="ch05">
+          <header><span class="badge">05</span><div><h3>致富与守富</h3><p class="en">Getting Wealthy vs. Staying Wealthy</p></div></header>
+          <p class="prompt">核心问题：我的策略是在追求上涨，还是也能承受下跌？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>致富需要冒险，守富需要谦逊和韧性。</li><li>长期主义首先是生存主义。</li><li>现金和安全边际不是低效，而是续航能力。</li></ul>
+          <div class="notes">我的笔记：列出我的投资系统如何避免被一次错误清零。</div>
+        </article>
+
+        <article class="chapter" id="ch06">
+          <header><span class="badge">06</span><div><h3>尾部事件决定胜负</h3><p class="en">Tails, You Win</p></div></header>
+          <p class="prompt">核心问题：我能接受大量普通结果，只为了少数关键结果发挥作用吗？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>少数事件贡献大部分长期回报。</li><li>不必每个选择都正确，重要的是别错过关键尾部。</li><li>指数投资的力量部分来自自动持有赢家。</li></ul>
+          <div class="notes">我的笔记：把“允许平庸”和“持有赢家”写成一句规则。</div>
+        </article>
+
+        <article class="chapter" id="ch07">
+          <header><span class="badge">07</span><div><h3>自由</h3><p class="en">Freedom</p></div></header>
+          <p class="prompt">核心问题：钱最终要替我买回哪一种生活控制权？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>金钱的最高股息是掌控自己的时间。</li><li>自由感比物质展示更稳定地提升幸福。</li><li>投资目标要能翻译成生活选择权。</li></ul>
+          <div class="notes">我的笔记：定义我的“自由指标”：多久可以不工作、可选择什么工作、能拒绝什么。</div>
+        </article>
+
+        <article class="chapter" id="ch08">
+          <header><span class="badge">08</span><div><h3>车中人的悖论</h3><p class="en">Man in the Car Paradox</p></div></header>
+          <p class="prompt">核心问题：我买某些东西，是为了使用价值，还是为了被别人看见？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>人们羡慕的常是物品，而不是拥有者本人。</li><li>炫耀性消费常常无法带来想象中的尊重。</li><li>身份感如果靠外部展示维持，会很贵。</li></ul>
+          <div class="notes">我的笔记：检查最近一笔大额消费背后的真实动机。</div>
+        </article>
+
+        <article class="chapter" id="ch09">
+          <header><span class="badge">09</span><div><h3>财富是你看不见的东西</h3><p class="en">Wealth is What You Don't See</p></div></header>
+          <p class="prompt">核心问题：我是否把“有钱”误解成“花过钱”？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>财富是尚未花掉的购买力。</li><li>收入高不等于财富高。</li><li>看不见的资产负债表比看得见的消费更重要。</li></ul>
+          <div class="notes">我的笔记：把净资产、储蓄率、现金缓冲作为真正的财富指标。</div>
+        </article>
+
+        <article class="chapter" id="ch10">
+          <header><span class="badge">10</span><div><h3>存钱</h3><p class="en">Save Money</p></div></header>
+          <p class="prompt">核心问题：我能不能在不预测未来的情况下，仅靠储蓄率改善命运？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>储蓄是不依赖市场预测的能力。</li><li>降低欲望比提高收入更直接提升储蓄率。</li><li>现金给人选择权和心理稳定。</li></ul>
+          <div class="notes">我的笔记：写下一个本月能立刻降低的消费类别。</div>
+        </article>
+
+        <article class="chapter" id="ch11">
+          <header><span class="badge">11</span><div><h3>合理胜过理性</h3><p class="en">Reasonable &gt; Rational</p></div></header>
+          <p class="prompt">核心问题：哪个方案我真的能执行十年，而不是在表格里最好看？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>数学最优不等于行为最优。</li><li>能睡得着、拿得住、坚持下去，本身就是收益来源。</li><li>个人系统要适配自己的情绪和生活。</li></ul>
+          <div class="notes">我的笔记：为当前 VOO/QQQ/现金配置写下“我能坚持”的理由。</div>
+        </article>
+
+        <article class="chapter" id="ch12">
+          <header><span class="badge">12</span><div><h3>意外</h3><p class="en">Surprise!</p></div></header>
+          <p class="prompt">核心问题：我的计划是不是过度依赖过去会重复？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>历史提供参照，但未来会产生新变量。</li><li>最重要的事件常常事前不可预测。</li><li>不要把模型当成现实本身。</li></ul>
+          <div class="notes">我的笔记：列出 3 个会让当前计划失效的意外情境。</div>
+        </article>
+
+        <article class="chapter" id="ch13">
+          <header><span class="badge">13</span><div><h3>安全边际</h3><p class="en">Room for Error</p></div></header>
+          <p class="prompt">核心问题：我给错误、延迟、失业、市场下跌留了多少空间？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>安全边际是承认现实会偏离计划。</li><li>极端情景不常见，但影响巨大。</li><li>抗压设计比精准预测更可靠。</li></ul>
+          <div class="notes">我的笔记：检查应急金、定投金额、仓位上限是否有缓冲。</div>
+        </article>
+
+        <article class="chapter" id="ch14">
+          <header><span class="badge">14</span><div><h3>你会改变</h3><p class="en">You'll Change</p></div></header>
+          <p class="prompt">核心问题：未来的我可能不再想要现在设定的目标吗？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>长期计划会遇到价值观变化。</li><li>极端承诺容易被未来的自己推翻。</li><li>计划需要定期复盘和可调整空间。</li></ul>
+          <div class="notes">我的笔记：设置一个季度复盘点，检查目标是否仍然成立。</div>
+        </article>
+
+        <article class="chapter" id="ch15">
+          <header><span class="badge">15</span><div><h3>没有免费的午餐</h3><p class="en">Nothing's Free</p></div></header>
+          <p class="prompt">核心问题：我愿意为长期收益支付哪种“费用”：波动、等待、后悔还是不确定？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>投资回报的价格常常是波动和不舒服。</li><li>把下跌理解为费用，而不只是罚款。</li><li>不愿付费，就很难拿到长期回报。</li></ul>
+          <div class="notes">我的笔记：写下市场下跌时我希望自己读到的一句话。</div>
+        </article>
+
+        <article class="chapter" id="ch16">
+          <header><span class="badge">16</span><div><h3>你和我</h3><p class="en">You &amp; Me</p></div></header>
+          <p class="prompt">核心问题：我是不是在模仿时间周期、风险承受力完全不同的人？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>不同投资者玩的不是同一个游戏。</li><li>短线交易者、长期投资者、机构、散户目标不同。</li><li>先定义自己的游戏，再判断别人的建议是否适用。</li></ul>
+          <div class="notes">我的笔记：我的游戏：时间周期、现金需求、职业风险、心理承受力。</div>
+        </article>
+
+        <article class="chapter" id="ch17">
+          <header><span class="badge">17</span><div><h3>悲观主义的诱惑</h3><p class="en">The Seduction of Pessimism</p></div></header>
+          <p class="prompt">核心问题：为什么坏消息总显得更聪明、更紧急、更可信？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>悲观叙事更容易吸引注意力。</li><li>进步通常缓慢，损失通常突然。</li><li>长期乐观需要短期承受坏消息的能力。</li></ul>
+          <div class="notes">我的笔记：建立一个处理市场坏消息的固定流程。</div>
+        </article>
+
+        <article class="chapter" id="ch18">
+          <header><span class="badge">18</span><div><h3>你什么时候会相信任何事</h3><p class="en">When You'll Believe Anything</p></div></header>
+          <p class="prompt">核心问题：我在哪些压力下最容易相信一个过于简单的金钱故事？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>人在不确定中会渴望连贯叙事。</li><li>好故事能掩盖证据不足。</li><li>投资前要区分事实、解释和愿望。</li></ul>
+          <div class="notes">我的笔记：列一个“买入前反叙事检查清单”。</div>
+        </article>
+
+        <article class="chapter" id="ch19">
+          <header><span class="badge">19</span><div><h3>汇总起来</h3><p class="en">All Together Now</p></div></header>
+          <p class="prompt">核心问题：全书原则如何压缩成我的十条金钱行为规则？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>少一点自负，多一点安全边际。</li><li>少一点比较，多一点自由。</li><li>少一点预测，多一点可持续行动。</li></ul>
+          <div class="notes">我的笔记：整理成“我的金钱操作系统 v1”。</div>
+        </article>
+
+        <article class="chapter" id="ch20">
+          <header><span class="badge">20</span><div><h3>我的投资告白</h3><p class="en">Confessions</p></div></header>
+          <p class="prompt">核心问题：如果我必须诚实说明自己的投资方式，我会承认什么偏好和限制？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>个人投资方案可以简单，但必须真实。</li><li>适合作者的不一定适合我。</li><li>透明面对自己的目标、恐惧和家庭约束。</li></ul>
+          <div class="notes">我的笔记：写一版 300 字“我的投资告白”。</div>
+        </article>
+
+        <article class="chapter" id="postscript">
+          <header><span class="badge">PS</span><div><h3>后记：美国消费者思维简史</h3><p class="en">A Brief History of Why the U.S. Consumer Thinks the Way They Do</p></div></header>
+          <p class="prompt">核心问题：宏观历史如何塑造普通人的消费、债务和财富期待？</p>
+          <h4>阅读抓手</h4>
+          <ul><li>个人金钱观常被时代环境塑造。</li><li>收入、信贷、社会比较会共同改变消费行为。</li><li>理解历史有助于看清自己的默认期待。</li></ul>
+          <div class="notes">我的笔记：把美国消费文化与我自己的移民/职业/家庭处境对照。</div>
+        </article>
+      </section>
+
+      <footer>
+        文件用途：作为《金钱心理学》的阅读导航与笔记骨架。读完每章后，可以把“我的笔记”区域扩展为正式 Markdown 学习笔记。
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

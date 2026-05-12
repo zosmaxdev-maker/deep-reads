@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第二章 · 运气、风险、复利、长尾 — 《金钱心理学》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.7;
+    }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside {
+      position: sticky; top: 0; height: 100vh; overflow: auto;
+      padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0;
+    }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a {
+      display: grid; grid-template-columns: 28px 1fr; gap: 8px;
+      padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none;
+    }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 920px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+    .exercise { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .exercise h4 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exercise textarea, .exercise input[type=text] {
+      width: 100%; margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+      background: #fff; font: inherit; color: var(--ink);
+    }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+    details.quiz { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    details.quiz summary { cursor: pointer; font-weight: 700; list-style: none; }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before { content: "▸ "; color: var(--accent); font-weight: 800; }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: #2e3b3a; }
+    details.quiz .answer strong { color: var(--accent); }
+    .citations { margin: 56px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+    .citations h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">The Psychology of Money</p>
+      <p class="ch-num">02</p>
+      <p class="ch-title">运气、风险、复利、长尾</p>
+      <p class="ch-sub">Luck, Risk, Compounding &amp; Tails · 第二章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>财富增长的真正动力</span></a>
+        <a href="#s1"><span class="num">§1</span><span>Bill Gates 的运气方程</span></a>
+        <a href="#s2"><span class="num">§2</span><span>评估别人 vs 评估自己</span></a>
+        <a href="#s3"><span class="num">§3</span><span>复利的反直觉</span></a>
+        <a href="#s4"><span class="num">§4</span><span>Buffett 的真秘密</span></a>
+        <a href="#s5"><span class="num">§5</span><span>长尾：少数决定全部</span></a>
+        <a href="#s6"><span class="num">§6</span><span>Bessembinder 实证</span></a>
+        <a href="#s7"><span class="num">§7</span><span>应用到你</span></a>
+        <a href="#s8"><span class="num">§8</span><span>三条可行动原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习</span></a>
+        <a href="#qz"><span class="num">?</span><span>自检 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 2 · The Engines of Wealth</p>
+      <h1 class="lead">财富不是线性的。</h1>
+      <p class="lead-sub">如果说第一章告诉你"行为 &gt; 智能"，第二章要更进一步——它要告诉你财富增长的<strong>分布形状</strong>。绝大多数人对这个形状的直觉是错的。错的人会用错误的归因评价自己和别人；用错误的耐心拿不住赢家；用错误的方差理解去承担本可以避免的风险。这一章的目标是：让你停止把世界想成一个均匀分布的高斯曲线。</p>
+
+      <div class="quote">
+        "Nothing is as good or as bad as it seems. Risk and luck are doppelgängers."
+        <cite>— Morgan Housel, <em>The Psychology of Money</em>, Chapter 2</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing</p>
+        <h2 class="unit-h">财富增长的真正动力</h2>
+
+        <p>大多数投资课从"年化收益率"开始。这一章一上来要先把"年化收益率"这把刻度尺<strong>砸碎</strong>。原因有三：</p>
+
+        <ol class="deep">
+          <li><strong>结果归因是错的。</strong>你看到的成功故事，运气贡献远高于你以为的；你看到的失败故事，风险贡献远高于"愚蠢"。</li>
+          <li><strong>时间维度被低估。</strong>复利不是技巧，是<strong>耐心 × 时间</strong>的乘积。Buffett 真正的优势不是收益率高，而是他持续投资了 80 年。</li>
+          <li><strong>分布是非高斯的。</strong>你的长期回报不会均匀地由 100 个决定贡献。它由 <strong>3-5 个决定</strong>贡献——其余 95 个决定甚至负贡献。这就是 long tail。如果你不理解这件事，你会不停"优化"那些根本不重要的中位决策，错过真正的尾部赢家。</li>
+        </ol>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>同一笔成功的投资，怎么<strong>定量地</strong>判断里面有多少是技能、多少是运气？</li>
+            <li>为什么"年化收益率"在长期投资里是<strong>次要变量</strong>？真正的主变量是什么？</li>
+            <li>如果美股长期回报全部来自 4% 的股票（Bessembinder 实证），那么"集中持仓"和"分散指数"哪个更适合你？为什么？</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · Luck</p>
+        <h2 class="unit-h">Bill Gates 的运气方程</h2>
+
+        <p>1968 年，比尔·盖茨 13 岁，在西雅图的 Lakeside School 读初中。这一年，Lakeside 的母亲俱乐部用 3,000 美元买了一台 ASR-33 电传打字机和 General Electric 大型机的远程使用时间。当时全美国<strong>只有约 300 万学生</strong>在上高中（含初中高年级）。Housel 估计：那一年，全美国能<strong>定期接触计算机</strong>的初中生不超过 <strong>几十个</strong>。Gates 是其中之一 [1]。</p>
+
+        <div class="figure">
+          <strong>1968 年 Bill Gates 中签概率（粗略估计）</strong>
+          <div class="bar-row"><span>同龄美国学生总数</span><div class="bar" style="width:95%"></div><span>~3,000,000</span></div>
+          <div class="bar-row"><span>有计算机的中学</span><div class="bar alt" style="width:0.5%"></div><span>少于几十所</span></div>
+          <div class="bar-row"><span>真有时间的学生</span><div class="bar alt2" style="width:0.2%"></div><span>~50 人 (估)</span></div>
+          <div class="figure-cap">含义：Gates 在 13 岁拿到的"作弊码"，全国只有大约 1/百万的同龄人有。这不是<strong>额外加分</strong>，这是<strong>整个游戏的入场券</strong>。</div>
+        </div>
+
+        <h3>Gates 自己怎么说</h3>
+        <p>Gates 在 2005 年 Mountain Whitney High School 的演讲里直接说："If there had been no Lakeside, there would have been no Microsoft." 这不是谦虚——他是在做<strong>因果归因</strong>。</p>
+
+        <h3>反例：Kent Evans</h3>
+        <p>Lakeside 那个时代，Gates 有两个最亲密的伙伴：Paul Allen（后来 Microsoft 联合创始人）和 <strong>Kent Evans</strong>。Evans 跟 Gates 一样痴迷计算机，几乎和 Allen 一样有才华。1972 年高三那年，Evans 在登山时滑落岩石坠亡，年仅 17 岁 [1]。</p>
+
+        <p>Gates 说："Kent and I would have kept working together. I'm sure we would have gone to college together." Evans 死于一个独立于他能力、努力、智商的<strong>纯随机事件</strong>。</p>
+
+        <div class="pullbox idea">
+          <h4>这就是 Housel 的核心论点</h4>
+          <p style="margin:0;">同样的环境给两个人：Gates 因为 1968 年的 Lakeside 计算机机会成为<strong>"运气兄弟"</strong>，Evans 因为 1972 年的登山事故成为<strong>"风险兄弟"</strong>。<strong>运气和风险是同一个机制——你无法控制的力量改变了结果——只是符号相反。</strong>所以理解一个就要理解另一个，无法分开评价。</p>
+        </div>
+
+        <h3>把这个论点公理化</h3>
+        <p>用一个朴素方程表达 Housel 的观点：</p>
+
+        <div class="figure" style="text-align:center;">
+          <p class="mono" style="font-size:16px; margin:6px 0;">观察到的结果 = 决策质量 × 努力 × 运气 / 风险</p>
+          <div class="figure-cap">这四个变量在前面三个的乘积里，<strong>运气/风险</strong>项的方差经常超过其他三项之和。</div>
+        </div>
+
+        <p>这意味着：从单次结果反推"这个人的决策质量"<strong>统计学上是错的</strong>。这不是哲学说辞——这是基本的方差分解（variance decomposition）。</p>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · Methodology</p>
+        <h2 class="unit-h">评估别人 vs 评估自己 — 两套规则</h2>
+
+        <p>承认运气存在很容易。但 Housel 的真正洞见是：<strong>这种承认要不对称地应用</strong>。</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:22%;">情境</th><th>错误的归因</th><th>正确的归因</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>别人的成功</td><td>他真聪明 / 他真有眼光</td><td>给运气项一个<strong>大权重</strong>。模仿其策略前要问：他的运气在我身上能复现吗？</td></tr>
+            <tr><td>别人的失败</td><td>他真愚蠢 / 他活该</td><td>给风险项一个<strong>大权重</strong>。问：同样的策略我做，会不会也撞上同样的尾部风险？</td></tr>
+            <tr><td>自己的成功</td><td>我真聪明</td><td>给运气项<strong>大权重</strong>。问：如果时间倒回我会再来一次吗？尾部如果反过来我还活着吗？</td></tr>
+            <tr><td>自己的失败</td><td>我真愚蠢</td><td>给风险项<strong>大权重</strong>。问：决策时的信息和概率分布是合理的吗？是结果差还是决策差？</td></tr>
+          </tbody>
+        </table>
+
+        <h3>"Process vs Outcome" — Annie Duke 的扑克框架</h3>
+        <p>前职业扑克冠军 Annie Duke 在 <em>Thinking in Bets</em>（2018）里给了一个干净的工具 [2]：</p>
+
+        <ul class="deep">
+          <li><strong>Good process + Good outcome</strong> = 实力（应该重复）</li>
+          <li><strong>Bad process + Bad outcome</strong> = 教训（应该改）</li>
+          <li><strong>Good process + Bad outcome</strong> = <em>"Resulting"</em>（运气背锅，<strong>不要因结果改变 process</strong>）</li>
+          <li><strong>Bad process + Good outcome</strong> = <em>"Lucky"</em>（最危险——<strong>会让你以后更敢错</strong>）</li>
+        </ul>
+
+        <div class="pullbox warn">
+          <h4>对你最危险的不是失败，是"侥幸成功"</h4>
+          <p style="margin:0;">如果你 2020 年随手买了 Tesla 涨了 8 倍，最危险的事不是"卖早了"——是<strong>下次你以为这是技能</strong>，开始用同样的方法买更多投机标的，然后撞上一次反向的尾部。<strong>"侥幸成功"是构建错误自我认知最隐蔽的来源。</strong>顶级投资者会反复审计自己的成功，问"我配吗？"</p>
+        </div>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · Compounding</p>
+        <h2 class="unit-h">复利的反直觉数学</h2>
+
+        <p>大多数人"理解复利"的方式是<strong>看一张曲线图</strong>，然后说"嗯它是指数增长"。这种理解几乎没用。要真正握住它，必须<strong>做几次粗算</strong>。</p>
+
+        <h3>实验 1：同样回报率，时间不同</h3>
+
+        <table>
+          <thead>
+            <tr><th>条件</th><th>初始</th><th>年化</th><th>时长</th><th>终值</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>方案 A</td><td>$10,000</td><td>8%</td><td>20 年</td><td>$46,610</td></tr>
+            <tr><td>方案 B</td><td>$10,000</td><td>8%</td><td>40 年</td><td>$217,245</td></tr>
+            <tr><td><strong>差异</strong></td><td colspan="3"><strong>时间从 20 → 40 年（2×），终值从 4.7× → 21.7×（4.7×）</strong></td><td><strong>多 4.7 倍</strong></td></tr>
+          </tbody>
+        </table>
+
+        <h3>实验 2：同样时长，回报率不同</h3>
+
+        <table>
+          <thead>
+            <tr><th>条件</th><th>初始</th><th>年化</th><th>时长</th><th>终值</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>方案 C</td><td>$10,000</td><td>8%</td><td>40 年</td><td>$217,245</td></tr>
+            <tr><td>方案 D</td><td>$10,000</td><td>12%</td><td>40 年</td><td>$930,510</td></tr>
+            <tr><td><strong>差异</strong></td><td colspan="3"><strong>回报率从 8% → 12%（+50%），终值多 4.3 倍</strong></td><td><strong>多 4.3 倍</strong></td></tr>
+          </tbody>
+        </table>
+
+        <p>两个实验对比的洞察：<strong>把时间翻倍，效果约等于把年化回报率从 8% 提到 12%</strong>。但是：</p>
+
+        <ul class="deep">
+          <li>把时间翻倍——只需要<strong>不卖、不动</strong>。</li>
+          <li>把年化从 8% 提到 12%——需要<strong>持续 40 年</strong>跑赢 S&amp;P 4 个百分点。这是世界上最顶级的对冲基金都做不稳的事。</li>
+        </ul>
+
+        <div class="pullbox idea">
+          <h4>关键提炼</h4>
+          <p style="margin:0;">"耐心持有"不是温和的劝告，<strong>它是数学上等价于把你的收益率翻倍</strong>的杠杆。这就是为什么 Charlie Munger 说："The first rule of compounding is to never interrupt it unnecessarily."</p>
+        </div>
+
+        <h3>但是——复利的隐性条件</h3>
+        <p>复利不能单独工作。它需要三个隐性条件：</p>
+
+        <ol class="deep">
+          <li><strong>不归零</strong>——任何一年 -100% 把累积复利清零。所以"防御 &gt; 进攻"。</li>
+          <li><strong>不中断</strong>——任何一段时间退出市场（哪怕是恐慌性的现金回避），都会损失复利曲线最陡的那段。</li>
+          <li><strong>真实持续</strong>——不是"我打算持有 30 年"，是<strong>实际上持有了 30 年</strong>。多数人做不到这一点不是因为不懂，是因为中途撞上下跌、失业、生活变故。</li>
+        </ol>
+
+        <div class="pullbox warn">
+          <h4>挑战</h4>
+          <p style="margin:0;">回顾你过去的投资：你<strong>实际持有满 5 年没动过</strong>的资产是哪些？如果一个都没有——那么你过去理解的"复利"<strong>从未发生在你账户里</strong>。复利不是知识，是<strong>纪律的副产品</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · Time</p>
+        <h2 class="unit-h">Buffett 的真秘密 — 不是收益率</h2>
+
+        <p>Warren Buffett 的净资产约 $1,300 亿（2024）。Housel 在书里做了一个简单但震撼的拆解 [3]：</p>
+
+        <table>
+          <thead>
+            <tr><th>事实</th><th>数字</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Buffett 的总净资产（2020 时点）</td><td>~$84.5 billion</td></tr>
+            <tr><td>其中在他 50 岁<strong>之前</strong>积累的</td><td>&lt; $1 billion</td></tr>
+            <tr><td>在他 65 岁<strong>之后</strong>积累的</td><td>~$81.5 billion（97%）</td></tr>
+            <tr><td>Buffett 开始投资的年龄</td><td>10 岁</td></tr>
+            <tr><td>Buffett 的年化复利回报（保守估计）</td><td>~22% / 年</td></tr>
+          </tbody>
+        </table>
+
+        <h3>反事实模拟（Housel 的关键演算）</h3>
+        <p>假设 Buffett 30 岁开始投资（不是 10 岁），70 岁退休（不是仍在干），其他一切不变——他的净资产会是多少？</p>
+
+        <div class="figure">
+          <div class="bar-row"><span>实际（10→90 岁）</span><div class="bar" style="width:99%"></div><span>~$84.5B</span></div>
+          <div class="bar-row"><span>反事实（30→70 岁）</span><div class="bar alt" style="width:0.4%"></div><span>~$11.9M</span></div>
+          <div class="figure-cap">差距：<strong>~7,000 倍</strong>。同样的人、同样的智商、同样的策略、同样的年化回报率——只是把投资时间从 80 年缩到 40 年。</div>
+        </div>
+
+        <h3>对比：Jim Simons</h3>
+        <p>Renaissance Technologies 的 Jim Simons 是公开记录里的<strong>最高年化回报率</strong>持有者——其 Medallion Fund 1988-2018 年扣费前年化 <strong>~66%</strong> [4]。是 Buffett 的 3 倍。</p>
+
+        <p>但 Simons 的净资产<strong>远低于</strong> Buffett。原因？Simons 50 岁才开始投资。他的复利时间比 Buffett 短 40 年。Housel 的暗示很尖锐：<strong>Simons 投资能力是世界第一，但 Buffett 投资财富是世界第一，原因不在能力差异，而在时间。</strong></p>
+
+        <div class="pullbox idea">
+          <h4>对你的含义</h4>
+          <p style="margin:0;">如果你今年 30 岁开始严肃投资，你最大的资产<strong>不是</strong>你能选出多好的股票，而是<strong>你还有 60 年的时间地平线</strong>。把这 60 年用满——不要在中途因为恐惧、生活变故、跟风而中断——这一件事，比"把年化提高 2 个点"重要 10 倍以上。</p>
+        </div>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · Tails</p>
+        <h2 class="unit-h">长尾：少数决定全部</h2>
+
+        <p>第三个核心动力是 Housel 在 Chapter 6 单独讲的"Tails, You Win"——<strong>金融、艺术、科技、电影、风投——所有这些领域的回报分布都不是高斯的，是<strong>极度右偏</strong>的</strong>。少数事件贡献了几乎全部的总回报。</p>
+
+        <h3>艺术：Heinz Berggruen</h3>
+        <p>Heinz Berggruen 是 20 世纪最成功的艺术品收藏家之一，最终把毕加索、克利、马蒂斯的收藏以远低于市价的折扣卖给德国政府 [5]。Horizon Research 分析了他生涯几千件买卖的回报分布——<strong>结论是：Berggruen 大部分艺术品的回报平庸甚至亏损，但他持有了少数几件后来变得 100x、1000x 的作品</strong>。他的"成功率"约 1%；正是这 1% 决定了一切。</p>
+
+        <h3>风投：Andreessen Horowitz 数据</h3>
+        <p>顶级风投基金 a16z 的合伙人 Chris Dixon 公开过他们的回报分布 [6]：</p>
+
+        <table>
+          <thead>
+            <tr><th>条件</th><th>回报分布</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>50% 的投资</td><td>赔光本金</td></tr>
+            <tr><td>30%</td><td>持平或小亏</td></tr>
+            <tr><td>15%</td><td>2-5×</td></tr>
+            <tr><td><strong>5%</strong></td><td><strong>10× 以上，贡献基金 ~80% 的总回报</strong></td></tr>
+          </tbody>
+        </table>
+
+        <p>这就是 <em>power law</em>。a16z 的伟大不在于"投得准"——他们 50% 的投资归零。他们的伟大在于<strong>持有了那 5%</strong>。</p>
+
+        <h3>美股：Bessembinder 2018</h3>
+        <p>这一节最颠覆性的研究，留到下一节专门讲。</p>
+
+        <div class="pullbox warn">
+          <h4>挑战你的高斯直觉</h4>
+          <p style="margin:0;">如果你的脑子里"投资"的画面是"50% 赢 50% 输 平均跑赢一点点"——这是<strong>高斯分布</strong>的画面，它在金融里<strong>不存在</strong>。真实画面是：80% 的决策不重要，5% 的决策决定一切。这意味着你的优化目标应该不是"提高胜率"，而是"<strong>不要错过那 5%</strong>，且<strong>错过 80% 的平庸结果不要紧</strong>"。</p>
+        </div>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · Empirical Bombshell</p>
+        <h2 class="unit-h">Bessembinder 实证：4% 决定 100%</h2>
+
+        <p>Hendrik Bessembinder（亚利桑那州立大学）在 <em>Journal of Financial Economics</em> 2018 年的论文 <strong>"Do Stocks Outperform Treasury Bills?"</strong> [7] 是过去十年最被低估的实证金融学论文。他的研究问题听起来温和："美股的长期表现到底是什么样？"——他的发现把整个"选股"产业的根基炸了。</p>
+
+        <h3>研究设计</h3>
+        <ul class="deep">
+          <li>样本：1926 年至 2016 年，美国市场 <strong>全部</strong> 上市过的普通股，共 25,332 只。</li>
+          <li>方法：计算每只股票在其上市存续期间，相对于 1 个月期国债的<strong>累积总回报</strong>。</li>
+          <li>问题：在这 25,332 只股票里，多少只跑赢了国债？</li>
+        </ul>
+
+        <h3>发现（让你坐稳）</h3>
+
+        <div class="figure">
+          <div class="bar-row"><span>跑赢 T-Bill</span><div class="bar" style="width:42.6%"></div><span>42.6%</span></div>
+          <div class="bar-row"><span>跑输 T-Bill</span><div class="bar alt2" style="width:57.4%"></div><span>57.4%</span></div>
+          <div class="figure-cap">大多数美股的<strong>终生总回报</strong>跑输短期国债。</div>
+        </div>
+
+        <p>但更刺眼的是回报集中度：</p>
+
+        <table>
+          <thead>
+            <tr><th>结论</th><th>数字</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>整个美股市场 1926-2016 创造的<strong>净财富</strong>（相对 T-Bill）</td><td>$34.97 trillion</td></tr>
+            <tr><td>这部分财富中由前 <strong>4%</strong> 表现最好的股票创造的</td><td><strong>~100%</strong></td></tr>
+            <tr><td>由前 <strong>1,092 只</strong>（占 25,332 的 4.3%）创造的</td><td>全部</td></tr>
+            <tr><td>由前 <strong>5 只</strong>（Apple, ExxonMobil, Microsoft, GE, IBM）创造的</td><td>~10%</td></tr>
+            <tr><td>剩余 <strong>96%</strong> 的股票合计净贡献</td><td>~0（互相抵消）</td></tr>
+          </tbody>
+        </table>
+
+        <h3>对"主动选股"的毁灭性含义</h3>
+        <p>如果你打算从美股 25,000 多只股票里选出长期持有的组合——你随机选 10 只，命中至少 1 只前 4% 赢家的概率不到 35%（粗算）。<strong>错过那 4%，你的长期回报就退化到与国债相当甚至更差</strong>。</p>
+
+        <p>这是为什么 Bogle、Buffett、Bessembinder 都倾向<strong>指数化</strong>：指数基金的核心优势不是"成本低"——而是它<strong>自动持有了那 4%</strong>，因为它持有了所有的股票。这是 §5 长尾原则的<strong>直接金融工程实现</strong>。</p>
+
+        <div class="pullbox idea">
+          <h4>三个洞察的拼图</h4>
+          <p style="margin:0;">
+            §3 复利 → 时间是回报的主要乘数<br>
+            §4 Buffett → 80 年 vs 40 年 = 7000× 差距<br>
+            §6 Bessembinder → 4% 的股票 = 100% 的财富<br>
+            <strong>把三件事放在一起：你应该做的是——买全市场，长时间持有，不要中断。</strong>这不是"被动投资党"的口号，<strong>这是从三个独立实证里汇聚出的同一个结论</strong>。
+          </p>
+        </div>
+      </section>
+
+      <!-- §7 -->
+      <section class="unit" id="s7">
+        <p class="unit-eyebrow">§7 · Apply to You</p>
+        <h2 class="unit-h">应用到类似画像（美股 / 30+ / 科技业工作者）</h2>
+
+        <p>把这一章的三个发现叠到这类读者的处境上：</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:25%;">章原则</th><th>你的处境冲击</th><th>具体策略调整</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>运气与风险是双胞胎</td>
+              <td>你的大型科技公司工作机会、TC、stock vesting 中相当一部分是 cohort + 时机 + 运气，不全是能力。同理近年科技裁员也未必是个人能力问题。</td>
+              <td>不要把"高 TC"当成永久财富假设；不要把"被裁"当成终身能力否定。两个都给运气项更高权重。</td>
+            </tr>
+            <tr>
+              <td>时间 &gt; 收益率</td>
+              <td>你 30+ 开始严肃投资，理论上还有 50-60 年的时间地平线。这是你最大的资产，不是 TC。</td>
+              <td>策略的核心 KPI 应该是"<strong>持续 30 年不中断</strong>"，不是"年化打败 S&amp;P 几个点"。后者你做不到，前者你能做到。</td>
+            </tr>
+            <tr>
+              <td>4% 决定 100%</td>
+              <td>你试图选股 = 试图打败 Bessembinder 数据。在你目前没有信息优势的情况下，这是负期望博弈。</td>
+              <td>核心仓位（70%+）用宽基指数（VOO/VTI）。如果想做主动，单独划出"satellite 玩具仓位"≤ 20%，且明确接受这部分大概率跑输。</td>
+            </tr>
+            <tr>
+              <td>长尾意味着大多数决策不重要</td>
+              <td>你过度关注"最近一笔交易该不该买"。但这种决策本身在你 30 年财富里几乎不影响结果。</td>
+              <td>把你的注意力从"该买什么"转移到"<strong>储蓄率</strong>"和"<strong>不卖</strong>"。这两个变量的可控性 10×于"选什么"。</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>挑战题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>列出你过去 12 个月的<strong>最大一笔投资盈利</strong>（金额或比例）。诚实评估：里面运气占百分之多少？</li>
+            <li>如果你接下来 30 年只做"每月定投 VOO + 不卖"——什么情况下你会真的中断这个计划？把这些情境写下来，并提前为每个情境想好预案。</li>
+            <li>你目前 portfolio 里"卫星仓位"（试图选股 / 跟趋势）占百分之多少？你愿意接受这部分长期跑输市场吗？如果不愿意，为什么还在做？</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- §8 -->
+      <section class="unit" id="s8">
+        <p class="unit-eyebrow">§8 · Three Actionable Principles</p>
+        <h2 class="unit-h">三条可行动原则</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>把"运气项"显式写进你的归因模型。</strong><br>
+            每次复盘投资决策，强制自己回答："如果时间倒回，我会再做这个决定吗？决策时的概率分布是合理的吗？"——这避免你把"侥幸成功"内化成技能，也避免你把"合理决策遭遇坏运气"误判成愚蠢。
+          </li>
+          <li>
+            <strong>把"时间地平线"作为你策略的第一变量。</strong><br>
+            写下你的真实时间地平线（30+ 年）。所有策略问"这能持续 30 年吗？"——不能就改。包括杠杆、热门赛道、单股集中。能持续 30 年的策略<strong>本身就是数学上最优的</strong>，因为复利的指数效应放大了"持续性"这个属性。
+          </li>
+          <li>
+            <strong>构造"长尾兼容"的组合。</strong><br>
+            既然 4% 的股票决定一切，最稳妥的不是"选出那 4%"（你做不到），而是<strong>持有所有股票</strong>。VTI / VOO / 全球指数构成核心仓位 ≥ 70%。预算一个小的"satellite" 仓位（≤ 20%）满足你想"参与"的心理需求——但事先<strong>书面承认</strong>这部分大概率跑输。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把这一章压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>财富不是来自"做对很多事"，是来自"在很长时间里没有做错致命的事，然后让 4% 的赢家自己跑出来"。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Reflection Exercises</p>
+        <h2 class="unit-h">反思练习（写下来，不要在脑子里完成）</h2>
+
+        <div class="exercise">
+          <h4>练习 1 — 你的 Lakeside 时刻</h4>
+          <p>找出你人生中类似 Bill Gates "1968 年 Lakeside 计算机"的"作弊码"——一个你曾经获得而绝大多数同龄人没有的不公平起点（教育、家庭、迁徙、关系、时机……）。它对你今天有多大贡献？如果它没出现你今天会在哪？</p>
+          <textarea placeholder="不是为了内疚——是为了校准你对自己成功的归因权重。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — 复利数学练手</h4>
+          <p>用你<strong>真实</strong>的数字算一下：假设你现在每月定投 $X 到 VOO，年化 8%，分别算 20 年、30 年、40 年的终值（用任意计算器或 Excel <code>=FV(0.08/12, n*12, -X, 0)</code>）。然后<strong>把数字写出来</strong>。看到差距了吗？</p>
+          <textarea placeholder="例如：每月 $2000，20 年: $1.18M, 30 年: $2.98M, 40 年: $7.0M"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — 你的中断风险</h4>
+          <p>列出未来 30 年最可能让你<strong>被迫中断</strong>定投的 3 种情境：失业、生病、买房、家庭事件……每种情境写：触发条件 + 对应预案（应急金多少 / 何时减仓 / 哪些资金不能动）。<strong>"中断 = 复利清零"</strong>这一节才有意义。</p>
+          <textarea placeholder="情境1: 失业 6 个月以上 → 应急金 12 个月生活费在 HYSA → 定投暂停但不赎回 → 重新就业后 3 个月内恢复"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 4 — Process vs Outcome 自审</h4>
+          <p>挑一个过去 3 年的<strong>盈利</strong>投资决策。诚实分类：(a) Good process + Good outcome（实力），(b) Bad process + Good outcome（运气）。如果是 (b)——你下次还会用同样的 process 吗？为什么？</p>
+          <textarea placeholder="例如：2021 年买入 NVDA。process: 我同事说的，没看财报。outcome: +400%。分类: (b)。下次不再用'同事说'作为依据。"></textarea>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Self-Check Quiz</p>
+        <h2 class="unit-h">自检 Quiz</h2>
+
+        <details class="quiz">
+          <summary>Q1. Buffett 净资产里 ~97% 是 65 岁之后积累的——这一点最重要的含义是？</summary>
+          <p>A) Buffett 老年判断力更好<br>
+          B) 复利后期增长是指数加速的<br>
+          C) 时间是 Buffett 的核心优势，不是收益率<br>
+          D) 应该等老了再投资</p>
+          <div class="answer"><strong>正确答案：C</strong>（B 部分对，但只是机制；C 是 Housel 的真正论点）。Buffett 年化 ~22% 终生不变；97% 后期积累不是因为他变厉害，而是<strong>同样的回报率在更大基数上的复利数字越来越显著</strong>——这只能由时间产生。D 是错误推论：复利越早开始越好。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. Bessembinder 2018 论文最颠覆"主动选股"的发现是？</summary>
+          <p>A) 大多数股票跑输国债<br>
+          B) 4% 的股票贡献了几乎全部市场净财富<br>
+          C) 错过那 4% 的组合大概率退化到债券回报<br>
+          D) 以上全部</p>
+          <div class="answer"><strong>正确答案：D。</strong>三条都是论文的发现，且互相加强。这构成对主动选股的<strong>统计学反驳</strong>：随机选 10 只命中前 4% 赢家的概率太低，且错过的代价是巨大的。这是为什么 Buffett 自己长期推荐普通投资者买指数。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. Annie Duke 的"Resulting"指什么？</summary>
+          <p>A) 因为结果好就重复同样的决策<br>
+          B) 因为结果差就改变 process<br>
+          C) 把 outcome 和 process 等同<br>
+          D) 以上都是 Resulting 的不同表现</p>
+          <div class="answer"><strong>正确答案：D。</strong>Resulting = 用 outcome 判断 process。在高方差领域（投资、扑克、创业），单次结果信号弱、噪声强，<strong>用 outcome 判 process 系统性出错</strong>。顶级玩家分别评估 outcome（数据点）和 process（自变量），不混淆。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. 下面哪一个<strong>不是</strong>复利的隐性条件？</summary>
+          <p>A) 不归零<br>
+          B) 不中断<br>
+          C) 高年化收益率<br>
+          D) 真实持续</p>
+          <div class="answer"><strong>正确答案：C。</strong>这一题在测试你有没有把这一章的核心听进去。<strong>复利的核心是时间，不是收益率</strong>。8% × 40 年 ≈ 12% × 30 年 ≈ 16% × 24 年——这三种组合终值接近。但前者最容易做到，后者几乎做不到。所以"高年化"不是复利的<strong>条件</strong>，它甚至不是<strong>必要</strong>。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5. 你看到一个朋友买 single stock 一年赚了 200%，他建议你跟。基于这一章，你的最优反应是？</summary>
+          <p>A) 跟，因为他证明了能赚<br>
+          B) 不跟，因为运气项主导单次结果<br>
+          C) 让他跟你说他过去 5 年所有买卖记录的总收益<br>
+          D) 问他这笔成功的 process，并对比 Bessembinder 数据</p>
+          <div class="answer"><strong>正确答案：C 和 D 并列优。</strong>B 部分对但还不够——你应该<strong>主动获取数据</strong>，不只是怀疑。C 把"单次成功"扩展成"全样本表现"，是抗 Resulting 的最佳工具。D 是 process 评估。A 是典型 Resulting 错误，叠加 §5 的高斯直觉错误。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读</h3>
+        <ol>
+          <li>Housel, M. (2020). <em>The Psychology of Money</em>, Chapter 2 (Luck &amp; Risk) &amp; Chapter 4 (Confounding Compounding). Harriman House. Bill Gates Lakeside / Kent Evans 故事。</li>
+          <li>Duke, A. (2018). <em>Thinking in Bets: Making Smarter Decisions When You Don't Have All the Facts</em>. Portfolio. — Process vs Outcome 框架。</li>
+          <li>Buffett 净资产时间序列：见 Forbes 历年富豪榜数据；Housel 用其推断"$80B+ after 65 岁"的拆解。</li>
+          <li>Zuckerman, G. (2019). <em>The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution</em>. Portfolio. — Renaissance Medallion 年化数据。</li>
+          <li>Berggruen 收藏故事：参见 Heinz Berggruen 自传 <em>Highways and Byways</em>（1998）；Housel 在书中作为长尾分布案例。</li>
+          <li>Dixon, C. (a16z）"The Babe Ruth Effect in Venture Capital." <em>cdixon.org</em> 文章。— VC 回报分布。</li>
+          <li>Bessembinder, H. (2018). <em>Do Stocks Outperform Treasury Bills?</em> Journal of Financial Economics, 129(3), 440-457. — 25,332 只美股 1926-2016 的回报集中度。</li>
+          <li>Bogle, J. C. (2007). <em>The Little Book of Common Sense Investing</em>. Wiley. — 指数化的实战导论。</li>
+          <li>Munger, C. (2017). 《Poor Charlie's Almanack》— "Never interrupt compounding unnecessarily." 出处。</li>
+        </ol>
+        <p style="margin-top:18px;color:var(--muted);">下一步：第三章 · 守富的哲学 — 致富 vs 守富 / 知足常乐 / 安全边际。</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

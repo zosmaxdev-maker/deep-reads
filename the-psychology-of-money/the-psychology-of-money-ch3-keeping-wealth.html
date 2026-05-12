@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第三章 · 守富的哲学 — 《金钱心理学》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.7;
+    }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside {
+      position: sticky; top: 0; height: 100vh; overflow: auto;
+      padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0;
+    }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a {
+      display: grid; grid-template-columns: 28px 1fr; gap: 8px;
+      padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none;
+    }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 920px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+    .exercise { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .exercise h4 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exercise textarea, .exercise input[type=text] {
+      width: 100%; margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+      background: #fff; font: inherit; color: var(--ink);
+    }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+    details.quiz { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    details.quiz summary { cursor: pointer; font-weight: 700; list-style: none; }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before { content: "▸ "; color: var(--accent); font-weight: 800; }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: #2e3b3a; }
+    details.quiz .answer strong { color: var(--accent); }
+    .citations { margin: 56px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+    .citations h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">The Psychology of Money</p>
+      <p class="ch-num">03</p>
+      <p class="ch-title">守富的哲学</p>
+      <p class="ch-sub">Survival, Enough &amp; Margin of Safety · 第三章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>守富不是缩水的致富</span></a>
+        <a href="#s1"><span class="num">§1</span><span>致富 vs 守富 — 两个游戏</span></a>
+        <a href="#s2"><span class="num">§2</span><span>Jesse Livermore 的死循环</span></a>
+        <a href="#s3"><span class="num">§3</span><span>LTCM — 诺奖得主爆仓</span></a>
+        <a href="#s4"><span class="num">§4</span><span>Never Enough — 知足常乐</span></a>
+        <a href="#s5"><span class="num">§5</span><span>安全边际 — Margin of Safety</span></a>
+        <a href="#s6"><span class="num">§6</span><span>应用到类似画像（科技业 / 身份不稳）</span></a>
+        <a href="#s7"><span class="num">§7</span><span>三条可行动原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习</span></a>
+        <a href="#qz"><span class="num">?</span><span>自检 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 3 · The Philosophy of Keeping</p>
+      <h1 class="lead">致富与守富是两个游戏。</h1>
+      <p class="lead-sub">第一章告诉你"行为 &gt; 智能"，第二章告诉你"时间 &gt; 收益率"。第三章要把刀更深一点：<strong>让你赚到第一桶金的能力，和让你拿住它的能力，是矛盾的</strong>。前者要你乐观、敢冒险、敢押注；后者要你悲观、谦逊、留缓冲。绝大多数爆仓案例不是"致富失败"，是"致富成功之后没切换到守富模式"。这一章的任务是逼你正视这个切换。</p>
+
+      <div class="quote">
+        "Getting money is one thing. Keeping it is another."
+        <cite>— Morgan Housel, <em>The Psychology of Money</em>, Chapter 5</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing</p>
+        <h2 class="unit-h">守富不是缩水的致富</h2>
+
+        <p>常见误解：把"守富"当作"小心一点的致富"——同样的策略，仓位小一点、杠杆低一点。这个直觉是<strong>错的</strong>。守富不是致富的低强度版本，<strong>它是另一套技能</strong>，并且其中相当一部分技能与致富所需的技能<strong>方向相反</strong>。</p>
+
+        <p>Housel 在第 5 章 <em>Getting Wealthy vs. Staying Wealthy</em> 里说得很直接：要赚到钱，你需要一定程度的乐观和冒险——因为新机会需要被押注。要拿住钱，你需要近乎偏执的悲观和保守——因为机会的另一面永远是<strong>归零的可能</strong>。这两组特质在同一个人身上很少同时存在；更难的是，它们要求你<strong>知道现在该用哪一套</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>"致富"和"守富"的能力为什么<strong>结构性矛盾</strong>？为什么聪明人特别容易在切换上翻车？</li>
+            <li>"安全边际"不是保守，不是浪费，它的工程意义是什么？为什么 Buffett、Graham、Taleb 三个完全不同流派的人会同时强调它？</li>
+            <li>你自己当下的金钱目标准星是什么？它有<strong>停下来的机制</strong>吗？还是会跟着你的净资产无限往上推？</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · Two Games</p>
+        <h2 class="unit-h">致富 vs 守富 — 两个游戏，矛盾能力</h2>
+
+        <p>把这两件事并排放，能力清单几乎处处对立：</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:22%;">维度</th><th>致富（Getting Wealthy）</th><th>守富（Staying Wealthy）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>底层情绪</strong></td><td>乐观——相信未来比现在好</td><td>偏执——预设意外一定会来</td></tr>
+            <tr><td><strong>对风险</strong></td><td>主动承担——不押注就没回报</td><td>主动规避——一次清零毁掉所有复利</td></tr>
+            <tr><td><strong>对杠杆</strong></td><td>放大正期望可以接受</td><td>避免——因为它把"几乎不会"放大成"几乎一定"</td></tr>
+            <tr><td><strong>时间视角</strong></td><td>瞄准上行，长期看好</td><td>瞄准下行，短期不能翻车</td></tr>
+            <tr><td><strong>胜利定义</strong></td><td>资产增长率最大化</td><td>生存概率最大化</td></tr>
+            <tr><td><strong>对意见</strong></td><td>逆共识、敢冒头</td><td>谦逊，承认自己可能错</td></tr>
+            <tr><td><strong>核心问题</strong></td><td>"我能赚多少？"</td><td>"我能扛多久不出局？"</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Buffett 的两条规则</h3>
+        <p>Warren Buffett 在 1990 年 Berkshire Hathaway 致股东信里给出他著名的两条规则 [1]：</p>
+
+        <div class="pullbox idea">
+          <h4>Buffett's Rules</h4>
+          <p style="margin:0;font-size:16px;">
+            <strong>Rule #1: Never lose money.</strong><br>
+            <strong>Rule #2: Never forget rule #1.</strong>
+          </p>
+        </div>
+
+        <p>这句话经常被嘲笑成废话——"难道我故意亏钱？"——这是<strong>读错了</strong>。Buffett 的意思不是"每笔交易都不能亏"。他指的是<strong>不能让任何一次亏损大到把你赶出局</strong>。原因是数学：</p>
+
+        <div class="figure">
+          <strong>亏损与回本所需涨幅（不对称放大）</strong>
+          <div class="bar-row"><span>亏 10% → 回本</span><div class="bar" style="width:11%"></div><span>需 +11.1%</span></div>
+          <div class="bar-row"><span>亏 30% → 回本</span><div class="bar alt" style="width:43%"></div><span>需 +42.9%</span></div>
+          <div class="bar-row"><span>亏 50% → 回本</span><div class="bar alt2" style="width:75%"></div><span>需 +100%</span></div>
+          <div class="bar-row"><span>亏 80% → 回本</span><div class="bar alt2" style="width:95%"></div><span>需 +400%</span></div>
+          <div class="figure-cap">大亏不是"等几年回本"，是<strong>把你扔出复利曲线</strong>。亏 50% 后回本所需的年化，多数人在剩余生涯都做不到。</div>
+        </div>
+
+        <h3>这就是为什么"致富 → 守富"的切换难</h3>
+        <p>致富阶段你被训练成"上行思维者"——找下一个 10×。守富阶段要你变成"下行思维者"——避免任何一次 -50%。这两套训练肌肉<strong>互相干扰</strong>：第二章里的 Richard Fuscone 不是不会赚钱，他是赚到之后<strong>没切换到守富模式</strong>。Housel 整个第 5 章核心就是这一点 [8]。</p>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · Cautionary Tale I</p>
+        <h2 class="unit-h">Jesse Livermore — 致富天才的死循环</h2>
+
+        <p>Jesse Livermore 是 20 世纪上半叶<strong>最传奇的投机者</strong>。他的故事是 Edwin Lefèvre 1923 年小说化传记 <em>Reminiscences of a Stock Operator</em> [2] 的原型，至今仍是华尔街必读书。Tom Rubython 2014 年的 <em>Jesse Livermore - Boy Plunger</em> [3] 给出更完整的事实记录。</p>
+
+        <h3>巅峰：1929 年 10 月</h3>
+        <p>1929 年 10 月 24 日"黑色星期四"——美股开始崩盘。Livermore 早已重仓做空。当天结束时，他的浮盈据估算约为 <strong>$100M（1929 美元）</strong>，按今天的购买力大致相当于 <strong>$1.5B+</strong> [3]。在大萧条让千万家庭破产的同一天，他成了美国最富有的人之一。</p>
+
+        <p>这是历史级的"致富"。一次正确的、巨大的、逆共识的押注。</p>
+
+        <h3>5 年后：1934 年</h3>
+        <p>1934 年——也就是 5 年内——Livermore 第二次<strong>申请破产</strong>。1929 年的全部利润，加上他之前几十年积累的，蒸发干净。他不是在 1929 之后保守起来，<strong>他用同样的"致富 mode"继续高杠杆投机</strong>，撞上了几次反向的尾部，回归零再过零。</p>
+
+        <h3>结局：1940 年 11 月</h3>
+        <p>1940 年 11 月 28 日，Livermore 在曼哈顿 Sherry-Netherland Hotel 的衣帽间里开枪自杀。遗书是写给妻子的，其中一句被广泛引用：</p>
+
+        <div class="quote">
+          "My life has been a failure."
+          <cite>— Jesse Livermore, suicide note, Nov 28, 1940 (Rubython, 2014)</cite>
+        </div>
+
+        <p>Housel 第 5 章用这个故事不是为了讲悲剧，而是为了把一个论点做到极致 [8]：<strong>世界上最强的"致富者"如果不会切换到"守富者"，结局可以比从未致富还糟糕</strong>。Livermore 不缺判断、不缺勇气、不缺工具——他缺的是 Rule #1。</p>
+
+        <div class="pullbox warn">
+          <h4>挑战</h4>
+          <p style="margin:0;">很多人读 Livermore 的故事会得出错误教训："不要投机"——这是<strong>最浅的解读</strong>。深的解读是：<strong>当你已经赢了那个游戏，你必须停下来，承认这个游戏接下来对你没有意义，然后切换到一个完全不同的游戏</strong>。Livermore 1929 年其实已经赢了——他已经有 $100M。他<strong>没有 stop 机制</strong>，于是又上桌，于是必然回吐。<strong>停下机制比策略更重要。</strong></p>
+        </div>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · Cautionary Tale II</p>
+        <h2 class="unit-h">LTCM 1998 — 诺奖得主的爆仓</h2>
+
+        <p>如果 Livermore 让你以为"那是 100 年前不读书的投机客的事"——那么 1998 年 Long-Term Capital Management 的故事会让你重新思考。Roger Lowenstein 的 <em>When Genius Failed</em> (2000) 是这个事件的权威记录 [4]。</p>
+
+        <h3>团队配置（看完会想：还有比这更聪明的吗？）</h3>
+        <ul class="deep">
+          <li><strong>John Meriwether</strong> — 1994 年创立 LTCM，前 Salomon Brothers 副董事长，债券套利传奇。</li>
+          <li><strong>Myron Scholes</strong> — Black-Scholes 期权定价模型联合作者，<strong>1997 年诺贝尔经济学奖</strong>得主。</li>
+          <li><strong>Robert C. Merton</strong> — 连续时间金融理论创始人之一，<strong>1997 年诺贝尔经济学奖</strong>得主（与 Scholes 同年）。</li>
+          <li>团队还包括前美联储副主席 David Mullins、多位顶级 PhD。</li>
+        </ul>
+
+        <h3>策略与杠杆</h3>
+        <p>LTCM 的策略是统计套利——找债券之间的微小定价偏差，做多被低估的、做空被高估的，等收敛获利。单次价差极小，所以他们用<strong>大杠杆放大</strong>。1997-1998 年峰值时，资本约 <strong>$4.7B</strong>，资产负债表 <strong>~$129B</strong>，杠杆约 <strong>25:1</strong>；表外衍生品的名义敞口估计达 <strong>~$1.25 trillion</strong> [4]。</p>
+
+        <div class="figure">
+          <strong>LTCM 杠杆结构（1998 年中）</strong>
+          <div class="bar-row"><span>权益资本</span><div class="bar" style="width:4%"></div><span>~$4.7B</span></div>
+          <div class="bar-row"><span>资产负债表</span><div class="bar alt" style="width:50%"></div><span>~$129B</span></div>
+          <div class="bar-row"><span>名义衍生品敞口</span><div class="bar alt2" style="width:99%"></div><span>~$1.25T</span></div>
+          <div class="figure-cap">资本只占总敞口约 0.4%。意味着只要总敞口反向移动 1%，权益就被清空 2.5 倍。</div>
+        </div>
+
+        <h3>崩溃：1998 年 8-9 月</h3>
+        <p>1998 年 8 月 17 日，俄罗斯政府债务违约 + 卢布贬值。这是 LTCM 模型里"几乎不会发生"（按其历史样本）的尾部事件。全球资金恐慌性涌向最安全的美国国债，<strong>所有套利价差同时反向扩大而不是收敛</strong>——因为流动性危机的相关性结构与正常市场完全不同。LTCM 的多个独立押注同时朝一个方向亏，杠杆把损失放大 25 倍。</p>
+
+        <p>4 个月内损失约 <strong>$4.6B</strong>，几乎是全部权益。1998 年 9 月 23 日，纽约联储召集 14 家主要投行紧急救助，注资 <strong>$3.6B</strong> 接管 LTCM 头寸——不是为了救基金，是为了避免它的强制平仓引爆整个全球金融系统 [4]。</p>
+
+        <h3>失败的结构性原因</h3>
+
+        <table>
+          <thead>
+            <tr><th style="width:30%;">表面原因</th><th>实际机制</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>"模型错了"</td><td>模型在 99% 的时间里是对的——但金融的损益不是按时间加权的，是按尾部加权的。</td></tr>
+            <tr><td>"运气太差"</td><td>俄罗斯违约不是百年一遇——是十年一遇。模型把它当成百万年一遇，因为样本太短。</td></tr>
+            <tr><td>"杠杆过高"</td><td>这是最接近的答案。但<strong>更准确</strong>的说法是：杠杆把"几乎不会破产"的策略变成"几乎一定破产"——因为你需要在<strong>每一个</strong>尾部事件里都活下来，而不是平均不亏。</td></tr>
+            <tr><td>"过度自信"</td><td>诺奖得主们违反了 Rule #1，因为他们相信自己的模型给了豁免。<strong>没有人豁免。</strong></td></tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox idea">
+          <h4>Taleb 的总结</h4>
+          <p style="margin:0;">Nassim Taleb 在 <em>The Black Swan</em> (2007) [9] 里把 LTCM 当作核心案例：用历史数据估计的"低概率事件"会<strong>系统性低估</strong>真实尾部，因为历史样本不够长且非平稳。把杠杆叠加到这种低估上，你制造的不是"高夏普比率组合"，是<strong>定时炸弹</strong>——99% 的日子里漂亮，1% 的日子里全没。</p>
+        </div>
+
+        <p>Livermore + LTCM 给同一个教训：<strong>致富的工具（押注、杠杆、自信）是守富的炸药</strong>。差别只在引信长度。</p>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · Never Enough</p>
+        <h2 class="unit-h">Never Enough — 知足常乐的实证版</h2>
+
+        <p>Housel 第 3 章 <em>Never Enough</em> 提出一个尖锐的问题：<strong>已经合法富有的人，为什么还会去做摧毁一切的事？</strong>这不是道德质问，是结构性观察——这种人多到值得讨论。</p>
+
+        <h3>案例 A：Rajat Gupta</h3>
+        <p>McKinsey &amp; Company 全球总裁（1994-2003），高盛和宝洁董事，亿万富翁。2008 年 9 月——金融危机最深处——他在高盛董事会会议结束后<strong>立刻打电话</strong>给对冲基金 Galleon 创始人 Raj Rajaratnam，泄露 Berkshire 即将向高盛注资 $5B 的内幕。Rajaratnam 利用这个信息获利。Gupta 自己<strong>没有直接拿到分钱</strong>。</p>
+
+        <p>2012 年，Gupta 被判内幕交易罪成立，2014 年入狱服刑 2 年 [其余信息见 SEC 公开诉讼记录]。一个亿万富翁、McKinsey 教父——为<strong>没有从中直接获利的内幕</strong>毁了一生。</p>
+
+        <h3>案例 B：Bernie Madoff</h3>
+        <p>Madoff 在 1990 年代他的合法做市业务（Bernard L. Madoff Investment Securities）已经使他成为亿万富翁——做市商业务每年合法利润数千万美元。但他<strong>同时</strong>在运营史上最大的庞氏骗局，最终在 2008 年崩溃时记录的虚假账户余额约 <strong>$65B</strong> [Markopolos, 2010, ref 8]。</p>
+
+        <p>Madoff 已经合法富有。<strong>他为什么还要做骗局？</strong>这是 Housel 的核心问题。答案不是"贪婪"那么简单——贪婪解释不了为什么有人会用一个合法的金矿去换一个必然崩盘的非法机器。</p>
+
+        <h3>Housel 的解释：目标准星</h3>
+
+        <div class="pullbox warn">
+          <h4>核心机制</h4>
+          <p style="margin:0;">人对"足够"的感知是<strong>相对的、移动的</strong>。一旦你达到 $X，你的参考组（peer group）就变了——你不再和工薪族比，而是和其他亿万富翁比。Gupta 的参考组不是 McKinsey 同事，是 Rajaratnam 这种几亿身家的对冲基金老板。Madoff 的参考组不是其他做市商，是更大规模的对冲基金。<strong>"足够"的目标准星跟着你的财富同步上移，所以你永远没有到达过它</strong>——这是结构性问题，不是道德问题。</p>
+        </div>
+
+        <h3>Heller &amp; Vonnegut 的著名故事</h3>
+        <p>Housel 引用 Kurt Vonnegut 在 2005 年 <em>The New Yorker</em> 上发表的小诗里讲的故事 [7]：他和小说家 Joseph Heller 在一个对冲基金大佬的私人派对上。Vonnegut 对 Heller 说："这个主人一天赚的钱可能比你 <em>Catch-22</em> 整本书一辈子赚的还多。"Heller 回答：</p>
+
+        <div class="quote">
+          "Yes, but I have something he will never have... enough."
+          <cite>— Joseph Heller, recounted by Kurt Vonnegut, "Joe Heller," The New Yorker, May 16, 2005</cite>
+        </div>
+
+        <p>这不是鸡汤。这是一个可操作的概念："enough" 不是一个被动达到的状态，<strong>它是你必须主动定义、主动停下来的决定</strong>。如果你不定义，市场和你的参考组会替你定义——而且永远定义在你正在追逐的位置之上。</p>
+
+        <h3>"够了"的运营层含义</h3>
+
+        <table>
+          <thead>
+            <tr><th>没有"够了"机制的人</th><th>有"够了"机制的人</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>每达到一个目标就立刻设新目标，且新目标比旧的高 2-3×</td><td>预先用<strong>具体数字</strong>定义"够了"——净资产 $X / 月被动收入 $Y / 自由月数 N</td></tr>
+            <tr><td>把"风险偏好"绑在"参考组",越富越冒险</td><td>达到"够了"后<strong>主动降低</strong>风险偏好（守富 mode）</td></tr>
+            <tr><td>容易越过法律 / 道德 / 关系底线</td><td>承认"再多 $1 也不能换更糟的睡眠"</td></tr>
+            <tr><td>结果：Gupta、Madoff、Livermore</td><td>结果：能在 70 岁时安睡</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · Margin of Safety</p>
+        <h2 class="unit-h">安全边际 — 工程意义上的冗余</h2>
+
+        <p>"安全边际"（Margin of Safety）这个词来自 Benjamin Graham 1949 年 <em>The Intelligent Investor</em> 第 20 章 [5]。Graham 把它称为"投资的核心概念"。Buffett 公开说过 Graham 第 8 章和第 20 章是他读过的最重要的投资章节。Housel 在第 13 章 <em>Room for Error</em> 里把这个概念扩展到投资以外 [8]。</p>
+
+        <h3>Graham 的原始定义</h3>
+        <p>Graham 在投资语境里的定义朴素：<strong>买入价应当显著低于你估算的内在价值</strong>，二者之间的距离就是安全边际。这不是为了"多赚一点"——是为了让你<strong>承认估值会错</strong>。如果你估的内在价值是 $100，买在 $95，估值偏差 6% 就抹掉了你的全部缓冲。买在 $60，你给自己留了 40 个百分点的"我可能错"的余地。</p>
+
+        <h3>更普遍的工程视角</h3>
+        <p>桥梁工程里有一个标准："设计载重的安全系数（safety factor）通常是 2-4×"——也就是桥被设计为承受 2-4 倍于预期最大载荷的力。这不是"以防万一"的礼貌，<strong>这是承认我们对真实最大载荷的估计是错的</strong>，承认材料强度有方差，承认会有未预料的极端事件。</p>
+
+        <p>Housel 的关键洞见：<strong>安全边际不是保守主义，是承认预测会错的工程冗余</strong>。它和"保守"的区别在于——保守是性格，安全边际是<strong>对自己估计能力的诚实评估</strong>。</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:24%;">领域</th><th>安全边际的具体形式</th><th>没有它的代价</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>估值（Graham）</td><td>买入价 ≤ 内在价值的 60-70%</td><td>估值哪怕错 10% 你就亏</td></tr>
+            <tr><td>仓位</td><td>留 10-30% 现金缓冲，不满仓</td><td>下跌时无弹药加仓 / 失业时被迫低位卖出</td></tr>
+            <tr><td>杠杆</td><td>用得到的杠杆 &lt; 你能拿到的杠杆</td><td>尾部事件时被强制平仓（LTCM 模式）</td></tr>
+            <tr><td>现金流</td><td>支出 &lt; 收入的 X%（X &lt;= 70）</td><td>失业第一天起就在透支</td></tr>
+            <tr><td>应急金</td><td>≥ 6 个月生活费在 HYSA</td><td>意外发生时被迫卖股票（破坏复利）</td></tr>
+            <tr><td>退休假设</td><td>用 7% 而不是 10% 做长期回报假设</td><td>实际回报低于假设 = 退休缩水</td></tr>
+            <tr><td>计划本身</td><td>预设"计划会被打断"，留 plan B / C</td><td>第一个意外就让所有目标作废</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Housel 的关键引用</h3>
+
+        <div class="quote">
+          "The biggest single point of failure with money is a sole reliance on a paycheck to fund short-term spending needs, with no savings to create a gap between what you think your expenses are and what they might be in the future."
+          <cite>— Morgan Housel, <em>The Psychology of Money</em>, Chapter 13: Room for Error</cite>
+        </div>
+
+        <div class="pullbox idea">
+          <h4>把它压成一句话</h4>
+          <p style="margin:0;font-size:16px;"><strong>计划中最重要的部分，是为"计划赶不上变化"做打算。</strong>不留缓冲的计划不是"高效"，是<strong>没有续航能力</strong>——只要任何一个变量偏离假设，整个系统就崩溃。安全边际的存在，本身就是你的<strong>续航</strong>。</p>
+        </div>
+
+        <h3>为什么聪明人最不愿留安全边际</h3>
+        <p>这一点很反直觉，但很重要：智力越高的人，越倾向于<strong>压缩</strong>安全边际——因为他们的预测精度（在历史样本上）确实更高，所以他们觉得"我不需要那么大的缓冲"。问题是<strong>未来不是历史的样本</strong>，且压力时刻往往伴随着模型失效。LTCM 的诺奖得主就是这么爆掉的。<strong>安全边际不是给笨人的拐杖，是给聪明人的安全带。</strong></p>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · Apply to You</p>
+        <h2 class="unit-h">应用到类似画像（美股 / 30+ / 科技业 / 经历近年裁员）</h2>
+
+        <p>把这一章三个原则（Rule #1 / Enough / Margin of Safety）压到这类读者具体处境上：</p>
+
+        <h3>身份/职业不稳的科技工作者，"守富"约束比一般人严</h3>
+
+        <table>
+          <thead>
+            <tr><th style="width:28%;">维度</th><th>一般稳定就业者</th><th>身份/签证不稳的科技工作者</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>失业容忍窗口</td>
+              <td>领 unemployment，没有时间硬上限</td>
+              <td><strong>失业后的找工压力极大</strong>——签证不稳的工作者找不到新雇主或来不及转身份就可能被迫离境。整盘资产可能被迫低位变现。</td>
+            </tr>
+            <tr>
+              <td>收入路径风险</td>
+              <td>裁员 = 找下一份工作</td>
+              <td>裁员 = 同时打三场仗（收入、身份、家庭）。许多人已经经历过近年科技裁员一次。</td>
+            </tr>
+            <tr>
+              <td>地理流动性</td>
+              <td>境内自由</td>
+              <td>身份可能绑死在雇主，转换要重新跑流程</td>
+            </tr>
+            <tr>
+              <td>应急金标准</td>
+              <td>3-6 个月生活费</td>
+              <td><strong>建议 12-18 个月</strong>——覆盖找工时间 + buffer for 身份转换 / 家庭迁移</td>
+            </tr>
+            <tr>
+              <td>致富仓 vs 守富仓的边界</td>
+              <td>可以稍微模糊</td>
+              <td>必须严格分账——守富仓被动到不能误用</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>近年科技裁员是一次"免费 stress test"</h3>
+        <p>2022-2023 科技裁员潮对很多人不只是事件——<strong>它是免费的系统级压力测试</strong>。如果你经历过，回去问自己：</p>
+
+        <ul class="deep">
+          <li>当时你的 HYSA / 应急金能撑几个月？如果是 3 个月——<strong>不够</strong>，因为身份/签证不稳的工作者找工比一般人慢。</li>
+          <li>当时你有没有被迫卖股票？如果有——你的应急金太薄。</li>
+          <li>当时你的睡眠质量降到几分？这是你<strong>真实风险偏好</strong>的真实数据，不是你"自以为的"风险偏好。</li>
+        </ul>
+
+        <p>这次经历是 Housel 在第 5 章说的"<strong>survival mentality</strong>"训练的免费样本——别浪费它。把它沉淀成下一个 30 年的安全边际配置标准。</p>
+
+        <h3>致富仓 / 守富仓 / 应急金 — 一张参考分配表</h3>
+        <p>下面不是配置建议，是<strong>结构示例</strong>——具体百分比要根据你的净资产、家庭、时间地平线调整。重点是<strong>结构上的三层分隔</strong>。</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:18%;">层</th><th style="width:18%;">载体</th><th>用途</th><th>调用规则</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>L1 应急金</strong><br>（守富的最底层）</td>
+              <td>HYSA / Money Market / T-Bills</td>
+              <td>覆盖 12-18 个月生活费<br>+ 身份转换费用<br>+ 短期医疗自付</td>
+              <td>不能投股票。每月发薪自动补充。<strong>哪怕股市跌 50% 都不能动</strong>。</td>
+            </tr>
+            <tr>
+              <td><strong>L2 守富仓</strong><br>（中层）</td>
+              <td>401k + IRA + Brokerage 的指数部分</td>
+              <td>退休 / 长期复利<br>VOO / VTI / 全球指数</td>
+              <td>每月定投，机械再平衡，<strong>不允许择时</strong>。哪怕跌 30% 也不卖。</td>
+            </tr>
+            <tr>
+              <td><strong>L3 致富仓</strong><br>（顶层）</td>
+              <td>Brokerage 的"satellite"账户（≤ 20% 总资产）</td>
+              <td>个股 / 主题 / 短线想法</td>
+              <td><strong>书面承认这部分大概率跑输</strong>。可以归零。归零不允许从 L1/L2 补血。</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>给你最危险的 3 个错误</h4>
+          <ol class="deep" style="margin:0;">
+            <li><strong>用 L1 资金抄底股票。</strong>"反正应急金放着没收益"——这是把身份/职业续航能力换成额外几个 % 收益。一次不期而至的裁员 + 同时熊市，你就出局。</li>
+            <li><strong>把 L3 的盈利当成 L2 的能力。</strong>satellite 仓涨了 5×，你以为自己会选股，于是把 L2 比例转移到 L3。这是 Livermore 模式。</li>
+            <li><strong>没有"够了"机制。</strong>每次雇主股票涨一波，你就把目标净资产上移。没有数字的"够了"等于永远不够。</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- §7 -->
+      <section class="unit" id="s7">
+        <p class="unit-eyebrow">§7 · Three Actionable Principles</p>
+        <h2 class="unit-h">三条可行动原则</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>永远预设"会有意外"，不要预设"一切按计划"。</strong><br>
+            安全边际不是浪费效率——是续航能力。把它写进每一个数字假设里：长期回报用 7% 不用 10%；通胀用 3% 不用 2%；可工作年限用比预期短 5 年的版本；保险用比"够用"再厚 30% 的版本。这些保守假设单独看都"浪费"，<strong>但其中任何一个偏离都不会让你破产</strong>——这才是这个组合的真正价值。
+          </li>
+          <li>
+            <strong>把"致富"和"守富"分账户管理。</strong><br>
+            Brokerage 是致富仓，HYSA + 401k + 指数部分是守富仓。<strong>结构上不允许跨账户调用</strong>——通过物理分离（不同券商 / 不同账户 / 不同登录）让"我就动一次 L1 抄个底"在操作上变成多步麻烦事。Housel 的 Ronald Read（第一章）模式本质就是：用<strong>账户结构</strong>把"诱惑发生时的临场决定"提前剥夺。
+          </li>
+          <li>
+            <strong>定期问自己"够了吗"——并给"足够"一个具体数字。</strong><br>
+            不是"我永远不会满足"——是<strong>用三个具体数字定义你的"够了"</strong>：
+            <br>(a) 净资产目标（$X，含住房权益）；
+            <br>(b) 被动收入门槛（$Y / 月，能覆盖必要生活费）；
+            <br>(c) 应急金月数（N 个月，例如 12 或 18）。
+            <br>当三个都达到时，<strong>主动让目标准星停止移动</strong>——降低风险偏好，把"致富仓"比例下调，把节省下来的精力放到非财务领域（健康、关系、意义）。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把这一章压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>致富靠押对一次，守富靠 30 年里没有任何一次致命错误。前者是事件，后者是制度。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Reflection Exercises</p>
+        <h2 class="unit-h">反思练习（写下来，不要在脑子里完成）</h2>
+
+        <p>这一章的反思练习<strong>不要写感受</strong>。每一题都是硬分析题——你必须给出数字、列表、或具体场景。情绪化的反思在守富主题上是噪音；只有具体计算才有用。</p>
+
+        <div class="exercise">
+          <h4>练习 1 — 你过去 5 年最大的 financial shock</h4>
+          <p>列出一次最大的财务冲击（裁员 / 投资亏损 / 家人医疗 / 身份问题 / 家庭事件）。具体写：<strong>当时你的应急金够吗？多少月？</strong>如果不够，你做了什么（卖股 / 借款 / 削减）？这个经历对你今天的"安全边际"配置应该有什么具体影响（数字层面，不是感受）？</p>
+          <textarea placeholder="例如：2023 年遇到一轮科技裁员。当时应急金 4 个月。结果：被迫减少 401k 贡献 + 卖出 brokerage 部分。今天的修正：应急金提到 12 个月，并将其放在独立 HYSA 账户避免误用。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — 你的"够了"数字</h4>
+          <p>用三个数字定义"足够"：(a) 净资产 $___；(b) 被动收入 $___ / 月；(c) 应急金 ___ 个月。<strong>诚实回答</strong>：当你达到这三个数字时，你愿意降低风险偏好（把 L3 比例砍半、不再追求 alpha）吗？还是会继续上调目标？如果会上调——为什么？是 peer pressure？是恐惧？是叙事？</p>
+          <textarea placeholder="例如：(a) $X (b) $Y/月 (c) 12 个月。诚实评估：达到后我可能仍会上调，因为我的参考组是 FANG senior+。这正是 §4 描述的目标准星问题。修正机制：写下后定期 review，不被参考组拉走。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — 列出你的"一夜归零会毁掉你"的部分</h4>
+          <p>在你目前 portfolio 里，写出每一项"如果一夜归零你会受重创"的暴露：<strong>杠杆 / 集中持仓（&gt; 单股 15%）/ 流动性差的资产 / 雇主股票占比过高</strong>。每一项写：金额或比例 + 风险类型 + <strong>明天能不能减仓</strong>（不能减写为什么）。</p>
+          <textarea placeholder="例如：(1) 雇主 RSU/ESPP 占总投资 X%——双重风险（同雇主裁员 + 单股集中）。明天能不能减：能，但有税务和 vesting 锁定问题。(2) 单只成长股仓位 Y%——明天能减。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 4 — 120 天生存计划</h4>
+          <p>假设你<strong>明天</strong>接到雇主的下一轮裁员通知。给自己设计一个"120 天生存计划"，要覆盖：(1) 现金支撑（多少月、来自哪个账户）；(2) 保险延续（COBRA 还是 marketplace，月成本多少）；(3) 找工节奏（雇主清单 / 转身份方案，如适用）；(4) 身份/地理 plan B（如有签证约束：转换路径 / 回流方案 / 跨国搬迁节奏）。这个计划做出来后，回头看你的应急金和 L3 比例还合理吗？</p>
+          <textarea placeholder="例如：Day 0-7 申请 unemployment + 启动身份转换流程；Day 8-30 投递（清单：~30 个雇主）；Day 31-60 onsite + COBRA 延续 ($X/月)；Day 61-120 接 offer 或启动 plan B（临时身份 / 跨国 remote）。回头看：12 个月应急金合理；L3 比例如果 &gt; 20% 在裁员压力下需要降低。"></textarea>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Self-Check Quiz</p>
+        <h2 class="unit-h">自检 Quiz（先答，再展开看解析）</h2>
+
+        <details class="quiz">
+          <summary>Q1. Buffett 的 "Rule #1: Never lose money" 真正含义是？</summary>
+          <p>A) 每笔交易都不能亏<br>
+          B) 永远不进入有亏损可能的标的<br>
+          C) 守富比致富更重要——大亏会清零复利<br>
+          D) 用 stop loss 自动止损</p>
+          <div class="answer"><strong>正确答案：C。</strong>A 不可能——任何积极投资都会有亏损交易。B 等于不投资——所有标的都有亏损可能。D 是工具不是哲学。Buffett 的真正意思是<strong>不能让任何一次亏损大到把你赶出局</strong>——亏 50% 需要 +100% 才能回本，亏 80% 需要 +400%，多数人在剩余生涯都做不到。<strong>"Never lose money" 的实际含义是 "Never let a single loss be catastrophic"</strong>——这是守富思维的入口。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. LTCM 1998 失败的<strong>根本</strong>原因是？</summary>
+          <p>A) 模型错<br>
+          B) 团队不够聪明<br>
+          C) 用杠杆把低概率事件放大成致命<br>
+          D) 运气不好（俄罗斯违约不可预测）</p>
+          <div class="answer"><strong>正确答案：C。</strong>A 部分对——模型对尾部相关性估计错了——但模型在 99% 时间是 ok 的。B 错——团队是地球最强阵容（两个诺贝尔奖、前美联储副主席）。D 错——俄罗斯违约不是百年一遇而是十年一遇，问题是 LTCM 模型用太短的样本认为它是百万年一遇。<strong>真正的根本原因是 25:1 的杠杆把"几乎不会破产"的策略变成"几乎一定破产"</strong>——你需要在每一个尾部事件里都活下来，而不是平均不亏。这正是 Taleb 的 Black Swan 论点。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. Madoff 已是合法亿万富翁，为什么还做 Ponzi 骗局？基于本章应当理解为？</summary>
+          <p>A) 贪婪——他想要更多<br>
+          B) 目标准星没有停下机制——参考组随财富同步上移<br>
+          C) 道德缺陷<br>
+          D) 智力差</p>
+          <div class="answer"><strong>正确答案：B。</strong>A 是表面解释——但贪婪解释不了为什么有人会用合法金矿换必然崩盘的非法机器。C 部分对但不够分析——道德缺陷是结果不是机制。D 显然错——Madoff 把骗局藏了几十年。<strong>真正的机制是 §4 描述的"目标准星上移"</strong>：一旦你达到 $X，你的参考组就变了——Madoff 的参考组不是其他做市商，是更大对冲基金。"足够"跟着财富同步上移，所以永远不到达。Gupta 的案例更纯粹——他<strong>没有从内幕交易直接获利</strong>，只是想留在那个朋友圈。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. 安全边际的本质是？</summary>
+          <p>A) 浪费的现金（牺牲收益换安心）<br>
+          B) 风险厌恶（性格保守的体现）<br>
+          C) 承认预测会错的工程冗余<br>
+          D) 保守主义投资风格</p>
+          <div class="answer"><strong>正确答案：C。</strong>A 是把它当成成本——这是错的，它是续航能力，不是浪费。B 把它当性格——错，<strong>保守是性格，安全边际是能力</strong>。D 把它当流派——错，Buffett、Graham、Taleb 三个完全不同流派的人都强调它。<strong>真正的本质是承认你对未来的估计会错</strong>——估值会错、回报假设会错、最大可能损失估计会错。安全边际是对这种"估计错误"的工程缓冲。和桥梁的 2-4× safety factor 是同一个概念。<strong>关键反直觉点：聪明人最不愿留安全边际，因为他们高估自己的预测精度——LTCM 就是这么爆的。</strong></div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5. 对身份/职业不稳定的科技工作者，下面哪个最危险？</summary>
+          <p>A) 完全不投资（错过复利）<br>
+          B) 全仓股票（高波动）<br>
+          C) 应急金不足以支撑失业找工 + 身份转换的窗口<br>
+          D) 持有公司股票（雇主股集中）</p>
+          <div class="answer"><strong>正确答案：C。</strong>A 是机会成本——它不会让你出局，只是慢。B 是波动——熊市虽然难受但你还在国内、还能持有。D 是集中风险——糟但有限。<strong>C 是出局风险</strong>：身份/签证不稳的工作者失业找不到新雇主或来不及转身份就可能被迫离境。如果你的应急金只能撑 3-4 个月而你的 portfolio 主要在熊市的股票里，你会被迫在最差的时点低位变现，叠加跨国搬家的额外成本。这是<strong>"致富仓被强制清算 + 守富仓不存在"</strong>的双重失败。Housel 的 Rule #1 在这类画像身上的具体形式就是 C 的反面：<strong>应急金的厚度不是奢侈，是身份续航能力</strong>。这就是为什么 §6 建议这类画像应急金 12-18 个月，而不是一般人的 3-6 个月。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读</h3>
+        <ol>
+          <li>Buffett, W. E. (1990). <em>Letter to Shareholders</em>, Berkshire Hathaway Annual Report. — "Rule #1: Never lose money. Rule #2: Never forget rule #1." 公开存档于 berkshirehathaway.com/letters/。</li>
+          <li>Lefèvre, E. (1923). <em>Reminiscences of a Stock Operator</em>. George H. Doran. — Jesse Livermore 故事的小说化原型，至今华尔街必读。</li>
+          <li>Rubython, T. (2014). <em>Jesse Livermore - Boy Plunger: The Man Who Sold America Short in 1929</em>. Myrtle Press. — 最完整的事实记录传记。1929 年 ~$100M 浮盈、1934 年破产、1940 年自杀遗书均出自此书及当代媒体记录。</li>
+          <li>Lowenstein, R. (2000). <em>When Genius Failed: The Rise and Fall of Long-Term Capital Management</em>. Random House. — LTCM 事件权威记录。杠杆 ~25:1、4 个月亏 ~$4.6B、9/23/1998 联储召集 14 家投行注资 ~$3.6B 救助等数据出自此书。</li>
+          <li>Graham, B. (1949). <em>The Intelligent Investor</em>, Chapter 20: "Margin of Safety" as the Central Concept of Investment. Harper &amp; Brothers. — 安全边际原始定义。Buffett 多次公开称第 8 章和第 20 章是他读过最重要的投资章节。</li>
+          <li>Housel, M. (2020). <em>The Psychology of Money</em>, Chapter 3 (Never Enough), Chapter 5 (Getting Wealthy vs. Staying Wealthy), Chapter 13 (Room for Error). Harriman House. — 本章主要原文来源。</li>
+          <li>Vonnegut, K. (2005). "Joe Heller." <em>The New Yorker</em>, May 16, 2005. — Heller 的 "enough" 故事的原始出处（Vonnegut 写的诗）。</li>
+          <li>Markopolos, H. (2010). <em>No One Would Listen: A True Financial Thriller</em>. Wiley. — Madoff 案吹哨人记录。$65B 虚假账户余额规模出自 SEC 起诉书及破产托管人 Irving Picard 公开数据。</li>
+          <li>Taleb, N. N. (2007). <em>The Black Swan: The Impact of the Highly Improbable</em>. Random House. — 杠杆与尾部风险的理论框架，LTCM 是其核心案例之一。</li>
+        </ol>
+        <p style="margin-top:18px;color:var(--muted);">下一步建议：完成 4 道反思练习后再进入第四章。本章和第二章是"如何不出局"的姊妹篇——第二章给你时间、第三章给你续航。两者合起来才是完整的守富工具箱。</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

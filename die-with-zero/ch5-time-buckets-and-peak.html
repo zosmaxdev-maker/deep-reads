@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第五章 · Time Buckets &amp; Net Worth Peak — 《Die With Zero》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); line-height: 1.7; }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0; }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none; }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 920px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+    .exercise { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .exercise h4 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exercise textarea, .exercise input[type=text] { width: 100%; margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: #fff; font: inherit; color: var(--ink); }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+    details.quiz { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    details.quiz summary { cursor: pointer; font-weight: 700; list-style: none; }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before { content: "▸ "; color: var(--accent); font-weight: 800; }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: #2e3b3a; }
+    details.quiz .answer strong { color: var(--accent); }
+    .citations { margin: 56px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+    .citations h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+    .citations .tag { display: inline-block; padding: 1px 6px; margin-right: 6px; border-radius: 3px; background: #efebe0; color: #34302a; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">Die With Zero</p>
+      <p class="ch-num">05</p>
+      <p class="ch-title">Time Buckets &amp; Net Worth Peak</p>
+      <p class="ch-sub">把"将来某一天"变成具体日期 · 第五章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>Framing — 3 个硬问题</span></a>
+        <a href="#s1"><span class="num">§1</span><span>你已经死过很多次</span></a>
+        <a href="#s2"><span class="num">§2</span><span>Bronnie Ware — 临终 5 大遗憾</span></a>
+        <a href="#s3"><span class="num">§3</span><span>Time Buckets — 工具与机制</span></a>
+        <a href="#s4"><span class="num">§4</span><span>Net Worth Peak — 日期而非数字</span></a>
+        <a href="#s5"><span class="num">§5</span><span>Survival Threshold 计算</span></a>
+        <a href="#s6"><span class="num">§6</span><span>Decumulation Reality</span></a>
+        <a href="#s7"><span class="num">§7</span><span>三条可行动原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习</span></a>
+        <a href="#qz"><span class="num">?</span><span>自检 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 5 · Time Buckets &amp; Your Peak</p>
+      <h1 class="lead">你已经死了好几次——只是没意识到。</h1>
+      <p class="lead-sub">你 5 岁的自己死了。你大学时期的自己死了。你 single 时期的自己死了。每一段都不可逆地结束了——但你 emotionally treat them as if they're still accessible。这一章用 Bill 的两个工具——Time Buckets 和 Net Worth Peak——把这个心理盲点变成 actionable 决策。</p>
+
+      <div class="quote">
+        "Your life is the sum of your experiences. ... You have to actively think about the life you want and how to make the most of your time."
+        <cite>— Bill Perkins, <em>Die With Zero</em>, Chapter 7</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing</p>
+        <h2 class="unit-h">为什么这一章是<strong>最 actionable 的一章</strong></h2>
+
+        <p>前 4 章给你装的是<strong>概念</strong>——life energy / memory dividend / health-money-time 三角。这一章不一样。这一章要逼你<strong>动笔</strong>。</p>
+
+        <p>读完前 4 章你可以诚实点头然后继续 autopilot——因为概念可以"内化但不执行"。Time Buckets 不行：它要求你把<strong>你的具体人生</strong>写在一张纸上，每个桶 3-5 个具体动作。Net Worth Peak 也不行：它要求你算<strong>一个具体日期</strong>。两个工具都是 forcing function——要么你做，要么你没做，没有中间态。</p>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个硬问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>"你已经死过很多次"——这句话是修辞，还是<strong>结构化事实</strong>？为什么大脑系统性低估这个？</li>
+            <li>Bucket list（人生愿望清单）跟 Time Bucket 的<strong>差别</strong>在哪？为什么差别是关键？</li>
+            <li>为什么 Bill 主张 net worth peak 应该是<strong>日期</strong>（date）而不是<strong>数字</strong>（dollar amount）？这两种思维的物理后果有什么不同？</li>
+          </ol>
+        </div>
+
+        <div class="pullbox note">
+          <h4>读这一章之前先承认</h4>
+          <p style="margin:0;">这一章会让你不舒服。它会逼你<strong>承认你已经错过了什么</strong>——某些 experiences 已经永远关闭了窗口。这不是为了让你内疚——是为了让你停止假装"以后再说"对所有事都成立。本章设计了 <strong>5 个反思练习</strong>（全书最多），如果你跳过——这一章对你 ROI 接近零。</p>
+        </div>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · Many Deaths</p>
+        <h2 class="unit-h">你已经死过很多次——只是没意识到</h2>
+
+        <p>多数人把"死亡"想成<strong>一次性事件</strong>——某个未来日期，心跳停止。这是字面正确的，但 Bill 的论点是：你<strong>实际上</strong>已经死了很多次了。</p>
+
+        <p>你 5 岁的自己——那个会在公园里跟随便一个小孩成为"最好朋友"的自己——死了。死亡日期不确定，但<strong>已经发生了</strong>。你不能"回去做 5 岁的事"。</p>
+
+        <p>你 22 岁刚毕业的自己——那个能 spontaneously 决定明天背包飞曼谷、住青旅、一无所有的自己——也死了。你今天还可以飞曼谷，但<strong>那个版本</strong>的飞曼谷已经不存在了。你 35 岁住青旅跟 22 岁住青旅是两个完全不同的体验——同样的物理动作，<strong>不同的人生阶段</strong>，不同的 emotional payoff。</p>
+
+        <div class="pullbox idea">
+          <h4>Bill 的核心 reframe</h4>
+          <p style="margin:0;">每一段生命阶段——toddler-parent / single in your 20s / college student / first-job-era / new parent / empty-nester——都有<strong>不可逆的终点</strong>。这个终点没有讣告，但它是<strong>真实的死亡</strong>——某个版本的你彻底关闭了。多数人对这种"小死亡"的反应不是哀悼，是<strong>否认</strong>。否认让你拖延——"我还会跟孩子一起看动画片，再过两年吧"。但<strong>那两年里那个版本的孩子已经死了</strong>。</p>
+        </div>
+
+        <h3>Bill 跟女儿 Skye 一起看 Heffalump Movie 的故事</h3>
+
+        <p>Bill 的女儿 Skye 小时候痴迷 <em>Pooh's Heffalump Movie</em>。Bill 跟她一起看了无数遍——他自己也开始喜欢——直到 Skye 大约 10 岁，<strong>突然</strong>失去兴趣。不是渐进的；是某天她说"那是给小孩看的"，然后就再也没看过。</p>
+
+        <p>Bill 在书里直接说：<strong>那个版本的 Bill ——"陪小女儿看 Heffalump 的 dad"——死了那天</strong>。死亡日期他甚至不记得了——可能是 Skye 9 岁 4 个月的某一天，也可能更早。但这个版本的 dad 永远关闭了。Skye 今天可以陪他做别的事——但她不会再陪他看 Heffalump。<strong>那个 experience 的窗口关上了</strong>。</p>
+
+        <h3>为什么这个 reframe 重要</h3>
+
+        <p>因为它把"死亡"从<strong>单一遥远事件</strong>转化为<strong>持续发生中的过程</strong>。你不是某一天突然死掉——你<strong>每一天</strong>都有某个版本的自己在悄悄结束。这不是修辞——这是关于<strong>experience 的物理学</strong>。</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:30%;">"死亡"的某个版本</th><th>关闭的具体 experiences</th><th>典型关闭年龄</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>幼儿期的你</td><td>无忧无虑的游乐场社交、纯感官 fascination</td><td>~7</td></tr>
+            <tr><td>看 Heffalump 的 parent</td><td>陪小孩看幼儿动画、被仰望式的"无所不能"</td><td>~10（小孩侧）</td></tr>
+            <tr><td>单身青年</td><td>多日 spontaneous trip、合租冒险、感情高密度变化</td><td>结婚日 / 30s</td></tr>
+            <tr><td>背包客身体</td><td>连续 12h 飞行 + 立即徒步、住 30 美元青旅不累</td><td>~40</td></tr>
+            <tr><td>父母还能跟你长途旅行的窗口</td><td>带父母去远方、长时间陪伴 trip</td><td>父母 ~70-75</td></tr>
+            <tr><td>能高强度训练的身体</td><td>马拉松 PR、滑雪黑道、深潜、登山</td><td>~50-60</td></tr>
+            <tr><td>新组建小家庭的"first 10 years"</td><td>夫妻 / 孩子的某些纯共享 ritual</td><td>孩子 ~12</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>这张表是为了让你不舒服</h4>
+          <p style="margin:0;">看这张表的正确反应不是"安慰自己"，而是<strong>开始数</strong>——哪几行已经彻底关上了？哪几行还在关闭中？你正在 autopilot 让哪一行<strong>这一年内</strong>关闭？这一章后面的 Time Buckets 工具就是把这种 awareness 变成 schedule。</p>
+        </div>
+
+        <p>意识到这一点 = 你"急迫感"的<strong>真实来源</strong>。不是"人终有一死"那种抽象急迫——是"每一段都在<strong>今年</strong>关闭一些"这种具体急迫。前者让你 paralysis；后者让你 schedule。</p>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · The 5 Regrets</p>
+        <h2 class="unit-h">Bronnie Ware — 临终者的 5 大遗憾</h2>
+
+        <p>多数关于"死亡 + 后悔"的讨论是<strong>哲学式</strong>的。Bronnie Ware 2012 [39] 不是——她是澳洲的<strong>palliative care nurse</strong>（临终关怀护士），数百次坐在<strong>实际正在死的人</strong>身边，听他们说话。她把听到的整理成一本书 <em>The Top Five Regrets of the Dying</em>。</p>
+
+        <p>排序的 5 大遗憾：</p>
+
+        <ol class="deep">
+          <li><strong>"I wish I'd had the courage to live a life true to myself, not the life others expected of me."</strong>（我希望我有勇气活成真实的自己，而不是别人期待的样子。）</li>
+          <li><strong>"I wish I hadn't worked so hard."</strong>（我希望我没那么拼命工作。）—— Ware 注：男性受访者几乎<strong>每个</strong>都提这条。</li>
+          <li><strong>"I wish I'd had the courage to express my feelings."</strong>（我希望我有勇气表达感情。）</li>
+          <li><strong>"I wish I had stayed in touch with my friends."</strong>（我希望我跟朋友保持了联系。）</li>
+          <li><strong>"I wish that I had let myself be happier."</strong>（我希望我让自己更开心一点。）</li>
+        </ol>
+
+        <div class="pullbox warn">
+          <h4>注意这 5 条里关于"钱"的有几个</h4>
+          <p style="margin:0;font-size:17px;"><strong>零个。</strong>没有人在死前说"我希望我多存了一点钱"。没有人说"我希望我的 401k 数字更大"。没有人说"我希望我多换了一辆更贵的车"。Ware 数百次床边——<strong>零</strong>个 financial regret。</p>
+        </div>
+
+        <p>反过来——5 条里至少 3 条（#2、#4、#5）跟"过度优先工作 / 牺牲 experience / autopilot"<strong>直接相关</strong>。这是 Bill 整本书的 empirical backbone：不是 Bill 说"应该多 experience"——是<strong>临终前的真人</strong>反复证实这一点。如果你在乎"我以后会不会后悔"——你应该把这 5 条贴在桌上。</p>
+
+        <h3>Layous-Kurtz-Chancellor-Lyubomirsky 2018 的实验证据</h3>
+
+        <p>但 Ware 的数据是<strong>回溯式</strong>的——临终人回忆。问题：能不能<strong>实验性</strong>证明"reframe 时间为 scarce"会改变行为？</p>
+
+        <p>Layous 等 2018 [40] 发表在 <em>Journal of Positive Psychology</em>：让大学毕业生分两组，一组被 prime "这是你在这个城市的<strong>最后一个月</strong>"——另一组照常。结果非常清晰：</p>
+
+        <ul class="deep">
+          <li><strong>主动 reframe 组</strong>立即增加 meaningful activities（跟朋友长聊、去之前一直推迟的地点、给重要的人写信）。</li>
+          <li>实验结束后，reframe 组报告<strong>显著更高的 wellbeing</strong>——不是因为情境变化，是因为<strong>意识到稀缺改变了行动选择</strong>。</li>
+          <li>对照组的一个月跟之前 6 个月没有显著差别——continue autopilot。</li>
+        </ul>
+
+        <p>这个实验的含义远超心理学论文：<strong>稀缺感不是"自然产生"的，是可以人为创造的</strong>。Bill 的整章工具就是<strong>系统化制造稀缺感</strong>——把"还有 40 年"切碎成"还有 4 个桶各 10 年"——每个桶都明显短，每个桶都明显<strong>有结束日期</strong>。Layous 实验证明这种 reframe 真的能改变你的下个月怎么过。</p>
+
+        <div class="pullbox idea">
+          <h4>合起来看</h4>
+          <p style="margin:0;">Ware 给你<strong>死前会后悔什么</strong>的实证清单（钱不在上面）；Layous 给你<strong>怎么提前模拟那种 awareness</strong>的实验工具。Bill 的 Time Buckets 把这两个发现折叠成一个可执行 protocol。</p>
+        </div>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · The Tool</p>
+        <h2 class="unit-h">Time Buckets — 工具与机制</h2>
+
+        <p>Bill 的具体方法很简单到几乎让人怀疑：</p>
+
+        <ol class="deep">
+          <li>从你<strong>现在的年龄</strong>到你的<strong>预计死亡年龄</strong>（用 life expectancy calculator，参见 Ch2 [19][20]），画一条时间轴。</li>
+          <li>把它切成<strong>5-10 年一段</strong>的桶。年轻时桶可以更窄（5 年），老年时桶可以更宽（10 年）——因为老年的体验密度下降。</li>
+          <li>给每个桶<strong>填具体的 experiences</strong>——不是"旅游"，而是"跟妈妈去日本京都"、"学西班牙吉他"、"完成一次半马"、"陪孩子做完科学竞赛"。</li>
+          <li>关键步骤：每个 experience 问<strong>"这能放在<em>哪个</em>桶？"</strong>——基于 health/age/family 阶段。某些只能放在 30s 桶（健身房密集训练 + 高强度旅行）；某些必须放在父母还在的桶（带他们去他们梦想的地方）；某些可以放任何桶（读书、写作、深度对话）。</li>
+        </ol>
+
+        <h3>Bucket list vs Time Bucket — 关键差别</h3>
+
+        <table>
+          <thead>
+            <tr><th style="width:25%;"></th><th>Bucket list</th><th>Time Bucket</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>结构</td>
+              <td>一个 list of dreams</td>
+              <td>多个时间段，每段 list of dreams</td>
+            </tr>
+            <tr>
+              <td>时间维度</td>
+              <td><strong>无</strong>——任何时候 "before I die"</td>
+              <td><strong>核心</strong>——每个 experience 绑定一个 5-10 年窗口</td>
+            </tr>
+            <tr>
+              <td>优先级</td>
+              <td>不强制——按"想做"排</td>
+              <td>强制——<strong>health/age constraint</strong> 倒推</td>
+            </tr>
+            <tr>
+              <td>结果</td>
+              <td>多数项目终生没做 → 死前后悔</td>
+              <td>每个桶有<strong>schedule</strong>，能跟踪能问责</td>
+            </tr>
+            <tr>
+              <td>失败模式</td>
+              <td>"我还有时间" → autopilot</td>
+              <td>"这个桶剩 3 年了" → 急迫感</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Bucket list 是<strong>愿望陈列</strong>。Time bucket 是<strong>scheduled execution</strong>。Bucket list 跟"我想瘦 10 斤"在结构上完全一样——发愿、无 commitment、自然失败。Time bucket 强迫你接受一个不舒服的事实：<strong>不是所有 experience 都能放在所有年龄</strong>。30 岁能背包欧洲；70 岁不能（或者能但不是同一个体验）。25 岁能 spontaneously 飞东京；50 岁有了孩子和工作就不能。</p>
+
+        <div class="pullbox warn">
+          <h4>这里是这本书最常被读者忽略的点</h4>
+          <p style="margin:0;"><strong>Time bucket 不是"列出来就行"——它是 schedule。</strong>多数人读到这里以为自己懂了，写了一个 list 就关掉书。但 list 跟 schedule 的区别是：schedule 有<strong>截止日期</strong>。你的 30-35 桶下个月就到 31。你的 35-40 桶 4 年后就到。如果你 32 岁还没做 30-35 桶里任何一件事——你已经<strong>实际上失去了 2/5 的窗口</strong>。把这个数字写下来。</p>
+        </div>
+
+        <h3>Worked example: 一个虚构的 30 岁开始 plan 到 80 岁</h3>
+
+        <div class="figure">
+          <strong>Sample Time Buckets (30→80)</strong>
+          <table style="margin-top:8px;">
+            <thead>
+              <tr><th>桶</th><th>关键 constraint</th><th>3 个 specific experiences</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>30-35</td>
+                <td>身体峰值 / 还没小孩 / 时间相对灵活</td>
+                <td>1. 与配偶 3 周环日本背包<br>2. 完成一次半马 (sub 2:00)<br>3. 学完 Spanish B2 → 去南美 3 周</td>
+              </tr>
+              <tr>
+                <td>35-40</td>
+                <td>可能有小孩 / 职业上升 / 父母 ~65-70</td>
+                <td>1. 带父母去他们想去的地方（如欧洲）<br>2. 跟童年 best friend 一起做一个 long-form 项目<br>3. 学一种乐器到能跟人合奏</td>
+              </tr>
+              <tr>
+                <td>40-50</td>
+                <td>小孩中年龄段 / 高收入年 / 健康仍佳</td>
+                <td>1. 全家 1 个 sabbatical 月在国外<br>2. 主导一个跟兴趣相关的 side venture<br>3. 完成一次重要的 challenge（如 marathon / 攀岩等级）</td>
+              </tr>
+              <tr>
+                <td>50-60</td>
+                <td>小孩离巢 / 高净值期 / 父母可能离世</td>
+                <td>1. 与配偶 long trip（30+ 天）<br>2. 重启年轻时舍弃的兴趣（如绘画、写作）<br>3. 系统性 mentor 一批后辈</td>
+              </tr>
+              <tr>
+                <td>60-70</td>
+                <td>退休前后 / 健康开始衰减但仍可远行</td>
+                <td>1. 完成"年轻时太奢侈"的旅行（如非洲 safari、南极）<br>2. 跟孙辈建立 ritual experiences<br>3. 启动 giving while living（参考 Ch3）</td>
+              </tr>
+              <tr>
+                <td>70+</td>
+                <td>体验密度下降 / 健康约束强</td>
+                <td>1. 近距离 cultural experiences（剧院、博物馆）<br>2. 长时间深度对话、写自传<br>3. 跟家人小规模高频聚会</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="figure-cap">注意：每个桶的 experiences 都<strong>绑定到该桶的 constraint</strong>。30-35 的背包之所以放在那里，是因为放在 60-70 就不一样了。这种 constraint-driven scheduling 是 Time Bucket 的核心 mechanic。</div>
+        </div>
+
+        <p>这张表是<strong>示例不是处方</strong>。你的桶肯定跟它不一样——你可能有不同的健康基线、不同的家庭结构、不同的兴趣。但<strong>结构</strong>必须一样：每个桶 3-5 个 specific experiences + constraint 解释。</p>
+
+        <div class="pullbox idea">
+          <h4>怎么知道你的 Time Bucket 写得"对"</h4>
+          <p style="margin:0;">两个测试：(1) <strong>Constraint test</strong>——把任意一个 experience 挪到另一个桶，是否明显不同 / 不可行？如果挪过去无所谓，说明这个 experience 没绑定 constraint，应该重写。(2) <strong>Specificity test</strong>——每个 experience 是否具体到能放进日历？"旅游欧洲" → 不行；"2027 年 5 月跟配偶 3 周巴塞罗那→里斯本→波尔图" → 可以。</p>
+        </div>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · Peak as Date</p>
+        <h2 class="unit-h">Net Worth Peak — 日期，不是数字</h2>
+
+        <p>Bill 这本书最反直觉的论点：你应该 plan 一个<strong>具体的日期</strong>，过了那天你<strong>开始减少净资产</strong>——不是等"达到 $X 数字"再说。</p>
+
+        <p>多数人对"退休"或"开始享受"的 mental model 是<strong>数字门槛</strong>："等我有 $2M 我就⋯⋯" / "等我 net worth 到 $5M 我就⋯⋯"。Bill 说这个 model 是<strong>错</strong>的。3 个原因：</p>
+
+        <h3>原因 (a)：数字会 keep moving</h3>
+
+        <p>Bill 自己的例子：他 NYMEX 老板 Joe Farrell（Ch1 出现过那个）后来给 Bill 讲一个故事——Joe 跟 Bill 说"如果我有 $15M，我就<strong>退休、躺平</strong>"。结果 Joe 真的赚到了 $15M——然后他没退休。继续赚到 $50M、$100M。他后来直接告诉 Bill：</p>
+
+        <div class="quote">
+          "If you ever hear me say $15M is enough, punch me in the face."
+          <cite>— Joe Farrell to Bill, 自嘲 anchoring 的失败</cite>
+        </div>
+
+        <p>这不是 Joe 一个人的问题——是<strong>人类大脑的结构性 bug</strong>。当你的 net worth 接近你以前定的"够了"数字时，你的参照系会自动升级——周围出现了更富的人、出现了你以前买不起的新欲望、出现了"再多一点 just in case"的恐惧。<strong>数字目标在到达前会自我推后</strong>。</p>
+
+        <p>Bill 另一个故事：John Arnold——前 Enron 顶级 trader、自己开 Centaurus 对冲基金、30 多岁身家几十亿。Bill 直接问他："你为什么<strong>还在</strong>每天去办公室？" Arnold 的回答（Bill 转述）大意是：他知道自己不需要再赚——但他<strong>找不到怎么停</strong>。机器跑起来很难关。这不是道德缺陷——是 anchor 失败。<strong>数字门槛本质上是骗局，因为它没有自然终点</strong>。</p>
+
+        <h3>原因 (b)：健康衰减让"再多钱"在某个年龄之后 = 0 边际效用</h3>
+
+        <p>这是 Ch4 的核心论点（health 是 multiplier）。Finkelstein-Luttmer-Notowidigdo 2013 [1] 的实证：在严重健康状况下，多一美元的边际幸福贡献急剧下降。Bill 把这个论点应用到 peak：<strong>你在 75 岁多 $100K 不会改变你的人生 → 但你 50 岁多 $100K 可以让你跟家人来一次永生难忘的旅行</strong>。把钱留到 75 岁才花 = 把钱留到它的边际效用接近 0 的时候。这是 systematic 浪费。</p>
+
+        <h3>原因 (c)：早点知道日期 = 早点 Time Bucket = memory dividend 复利更长</h3>
+
+        <p>这一条把 §3 跟本节连起来。如果你知道你 peak date 是 55 岁——你从今天开始就可以<strong>反推</strong>哪些 experiences 必须在 55 之前完成。这种<strong>明确截止日期</strong>是 Time Bucket 能 work 的前提。如果你 peak date 是"等数字到 $X"——你<strong>永远不能</strong>开始 Time Bucket，因为你不知道哪一年开始减资产。日期 = 行动；数字 = 拖延。</p>
+
+        <h3>多数人 peak 应该在 45-60 之间</h3>
+
+        <p>Bill 的经验法则：对绝大多数中产 / 上中产，peak 应该在 <strong>45-60</strong> 这个区间。具体落在哪取决于：(1) 收入轨迹（高速 ramp 的人 peak 更晚），(2) 家庭结构（孩子还小 → peak 推后），(3) 健康预期（家族 longevity 高 → 可以稍晚）。</p>
+
+        <p>但 Bricker et al. 2017 [10] 的 Federal Reserve 数据告诉你残酷现实：美国家庭的 <strong>median net worth 在 65-74 岁组<em>仍然在涨</em></strong>。这是 systemic over-save 的实证 signature——典型美国人在<strong>身体已经开始衰减的年龄</strong>还在累积财富而不是消费它。</p>
+
+        <div class="figure">
+          <strong>Median net worth by age group, US households (Fed 2017 [10]) — 示意</strong>
+          <div class="bar-row"><span>&lt; 35</span><div class="bar" style="width:6%"></div><span>$11K</span></div>
+          <div class="bar-row"><span>35-44</span><div class="bar" style="width:30%"></div><span>$60K</span></div>
+          <div class="bar-row"><span>45-54</span><div class="bar" style="width:62%"></div><span>$124K</span></div>
+          <div class="bar-row"><span>55-64</span><div class="bar" style="width:93%"></div><span>$187K</span></div>
+          <div class="bar-row"><span>65-74</span><div class="bar alt2" style="width:112%"></div><span>$224K</span></div>
+          <div class="bar-row"><span>75+</span><div class="bar alt2" style="width:130%"></div><span>$264K</span></div>
+          <div class="figure-cap">注意：财富在 65-74 仍涨，75+ 还涨。Bill 的论点：这跟"die with zero"完全相反——而且跟 health utility 曲线完全相反。<strong>多数美国人在他们已经不能充分享受钱的年龄继续累积</strong>。这不是谨慎，是 autopilot。</div>
+        </div>
+
+        <div class="pullbox warn">
+          <h4>这一节最需要内化的一句</h4>
+          <p style="margin:0;font-size:17px;"><strong>你的 net worth peak 是一个<em>日期</em>不是<em>数字</em>。日期能产生行动，数字只能产生焦虑。把日期写在某处看得见的地方，从今天开始倒数。</strong></p>
+        </div>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · Survival Threshold</p>
+        <h2 class="unit-h">Survival Threshold — 但你也不能说花就花</h2>
+
+        <p>"Die with zero" 不是"乱花到零"。在你决定 peak date 之前，你要先算一个数字——<strong>survival threshold</strong>（最低生存所需）。这是你<strong>不能动</strong>的那部分。超出 threshold 的钱才是 actively spend down 的对象。</p>
+
+        <h3>Bill 的公式（简化版）</h3>
+
+        <div class="figure" style="text-align:center;">
+          <p class="mono" style="font-size:16px; margin:6px 0;">Survival Threshold = (年生存支出) × (剩余预期寿命年数) × (安全系数 ~1.7)</p>
+          <div class="figure-cap">"安全系数 ~1.7"覆盖：通胀、长寿尾部风险、医疗黑天鹅、market downside。Bill 不主张精确——主张<strong>明显保守但不离谱</strong>。</div>
+        </div>
+
+        <h3>"年生存支出"是什么</h3>
+
+        <p>关键：<strong>生存</strong>支出，不是当前 lifestyle 支出。Bill 区分两层：</p>
+
+        <ul class="deep">
+          <li><strong>Lifestyle 支出</strong>——你现在花的所有钱（包括旅行、外食、娱乐、高端服务等）。这不是 survival 数字。</li>
+          <li><strong>Survival 支出</strong>——最基本的：住房 + 食物 + 医疗 + 基本交通 + 一点点缓冲。Bill 估计典型美国 retiree 的 survival 大约是<strong>当前 lifestyle 的 50-70%</strong>。</li>
+        </ul>
+
+        <p>Bill 的 worked example（书中粗略）：假设你 55 岁，当前年支出 $80K，希望"基本舒适但 not 奢侈"地活到 85——</p>
+
+        <table>
+          <thead>
+            <tr><th>项</th><th>数值</th><th>说明</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>当前年支出</td><td>$80,000</td><td>当前 lifestyle</td></tr>
+            <tr><td>退休后年生存支出</td><td>$55,000</td><td>约 69%——参考 Smith 2018 Kiplinger [49]（见 §6）</td></tr>
+            <tr><td>剩余预期寿命</td><td>30 年</td><td>55→85</td></tr>
+            <tr><td>原始乘积</td><td>$1,650,000</td><td>$55K × 30</td></tr>
+            <tr><td>安全系数</td><td>× 1.7</td><td>覆盖尾部</td></tr>
+            <tr><td><strong>Survival threshold</strong></td><td><strong>~$2.8M</strong></td><td><strong>不能动的 floor</strong></td></tr>
+          </tbody>
+        </table>
+
+        <p>关键含义：如果你 55 岁有 $4M ——你的 survival floor 是 $2.8M ——也就是说 <strong>$1.2M 是"超额"，应该 actively spend</strong>。不是某天某月某种"心情对了再花"——是<strong>有计划地花完</strong>。</p>
+
+        <h3>不同年龄 + 不同 lifestyle 的 ballpark</h3>
+
+        <table>
+          <thead>
+            <tr><th>当前年龄</th><th>预期寿命终点</th><th>年生存支出 (Modest)</th><th>年生存支出 (Comfortable)</th><th>Threshold (Modest)</th><th>Threshold (Comfortable)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>40</td><td>85</td><td>$40K</td><td>$70K</td><td>~$3.1M</td><td>~$5.4M</td></tr>
+            <tr><td>50</td><td>85</td><td>$40K</td><td>$70K</td><td>~$2.4M</td><td>~$4.2M</td></tr>
+            <tr><td>55</td><td>85</td><td>$40K</td><td>$70K</td><td>~$2.0M</td><td>~$3.6M</td></tr>
+            <tr><td>60</td><td>85</td><td>$40K</td><td>$70K</td><td>~$1.7M</td><td>~$3.0M</td></tr>
+            <tr><td>65</td><td>85</td><td>$40K</td><td>$70K</td><td>~$1.4M</td><td>~$2.4M</td></tr>
+            <tr><td>70</td><td>85</td><td>$40K</td><td>$70K</td><td>~$1.0M</td><td>~$1.8M</td></tr>
+          </tbody>
+        </table>
+
+        <p>"Modest"对应大约 Moore 2018 US Census [41] 报告的中位 household spending bracket；"Comfortable"是该 bracket 的 1.5-1.8x。住房成本基于 PropertyMetrics 2018 [42] 关于 retiree 主流 housing cost estimates；O'Hara AARP [43] 提供 retiree-specific budgeting guidance；Sell 2018 Seattle Times [44] 的"70 is the new 65"提供 work-extension 假设下的更高 ballpark。</p>
+
+        <div class="pullbox note">
+          <h4>这些数字不是处方，是<strong>结构化估算</strong></h4>
+          <p style="margin:0;">你的真实 threshold 跟这张表会不一样——它依赖你所在城市（旧金山跟 Akron 差 3x）、家庭结构（配偶 / 父母依赖）、医疗保险结构、是否拥有自住房（拥有 = -30% threshold）等。重要的不是<strong>这个具体数字</strong>，是你<strong>有没有算过</strong>。多数人没算——所以多数人不知道自己已经"超额"多久了。</p>
+        </div>
+
+        <h3>算出 threshold 之后的操作</h3>
+
+        <ol class="deep">
+          <li><strong>当前净资产 &lt; threshold</strong>：你还在 accumulation phase——但要确认你的 peak date 还没到（如果到了说明数字有问题，要么 threshold 估高了，要么 spend 已经偏低）。</li>
+          <li><strong>当前净资产 ≈ threshold</strong>：临界——这是 "peak date 应该已经发生" 的明显信号。开始<strong>flat</strong>—— net worth 不再增加。任何额外收入<strong>直接</strong>转成 experience spending。</li>
+          <li><strong>当前净资产 &gt; threshold</strong>：你已经过了 peak。每多一年不主动 spend down——是把更多生命能量结晶成<strong>无人继承的余额</strong>（参见 Ch1 论点）。这一组人最常见的反应是"再多一点 just in case"——这是<strong>恐惧不是数学</strong>。Bill 的处方是 calibrated decumulation——见 §6。</li>
+        </ol>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · Decumulation Reality</p>
+        <h2 class="unit-h">Decumulation — 现实跟你以为的不一样</h2>
+
+        <p>多数人对退休 + decumulation 的预想是这样的："我会工作到 70 攒更多 → 然后开始花。" 这个 plan 跟 statistically observed reality 之间<strong>有巨大 gap</strong>。这一节用 5 个数据源把 gap 钉在桌上。</p>
+
+        <h3>Gap 1: 计划工作年龄 vs 实际退休年龄</h3>
+
+        <ul class="deep">
+          <li><strong>Pew 2018 [45]</strong>：调查美国成年人——多数<strong>计划</strong>工作到 70（甚至更晚）才退休。理由：积累更多、Social Security 拿更多、害怕 outlive savings。</li>
+          <li><strong>Gosselin 2019 ProPublica [46]</strong>：跟踪实际数据——多数 60+ <strong>被迫</strong>退休（layoff、健康问题、照顾配偶）。Gosselin 报告中约 <strong>56%</strong> 的 longer-term older workers experienced involuntary job separation 至少一次。</li>
+          <li><strong>DQYDJ [47] + Federal Reserve 2018 [48]</strong>：美国 median<strong>实际</strong>退休年龄是 <strong>62-63</strong>。不是 70。差距 <strong>7-8 年</strong>。</li>
+        </ul>
+
+        <div class="pullbox warn">
+          <h4>这个 gap 的物理含义</h4>
+          <p style="margin:0;">如果你的财务 plan 假设你工作到 70——但<strong>统计上</strong>你大概率 62-63 就停（不是因为你选择，是因为现实强加给你）——你的 plan 在结构上有 <strong>7-8 年</strong>的 phantom income。这<strong>不是悲观</strong>，是 base rate。你应该用 base rate 而不是 wish 来 plan。 "我会工作到 75 攒更多"<strong>从 base rate 看是错误 plan</strong>。</p>
+        </div>
+
+        <h3>Gap 2: "退休后我会少花钱"</h3>
+
+        <p>另一个广泛信念："退休了就少花了，所以现在多存。" Smith 2018 Kiplinger [49] 的数据反驳这个：</p>
+
+        <ul class="deep">
+          <li>退休后<strong>第一年</strong>消费 ≈ 退休前的 <strong>80-90%</strong>（不是 50%）。</li>
+          <li>原因：突然多出时间 → 旅行 + 外食 + 兴趣消费上升；医疗支出从工作期保险转到 Medicare 后仍有显著 out-of-pocket；房屋 maintenance 不会消失。</li>
+          <li>消费<strong>真正</strong>下降发生在 <strong>75+</strong>——所谓的 "slow-go years" 和 "no-go years" (参考 Ch2 Stein [12])。第一个 10 年的"go-go"消费跟退休前基本相同。</li>
+        </ul>
+
+        <div class="pullbox idea">
+          <h4>含义</h4>
+          <p style="margin:0;">"退休后我会少花"——<strong>错</strong>（至少前 10 年）。这是过度存钱者最常见的合理化。如果你的 plan 假设退休后立即支出降一半——你的 retirement need 数字是低估的；但同时它<strong>合理化</strong>了你今天不花钱。两边都错了。</p>
+        </div>
+
+        <h3>Gap 3: 一个更现实的过渡 — Phased Retirement</h3>
+
+        <p>"全职 → 完全退休"的二元切换是 Pew 受访者头脑中的 model——但 GAO 2017 [50] 和 Miller 2017 SHRM [51] 都指出 <strong>phased retirement</strong>（阶段性退休）是现实里更可行的 transition strategy：</p>
+
+        <ul class="deep">
+          <li><strong>定义</strong>：跟当前雇主或新雇主 negotiate 降到 50-70% 工时，持续 3-7 年——而不是 hard stop。</li>
+          <li><strong>优点</strong>：(a) 收入 + 健康保险 continuity；(b) identity / social structure 不崩溃（很多人退休后心理崩溃是因为社交圈消失，不是因为钱）；(c) 可以提前开始 time-bucket 的某些项目。</li>
+          <li><strong>实施障碍</strong>：GAO 2017 [50] 指出多数美国雇主<strong>没有</strong>正式 phased program——你需要主动 propose，且需要 negotiate 福利。Miller 2017 [51] 报告大型雇主开始接受，但 mid-market 仍稀缺。</li>
+        </ul>
+
+        <h3>合起来看 — 这 3 个 gap 怎么影响你的 Peak Date</h3>
+
+        <table>
+          <thead>
+            <tr><th>常见 plan 假设</th><th>实际数据</th><th>对 peak date 的修正</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"工作到 70"</td>
+              <td>median 实际 62-63 [47][48]</td>
+              <td>peak date 不应在 65 之后假设积累；可能 55-62 之间已经被迫 peak</td>
+            </tr>
+            <tr>
+              <td>"退休后花 50%"</td>
+              <td>第一年仍花 80-90% [49]</td>
+              <td>survival threshold 不能用 50% 算；用 70-80% 起步</td>
+            </tr>
+            <tr>
+              <td>"全职 → 完全退休"</td>
+              <td>phased retirement 更可行 [50][51]</td>
+              <td>peak date 可以是<strong>逐步过渡的中点</strong>，不必是单一日期</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>这一节最不舒服的一句</h4>
+          <p style="margin:0;font-size:17px;"><strong>如果你 plan 假设"我会工作到 70"——你已经在用一个 statistically wrong 的 plan 做今天的 spending decisions。你今天不花钱因为"以后还能赚"——但你"以后"<em>实际上</em>会更早 stop earning 且更慢 stop spending。你已经 over-saving 了，只是你不知道。</strong></p>
+        </div>
+      </section>
+
+      <!-- §7 -->
+      <section class="unit" id="s7">
+        <p class="unit-eyebrow">§7 · Three Actionable Principles</p>
+        <h2 class="unit-h">从这一章带走的三条原则</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>写出你的 Time Buckets——每个桶 3-5 个 specific experiences + 必要时机 reason。</strong><br>
+            不在脑子里完成。打开一个文档 / 一张纸——画时间轴 → 切桶 → 每桶 3-5 个 experience。每个 experience 必须能 pass<strong>specificity test</strong>（能放进日历）和 <strong>constraint test</strong>（绑定到某个 health/age 窗口）。这一条不做——后面两条都不能做。
+          </li>
+          <li>
+            <strong>算你的 Net Worth Peak Date（不是数字）。</strong><br>
+            参考公式：从你的 life expectancy 倒推 → 选一个让 health × money × time 三角平衡的年龄（多数人 45-60）。<strong>把日期写在桌面 / 锁屏 / 任何每天看得见的地方</strong>。日期产生行动；数字只产生焦虑。
+          </li>
+          <li>
+            <strong>算你的 Survival Threshold——超出部分要 actively spend down，不是 hold。</strong><br>
+            用 §5 公式算你的 floor。然后用残酷的诚实问自己："我的当前净资产 vs threshold 是什么关系？" 如果你已经超过——你已经过了一个事实 peak，只是没承认。"再多一点 just in case" 在统计意义下是<strong>恐惧不是数学</strong>——但承认这点需要勇气。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把这一章压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>"将来某一天"不存在。它是一个心理停车场——里面停着你拒绝面对的所有 experience。Time Buckets 是把停车场清空的工具，Net Worth Peak Date 是停止往里塞新车的截止日期。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Reflection Exercises</p>
+        <h2 class="unit-h">反思练习（5 题——这是 actionable capstone，最不能跳）</h2>
+
+        <p>这一章的全部 ROI 都在这 5 个练习里。如果你跳过——你只是又读了一篇 self-help 文章，没改变任何东西。<strong>每题至少写 5 句话，写在纸上或文档里，<em>不要</em>在脑子里完成</strong>。</p>
+
+        <div class="exercise">
+          <h4>练习 1 — 你前 3 个 Time Buckets</h4>
+          <p>从你<strong>现在的年龄</strong>开始，画 3 个连续的 5-10 年桶。每个桶<strong>3 个 specific experiences</strong>——必须能 pass specificity test（能放进日历）和 constraint test（绑定到该桶的 health/age/family window）。注意：experience 不是"目标"——是<strong>一次具体的可执行事件</strong>。</p>
+          <textarea placeholder="例如：&#10;桶 1（30-35）：1. 与配偶 2026 秋 3 周日本——constraint：还没小孩，身体高峰；2. 完成一次半马 2027 春——constraint：膝盖窗口；3. 学吉他能跟人合奏 2028——constraint：脑可塑性 + 时间灵活。&#10;桶 2（35-45）：⋯&#10;桶 3（45-55）：⋯"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — 父母现在能做的事 vs 10 年前</h4>
+          <p>列 5 件你父母<strong>10 年前</strong>能做但<strong>现在不能 / 很难</strong>做的事。再列 5 件他们<strong>现在能做</strong>但<strong>10 年后大概率不能</strong>做的事。第二列就是你跟父母的<strong>剩余共享 experience 窗口</strong>。诚实回答：你今年 plan 了几件？为什么不更多？</p>
+          <textarea placeholder="不要写"我没时间"。写"我没时间"<em>背后的具体决策</em>——你最近一次跟父母深度共处是什么时候？为什么不是上个月？"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — 你预计的 Net Worth Peak Date</h4>
+          <p>选一个具体年龄（不是范围）。理由：(a) 为什么这个年龄而不是更早 / 更晚？(b) 这个年龄符合你 health-money-time 三角平衡吗（参考 Ch4）？(c) 如果 Pew 2018 / Gosselin 2019 数据告诉你你大概率 62-63 被迫退休——你的 peak date 跟这个 base rate 一致吗？</p>
+          <textarea placeholder="不要写"55 岁差不多"。写"55 岁，因为 [具体理由]，而且如果我 60 岁被 layoff 也不会破坏 plan，因为 [具体缓冲]"。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 4 — 你的 Survival Threshold + 当前位置</h4>
+          <p>用 §5 的公式算你的 threshold。然后写下：当前净资产 vs threshold 的比例（&lt; 50% / 50-100% / 100-150% / &gt; 150%）。如果你 &gt; 100%——你已经<strong>统计上</strong>过了 peak，只是没承认。如果 &lt; 50%——这本书的处方对你<strong>不适用</strong>，你需要 Ch1 的"读者门槛"自检。</p>
+          <textarea placeholder="例如：年生存支出 $60K × 35 年剩余 × 1.7 = $3.6M threshold。当前净资产 $2.8M = threshold 的 78%。我还在 accumulation phase 但接近 flat 临界——peak date 应该在 5-8 年内。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 5 — 你最大的<strong>持续推迟</strong>的 experience</h4>
+          <p>列 1 件你过去 <strong>5 年以上</strong>一直推迟的 experience（不是"想做但忘了"——是<strong>反复想起又反复推迟</strong>）。诚实回答：(a) 真正的 constraint 是什么——时间？钱？精力？还是<strong>autopilot</strong>？(b) 它应该放在你哪个 time bucket？(c) 如果你不在<strong>下一个 12 个月</strong>启动它——你统计上会推迟到永远，对吗？</p>
+          <textarea placeholder="不要给"我会做"的答案。给"我推迟的真正机制"的答案——多数情况下不是 constraint，是 autopilot。"></textarea>
+        </div>
+
+        <div class="pullbox warn">
+          <h4>5 题里至少 3 题必须有具体日期 / 数字</h4>
+          <p style="margin:0;">如果你的答案全是"以后"、"想"、"差不多"——你又一次让自己滑过去了。这一章是<strong>actionable capstone</strong>——产出物是<strong>纸上的 schedule + 数字</strong>，不是 awareness。Awareness 不改变行为；schedule 改变行为。</p>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Self-Check Quiz</p>
+        <h2 class="unit-h">自检 Quiz（先答，再展开看解析）</h2>
+
+        <details class="quiz">
+          <summary>Q1. Time bucket vs bucket list 的关键区别？</summary>
+          <p>A) Time bucket 更长<br>
+          B) Bucket list 更便宜<br>
+          C) <strong>Bucket list 是 list of dreams（无时间维度，无 constraint）；Time bucket 是<em>scheduled execution</em>——每个 experience 绑定一个 5-10 年窗口和 health/age constraint</strong><br>
+          D) Time bucket 必须用 app</p>
+          <div class="answer"><strong>正确答案：C。</strong>这是这一章最容易被读者忽略的点——"我以前就有 bucket list 啊"是常见反应，但 list 跟 schedule 在结构上完全不同。Bucket list 的失败模式是"我还有时间"+无问责；Time bucket 强迫你接受"30 岁能背包欧洲，70 岁不能"——某些 experience 只能放在某些窗口。Constraint-driven scheduling 是核心 mechanic。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. Bronnie Ware 5 大临终遗憾里，关于"钱"的有几个？</summary>
+          <p>A) 5 个<br>
+          B) 3 个<br>
+          C) 1 个<br>
+          D) <strong>0 个</strong></p>
+          <div class="answer"><strong>正确答案：D。</strong>Ware 2012 [39] 数百次床边——<strong>零</strong>个 financial regret。反过来——5 条里至少 3 条（#2 工作太拼、#4 失去朋友、#5 没让自己快乐）跟 over-prioritize work / sacrifice experience 直接相关。这是 Bill 整本书最强的<strong>empirical backbone</strong>——不是 Bill 个人主张，是临终前的真人系统性证实。如果你在乎"我以后会不会后悔"——这个数据应该改变你今天的决策。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. 为什么 Bill 主张 peak as <em>date</em> not <em>number</em>？</summary>
+          <p>A) 日期更容易记<br>
+          B) 数字会通胀<br>
+          C) <strong>(a) 数字 anchor 会自我推后（Joe Farrell 故事："如果我说够了就揍我"）；(b) 健康衰减让某个年龄之后再多钱也无用；(c) 早点知道日期 → 早点 Time Bucket → 体验复利更长</strong><br>
+          D) 因为 Bill 自己 peak 已经过了</p>
+          <div class="answer"><strong>正确答案：C。</strong>这是这一章最反直觉的论点。数字门槛是<strong>骗局</strong>——大脑参照系会自动升级让你永远到不了。Joe Farrell 真的赚到 $15M 然后没退休，赚到 $50M 还没退休——他自己承认"我找不到怎么停"。John Arnold 30 多岁几十亿仍每天去办公室——同样原因。日期产生 forcing function；数字产生 endless ramp。Bricker 2017 [10] 数据证实：median 美国家庭 65-74 岁 net worth <strong>仍在涨</strong>——典型 over-save 信号。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. Pew 2018 vs Gosselin 2019 的 gap 意味着什么？</summary>
+          <p>A) ProPublica 政治偏向<br>
+          B) 多数人撒谎<br>
+          C) <strong>多数人<em>计划</em>工作到 70，但<em>实际</em>median 退休年龄 62-63——base rate gap 7-8 年。"我会工作到 75 攒更多"在 base rate 看是<em>错误 plan</em>，因为 layoff / health / care-giving 等强制因素会切断 plan</strong><br>
+          D) 美国人变懒了</p>
+          <div class="answer"><strong>正确答案：C。</strong>这是这一章最 actionable 的统计 insight。如果你的财务 plan 假设你能干到 70——你在用 wish 而不是 base rate。Gosselin 2019 [46] 数据：约 56% 的 older workers 经历至少一次<strong>非自愿</strong>离职。你的 spending decision 应该 reflect base rate——这意味着你可能<strong>比你以为的更早</strong>需要 peak date，且<strong>你今天的 over-saving 是基于错的假设</strong>。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5. Survival Threshold 计算的目的是？</summary>
+          <p>A) 让你少花钱<br>
+          B) 计算 401k 上限<br>
+          C) <strong>定义一个<em>不能动</em>的 floor，使得"超出 floor 的钱"可以 actively spend down——把"我应该花吗"的焦虑转化为"我已经 over-saved 多少了"的可量化诊断</strong><br>
+          D) 计算遗产税</p>
+          <div class="answer"><strong>正确答案：C。</strong>Survival threshold 的精妙在于<strong>它把恐惧外化</strong>。多数 over-saver 不花钱是因为"万一⋯⋯"——这个"万一"无边界。算出 threshold 之后 → 你有了 floor + 安全系数（~1.7 已经覆盖大部分尾部）→ 超出的钱<strong>明确</strong>是 "structurally surplus"。这不是 license to 乱花——是把抽象焦虑变成<strong>可诊断状态</strong>："我超出 30%——意味着我已经过了事实 peak 但没承认"。Bill 的整套工具的核心是<strong>把模糊变明确</strong>。Threshold = floor + 公式 = 可诊断。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读</h3>
+        <ol start="39">
+          <li><span class="tag">书评</span>Ware, B. (2012). <em>The Top Five Regrets of the Dying: A Life Transformed by the Dearly Departing</em>. Hay House. — 澳洲临终关怀护士访谈数百名临终者的核心 5 条遗憾。Bill 引用这一数据作为"experience &gt; money"的实证 backbone。</li>
+          <li><span class="tag">实证</span>Layous, K., Kurtz, J., Chancellor, J., &amp; Lyubomirsky, S. (2018). Reframing the Ordinary: Imagining Time as Scarce Increases Wellbeing. <em>Journal of Positive Psychology</em>, 13, 301-308. — 实验证：主动 reframe 时间为 scarce → 增加 meaningful activities → 更高 wellbeing。</li>
+          <li><span class="tag">实证</span>Moore, K. (2018). Homeownership Remains Below 2006 Levels Despite Recent Gains. <em>US Census Bureau</em>. — retiree housing baseline data。</li>
+          <li><span class="tag">延伸</span>PropertyMetrics. (2018). Understanding Present Value Formulas. — retirement budgeting present-value methodology。</li>
+          <li><span class="tag">书评</span>O'Hara, C. (n.d.). How Much Money Do I Need to Retire? <em>AARP</em>. — retiree-specific budgeting baseline。</li>
+          <li><span class="tag">书评</span>Sell, D. (2018). "70 Is the New 65": Why More Americans Expect to Retire Later. <em>Seattle Times</em>. — work-extension under shifting longevity 的现象学。</li>
+          <li><span class="tag">实证</span>Pew Charitable Trusts. (2018). When Do Americans Plan to Retire? — 多数美国人 plan 退休到 70。</li>
+          <li><span class="tag">实证</span>Gosselin, P. (2019). If You're Over 50, Chances Are the Decision to Leave a Job Won't Be Yours. <em>ProPublica</em>. — 实际数据：多数 60+ 被迫离职。Pew vs Gosselin 是本章最重要的 base-rate gap。</li>
+          <li><span class="tag">实证</span>DQYDJ. Average Retirement Age in the United States. — median 实际退休年龄 62-63 的源数据。</li>
+          <li><span class="tag">实证</span>Federal Reserve. (2018). Report on the Economic Well-Being of U.S. Households. — confirms median 实际退休年龄 + retirement income data。</li>
+          <li><span class="tag">书评</span>Smith, A. (2018). Retirees, Go Ahead and Spend a Little. <em>Kiplinger</em>. — 实证：退休后第一年消费 ≈ 退休前 80-90%，"退休后我会少花"是错的（至少前 10 年）。</li>
+          <li><span class="tag">实证</span>GAO. (2017). Older Workers: Phased Retirement Programs, Although Uncommon, Provide Flexibility for Workers and Employers. — phased retirement 作为 hard-stop 之外的现实 transition strategy。</li>
+          <li><span class="tag">书评</span>Miller, S. (2017). Phased Retirement Gets a Second Look. <em>SHRM</em>. — phased retirement 在大型雇主的 adoption + mid-market 缺口。</li>
+        </ol>
+        <p style="margin-top:18px;color:var(--muted);">下一步：第六章 · Be Bold — 风险、年龄、整合 capstone（asymmetric risk / Cuban &amp; Cohen 故事 / quantify the fear / 把前 5 章压成一个 decision framework）。</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

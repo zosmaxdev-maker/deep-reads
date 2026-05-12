@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第一章 · 生命能量 — 《Die With Zero》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); line-height: 1.7; }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0; }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none; }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 920px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+    .exercise { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .exercise h4 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exercise textarea, .exercise input[type=text] { width: 100%; margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: #fff; font: inherit; color: var(--ink); }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+    details.quiz { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    details.quiz summary { cursor: pointer; font-weight: 700; list-style: none; }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before { content: "▸ "; color: var(--accent); font-weight: 800; }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: #2e3b3a; }
+    details.quiz .answer strong { color: var(--accent); }
+    .citations { margin: 56px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+    .citations h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+    .citations .tag { display: inline-block; padding: 1px 6px; margin-right: 6px; border-radius: 3px; background: #efebe0; color: #34302a; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">Die With Zero</p>
+      <p class="ch-num">01</p>
+      <p class="ch-title">生命能量</p>
+      <p class="ch-sub">Life Energy · 第一章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>为什么这一章在书的入口</span></a>
+        <a href="#s1"><span class="num">§1</span><span>Erin &amp; John — 30 天死亡通知</span></a>
+        <a href="#s2"><span class="num">§2</span><span>钱 = 生命能量</span></a>
+        <a href="#s3"><span class="num">§3</span><span>The Honorary Billionaire</span></a>
+        <a href="#s4"><span class="num">§4</span><span>体验 vs 物品（实证）</span></a>
+        <a href="#s5"><span class="num">§5</span><span>Memory Dividend — 体验的复利</span></a>
+        <a href="#s6"><span class="num">§6</span><span>三条可行动原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习</span></a>
+        <a href="#qz"><span class="num">?</span><span>自检 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 1 · Life Energy</p>
+      <h1 class="lead">钱不是目标。是你的生命能量在世界上的代币。</h1>
+      <p class="lead-sub">这本书的全部论点都建立在一个看似平凡的等式上：你为了赚钱付出的每一小时，都是你<strong>不可再生的生命时间</strong>换来的。如果你死的时候账户里还有大笔余额——你拿一部分生命时间，换了从未兑现的承诺。第一章要让你接受这个等式，并开始按它生活。</p>
+
+      <div class="quote">
+        "I want you to think about your life in a more purposeful, deliberate manner, instead of simply doing things as you and others have always done them."
+        <cite>— Bill Perkins, <em>Die With Zero</em>, Chapter 1</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing</p>
+        <h2 class="unit-h">为什么这一章在书的入口</h2>
+
+        <p>多数理财书第一章讲<strong>怎么赚得更多 / 怎么省得更狠</strong>。Bill Perkins 一上来就拒绝这两个起点。他的论点是：理财书的<strong>底层问题搭错了</strong>——所有"赚多省狠"的优化都建立在一个未经检验的前提上：<strong>钱本身是目标</strong>。这一章要把这个前提砸碎。</p>
+
+        <p>他的替换前提：<strong>钱是你生命能量的存根</strong>。你工作一小时——你的肉身付出能量、注意力、不可逆的时间。换回的工资是这些消耗的<strong>化石形式</strong>。如果你死时还留着大笔工资没花——你拿生命时间换了一堆永远没兑现的承诺。这是<strong>结构性的浪费</strong>，跟"上班路上掉了 50 块"完全不同——你掉的是你已经永远失去的生命片段。</p>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>钱是<strong>目标</strong>还是<strong>手段</strong>？如果是手段——它指向什么？</li>
+            <li>"体验比物品产生更多幸福" 是鸡汤还是<strong>实证发现</strong>？证据在哪？</li>
+            <li>"Memory dividend"（记忆红利）是 Bill 编的概念，还是真的能<strong>量化</strong>？复利在哪里？</li>
+          </ol>
+        </div>
+
+        <div class="pullbox note">
+          <h4>读这一章之前要先承认的一个不舒服事实</h4>
+          <p style="margin:0;">这本书<strong>不是写给所有人</strong>的。Bill Perkins 自己身家约 $4 亿，他的隐含读者是已经有<strong>结构性储蓄过剩</strong>风险的人——已经能 cover 基本生存，但还在拼命存。如果你目前每月入不敷出 / 没有应急金 / 真在 paycheck-to-paycheck——这一章你可以读但不必照搬。Die with Zero 是中产 / 上中产的<strong>过度储蓄解毒剂</strong>，不是所有人的处方 [9]。</p>
+        </div>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · The Disturbing Opener</p>
+        <h2 class="unit-h">Erin &amp; John — 30 天死亡通知</h2>
+
+        <p>Bill 的全书第一个故事不是关于钱的——是关于<strong>死亡突然撕开理财假设</strong>的。</p>
+
+        <p>2008 年 10 月，Bill 的发小 Erin 跟丈夫 John 都是成功律师，三个小孩。35 岁的 John 突然查出 clear-cell sarcoma（透明细胞肉瘤）——一种快速生长的软组织癌。诊断时已扩散到背部和腿骨。Bill 给 Erin 的建议很简单：</p>
+
+        <div class="pullbox idea">
+          <h4>Bill 对 Erin 说的</h4>
+          <p style="margin:0;">"Stop what you're doing, and spend time as a family while John still can."</p>
+        </div>
+
+        <p>Erin 已经在想这件事。她辞职，回家陪 John。三个月后 John 死了。Erin 回忆那段日子：创伤、绝望，但她<strong>永远感激</strong>自己辞了职。</p>
+
+        <h3>这个故事真正想问的不是"你会怎么做"</h3>
+
+        <p>多数人读这种故事的反应是："我也会辞职。"——这个反应没用。Bill 真正想问的是<strong>反向问题</strong>：</p>
+
+        <div class="pullbox warn">
+          <h4>真正的问题</h4>
+          <p style="margin:0;"><strong>如果死亡是 30 天后你才会辞职——那为什么不是 30 年后？</strong>从现在到你死之间，每一段时间都是有限的、不可再生的。你拒绝陪家人是因为"还有时间"——但"时间"这个词在这里被你滥用了。你<strong>不知道还有多少时间</strong>。Erin 的 30 天和你的 30 年在性质上完全一样——只是数量差异。</p>
+        </div>
+
+        <p>大多数人读这种故事 →感动 → 第二天回去继续加班。这<strong>不是冷血</strong>，是大脑的演化设计：把死亡推到"将来某个抽象时刻"。Bill 在书后面会教你怎么把这个抽象时刻<strong>变成具体日期</strong>（life expectancy calculator + "Final Countdown" app）—— 这是 Ch2 的内容 [19][20]。</p>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · Core Equation</p>
+        <h2 class="unit-h">钱 = 生命能量</h2>
+
+        <p>Bill 在 NYMEX 当 screen clerk 时，年薪 $16,000-$18,000。他每天驾老板的轿车赚副业，攒下了 $1,000。某天他炫耀给老板 Joe Farrell 听——</p>
+
+        <div class="quote">
+          "Are you a f***ing idiot? To save that money?"
+          <cite>— Joe Farrell to a young Bill Perkins</cite>
+        </div>
+
+        <p>Joe 接着说：你来 Wall Street 不是为了挣 $18K，你的<strong>赚钱能力会涨</strong>。把现在的钱省给 30 年后的、更富有的你——是把<strong>饥饿的年轻你</strong>的资源转移给<strong>富足的老年你</strong>。这反了。</p>
+
+        <h3>经济学里这有个名字</h3>
+
+        <p>Bill 当时不知道，Joe 说的是经济学里的 <strong>consumption smoothing</strong>（消费平滑）—— Modigliani 1950s 的 Life-Cycle Hypothesis 的核心 [27]。本意是：你的收入会在生命周期里起伏，但你的<strong>效用最大化</strong>要求消费比收入更平滑——把高收入年的一部分转给低收入年。</p>
+
+        <p>但 Joe 的洞察更具体：消费平滑不是"省钱给将来"这一个方向——它是<strong>双向的</strong>。如果你的年轻自己穷而老年自己富——平滑要求你<strong>从老年自己借</strong>（spending more than current income），不是反过来。</p>
+
+        <h3>但是 Joe 的建议把 Bill 拉到另一个极端</h3>
+
+        <p>Bill 自己承认：听完 Joe 那番话他<strong>从极度省到极度花</strong>——买听不出差异的高保真音响、去贵但没差别的餐厅。这是<strong>autopilot-save</strong> 翻转成 <strong>autopilot-spend</strong>。两个都不对。</p>
+
+        <div class="pullbox idea">
+          <h4>这本书真正的论点</h4>
+          <p style="margin:0;">不是"年轻多花、老年多省"，也不是反过来。是<strong>在每个时刻把生命能量转换成最高密度的体验</strong>——既不在年轻饥饿、也不在老年浪费——基于<strong>"什么钱能买到什么体验"的精确时机判断</strong>。这需要 Ch4 (健康-金钱-时间三角) 和 Ch5 (Time Buckets) 来完成。</p>
+        </div>
+
+        <h3>"Your Money or Your Life" 是这本书的隐藏祖先</h3>
+
+        <p>Bill 在书中提了一本对他影响巨大的书：Vicki Robins &amp; Joe Dominguez 1992 年的 <em>Your Money or Your Life</em> [56]。那本书提出了 Bill 后来用整本书展开的概念：</p>
+
+        <div class="figure" style="text-align:center;">
+          <p class="mono" style="font-size:16px; margin:6px 0;">每一块你赚来的钱 = 你已经付出的、不可回收的生命能量</p>
+          <div class="figure-cap">从此每次消费决策不再是"$X 值不值"，而是"<strong>用 N 小时生命能量换这件东西，值不值</strong>"。</div>
+        </div>
+
+        <p>Bill 当年走在曼哈顿，看到一件衬衫——心算<strong>"这要工作 2 小时"</strong>——他不买了。直到今天他还在用这个心算（书里讲的是 cookie 跟 treadmill 的换算——他看到 cookie 先算"值不值在跑步机多走 1 小时"再决定）。</p>
+
+        <p>这个换算方式的价值<strong>不在省钱</strong>。它在<strong>把抽象的钱重新变回具体的时间</strong>——而你的时间是有限的。这是这本书一切论点的根基。</p>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · The Honorary Billionaire</p>
+        <h2 class="unit-h">Bill 自称"荣誉亿万富翁"</h2>
+
+        <p>Bill 不是 billionaire——但他<strong>花得像</strong>。他朋友给他这个外号。这看起来像炫耀，但 Bill 用这个标签提出一个反直觉的事实：</p>
+
+        <div class="figure">
+          <strong>美国 2000 个最富家庭（多数是老人）的年度捐赠率</strong>
+          <div class="bar-row"><span>占总财富比例</span><div class="bar alt2" style="width:1%"></div><span>1%</span></div>
+          <div class="figure-cap">即便最富的 2000 个美国家庭——每年捐出的钱只占总财富 <strong>1%</strong>。他们<strong>根本花不掉</strong>财富 [2]。Bill Gates、Buffett、Bloomberg 都签了 Giving Pledge——但他们的钱增长得比捐得快。</div>
+        </div>
+
+        <p>Bill 的论点：连最慷慨的 billionaire 都<strong>花不掉</strong>他们的钱——他们累积财富的速度超过任何能负责任地花出去的速度。Gates 自 2010 以来净资产<strong>翻倍</strong>——即便他全职做慈善。</p>
+
+        <h3>这意味着什么</h3>
+
+        <p>意味着<strong>过度储蓄的临界值远低于</strong>你以为的。如果连净资产十亿美元的人都来不及把钱花掉——你以为你 attainable 的"养老安全数字"是过度的概率非常高。绝大多数中产 / 上中产的<strong>过度储蓄行为</strong>不是为了"够用"——是<strong>autopilot</strong>，是把"积累"误认为目标本身。</p>
+
+        <div class="pullbox warn">
+          <h4>这是这本书最有争议的部分</h4>
+          <p style="margin:0;">2020 年的 White Coat Investor 在书评里直接挑战 [9]：Bill 假设你 over-saving——但美国 58% 的人拿不出 $1,000 应急金，多数人是 <strong>under-saving</strong>。Bill 的处方对绝大多数美国人<strong>是反药</strong>。如果你在 paycheck-to-paycheck，你需要的不是 Die with Zero，是 Dave Ramsey 的债务清零课。<strong>这本书有读者门槛</strong>——你得先承认你在哪一组。</p>
+        </div>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · Empirical Backing</p>
+        <h2 class="unit-h">体验 vs 物品 — 实证科学</h2>
+
+        <p>Bill 的核心 actionable 主张："多花钱在体验上，少花钱在物品上"。听起来鸡汤——但有<strong>持续 20 年的实验心理学</strong>支持。</p>
+
+        <h3>Carter &amp; Gilovich 2012</h3>
+
+        <p>Cornell 的 Travis Carter 和 Tom Gilovich 2012 年在 <em>Journal of Personality and Social Psychology</em> 发表论文 <strong>"I Am What I Do, Not What I Have"</strong> [6]，做了一系列实验：</p>
+
+        <ul class="deep">
+          <li>给被试一些物品（如电视）和一些体验（如演唱会）——问"哪个更像你"？</li>
+          <li>发现：被试报告体验<strong>跟自我更重叠</strong>——体验<strong>组成身份</strong>，物品<strong>只是装饰</strong>。</li>
+          <li>关键控制：被试有机会把同一件事重新框架——把买 TV 当成"买看电影的体验"。被实验性 prime 成"体验"框架时，对自我的重叠程度<strong>显著上升</strong>。</li>
+        </ul>
+
+        <p>含义：钱花在体验上能增加幸福，<strong>主要不是因为体验本身</strong>——是因为体验<strong>建造了你</strong>。物品在你旁边，体验<strong>在你里面</strong>。</p>
+
+        <div class="figure">
+          <strong>物品 vs 体验：心理价值随时间的变化（示意）</strong>
+          <div class="bar-row"><span>物品 · 购买时</span><div class="bar alt2" style="width:90%"></div><span>高</span></div>
+          <div class="bar-row"><span>物品 · 6 个月后</span><div class="bar alt2" style="width:40%"></div><span>中</span></div>
+          <div class="bar-row"><span>物品 · 5 年后</span><div class="bar alt2" style="width:15%"></div><span>低</span></div>
+          <div class="bar-row"><span>体验 · 经历时</span><div class="bar" style="width:80%"></div><span>高</span></div>
+          <div class="bar-row"><span>体验 · 6 个月后</span><div class="bar" style="width:75%"></div><span>高</span></div>
+          <div class="bar-row"><span>体验 · 5 年后</span><div class="bar" style="width:85%"></div><span>高+</span></div>
+          <div class="figure-cap">物品的"幸福贡献"<strong>贬值</strong>。体验<strong>不贬值，反而升值</strong>——因为每次回忆都给一次小红利。下一节解释这个机制。</div>
+        </div>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · The Memory Dividend</p>
+        <h2 class="unit-h">Memory Dividend — 体验为什么是<strong>投资</strong></h2>
+
+        <p>这是 Bill 整本书最重要的<strong>原创概念</strong>。如果你这章只记一个东西，记这个。</p>
+
+        <h3>类比：体验跟买股票一样是投资</h3>
+
+        <p>买股票——你期待两种回报：(1) 未来卖出的资本增值，(2) 期间持有产生的分红。买债券同理：本金 + 利息。<strong>所有投资都有这个二元结构：one-time gain + ongoing yield</strong>。</p>
+
+        <p>Bill 的论点：<strong>体验也是这样</strong>。</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:24%;">投资类型</th><th>一次性收益</th><th>持续 yield</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>股票</td><td>买入卖出的差价</td><td>分红</td></tr>
+            <tr><td>房产</td><td>卖出时的增值</td><td>租金</td></tr>
+            <tr><td><strong>体验</strong></td><td>经历时的当下快乐</td><td><strong>Memory Dividend</strong>：余生每次回忆 = 一次小快乐</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Bill 的好朋友 Jason 1990s 的欧洲背包行</h3>
+
+        <p>Bill 在 NYMEX 当 screen clerk 时，他的室友 Jason Ruffo 决定停职 3 个月去欧洲背包。问题：年薪 $18K，没积蓄。<strong>Jason 跟放高利贷的借了 $10,000</strong>——这是 Bill 拒绝跟他一起去的原因（"You'll get your legs broken!"）。</p>
+
+        <p>Jason 去了。回来后 Jason 没赚到比 Bill 更多的钱——但他<strong>余生</strong>都在用那段记忆。Bill 说：</p>
+
+        <div class="quote">
+          "Whatever I paid, I feel it was a bargain because of the life experiences I gained. You can't take those away, and I would never have them erased for any amount of money."
+          <cite>— Jason Ruffo, 回忆 1990s 欧洲行</cite>
+        </div>
+
+        <p>Bill 自己 30 岁才去欧洲——他评价：<strong>"太晚了"</strong>。30 岁住青旅跟 24 岁住青旅是两种不同的体验。机会窗口已经过了一半。</p>
+
+        <h3>复利在哪里</h3>
+
+        <p>Memory dividend 不只是"每次想起 + 一点开心"——它<strong>复利</strong>。复利来自<strong>分享</strong>：</p>
+
+        <div class="figure">
+          <strong>Memory dividend 的复利路径</strong>
+          <div class="bar-row"><span>1. 原始体验</span><div class="bar" style="width:80%"></div><span>1×</span></div>
+          <div class="bar-row"><span>2. 自己回忆 N 次</span><div class="bar" style="width:30%"></div><span>+0.3×</span></div>
+          <div class="bar-row"><span>3. 跟人分享 N 次</span><div class="bar alt" style="width:40%"></div><span>+0.4×</span></div>
+          <div class="bar-row"><span>4. 别人因你受启发</span><div class="bar alt2" style="width:50%"></div><span>+0.5×</span></div>
+          <div class="bar-row"><span>5. 几十年后回看照片</span><div class="bar" style="width:25%"></div><span>+0.25×</span></div>
+          <div class="figure-cap">每次分享 / 回忆 = 一次小 yield。<strong>分享本身又是一次新体验</strong>（你笑、对方笑、你们连接更深）。这就是复利的本质：每一份产出能<strong>再生产</strong>。</div>
+        </div>
+
+        <p>Facebook / Instagram 把这个复利<strong>商业化</strong>了——"On this day 3 years ago" 提醒功能就是在 monetize 你的 memory dividend——让你重温 → 更投入 app → 给广告主创造价值。Bill 的论点：你可以<strong>自己</strong> capitalize on 这个复利，不用让 FB 帮你做。怎么做？<strong>主动地多创造可记忆的体验</strong>。</p>
+
+        <h3>含义：开始得越早，复利越大</h3>
+
+        <p>Buffett 投资界的口号"Start early, start early, start early"——Bill 把它 wholesale 搬到体验上。年龄越小开始投资体验，余生的复利轨道越长。25 岁去欧洲跟 65 岁去欧洲——同样花费，<strong>前者产生 40 年额外复利</strong>。</p>
+
+        <div class="pullbox idea">
+          <h4>Bill 的"latte factor" 反驳</h4>
+          <p style="margin:0;">David Bach 1990s 创了一个流行概念叫 <strong>latte factor</strong> [7]：每天少喝一杯 $5 latte，30 年复利可以变成 $X 万退休金。Bill 直接反驳：<strong>错</strong>。如果你每天那杯 latte 给你 30 年×365 次小快乐——你已经从 latte 拿到一个 memory dividend stream 了。Bach 没把这个 stream 计入。Bill 的版本：<strong>问自己什么给你最大体验回报，<em>那个</em>才是不该省的</strong>。Latte 还是机票？这是个人判断——但不要 autopilot 砍掉所有小快乐去喂遥远的退休账户。</p>
+        </div>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · Three Actionable Principles</p>
+        <h2 class="unit-h">从这一章带走的三条原则</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>每次消费前，先把美元换算成生命能量。</strong><br>
+            算你的真实 take-home 时薪（年薪 × (1 - 税率) ÷ 真实工时——包括通勤、加班、邮件）。看到 $200 衬衫——心算成"3 小时生命能量"。看到一周假期 $3,000——"50 小时生命能量"。这不是劝你省——是<strong>把抽象数字 ground 在你不可再生的资源上</strong>。多数浮夸消费在这个换算下立即崩塌；少数昂贵体验在这个换算下立即合理。
+          </li>
+          <li>
+            <strong>把"体验 vs 物品"作为<strong>消费 default</strong>。</strong><br>
+            遇到一笔可选支出，先问："这是物品还是体验？" 若是物品——可不可以转化为体验（如：买 PS5 → 跟朋友约定每月一次游戏夜）？把消费<strong>结构性地</strong>偏向产生 memory dividend 的支出。这不是禁欲，是<strong>选择投资组合</strong>。
+          </li>
+          <li>
+            <strong>不要等"准备好"再做高复利体验。</strong><br>
+            欧洲行、与父母旅游、跟童年朋友重聚、当 parent 在 toddler 时期 dancing in the kitchen——这些经历的<strong>时间窗口</strong>比你想得短。25-35 岁是体验复利<strong>最高利率窗口</strong>（健康 + 时间充裕 + 余生最长）。50 岁后再做同样的事 — 复利变现的剩余年数少 25 年。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把这一章压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>你赚的钱不是数字——是你已经死去的生命时间的化石。让它换回更多生命，而不是变成无人继承的余额。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Reflection Exercises</p>
+        <h2 class="unit-h">反思练习（写下来，不要在脑子里完成）</h2>
+
+        <p>这一章的最大风险：你点头同意"钱不是目标"——然后第二天回去 autopilot 攒钱。这 4 个练习是把概念 ground 在你具体生活的<strong>唯一方法</strong>。</p>
+
+        <div class="exercise">
+          <h4>练习 1 — 算你的真实时薪</h4>
+          <p>把<strong>实际工作小时</strong>（含通勤、加班、邮件、心理负担时间）÷ <strong>税后年收入</strong> = 你的<strong>真实时薪</strong>。这个数字几乎肯定低于你以为的。看到这个数字后，过去 30 天最大一笔可选支出——值多少小时生命能量？这笔花得值吗？</p>
+          <textarea placeholder="例如：年薪 $120K，税后约 $85K。表面工时 50 小时/周 = 2,500 小时/年 → $34/小时。但加上通勤 1.5h/day = +375 小时；加班 + 邮件 = +500 小时 → 实际工时 3,375 小时 → 真实时薪 $25。我上月买的 $1,800 mechanical watch = 72 小时生命能量。这值吗？"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — 一次未发生的 Erin &amp; John 时刻</h4>
+          <p>列出 1 件你<strong>跟父母 / 配偶 / 童年朋友</strong>一直想做但每年推迟的事（旅游、长聊、共同项目）。诚实回答：你推迟的理由是什么？时间？钱？精力？哪一种是真实约束，哪一种是<strong>autopilot</strong>？如果你下个月就要诊断绝症——你今天会做什么？为什么不今天就做？</p>
+          <textarea placeholder="不需要给"我会改变"的答案——给"我推迟的真正机制"的答案。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — Memory dividend 审计</h4>
+          <p>回顾过去 5 年。列 3 个你<strong>花了大钱</strong>但已经记不清细节的物品（车、家具、电子产品）；列 3 个你<strong>花了大钱</strong>但至今记忆鲜明的体验（旅行、演唱会、家庭活动）。每组分别算总花费。哪一组带给你今天更多快乐？这个比例反过来意味着你的未来支出该怎么调整？</p>
+          <textarea placeholder="物品组例：iPhone 升级 $1200 × 3 次 = $3,600；体验组例：跟妈妈一起去日本 $4,200 = 1 次。今天回想，哪个让你笑？"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 4 — 你的"读者门槛"自检</h4>
+          <p>White Coat Investor 提出的反驳很硬：这本书不是写给 under-savers 的。诚实自检：你目前属于哪一组？(a) 应急金 < 3 个月生活费，月光族倾向——这本书的处方对你<strong>有毒</strong>；(b) 应急金 3-12 个月，正常储蓄但担心退休——这本书对你<strong>有用但要警惕</strong>；(c) 应急金 12 个月+，401k/IRA 满额，仍 autopilot 存钱——这本书<strong>是给你写的</strong>。你是哪组？这个判断改变了你读后面 5 章的态度吗？</p>
+          <textarea placeholder="承认你的位置不是软弱，是诚实——错位的处方比没处方更糟。"></textarea>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Self-Check Quiz</p>
+        <h2 class="unit-h">自检 Quiz（先答，再展开看解析）</h2>
+
+        <details class="quiz">
+          <summary>Q1. Bill 用 Erin &amp; John 故事开篇，主要想论证什么？</summary>
+          <p>A) 重视家人<br>
+          B) 癌症可能突然降临<br>
+          C) <strong>"还有时间"是大脑的错觉——30 天 vs 30 年只是数量差异，不是质量差异</strong><br>
+          D) 应该买癌症保险</p>
+          <div class="answer"><strong>正确答案：C。</strong>A、B、D 都是表面解读。Bill 的真正论点：你拒绝做某事是因为"还有时间"——但这个"时间"是<strong>未知的、有限的、不可逆的</strong>。Erin 知道还有 30 天所以辞职；你假装还有 30 年所以不辞职。两者在<strong>逻辑上不应区分</strong>，只是你对自己撒谎了。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. "Memory dividend" 跟物品贬值的本质差别在？</summary>
+          <p>A) 体验更便宜<br>
+          B) <strong>体验产生 ongoing yield（每次回忆 / 分享是新 yield），物品只有 one-time gain 然后贬值</strong><br>
+          C) 物品占空间<br>
+          D) 体验社交圈更广</p>
+          <div class="answer"><strong>正确答案：B。</strong>关键是<strong>投资类型的结构差异</strong>——体验跟股票一样是 "one-time gain + ongoing yield"；物品像快速贬值的耐用消费品（无 yield，本金还跌）。Carter-Gilovich 2012 的实证支持这一点：物品被报告"更外在于自我"，体验"组成自我"——前者的快乐随时间衰减，后者的快乐通过回忆持续兑现。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. Joe Farrell 骂 Bill"f***ing idiot"的真正经济学含义是？</summary>
+          <p>A) 老板没礼貌<br>
+          B) Wall Street 文化粗暴<br>
+          C) <strong>Bill 把 consumption smoothing 用反了——他把饥饿年轻自己的钱转给富足老年自己，反 Modigliani LCH 方向</strong><br>
+          D) Bill 应该多花钱炒股</p>
+          <div class="answer"><strong>正确答案：C。</strong>Modigliani 的 Life-Cycle Hypothesis 说生命周期内消费应该<strong>平滑</strong>——把高收入年的部分转给低收入年。Bill 当时收入会大涨（合理预期）——他应该<strong>从未来借</strong>给当下用，不是反过来。Joe 没用学术词但描述的是同一个机制。这是 Ch2 会展开的内容。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. Carter-Gilovich 2012 的实验最颠覆性的发现是？</summary>
+          <p>A) 体验比物品贵<br>
+          B) 千禧一代更喜欢体验<br>
+          C) <strong>同一个东西被框架成"体验"或"物品"时，对自我重叠度的报告显著不同——体验组成身份，物品只是装饰</strong><br>
+          D) 旅行比看电视健康</p>
+          <div class="answer"><strong>正确答案：C。</strong>这个实验设计的精妙在于<strong>同一个对象</strong>（如 TV）可以被框架成两种——结果是<strong>框架本身</strong>改变了主观幸福贡献。这意味着 Bill 给的处方不只是"多花在体验"——也包括"把日常物品<strong>重新框架</strong>成体验"。买 PS5 不只是物品——它是"未来 N 次跟朋友的游戏夜"的入口。框架转换 = 免费升级 memory dividend。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5. White Coat Investor 对这本书最尖锐的批评是？</summary>
+          <p>A) Bill 不是认证理财顾问<br>
+          B) 书太短<br>
+          C) <strong>书隐含读者是 over-savers，但美国 58% 拿不出 $1K 应急——对绝大多数美国人是反药</strong><br>
+          D) Bill 自己没死所以没资格写</p>
+          <div class="answer"><strong>正确答案：C。</strong>这是 Die With Zero 最严肃的限制：<strong>有读者门槛</strong>。如果你 paycheck-to-paycheck——Dave Ramsey 的债务清零课、Vicki Robins 的 FI 路径才是处方，不是 Die with Zero。Bill 自己 $4 亿身家——他的隐含读者是"已经能 cover 基本生存，但 autopilot 还在拼命存"的中产 / 上中产。<strong>诚实自检你属于哪组比 cheering 全书更重要</strong>。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读</h3>
+        <ol>
+          <li><span class="tag">实证</span>Finkelstein, A., Luttmer, E. F. P., &amp; Notowidigdo, M. J. (2013). What Good Is Wealth Without Health? The Effect of Health on the Marginal Utility of Consumption. <em>Journal of the European Economic Association</em>, 11, 221-258.</li>
+          <li><span class="tag">书评</span>Callahan, D. (2018). The Richest Americans Are Sitting on $4 Trillion. How Can They Be Spurred to Give More of it Away? <em>Inside Philanthropy</em>.</li>
+          <li><span class="tag">理论</span>Gold, T. (1998). <em>The Deep Hot Biosphere</em>. Springer. — Bill 用其"energy-processing units"框架解释为什么"生命能量"不是比喻。</li>
+          <li><span class="tag">理论</span>Aesop, "The Ants &amp; the Grasshopper." Bill 用这个寓言贯穿全书，但反转：grasshopper 也对，蚂蚁也错——平衡才是答案。</li>
+          <li><span class="tag">理论</span>Becker, G. S. "Human Capital." <em>Library of Economics and Liberty</em>. — Bill 借此论证教育、健康投资都是"投入未来 yield 的人力资本"。</li>
+          <li><span class="tag">实证</span>Carter, T. J., &amp; Gilovich, T. (2012). I Am What I Do, Not What I Have: The Differential Centrality of Experiential and Material Purchases to the Self. <em>JPSP</em>, 102, 1304-1317. — 体验组成自我、物品不组成的核心实证。</li>
+          <li><span class="tag">书评</span>Bach, D. (2006). <em>Start Late, Finish Rich</em>. — Bill 反驳的"latte factor"概念的出处。</li>
+          <li><span class="tag">延伸</span>Robins, V., &amp; Dominguez, J. <em>Your Money or Your Life</em>. — Bill 自己说对他影响最大的书。提供了"money = life energy" 等式。</li>
+          <li><span class="tag">书评</span>White Coat Investor. (2020+). Problems I Have with the Die with Zero Philosophy. — 反对派最系统的批评。值得跟原书对照读。</li>
+          <li><span class="tag">延伸</span>MadFientist. Bill Perkins Interview — Memory Dividends, Time Buckets, and Maximizing Net Fulfillment. — Bill 本人在 FIRE 社群的深度访谈。</li>
+        </ol>
+        <p style="margin-top:18px;color:var(--muted);">下一步：第二章 · Die With Zero 的数学论点 + 工具集（Life-Cycle Hypothesis / annuities / "annuity puzzle" / life expectancy calculator）。</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

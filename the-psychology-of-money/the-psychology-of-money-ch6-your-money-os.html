@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第六章 · 你的金钱操作系统 — 《金钱心理学》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.7;
+    }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside {
+      position: sticky; top: 0; height: 100vh; overflow: auto;
+      padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0;
+    }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a {
+      display: grid; grid-template-columns: 28px 1fr; gap: 8px;
+      padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none;
+    }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 920px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 10px; align-items: center; margin: 6px 0; font-size: 14px; }
+    .bar { height: 14px; border-radius: 3px; background: var(--accent); }
+    .bar.alt { background: var(--accent-2); }
+    .bar.alt2 { background: var(--challenge); }
+    .exercise { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .exercise h4 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exercise textarea, .exercise input[type=text] {
+      width: 100%; margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+      background: #fff; font: inherit; color: var(--ink);
+    }
+    .exercise textarea { min-height: 70px; resize: vertical; }
+    details.quiz { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    details.quiz summary { cursor: pointer; font-weight: 700; list-style: none; }
+    details.quiz summary::-webkit-details-marker { display: none; }
+    details.quiz summary::before { content: "▸ "; color: var(--accent); font-weight: 800; }
+    details.quiz[open] summary::before { content: "▾ "; }
+    details.quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: #2e3b3a; }
+    details.quiz .answer strong { color: var(--accent); }
+    .citations { margin: 56px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+    .citations h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .citations ol { padding-left: 22px; }
+    .citations li { margin: 6px 0; }
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .bar-row { grid-template-columns: 110px 1fr 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">Chapter 6 · Your Money OS</p>
+      <p class="ch-num">06</p>
+      <p class="ch-title">你的金钱操作系统</p>
+      <p class="ch-sub">Define Your Game &amp; Confessions · 第六章深读</p>
+      <nav aria-label="本章目录">
+        <a href="#s0"><span class="num">§0</span><span>装配，不是再加一章</span></a>
+        <a href="#s1"><span class="num">§1</span><span>不同游戏，不同玩法</span></a>
+        <a href="#s2"><span class="num">§2</span><span>反向思维：先避免失败</span></a>
+        <a href="#s3"><span class="num">§3</span><span>没有免费的午餐</span></a>
+        <a href="#s4"><span class="num">§4</span><span>Housel 的告白</span></a>
+        <a href="#s5"><span class="num">§5</span><span>写你自己的"投资告白"</span></a>
+        <a href="#s6"><span class="num">§6</span><span>应用到类似画像（科技业 / 身份不稳样板）</span></a>
+        <a href="#s7"><span class="num">§7</span><span>三条 capstone 原则</span></a>
+        <a href="#ex"><span class="num">▣</span><span>反思练习（capstone）</span></a>
+        <a href="#qz"><span class="num">?</span><span>整本书 Quiz</span></a>
+        <a href="#cite"><span class="num">§</span><span>参考与延伸</span></a>
+        <a href="#recap"><span class="num">∎</span><span>整本书的回顾</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Chapter 6 · Your Money OS</p>
+      <h1 class="lead">前五章是工具。这一章你必须组装出自己的系统。</h1>
+      <p class="lead-sub">把工具放在工具箱里没用。从 ch1 的"行为 &gt; 智能"，到 ch2 的"时间与长尾"，到 ch3 的"守富 &gt; 致富"，到 ch4 的"自由是真正的回报"，到 ch5 的"reasonable &gt; rational + 留出 margin"——这五章每一章都给了你一把工具。但工具不是系统。这一章不教新理论，它教<strong>装配</strong>——把它们组装成一份你五年后看也不脸红的"投资告白"。</p>
+
+      <div class="quote">
+        "You're not a spreadsheet. You're a person. A screwed-up, emotional person… The reasonable investor is one who makes decisions in a crowd of people they live with, judging themselves with imperfect information."
+        <cite>— Morgan Housel, <em>The Psychology of Money</em>, Chapter 11 (Reasonable &gt; Rational)</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · Framing</p>
+        <h2 class="unit-h">装配，不是再加一章</h2>
+
+        <p>大多数财商书的最后一章是"行动总结"——把前面所有内容浓缩成 10 条建议。这种结构看似有用，<strong>实际上零产出</strong>。原因很简单：清单不是系统，外部的"建议"在你压力下来的时候不会执行。</p>
+
+        <p>这一章不那样写。它要求你<strong>停下来，写一份你自己的金钱操作系统</strong>——一份带名字、带数字、带"绝不"清单、带复盘日期的文档。Housel 在原书结尾两章（Chapter 19 *All Together Now* 和 Chapter 20 *Confessions*）做的事就是这个：他先把前 18 章的工具列出来，然后<strong>公开自己怎么用</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>本章你必须能回答的 3 个问题</h4>
+          <ol class="deep" style="margin:0;">
+            <li>你正在玩的是<strong>什么游戏</strong>？时间地平线、目标函数、约束条件？（§1）</li>
+            <li>你愿意为长期回报支付什么形式的<strong>"费用"</strong>？波动？无聊？看着别人赚钱？（§3）</li>
+            <li>你能不能写出一份<strong>八部分的"投资告白"</strong>，五年后看也不脸红？（§5）</li>
+          </ol>
+        </div>
+
+        <h3>本章和前五章的关系</h3>
+        <p>前五章是<strong>认知工具</strong>，这一章是<strong>装配工艺</strong>。下面这张表是这一章存在的全部理由：</p>
+
+        <table>
+          <thead>
+            <tr><th>章</th><th>给你的工具</th><th>装配进 §5"投资告白"的哪一项</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ch1 行为 &gt; 智能</td><td>承认认知 bug 不可修，必须靠 process</td><td>第 7 项"不可妥协规则"</td></tr>
+            <tr><td>ch2 运气 / 时间 / 长尾</td><td>时间是主乘数；4% 决定 100%</td><td>第 1 项时间地平线 + 第 5 项核心持仓</td></tr>
+            <tr><td>ch3 守富 &gt; 致富</td><td>不归零比跑得快重要</td><td>第 4 项现金缓冲 + 第 7 项不可妥协</td></tr>
+            <tr><td>ch4 自由是真正的回报</td><td>钱买的是"对时间的控制权"</td><td>第 3 项目标分解（FI 数字 + FI 时间）</td></tr>
+            <tr><td>ch5 reasonable / margin / surprise</td><td>合理优于完美；留出余量</td><td>第 2 项真实风险承受力 + 第 6 项卫星仓上限</td></tr>
+            <tr><td>ch6 装配（本章）</td><td>把以上写成一份可执行文档 + 复盘节奏</td><td>整份"投资告白"+ 第 8 项复盘节奏</td></tr>
+          </tbody>
+        </table>
+
+        <p>注意：这一章<strong>没有自己独立的新理论</strong>。它的全部价值在于"装配"这一动作本身。你不做这个动作，前五章就停留在"读过"。</p>
+      </section>
+
+      <!-- §1 -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · Different Games</p>
+        <h2 class="unit-h">不同游戏，不同玩法 — Time horizon matters</h2>
+
+        <p>Housel 第 16 章 *You &amp; Me* [1] 的核心洞察：金融市场里所有人看似在做同一件事（买股票），但实际上他们玩的是<strong>完全不同的游戏</strong>。当不同时间地平线的人互相影响时——尤其当一个时间地平线的玩家从另一个时间地平线的玩家那里听建议时——会出现<strong>价格混乱</strong>和<strong>个人决策失败</strong>。</p>
+
+        <h3>1999 dot-com 顶部：所有人都"对"</h3>
+        <p>1999 年 Cisco 的 P/E 大约 60，Yahoo 大约 100+，Qualcomm 一年涨了 ~2,600%。当时市场上：</p>
+
+        <ul class="deep">
+          <li><strong>长期价值投资者</strong>看 P/E 过高，开始<strong>卖</strong>——对他们玩的游戏来说这是理性的。</li>
+          <li><strong>动量交易员</strong>看到价格继续上涨，看到散户继续涌入，开始<strong>买</strong>——对他们玩的游戏（持有几天到几周）来说这也是理性的。</li>
+          <li><strong>day trader</strong>看分钟级动量，做多再平仓，<strong>不在乎</strong>三个月后这家公司死活——对他们玩的游戏来说同样理性。</li>
+        </ul>
+
+        <p>三个人都在做"理性决策"。但<strong>对于不同的游戏来说</strong>。问题出在哪？问题出在——<strong>当一个 401k 投资者（30 年游戏）在 CNBC 上听到一个 day trader 说"现在该买"时，他把短线游戏里的"理性"误用到了长线游戏里</strong>。这是散户最常见也最隐蔽的失败模式。</p>
+
+        <h3>四种游戏的解剖表</h3>
+        <table>
+          <thead>
+            <tr><th style="width:18%;">玩家</th><th>时间地平线</th><th>胜利条件</th><th>"理性"行为</th><th>同样行为对长线投资者</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Day trader</strong></td>
+              <td>分钟 - 小时</td>
+              <td>当日收盘前 P&amp;L &gt; 0</td>
+              <td>看动量、止损、不持仓过夜</td>
+              <td><strong>毁灭性</strong>——把摩擦成本和心理损耗最大化</td>
+            </tr>
+            <tr>
+              <td><strong>Hedge fund</strong></td>
+              <td>季度 - 一年</td>
+              <td>季报跑赢基准 +/- 几个 bp</td>
+              <td>窗口期调仓、行业轮动</td>
+              <td><strong>分心</strong>——你不靠季度业绩吃饭，但情绪上被它牵着</td>
+            </tr>
+            <tr>
+              <td><strong>主动基金经理</strong></td>
+              <td>1 - 3 年</td>
+              <td>三年期跑赢标普 + 资金净流入</td>
+              <td>主题押注、防守 vs 进攻轮换</td>
+              <td><strong>错配</strong>——他的 KPI 是"跑赢同行"，你的 KPI 是"30 年不归零"</td>
+            </tr>
+            <tr>
+              <td><strong>401k 长期投资者（你）</strong></td>
+              <td>30 - 60 年</td>
+              <td>退休时账户能买回时间</td>
+              <td>定投宽基、不卖、不看每日</td>
+              <td>就是上面这一项</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>同一动作，对不同玩家既是聪明又是愚蠢</h4>
+          <p style="margin:0;">"现在减仓 50%"——对 day trader 是 risk management，对 401k 投资者是<strong>把复利曲线最陡的那段切掉</strong>。"加倍持有不卖"——对长线投资者是纪律，对 day trader 是<strong>违反风控</strong>。<strong>同一句建议，被错误地从一个游戏搬到另一个游戏，就变成毒药。</strong>这是散户失败最隐蔽的来源——比"贪婪""恐惧"这些情绪原因更结构性。</p>
+        </div>
+
+        <h3>Housel 的关键提炼</h3>
+        <p>"Beware taking financial cues from people playing a different game than you are." [1]</p>
+
+        <p>对你的含义：先<strong>承认你的游戏</strong>。你的游戏大概率是——30+ 年的长线 + 主动收入持续中 + 美股为主 + 目标是 FI/退休而非"跑赢市场"。所有外部建议（包括这本书、包括 CNBC、包括同事的炒股聊天）<strong>先放进这个 lens 里过滤</strong>，再决定听不听。</p>
+      </section>
+
+      <!-- §2 -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · Inversion</p>
+        <h2 class="unit-h">反向思维 — Munger 的核心方法</h2>
+
+        <p>Charlie Munger（Warren Buffett 长期搭档，2023 年 11 月去世，享年 99 岁）一生反复引用德国数学家 Carl Jacobi 的一句话：</p>
+
+        <div class="quote">
+          "Invert, always invert."
+          <cite>— Carl Jacobi（19 世纪德国数学家）；经 Charlie Munger 引入投资思维框架 [3]</cite>
+        </div>
+
+        <p>Munger 自己的版本更直接：<strong>"Tell me where I'm going to die, so I'll never go there."</strong> 这不是黑色幽默——这是一种方法论选择。它说的是：</p>
+
+        <p style="font-size:16px;"><strong>与其问"如何成功"，问"如何不失败"。</strong></p>
+
+        <h3>为什么"避免失败"比"追求成功"更可执行</h3>
+
+        <table>
+          <thead>
+            <tr><th></th><th>追求成功</th><th>避免失败</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>路径数</strong></td><td>无穷多种成功方式</td><td>失败模式有限且重复</td></tr>
+            <tr><td><strong>稳定性</strong></td><td>"成功"会随环境变化</td><td>"破产"机制几十年不变</td></tr>
+            <tr><td><strong>可学习性</strong></td><td>需要预测未来</td><td>研究历史就够</td></tr>
+            <tr><td><strong>可执行性</strong></td><td>需要正向判断（难）</td><td>需要写"绝不"清单（易）</td></tr>
+            <tr><td><strong>方差</strong></td><td>方差极大（ch2 长尾）</td><td>方差小，可控</td></tr>
+          </tbody>
+        </table>
+
+        <h3>投资里已知的失败模式（不完全列表）</h3>
+        <p>这些不是猜测——是过去 100 年金融史里被反复验证的破产路径：</p>
+
+        <ol class="deep">
+          <li><strong>用杠杆</strong>。1929 杠杆爆仓潮 / 1998 LTCM（两个诺贝尔得主管理）/ 2008 雷曼 / 2020 Bill Hwang 的 Archegos——每一次杠杆放大的故事都以单次清零结束。<strong>"杠杆只能让小赚变大赚"是错的；它真正的功能是让"大跌变归零"</strong>。</li>
+          <li><strong>没有应急金</strong>。被迫在底部割肉换现金——把账面浮亏变成永久损失。这违反 ch3 的"先生存"原则。</li>
+          <li><strong>集中持仓单一公司</strong>。即使是看起来"不可能倒"的公司——Enron、Lehman、Bear Stearns、SVB——都倒过。员工持股 100% 集中在自己雇主上，是<strong>同时</strong>把工资和投资压在一个地方，违反基本风控。</li>
+          <li><strong>频繁交易</strong>。Barber &amp; Odean 2000 [4] 的 65,000 散户实证：交易越频繁，跑输市场越多。摩擦成本（手续费、税）+ 行为损耗（每次决策都是消耗）+ 情绪曝光，三者叠加。</li>
+          <li><strong>从短线玩家那里听建议做长线</strong>。§1 的核心错误——把不同游戏的"理性"互相搬运。</li>
+          <li><strong>在 -30% 时改变长期计划</strong>。ch2 的复利"不中断"原则。多数人不是不知道要长期持有，是身体扛不住那个瞬间。</li>
+          <li><strong>把短期闲钱投入波动资产</strong>。1-3 年要用的钱进股市 = 押注短期不会跌；这是赌注不是投资。</li>
+        </ol>
+
+        <h3>Charlie Ellis 的"业余网球"比喻</h3>
+        <p>Charles Ellis 1975 年在 *Financial Analysts Journal* 发表的经典论文 <strong>*The Loser's Game*</strong> [5] 给了一个让人震惊的比喻：</p>
+
+        <ul class="deep">
+          <li>职业网球是"赢家的游戏"——比赛由胜出方的<strong>主动得分</strong>决定。</li>
+          <li>业余网球是"输家的游戏"——比赛由失败方的<strong>失误</strong>决定。研究发现业余比赛中 80%+ 的得分来自对手失误，不是自己制造的好球。</li>
+        </ul>
+
+        <p>Ellis 的论点：<strong>业余投资 = 业余网球</strong>。业余玩家如果学职业玩家"主动得分"，结果是制造更多失误而不是赢更多。业余玩家的最优策略是<strong>少犯错</strong>——把球送回去，让对手失误。</p>
+
+        <div class="pullbox idea">
+          <h4>关键提炼</h4>
+          <p style="margin:0;">如果你能<strong>避开</strong>上面 7 条已知失败模式，你已经在所有散户的<strong>前 80%</strong>——不需要任何"高级技巧"，不需要选股能力，不需要预测宏观。这是 Ellis 论文最反直觉也最重要的含义：<strong>不犯大错本身，就是 alpha 来源</strong>。</p>
+        </div>
+      </section>
+
+      <!-- §3 -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · Nothing's Free</p>
+        <h2 class="unit-h">没有免费的午餐 — 把波动当作"费用"</h2>
+
+        <p>Housel 第 15 章 *Nothing's Free* [1] 提了一个看似简单但极少被严肃对待的隐喻：<strong>每个长期投资回报都有"价格"，但这个价格不像商品价格那样写在标签上——它表现为波动、不确定、长时间无回报、看着别人赚钱</strong>。</p>
+
+        <h3>错误反应 vs 正确反应</h3>
+
+        <table>
+          <thead>
+            <tr><th>看到 -30% 下跌</th><th>错误反应</th><th>正确反应</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>感觉</td>
+              <td>"这是<strong>罚款</strong>。我应该想办法避开。"</td>
+              <td>"这是我买长期回报必须付的<strong>价格</strong>。"</td>
+            </tr>
+            <tr>
+              <td>动作</td>
+              <td>减仓、换防御资产、择时</td>
+              <td>什么都不做（甚至再平衡加仓）</td>
+            </tr>
+            <tr>
+              <td>结果</td>
+              <td>失去支付资格——拿不到长期回报</td>
+              <td>付清"价格"——保留进入复利通道</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>S&amp;P 500 长期年化 ~10% 的"真实价格"</h3>
+        <p>这是"票面价格"——历史长期年化（含红利再投，名义）大约 9-10%（1926-2024 区间，Ibbotson/Morningstar 系列数据 [6]）。但要拿到这个回报，你必须接受下面这些"价格"：</p>
+
+        <table>
+          <thead>
+            <tr><th>事件</th><th>S&amp;P 500 大致回撤幅度</th><th>恢复时间（粗略）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1929-1932 大萧条</td><td>~-86%</td><td>~25 年（按价格名义）</td></tr>
+            <tr><td>1973-1974 滞胀</td><td>~-48%</td><td>~7 年</td></tr>
+            <tr><td>1987 黑色星期一</td><td>~-34%（含单日 -22%）</td><td>~2 年</td></tr>
+            <tr><td>2000-2002 dot-com</td><td>~-49%</td><td>~7 年</td></tr>
+            <tr><td>2007-2009 GFC</td><td>~-57%</td><td>~5 年</td></tr>
+            <tr><td>2020 疫情</td><td>~-34%（极速）</td><td>~5 个月</td></tr>
+            <tr><td>2022 加息</td><td>~-25%</td><td>~2 年</td></tr>
+          </tbody>
+        </table>
+        <p style="color:var(--muted);font-size:13px;margin-top:-8px;">数据为大致区间；近似来自 Robert Shiller 长期时间序列与 S&amp;P Dow Jones Indices 公开统计 [6]。具体数值因起止口径不同会略有差异。</p>
+
+        <h3>常见资产的"账面回报" vs "真实情绪代价"</h3>
+        <table>
+          <thead>
+            <tr><th>资产</th><th>名义长期回报（粗略）</th><th>真实"情绪代价"</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>S&amp;P 500（美股大盘）</td><td>~9-10% / 年</td><td>每 5-7 年一次 -25 到 -50% 回撤；连续几年跑输的等待期</td></tr>
+            <tr><td>10 年期美债</td><td>~4-5% / 年</td><td>2022 一年 -17%（半世纪最差年）；通胀侵蚀</td></tr>
+            <tr><td>黄金</td><td>~7% / 年（极不均匀）</td><td>1980-2000 名义+通胀几乎平躺 20 年；无现金流</td></tr>
+            <tr><td>美房地产（实际，扣通胀）</td><td>~1% / 年（Shiller 长期数据 [7]）</td><td>流动性差；维护税费；区域风险</td></tr>
+            <tr><td>HYSA / 货基</td><td>~跟随短端利率</td><td>"零波动"的代价——长期被通胀稀释；机会成本</td></tr>
+          </tbody>
+        </table>
+        <p style="color:var(--muted);font-size:13px;margin-top:-8px;">数据为 approximate 长期均值；具体年份口径不同结果会变化。</p>
+
+        <h3>Housel 的关键比喻</h3>
+        <p>"市场长期上涨的代价是<strong>不是手续费</strong>，是波动、恐惧、怀疑、不确定、后悔——而这些代价不写在标签上，所以人们没意识到自己在拒绝支付。"[1] 想象你走进 Costco 看到一辆 $30,000 的汽车，你不会大吼"这怎么这么贵！"——你接受这个价格。但当市场跌 30% 你大吼"市场怎么这么疯！"——其实<strong>这就是你买回报需要付的价</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>对你 portfolio 的实际含义</h4>
+          <p style="margin:0;">你 portfolio 的每年最大回撤<strong>不是该被消除的问题</strong>——它是该被<strong>预算的成本</strong>。一个不会回撤 30%+ 的纯股票 portfolio 不存在；硬要避开就是退出市场，等于不付费=拿不到长期回报。<strong>预算这个成本</strong>意味着——在牛市顶部就承认下次会出现 -30%，并提前决定届时不会动作。这比"我能挺过去"的口头承诺有用 100 倍。</p>
+        </div>
+      </section>
+
+      <!-- §4 -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · Confessions</p>
+        <h2 class="unit-h">Housel 的告白 — 一个写书的人自己怎么做</h2>
+
+        <p>Housel 第 20 章 *Confessions* 自述他自己怎么管钱 [1]。这一章在原书里是<strong>最被低估的</strong>——大多数读者跳过去找"建议清单"，但其实这一章是整本书最有价值的：他<strong>不教你做什么</strong>，他展示<strong>他自己做了什么</strong>，让你看到一个研究金钱心理 10 年的专家如何把所有理论应用到自己。</p>
+
+        <h3>Housel 自己的 portfolio（公开自述）</h3>
+        <ul class="deep">
+          <li>极度简单：低成本指数基金（Vanguard）+ 部分 Markel 公司股票（他工作的母公司）。<strong>没有个股选股、没有期权、没有杠杆、没有加密货币、没有"主题基金"</strong>。</li>
+          <li><strong>已经付清房贷</strong>——尽管数学上不是最优（贷款利率 &lt; 股市长期回报，按理应该把现金投入股市而不是还贷）。他说："I know that's not optimal mathematically. I don't care."</li>
+          <li>现金占比"<strong>高于多数理财顾问会建议的</strong>"——因为他要的不是回报最大化，是<strong>睡得着</strong>。</li>
+          <li>关键自白："I want to maximize how well I sleep at night, not my annual returns." [1]</li>
+        </ul>
+
+        <h3>对照其他顶级投资者</h3>
+        <table>
+          <thead>
+            <tr><th style="width:18%;">人</th><th>核心 portfolio</th><th>背后的"游戏"</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Morgan Housel</strong></td>
+              <td>大量指数 + Markel 股票 + 房贷已还清 + 高现金占比</td>
+              <td>"睡得着"优先 — 心理回报 &gt; 数学回报</td>
+            </tr>
+            <tr>
+              <td><strong>Warren Buffett</strong>（给妻子的遗嘱）</td>
+              <td><strong>90% S&amp;P 500 指数 + 10% 短期美债</strong> [8]</td>
+              <td>给一个不懂投资的继承人留一份"傻瓜也运行不坏"的方案</td>
+            </tr>
+            <tr>
+              <td><strong>Jack Bogle</strong>（Vanguard 创始人）</td>
+              <td>60/40 股债 或 "your age in bonds"（30 岁 30% 债）[9]</td>
+              <td>普通美国家庭的"够好就行"基线</td>
+            </tr>
+            <tr>
+              <td><strong>Ray Dalio</strong>（Bridgewater）</td>
+              <td>All Weather: ~30% 股 / 40% 长债 / 15% 中债 / 7.5% 黄金 / 7.5% 商品 [10]</td>
+              <td>对宏观环境保持中性；他玩的是"任何经济情景都不归零"的游戏</td>
+            </tr>
+            <tr>
+              <td><strong>Harry Markowitz</strong>（现代资产组合理论奠基人，1990 诺贝尔奖）</td>
+              <td>自述："我把养老金 50/50 分股债——为了不后悔。"[11]</td>
+              <td>连发明"最优组合"理论的人，自己也用心理舒适而非数学最优</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox idea">
+          <h4>这一节的核心震撼</h4>
+          <p style="margin:0;">每个顶级投资者的 portfolio 都<strong>不一样</strong>。Buffett 90/10，Dalio 30/40/15/7.5/7.5，Markowitz 50/50，Housel "high cash"。如果"最优 portfolio"存在，<strong>他们应该收敛到同一份</strong>。他们没有，因为<strong>不存在</strong>。每个人玩的游戏不同（§1），心理承受力不同，时间地平线不同，已有资产负债表不同——所以最优解必然不同。<strong>没有"对的" portfolio，只有"对你来说"对的 portfolio。</strong></p>
+        </div>
+
+        <h3>Markowitz 的悖论</h3>
+        <p>这是金融史里最有讽刺意味的一段。Harry Markowitz 1952 年发表的 *Portfolio Selection* [11] 论文奠定了"现代资产组合理论"——通过数学优化求出"最优"股债比例。1990 年他因此获得诺贝尔经济学奖。Jason Zweig（华尔街日报专栏作者）后来问他自己怎么管养老金。Markowitz 答："I split my contributions fifty-fifty between bonds and equities… I visualized my grief if the stock market went way up and I wasn't in it—or if it went way down and I was completely in it. <strong>My intention was to minimize my future regret.</strong>"</p>
+
+        <p>翻译：发明"最优组合数学"的人，自己<strong>没用</strong>那个数学——他用了"<strong>最小化未来后悔</strong>"作为目标函数。这呼应 ch5 的核心论点：<strong>reasonable &gt; rational</strong>。</p>
+      </section>
+
+      <!-- §5 -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · Capstone</p>
+        <h2 class="unit-h">写你自己的"投资告白" — Template</h2>
+
+        <p>这一节是本章和整本书的 capstone。前面 5 章 + 本章前 4 节是为了让你<strong>填得起这份模板</strong>。</p>
+
+        <p>规则：每一项至少 30 字，不要用模糊词（"适当"、"合理"、"分散"——全部具体到数字或情境）。这份文档<strong>不给任何人看</strong>——它是给五年后的你看的。</p>
+
+        <div class="exercise">
+          <h4>投资告白 v1.0 — 8 部分模板</h4>
+
+          <p style="margin-top:14px;"><strong>1. 我的时间地平线</strong></p>
+          <p style="color:var(--muted);font-size:13px;margin:4px 0;">N 年。这是你的"游戏" (§1)。从这个数字推导一切其他的。</p>
+          <textarea placeholder="例：我的核心 portfolio 时间地平线是 30+ 年，目标是 60-65 岁退休。401k/IRA 部分至少 35 年。Brokerage 中可能 5-10 年用于买房，需另算。"></textarea>
+
+          <p style="margin-top:12px;"><strong>2. 我的真实风险承受力</strong></p>
+          <p style="color:var(--muted);font-size:13px;margin:4px 0;">你能在不睡不着 / 不冲动操作的前提下接受的最大年度回撤——百分比 + 美元金额都写。这不是"理论上"的，是基于<strong>过去你真实经历过的</strong>下跌情绪反应估的。</p>
+          <textarea placeholder="例：我能在不操作的前提下接受 -35% 年度回撤；按当前组合 = $X 浮亏。基于 2022 我观察到自己 -25% 时仍然能不卖，所以 -35% 是我的现实上限，再深需要重新评估。"></textarea>
+
+          <p style="margin-top:12px;"><strong>3. 我的目标分解</strong></p>
+          <p style="color:var(--muted);font-size:13px;margin:4px 0;">(a) FI 数字（你说"够了"的资产数）；(b) FI 时间（年龄 + 年份）；(c) 中期目标（5 年内的具体里程碑）。</p>
+          <textarea placeholder="例：(a) FI 数字 = $2.5M（按 4% safe withdrawal × $100k 年支出）；(b) FI 时间 = 50 岁；(c) 中期：3 年内做满 401k+IRA、HYSA 12 个月生活费、Brokerage 突破 $X。"></textarea>
+
+          <p style="margin-top:12px;"><strong>4. 我的现金缓冲规则</strong></p>
+          <p style="color:var(--muted);font-size:13px;margin:4px 0;">N 个月支出 + 触发情境（什么时候动用）+ 不可侵犯条件。</p>
+          <textarea placeholder="例：12 个月生活费在 HYSA。触发动用 = 失业或医疗。绝不用于"机会性加仓"或"降月供"。每月发薪日自动补足到 12 个月基线。"></textarea>
+
+          <p style="margin-top:12px;"><strong>5. 我的核心持仓比例</strong></p>
+          <p style="color:var(--muted);font-size:13px;margin:4px 0;">% 全市场指数 + % 其他。具体到 ticker。</p>
+          <textarea placeholder="例：核心 80%（VOO 50% + VXUS 20% + VGT 10%），现金 / HYSA 15%，bonds/BND 5%。每年 1 月再平衡。"></textarea>
+
+          <p style="margin-top:12px;"><strong>6. 我的"卫星仓位"上限</strong></p>
+          <p style="color:var(--muted);font-size:13px;margin:4px 0;">% 上限（个股 / 主题 / 加密 / "好玩"仓位）。<strong>书面承认</strong>这部分大概率跑输市场。</p>
+          <textarea placeholder="例：卫星仓位 ≤ 10% 总组合。允许个股 / 主题 ETF。我书面承认：未来 30 年这部分大概率跑输 VTI；这部分存在的目的是满足我"参与"的心理需求，不是 alpha。"></textarea>
+
+          <p style="margin-top:12px;"><strong>7. 我的不可妥协规则（Munger 反向清单）</strong></p>
+          <p style="color:var(--muted);font-size:13px;margin:4px 0;">"绝不"清单。最少 5 条。这是 §2 的实操化。</p>
+          <textarea placeholder="例：(1) 永不杠杆 / margin；(2) 单股 ≤ 5% 组合；(3) 年内绝不 panic sell 核心仓位；(4) 媒体节食—不看每日行情、屏蔽 CNBC；(5) 不为了"参与" hot trend 调整核心仓位；(6) 1-3 年要用的钱 = 现金，不进股市。"></textarea>
+
+          <p style="margin-top:12px;"><strong>8. 我的复盘节奏</strong></p>
+          <p style="color:var(--muted);font-size:13px;margin:4px 0;">日历日期 + 检查清单 + 触发性额外复盘的条件。</p>
+          <textarea placeholder="例：每年 1 月 + 7 月各一次。检查：(a) 净资产 vs 计划；(b) 储蓄率；(c) 配置偏离；(d) 是否违反过"绝不"清单；(e) 投资告白是否需要 v1.1 修订。任何 -30%+ 回撤触发额外一次复盘（不是改计划，是检查自己有没有破规）。"></textarea>
+        </div>
+
+        <div class="pullbox idea">
+          <h4>"投资告白"是这本书唯一的真产出</h4>
+          <p style="margin:0;">如果你读完这 6 章但<strong>没有写出这份文档</strong>——这本书在你身上就没生效。前 5 章的所有理论、Bessembinder、Buffett 反事实、Munger 反向、Markowitz 悖论——都被你<strong>消费</strong>了，没被<strong>装配</strong>。装配动作就是这一节。<strong>从读过到做到，中间隔的就是这份模板。</strong></p>
+        </div>
+      </section>
+
+      <!-- §6 -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · Apply to You</p>
+        <h2 class="unit-h">应用到类似画像（美股 / 30+ / 科技业 / 经历近年科技裁员）</h2>
+
+        <p>下面是<strong>样板</strong>——基于这类读者画像 (1) 长期身份/职业不确定性 (2) 已经经历近年科技裁员的恐慌反应数据 (3) 30+ 年时间地平线 (4) 美股为主——给出的"投资告白" v0.1 草稿。</p>
+
+        <div class="pullbox warn">
+          <h4>免责</h4>
+          <p style="margin:0;">下面所有数字是<strong>假设性建议，不是个人化方案</strong>。具体数字必须由你自己根据真实净资产、消费基线、雇主 401k match 公式、IRA 限额、家庭情况调整。这一节的价值在于<strong>结构</strong>——展示前 6 章如何叠加到这类画像的具体处境。</p>
+        </div>
+
+        <h3>样板 — Investment Confession v0.1（科技业 / 身份不稳画像版）</h3>
+
+        <table>
+          <thead>
+            <tr><th style="width:22%;">项</th><th>样板值</th><th>来自哪一章 + 调整理由</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. 时间地平线</strong></td>
+              <td>30-35 年（核心仓位）；5 年（短期池——可能买房）</td>
+              <td>ch2：时间是主乘数。把短期池单独切出，避免被"长线规则"误指挥。</td>
+            </tr>
+            <tr>
+              <td><strong>2. 真实风险承受力</strong></td>
+              <td>-30 到 -35% 年度回撤上限（保守一档）</td>
+              <td>ch5 + 近年数据：如果你亲历过 -25% 没卖，但身份/职业风险叠加意味着这类画像不能完全用"年轻=高风险承受"的模板。<strong>保守一档</strong>。</td>
+            </tr>
+            <tr>
+              <td><strong>3a. FI 数字</strong></td>
+              <td>~ 25-30 × 年支出（基于 Trinity / 4% rule [12]）</td>
+              <td>ch4：钱买的是时间。用真实年支出（不是 TC）×25-30 算 FI 数。</td>
+            </tr>
+            <tr>
+              <td><strong>3b. FI 时间</strong></td>
+              <td>50-55 岁（不是 65）</td>
+              <td>ch4：自由 = 选择权。早做到 FI 不等于退休——它是<strong>"被裁不慌"</strong>的保险。</td>
+            </tr>
+            <tr>
+              <td><strong>4. 现金缓冲</strong></td>
+              <td><strong>12-18 个月</strong>生活费在 HYSA</td>
+              <td>ch3 + ch5 margin：高于一般人的 6 个月，因失业找工压力 + 身份转换窗口（身份/签证不稳的工作者失业后通常有较短的找工窗口，超过就可能失去身份）。这不是过度保守，<strong>是对一个非正常风险的正常对冲</strong>。</td>
+            </tr>
+            <tr>
+              <td><strong>5. 核心持仓</strong></td>
+              <td>70-80% 全美 + 全球指数（VOO 或 VTI 50% + VXUS 20-25% + 可选 BND 5-10%）</td>
+              <td>ch2 Bessembinder：4% 决定 100%，所以买全部。VXUS 加进来是因为美股长期 outperform 不是物理定律——加全球就是对"美股例外论"的一次对冲。</td>
+            </tr>
+            <tr>
+              <td><strong>6. 卫星仓位</strong></td>
+              <td>≤ 10-15%（如果你想参与个股）</td>
+              <td>ch5：reasonable。不需要 0%——零卫星仓位的人会偷偷在主仓位里搞小动作，反而更糟。给一个明确的"玩具区"，<strong>书面承认大概率跑输</strong>。</td>
+            </tr>
+            <tr>
+              <td><strong>7. 储蓄优先级</strong></td>
+              <td>(a) 401k 满 match → (b) HYSA 应急金到 12 个月 → (c) 401k 满额 + IRA / Roth IRA → (d) Brokerage</td>
+              <td>这是 ch1 的"process &gt; willpower"实操：把决定外包给优先级，不靠每月情绪。</td>
+            </tr>
+            <tr>
+              <td><strong>7'. 不可妥协</strong></td>
+              <td>无 margin / 单股 ≤ 5% / 媒体节食 / 12 月内不卖核心 / 1-3 年要用的钱不进股市 / 不在雇主股票上集中（雇主+股票=单点风险）</td>
+              <td>ch1 + §2 反向。"不在雇主股票集中"对科技工作者尤其重要——RSU vesting + ESPP 默认会让你在自家股票上严重超配，单只大型科技股 -75% 这种事真实发生过（如 2022 年某些 mega cap），这是双重打击。</td>
+            </tr>
+            <tr>
+              <td><strong>8. 复盘节奏</strong></td>
+              <td>1 月 + 7 月各 1 次；身份/雇主状态变化触发额外 1 次</td>
+              <td>ch1 cohort 校准 + ch5 surprise——身份/工作变化（长期身份变更 / 跳槽 / 雇主 sponsor 变更）会重写很多假设，必须强制复盘。</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>身份/签证不稳画像的特有风险叠加（必须显式处理）</h4>
+          <ol class="deep" style="margin:0;">
+            <li><strong>失业找工压力</strong>：身份/签证不稳的工作者失业后通常有较短的找工窗口，超过就可能失去身份。这意味着你的"应急金"不只是"撑生活费"，是<strong>撑生活费 + 跨国搬家备案 + 可能离境后被锁住的资金</strong>。所以 12 月 baseline 不算过度保守。</li>
+            <li><strong>美元资产 vs 身份风险</strong>：如果被迫离境，你在美 brokerage / 401k 提取的税务和流程都很重——要事先了解 "401k → 离境后的处理选项"，不要等到要离境时才学。</li>
+            <li><strong>雇主股票双重曝光</strong>：你的工资 + RSU + ESPP 都来自同一家公司——如果该公司大跌，你<strong>同时</strong>失去工资和投资。书面规则：尽快卖出 vested RSU 换成指数（不要因为"看好公司"留着）。</li>
+            <li><strong>身份转换不确定性</strong>：长期身份的获得时间不可预测。Portfolio 设计不能假设"5 年内一定能拿到长期身份"——也不能假设"永远拿不到"。两种情景都做 sanity check。</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- §7 -->
+      <section class="unit" id="s7">
+        <p class="unit-eyebrow">§7 · Three Capstone Principles</p>
+        <h2 class="unit-h">三条 capstone 原则（整本书的最后浓缩）</h2>
+
+        <ol class="deep">
+          <li>
+            <strong>系统优先于灵感。</strong><br>
+            把决定外包给规则，不靠每次"判断"。前五章告诉你：人脑的判断在压力下会失效（ch1 七个 bug）；运气项主导单次结果（ch2）；你的认知 baseline 是 cohort dependent（ch1）；surprise 是常态（ch5）。这些都意味着——<strong>判断是不可靠的；规则是可靠的</strong>。每月定投不需要勇气，机械再平衡不需要选时，"绝不"清单不需要每次重新决定。系统的全部价值在于把"压力时刻的决定"提前到"冷静时刻"完成。
+          </li>
+          <li>
+            <strong>避开失败比追求成功重要。</strong><br>
+            Munger 的反向思维 + Charles Ellis 的"输家游戏"。已知的失败模式（杠杆 / 集中 / 频繁交易 / 跨游戏听建议 / -30% 改变计划）数量有限且数十年稳定。先把"绝不"清单写下来——避开这 7 条已经把你放进散户前 80%。<strong>剩下的 alpha 几乎不重要</strong>——因为时间和长尾会替你跑出回报，前提是你不被踢出场。
+          </li>
+          <li>
+            <strong>写下来，定期复盘。</strong><br>
+            没写下来的"投资观"在压力下会变形——这是认知科学反复验证的事实（Kahneman, Thinking Fast and Slow [13]）。"我相信长期持有"是口头承诺；写在文档里、签了日期、放在你随时能看的位置——是合同。每年 1 次（或半年），对照"投资告白"看自己有没有偏航。<strong>这是唯一能让你在 5 年后认出自己的方法</strong>——因为没有书面对照，你会不知不觉把"现在的偏好"伪装成"我一直就这样"。
+          </li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>把整本书压成一句话</h4>
+          <p style="margin:0;font-size:17px;"><strong>顶级金钱玩家的核心动作不是"做对很多事"，而是把自己的局限性写下来、围绕它造一个不靠每次判断也能运转的系统、然后让时间把工作做完。</strong></p>
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="unit" id="ex">
+        <p class="unit-eyebrow">▣ Capstone Reflection Exercises</p>
+        <h2 class="unit-h">反思练习（整本书的总产出）</h2>
+
+        <p>下面 4 题是<strong>整本书的总练习</strong>，比前 5 章的反思都要深一层。这 4 题完成后，你才算真正"读完"了《金钱心理学》。建议预留 2 小时一次性做完，不要分散——这 4 题是互相依赖的。</p>
+
+        <div class="exercise">
+          <h4>练习 1 — 写你的"投资告白" v1.0</h4>
+          <p>用 §5 的 8 部分模板。每一项<strong>至少 30 字</strong>，不要用模糊词（"适当"、"合理"、"分散"——全部具体到数字或情境）。这是这本书<strong>唯一的真正产出</strong>，没有这一步前面 5 章都白读。</p>
+          <p style="color:var(--muted);font-size:13px;">建议：写完后存到一个你 5 年后还能找到的位置（Notion / Obsidian / Google Docs，不是手机备忘录），文件名带日期。版本号从 v1.0 开始，每年复盘后 +0.1。</p>
+          <textarea placeholder="按 §5 模板写 8 部分。这里写不下就写到外部文档，把链接 / 文件名贴回来作为存证。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 2 — 你的"绝不"清单（Munger 反向）</h4>
+          <p>基于 §2 反向思维，列出至少 <strong>5 条</strong>"我永远不会做"的事。要求：每条后面写 1 句话<strong>触发该规则的具体历史教训或恐惧来源</strong>（可以是公开案例或你自己的）——这样 5 年后你看到这条规则时还知道为什么定它。</p>
+          <textarea placeholder="例：(1) 永远不用超过 0% 的 margin / 杠杆 — 因为 LTCM 1998 + Bill Hwang 2021 证明杠杆只能让小赚变大赚但能让大跌变归零。
+(2) 单股不超过 5% 总组合 — 因为 Enron / Lehman / SVB 都是看起来不可能倒的公司倒了。
+(3) 在 -30% 时不减仓核心 — 因为我 2022 看到自己 -25% 时的反应数据，知道我会想动；提前规则可以挡住。
+(4) 不听 day trader 的建议做长线决定 — 因为 §1 跨游戏建议是毒药。
+(5) 不为了'参与' hot trend 调整核心仓位 — 因为 ch5 surprise 原则：今年的 hot 大概率不是 5 年后的赢家。"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 3 — 写一封"五年后给现在的你"的信</h4>
+          <p>假设五年后回看（2031 年），你最想感谢现在的自己<strong>做了什么 / 没做什么</strong>。具体到 portfolio 决定。这个练习的作用是<strong>激活时间地平线意识</strong> (§1) ——你被迫想象一个 30 年游戏里的 5 年节点，会很自然地把"今天该不该买/卖"这种短线焦虑放回正确尺度。</p>
+          <p style="color:var(--muted);font-size:13px;">建议把这封信和"投资告白"放在一起。一年后回看时它会变成你最有价值的对照点。</p>
+          <textarea placeholder="例：'2031 年的我——感谢 2026 年的你做了几件事：(1) 在 2026 年 X 月写下投资告白 v1.0，并在 2027/2028 年 -30% 回撤时没有改计划 ……'"></textarea>
+        </div>
+
+        <div class="exercise">
+          <h4>练习 4 — 设定你的复盘节奏（日历级）</h4>
+          <p>具体日期 + 检查清单。在你日历里加<strong>重复事件</strong>（不是 to-do，是 calendar event，否则你会跳过）。检查清单至少包括：净资产 / 储蓄率 / 配置偏离 / 是否违反过"绝不"清单 / "投资告白"是否需要 v1.x 修订 / "五年信"对照。</p>
+          <textarea placeholder="例：日历事件名 = 'Investment Confession Review'，每年 1/15 + 7/15，1 小时。检查表：净资产 vs 计划 / 储蓄率 vs 上半年 / 核心 vs 卫星偏离% / "绝不"清单本期是否有违反 / 投资告白是否需要修订（如果生活有重大变化：身份、婚姻、买房）/ "五年信"对照——我距离信里那个版本还有多远？"></textarea>
+        </div>
+
+        <div class="pullbox warn">
+          <h4>这 4 题不做，前 6 章就被退还</h4>
+          <p style="margin:0;">这不是夸张。Kahneman 在 *Thinking Fast and Slow* 里反复强调一个事实：<strong>读到的认知工具不会自动改变行为</strong>。从理论到行为的桥梁是"<strong>把它写成你自己语言的具体规则，并且承诺一个复盘日期</strong>"。<strong>"读过 6 章"和"应用 6 章"中间隔的不是时间，是这 4 个练习。</strong></p>
+        </div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="unit" id="qz">
+        <p class="unit-eyebrow">? Capstone Quiz — 测整本书</p>
+        <h2 class="unit-h">自检 Quiz（这是 capstone quiz——题目跨整本书）</h2>
+
+        <details class="quiz">
+          <summary>Q1. ch1 教你"行为 &gt; 智能"，ch6 §1 教你"定义你的游戏"——这两个原则的关联是？</summary>
+          <p>A) 它们都是行为相关的<br>
+          B) 它们都是 Housel 提出的<br>
+          C) 行为之所以是核心，是因为不同游戏需要不同行为；定义你的游戏让你知道哪些行为是"对的"<br>
+          D) 它们是无关的两个概念</p>
+          <div class="answer"><strong>正确答案：C。</strong>这是整本书的内在逻辑：ch1 说"行为 &gt; 智能"是因为<strong>金融是软实力领域</strong>，但<strong>哪些行为算"对"是 game-dependent 的</strong>。Day trader 的"对的行为"和 401k 投资者的"对的行为"完全不同，甚至相反 (§1)。所以光知道"行为重要"不够——你必须先知道<strong>你玩的是什么游戏</strong>，才能定义行为标准。这是 ch1 → ch6 的逻辑闭环。A、B 是表层观察；D 是错的。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q2. Munger 反向思维（"Invert, always invert"）的核心方法论价值是？</summary>
+          <p>A) 它在哲学上有趣<br>
+          B) 失败模式比成功模式数量少且时间稳定，所以"避开失败"比"追求成功"更可执行<br>
+          C) 因为 Charlie 喜欢这种思维<br>
+          D) 这是投资专属的方法论</p>
+          <div class="answer"><strong>正确答案：B。</strong>这是 §2 表格的精髓——反向思维不是"风格选择"，是<strong>方差结构选择</strong>。成功路径无穷多种且依赖未来；失败模式有限种类（杠杆、集中、频繁、跨游戏建议）且过去 100 年反复重复。研究后者的可学习性远高于前者。Charles Ellis 1975 *Loser's Game* [5] 把这个论证推到业余玩家场景：业余比赛由失误决定，所以最优策略是少犯错。D 是错的——反向思维在医学（Hippocrates "First do no harm"）、工程（FMEA 失效模式分析）、安全（事故树分析）都是核心方法。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q3. Housel 自己<strong>付清房贷</strong>尽管数学上不是最优——最准确的解读？</summary>
+          <p>A) Housel 不会算账<br>
+          B) 房贷是坏的<br>
+          C) 他选择了"行为最优"而非"数学最优"——这是 ch5 reasonable &gt; rational 原则在他自己 portfolio 上的实证<br>
+          D) 还房贷在所有情况下都是对的</p>
+          <div class="answer"><strong>正确答案：C。</strong>这是 ch5 → ch6 的关键打通。Housel 自己说："I know that's not optimal mathematically. I don't care." 他要的是"sleep at night"——心理回报是真回报，不是装饰品。Markowitz 的 50/50 选择 (§4) 是同样原理：发明"最优组合数学"的人自己用"<strong>最小化未来后悔</strong>"作为目标函数。这不是反智，是承认<strong>人不是 spreadsheet</strong>。D 是错的——对一个有大量股票仓位、薪水稳定、利率高于股市预期回报的人来说，还房贷可能是数学最优；但 case by case，没有普适规则。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q4. "波动是费用，不是罚款"的含义？</summary>
+          <p>A) 波动是好事<br>
+          B) 波动是获取长期回报必须支付的代价；预算它而不是消除它<br>
+          C) 波动与你无关<br>
+          D) 应该忽略波动</p>
+          <div class="answer"><strong>正确答案：B。</strong>§3 的核心比喻。S&amp;P 长期 ~10% 是"票面价格"——但实际付款方式是 1929 -86% / 1973 -48% / 2008 -57% / 2020 -34% 这些回撤 [6]。把这些当"罚款"想避开 → 退出市场 → 拿不到长期回报；把它当"费用"接受 → 留在场内 → 拿到长期回报。A 错——波动本身不是好事，但它是"付门票"的方式。C、D 都是逃避。这一题在测：你有没有<strong>把抽象比喻翻译成具体行为</strong>——不消除波动，预算它。</div>
+        </details>
+
+        <details class="quiz">
+          <summary>Q5. 一个 30 年时间地平线的投资者（你）从 day trader 那里听到"现在该减仓"——基于本章他应该？</summary>
+          <p>A) 减仓<br>
+          B) 不减仓但变得更谨慎<br>
+          C) 拒绝接收建议——他玩的不是同一个游戏，建议在游戏间不可移植<br>
+          D) 部分减仓，作为风险管理</p>
+          <div class="answer"><strong>正确答案：C。</strong>§1 的核心训练。Day trader 玩的是分钟到天的游戏，他的"减仓"在他的游戏里是 risk management；放进 30 年游戏里就是<strong>把复利曲线最陡的那段切掉</strong>——同样动作在两个游戏里效果相反。B、D 是"妥协型错误"——表面上谨慎，实际上你在<strong>污染规则</strong>：让一个不属于你游戏的输入影响你的核心仓位。这是散户最常见的失败模式比起情绪化更隐蔽，因为它打着"风险管理"的旗号。<strong>正确动作是显式拒绝接收</strong>——不是"听了再判断"，是"听都不听"。</div>
+        </details>
+      </section>
+
+      <!-- Citations -->
+      <section class="unit citations" id="cite">
+        <h3>参考与延伸阅读</h3>
+        <ol>
+          <li>Housel, M. (2020). <em>The Psychology of Money</em>. Harriman House. — 本章原文：Ch. 15 (Nothing's Free) / Ch. 16 (You &amp; Me) / Ch. 19 (All Together Now) / Ch. 20 (Confessions)。</li>
+          <li>Munger, C., &amp; Kaufman, P. (Ed.). (2005). <em>Poor Charlie's Almanack: The Wit and Wisdom of Charles T. Munger</em>. Donning Company Publishers. — Inversion / mental models 的主要文献来源。</li>
+          <li>Jacobi, C. G. J. (19 世纪). "Invert, always invert." 数学求解策略原句 — 经 Munger 引入投资思维。</li>
+          <li>Barber, B. M., &amp; Odean, T. (2000). <em>Trading Is Hazardous to Your Wealth: The Common Stock Investment Performance of Individual Investors</em>. Journal of Finance, 55(2), 773-806. — 频繁交易的散户实证。</li>
+          <li>Ellis, C. D. (1975). <em>The Loser's Game</em>. Financial Analysts Journal, 31(4), 19-26. — 业余 / 职业网球比喻的原论文；后扩展为同名书。</li>
+          <li>S&amp;P 500 历史回撤数据：S&amp;P Dow Jones Indices + Robert Shiller 长期月度时间序列（<code>http://www.econ.yale.edu/~shiller/data.htm</code>）。具体数值因起止口径不同会略变。</li>
+          <li>Shiller, R. J. (2015). <em>Irrational Exuberance</em> (3rd ed.). Princeton University Press. — 美国住房长期实际回报数据。</li>
+          <li>Buffett, W. (2013). Berkshire Hathaway Annual Letter to Shareholders — 给妻子的遗嘱 90/10 portfolio：90% S&amp;P 500 index + 10% short-term Treasuries。</li>
+          <li>Bogle, J. C. (2007). <em>The Little Book of Common Sense Investing</em>. Wiley. — 60/40 / "your age in bonds" 启发式。</li>
+          <li>Dalio, R. (2017). <em>Principles: Life and Work</em>. Simon &amp; Schuster. — All Weather portfolio 框架（也散见 Bridgewater 公开演讲）。</li>
+          <li>Markowitz, H. (1952). <em>Portfolio Selection</em>. Journal of Finance, 7(1), 77-91. — 现代资产组合理论奠基论文。Markowitz 自述 50/50 见 Zweig, J. (1998), "How the Big Brains Invest at TIAA-CREF." Money Magazine. — 经常被引用为 "I split my contributions fifty-fifty… My intention was to minimize my future regret."</li>
+          <li>Bengen, W. P. (1994). <em>Determining Withdrawal Rates Using Historical Data</em>. Journal of Financial Planning. — 4% safe withdrawal rule 原始论文，Trinity Study (1998) 后续验证。</li>
+          <li>Kahneman, D. (2011). <em>Thinking, Fast and Slow</em>. Farrar, Straus and Giroux. — 认知工具不会自动改变行为；写下来才进入 System 2 的参考。</li>
+          <li>整本书前序章节：ch1 行为 &gt; 智能 / ch2 时间和长尾 / ch3 守富 / ch4 自由 / ch5 认知陷阱 / ch6 系统装配 — 形成完整的金钱操作系统。</li>
+        </ol>
+      </section>
+
+      <!-- Recap -->
+      <section class="unit" id="recap">
+        <p class="unit-eyebrow">∎ The Whole Book in One Paragraph</p>
+        <h2 class="unit-h">整本书的回顾</h2>
+
+        <div class="pullbox idea" style="font-size:16px;">
+          <p style="margin:0;">从一个加油站工人比哈佛 MBA 更富的悖论开始 (<strong>ch1</strong>)，到承认运气与时间是真正的财富引擎、4% 的赢家决定 100% 的财富 (<strong>ch2</strong>)，到守住已有比追求更多更难、不归零比跑得快重要 (<strong>ch3</strong>)，到钱真正要买的不是物品而是<strong>对时间的控制权</strong> (<strong>ch4</strong>)，到三个让聪明人也失败的认知陷阱（reasonable &gt; rational / margin of safety / surprise 是常态）(<strong>ch5</strong>)，最后到把所有这些工具<strong>装配</strong>成你自己的金钱操作系统——一份 8 部分的"投资告白"+ 一份"绝不"清单 + 一个复盘节奏 (<strong>ch6</strong>)——这就是把《金钱心理学》从一本书变成一套可执行行为操作系统的完整路径。</p>
+        </div>
+
+        <p style="margin-top:18px;color:var(--muted);">现在合上这 6 章。打开一份空白文档。把 §5 的 8 部分模板写完。<strong>那才是这本书的真结尾。</strong></p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

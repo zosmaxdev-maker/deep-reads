@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>能力地图 — 《金钱心理学》深读</title>
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf8;
+      --ink: #232323;
+      --muted: #6f6a61;
+      --line: #ded7c9;
+      --accent: #236467;
+      --accent-2: #b55e3b;
+      --challenge: #8a2c2c;
+      --soft: #e9f0ed;
+      --mark: #f4dfb3;
+      --code-bg: #1f2630;
+      --code-ink: #e8e3d3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); line-height: 1.7; }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-2); }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+    aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 28px 22px; border-right: 1px solid var(--line); background: #efebe0; }
+    .crumb { margin: 0 0 4px; color: var(--accent-2); font-size: 12px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .ch-num { margin: 0; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 56px; line-height: 1; color: var(--challenge); }
+    .ch-title { margin: 6px 0 0; font-size: 22px; font-weight: 700; line-height: 1.25; }
+    .ch-sub { margin: 6px 0 22px; color: var(--muted); font-size: 13px; }
+    nav { display: grid; gap: 4px; }
+    nav a { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 7px 9px; border-radius: 6px; color: #34302a; font-size: 13.5px; text-decoration: none; }
+    nav a:hover { background: var(--paper); outline: 1px solid var(--line); }
+    nav a .num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+    main { padding: 44px clamp(22px, 5vw, 64px) 96px; max-width: 980px; }
+    h1.lead { margin: 0 0 8px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.08; letter-spacing: -0.01em; }
+    .lead-sub { margin: 0; color: var(--muted); font-size: 17px; }
+    .quote { margin: 22px 0 0; padding: 14px 18px; border-left: 4px solid var(--accent); background: var(--soft); font-style: italic; color: #2e3b3a; }
+    .quote cite { display: block; margin-top: 6px; color: var(--muted); font-style: normal; font-size: 13.5px; }
+    section.unit { margin: 56px 0 0; scroll-margin-top: 24px; }
+    .unit-eyebrow { margin: 0; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    h2.unit-h { margin: 4px 0 14px; font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 30px; line-height: 1.2; }
+    h3 { margin: 26px 0 10px; font-size: 18.5px; font-weight: 700; }
+    p { margin: 10px 0; }
+    .pullbox { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .pullbox.warn { border-left: 4px solid var(--challenge); background: #fbf3f1; }
+    .pullbox.idea { border-left: 4px solid var(--accent); background: var(--soft); }
+    .pullbox.note { border-left: 4px solid var(--mark); background: #fff7e5; }
+    .pullbox h4 { margin: 0 0 6px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-2); }
+    .pullbox.warn h4 { color: var(--challenge); }
+    table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: 14.5px; }
+    th, td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: #efebe0; font-weight: 700; color: #34302a; }
+    tbody tr:nth-child(odd) { background: var(--paper); }
+    tbody tr:nth-child(even) { background: #fbf7ed; }
+    ol.deep, ul.deep { padding-left: 22px; }
+    ol.deep li, ul.deep li { margin: 8px 0; }
+    .figure { margin: 18px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .figure-cap { margin-top: 8px; color: var(--muted); font-size: 13px; }
+
+    /* === capability map specific === */
+    .pyramid { display: grid; gap: 6px; margin: 22px 0; }
+    .layer {
+      display: grid; grid-template-columns: 90px 1fr 200px; gap: 14px; align-items: center;
+      padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px;
+      background: var(--paper); transition: transform .15s;
+    }
+    .layer:hover { transform: translateX(2px); }
+    .layer.l1 { background: linear-gradient(90deg, #fbf3f1 0%, var(--paper) 100%); border-left: 5px solid var(--challenge); }
+    .layer.l2 { background: linear-gradient(90deg, #f9ecd5 0%, var(--paper) 100%); border-left: 5px solid #c97a2b; }
+    .layer.l3 { background: linear-gradient(90deg, #e9f0ed 0%, var(--paper) 100%); border-left: 5px solid var(--accent); }
+    .layer.l4 { background: linear-gradient(90deg, #e3ebe6 0%, var(--paper) 100%); border-left: 5px solid #2f7a5d; }
+    .layer.l5 { background: linear-gradient(90deg, #d8e3df 0%, var(--paper) 100%); border-left: 5px solid #4a6b85; }
+    .layer.l6 { background: linear-gradient(90deg, #cdd9e2 0%, var(--paper) 100%); border-left: 5px solid #2c4a6b; }
+    .layer-num { font-family: "Iowan Old Style", "Palatino", "Georgia", serif; font-size: 36px; line-height: 1; color: var(--ink); font-weight: 800; }
+    .layer-name { font-size: 17px; font-weight: 700; }
+    .layer-desc { color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+    .layer-ch { color: var(--accent); font-size: 13px; font-weight: 700; text-align: right; }
+
+    .cap-card {
+      margin: 18px 0; padding: 18px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper);
+    }
+    .cap-card header { display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; margin-bottom: 6px; }
+    .cap-card .cap-id {
+      display: inline-block; padding: 2px 9px; border-radius: 4px; background: var(--accent); color: #fff;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.04em;
+    }
+    .cap-card h3 { margin: 0; font-size: 19px; }
+    .cap-card .cap-en { color: var(--muted); font-size: 14px; }
+    .cap-card .cap-link { margin-left: auto; font-size: 13px; color: var(--accent-2); }
+    .cap-card .cap-def { margin: 6px 0 12px; font-size: 15px; color: #2e3b3a; padding-left: 12px; border-left: 3px solid var(--mark); }
+    .cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .cap-grid .signals, .cap-grid .dangers { padding: 10px 12px; border-radius: 6px; font-size: 14px; }
+    .cap-grid .signals { background: var(--soft); border-left: 3px solid var(--accent); }
+    .cap-grid .dangers { background: #fbf3f1; border-left: 3px solid var(--challenge); }
+    .cap-grid h4 { margin: 0 0 6px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
+    .cap-grid .signals h4 { color: var(--accent); }
+    .cap-grid .dangers h4 { color: var(--challenge); }
+    .cap-grid ul { padding-left: 18px; margin: 0; }
+    .cap-grid li { margin: 4px 0; }
+
+    .self-check { margin: 18px 0; padding: 16px 18px; border: 1px dashed var(--accent); border-radius: 8px; background: #f3f8f6; }
+    .self-check h4 { margin: 0 0 10px; color: var(--accent); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
+    .self-check label { display: grid; grid-template-columns: 24px 1fr; gap: 8px; padding: 6px 0; border-bottom: 1px solid #e2ecea; cursor: pointer; font-size: 14.5px; }
+    .self-check label:last-child { border-bottom: 0; }
+    .self-check input[type=checkbox] { margin-top: 4px; transform: scale(1.15); accent-color: var(--accent); }
+
+    .path-step { display: grid; grid-template-columns: 60px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .path-step:last-child { border-bottom: 0; }
+    .path-step .step-num { font-family: "Iowan Old Style", serif; font-size: 30px; color: var(--accent); font-weight: 800; line-height: 1; }
+    .path-step h4 { margin: 0 0 6px; font-size: 16.5px; }
+    .path-step .step-out { margin-top: 6px; padding: 8px 10px; background: var(--soft); border-radius: 5px; font-size: 13.5px; color: #2e3b3a; }
+
+    code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+
+    @media (max-width: 880px) {
+      .layout { display: block; }
+      aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav { grid-template-columns: 1fr; }
+      main { padding: 28px 18px 64px; }
+      .layer { grid-template-columns: 60px 1fr; }
+      .layer-ch { grid-column: 2; text-align: left; font-size: 12px; }
+      .cap-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <p class="crumb">The Psychology of Money</p>
+      <p class="ch-num">∎</p>
+      <p class="ch-title">能力地图</p>
+      <p class="ch-sub">Capability Map · 这本书要在你身上构建什么</p>
+      <nav aria-label="目录">
+        <a href="#s0"><span class="num">§0</span><span>读这本书的真正目的</span></a>
+        <a href="#s1"><span class="num">§1</span><span>能力金字塔（6 层）</span></a>
+        <a href="#s2"><span class="num">§2</span><span>6 种能力详解</span></a>
+        <a href="#s3"><span class="num">§3</span><span>能力依赖关系</span></a>
+        <a href="#s4"><span class="num">§4</span><span>Self-Assessment</span></a>
+        <a href="#s5"><span class="num">§5</span><span>三种常见失败路径</span></a>
+        <a href="#s6"><span class="num">§6</span><span>推荐学习路径</span></a>
+        <a href="#s7"><span class="num">§7</span><span>"已掌握"的判定</span></a>
+      </nav>
+    </aside>
+
+    <main>
+      <p class="crumb" style="margin:0;">Capability Map · Cross-Chapter Synthesis</p>
+      <h1 class="lead">这本书要在你身上盖一座 6 层楼。</h1>
+      <p class="lead-sub">读完《金钱心理学》不是为了"懂金融"——金融知识在 §1 第一句就被否定了。它是为了在你身上长出 6 种<strong>能力</strong>，这些能力共同构成一个"金钱操作系统"。每一章不是知识点，是建造材料。这一页是<strong>地图</strong>——告诉你每一章在盖什么砖、谁压在谁上、哪一步是 capstone、怎么知道你已经盖好。</p>
+
+      <div class="quote">
+        "Knowledge accumulates but skills don't. You can read 100 books on swimming and still drown."
+        <cite>— 这本书的隐藏前提</cite>
+      </div>
+
+      <!-- §0 -->
+      <section class="unit" id="s0">
+        <p class="unit-eyebrow">§0 · The Real Goal</p>
+        <h2 class="unit-h">读这本书的真正目的</h2>
+
+        <p>多数读《金钱心理学》的人会得到一堆名言警句——Buffett 说、Munger 说、运气和风险是双胞胎——然后什么都没改变。原因不是书写得不好，是读者把它当作"知识"读，而<strong>它是按"能力训练手册"写的</strong>。差别如下：</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:20%;"></th><th>把它当知识读</th><th>把它当能力建</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>问的问题</strong></td><td>这章讲了什么？</td><td>这章在我身上长什么能力？</td></tr>
+            <tr><td><strong>验证</strong></td><td>能复述书里的观点</td><td>能在压力下做出对应的行为</td></tr>
+            <tr><td><strong>测试</strong></td><td>朋友聊天时引用一句</td><td>市场 -30% 时你的实际动作</td></tr>
+            <tr><td><strong>结果</strong></td><td>下次读到类似书有"似曾相识"</td><td>portfolio 行为有可观察的改变</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>这一页的承诺</h4>
+          <p style="margin:0;">读完这一页，你应该能用<strong>能力清单</strong>（不是章节清单）回答："我目前在第几层？我下一步要建造什么？""我没有这个能力会怎么死？"——如果做不到，整本书等于白读。</p>
+        </div>
+      </section>
+
+      <!-- §1 Pyramid -->
+      <section class="unit" id="s1">
+        <p class="unit-eyebrow">§1 · The Stack</p>
+        <h2 class="unit-h">能力金字塔（6 层，自下而上）</h2>
+
+        <p>下面 6 层<strong>必须按顺序建造</strong>。L1 是地基，L6 是 capstone。跳层会塌——这是 §5 详细讲的失败模式。</p>
+
+        <div class="pyramid">
+          <div class="layer l6">
+            <div class="layer-num">L6</div>
+            <div>
+              <div class="layer-name">系统装配 · System Assembly</div>
+              <div class="layer-desc">把前 5 层工具组装成你专属的"金钱操作系统"</div>
+            </div>
+            <div class="layer-ch">Ch.6 · 你的金钱 OS</div>
+          </div>
+          <div class="layer l5">
+            <div class="layer-num">L5</div>
+            <div>
+              <div class="layer-name">反陷阱防御 · Trap Defense</div>
+              <div class="layer-desc">在数学完美 / 历史模型 / 媒体悲观三个陷阱前不被 hijack</div>
+            </div>
+            <div class="layer-ch">Ch.5 · 认知偏差</div>
+          </div>
+          <div class="layer l4">
+            <div class="layer-num">L4</div>
+            <div>
+              <div class="layer-name">目的明确 · Purpose Clarity</div>
+              <div class="layer-desc">钱要买的是控制权不是物品；区分 rich 与 wealthy</div>
+            </div>
+            <div class="layer-ch">Ch.4 · 自由与隐形财富</div>
+          </div>
+          <div class="layer l3">
+            <div class="layer-num">L3</div>
+            <div>
+              <div class="layer-name">生存优先 · Survival First</div>
+              <div class="layer-desc">守富 ≠ 缩水的致富；安全边际是续航不是浪费；给"够"画线</div>
+            </div>
+            <div class="layer-ch">Ch.3 · 守富的哲学</div>
+          </div>
+          <div class="layer l2">
+            <div class="layer-num">L2</div>
+            <div>
+              <div class="layer-name">归因清醒 · Attribution Sobriety</div>
+              <div class="layer-desc">运气 vs 风险是双胞胎；时间 &gt; 收益率；4% 决定 100%</div>
+            </div>
+            <div class="layer-ch">Ch.2 · 运气、复利、长尾</div>
+          </div>
+          <div class="layer l1">
+            <div class="layer-num">L1</div>
+            <div>
+              <div class="layer-name">自我考古 · Self-Archaeology</div>
+              <div class="layer-desc">识别自己的 cohort 偏差和大脑 7 个 bug；接受智力不是入场券</div>
+            </div>
+            <div class="layer-ch">Ch.1 · 行为胜过智能</div>
+          </div>
+        </div>
+
+        <div class="pullbox idea">
+          <h4>关键关系</h4>
+          <p style="margin:0;">L1-L2 是<strong>认知层</strong>（看清世界和自己）；L3-L4 是<strong>价值层</strong>（决定要什么、要守什么）；L5-L6 是<strong>执行层</strong>（在压力下不偏航 + 系统化）。三对各有不同的训练方式：认知层靠读 + 反思；价值层靠写下来 + 时间检验；执行层靠规则化 + 复盘。</p>
+        </div>
+      </section>
+
+      <!-- §2 Detailed Capabilities -->
+      <section class="unit" id="s2">
+        <p class="unit-eyebrow">§2 · The Six</p>
+        <h2 class="unit-h">6 种能力详解</h2>
+
+        <p>每一项给：定义 + 已建立的信号（你看到这些说明它在你身上 working）+ 没建立的危险信号（这些出现说明该层还没盖好）。</p>
+
+        <!-- C1 -->
+        <article class="cap-card" id="c1">
+          <header>
+            <span class="cap-id">L1 · C1</span>
+            <h3>自我考古</h3>
+            <span class="cap-en">Self-Archaeology</span>
+            <a class="cap-link" href="the-psychology-of-money-ch1-behavior-over-intelligence.html">→ Ch.1</a>
+          </header>
+          <p class="cap-def">看清你自己的金钱观从哪来——cohort 经历、家庭叙事、时代背景——并接受智力不是金融游戏的入场券，行为才是。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>能列出 3 个你的"金钱默认设置"和它们的来源</li>
+                <li>看到聪明人破产不再吃惊</li>
+                <li>对 7 个认知 bug 承认"我也有"，不再说"我知道所以我不会"</li>
+                <li>评价别人的金钱决定时先问 cohort，不再急着判对错</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>仍认为"我比一般人聪明所以我能跑赢"</li>
+                <li>觉得"读了这书我已经免疫 loss aversion"</li>
+                <li>认为"我所在的群体 / 同事 / 工程师圈"的金钱观是"理性的默认"</li>
+                <li>把 Buffett / Munger 的方法直接套用而不问 cohort</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- C2 -->
+        <article class="cap-card" id="c2">
+          <header>
+            <span class="cap-id">L2 · C2</span>
+            <h3>归因清醒</h3>
+            <span class="cap-en">Attribution Sobriety</span>
+            <a class="cap-link" href="the-psychology-of-money-ch2-luck-risk-compounding-tails.html">→ Ch.2</a>
+          </header>
+          <p class="cap-def">把运气、风险、时间、长尾分布作为一阶变量进入归因模型——不再把单次结果当成技能证据，不再用"年化收益率"作为策略主指标。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>评价投资决策时分别看 process 和 outcome（不 resulting）</li>
+                <li>策略主 KPI 是"持续 30 年不中断"，不是"打败 S&amp;P 几个点"</li>
+                <li>承认 4% 决定 100%——核心仓位用宽基指数</li>
+                <li>不羡慕"赚得快"的人，因为知道方差含义</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>"我朋友买 X 翻倍了我也跟"</li>
+                <li>仍在追求年化"再高 2 个点"的优化</li>
+                <li>对长尾分布的概念可以复述但行为上仍假设高斯</li>
+                <li>看到自己一笔投资盈利 3x 就当成 process 验证</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- C3 -->
+        <article class="cap-card" id="c3">
+          <header>
+            <span class="cap-id">L3 · C3</span>
+            <h3>生存优先</h3>
+            <span class="cap-en">Survival First</span>
+            <a class="cap-link" href="the-psychology-of-money-ch3-keeping-wealth.html">→ Ch.3</a>
+          </header>
+          <p class="cap-def">承认致富与守富是<strong>两套不同</strong>的能力——致富要乐观冒险，守富要悲观谦逊。安全边际不是"浪费效率"，是续航能力。给"够了"画一个具体数字。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>致富仓 / 守富仓分账户，不允许跨账户调用</li>
+                <li>有写下来的应急金规则（金额 + 触发情境 + 复盘节奏）</li>
+                <li>知道你的"够了"数字（净资产 / 被动收入 / 自由月数）</li>
+                <li>看到 LTCM / Madoff 案例不再"我不会犯那种错"——而是"什么机制能保证我不犯"</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>portfolio 里有任何"一夜归零会毁掉你"的部分（高杠杆 / 单股集中 / 流动性差资产）</li>
+                <li>"目标准星"持续上移，永远没有"够"的时刻</li>
+                <li>把守富等同于"保守不投资"——错把生存当 frozen</li>
+                <li>没有书面预案应对裁员 / 医疗 / 身份变化</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- C4 -->
+        <article class="cap-card" id="c4">
+          <header>
+            <span class="cap-id">L4 · C4</span>
+            <h3>目的明确</h3>
+            <span class="cap-en">Purpose Clarity</span>
+            <a class="cap-link" href="the-psychology-of-money-ch4-freedom-invisible-wealth.html">→ Ch.4</a>
+          </header>
+          <p class="cap-def">钱真正要买的是<strong>对自己时间的控制权</strong>——不是物品，不是地位。区分 rich（消费）与 wealthy（积累），并把"自由"翻译成可量化的指标（FU money 数字、自由月数、能拒绝什么工作）。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>每年算一次"自由月数"（净流动资产 / 月支出）</li>
+                <li>消费决策时区分"买物品"和"买控制权"</li>
+                <li>不再羡慕同事的车 / 表 / 房——知道那不是 wealth</li>
+                <li>有具体的 FU money 数字</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>升 TC 后第一件事是升级生活方式（lifestyle creep）</li>
+                <li>觉得"自由"是模糊概念无法量化</li>
+                <li>用"显示性消费"维持自我认同</li>
+                <li>积累了钱但不知道为了什么——继续打不喜欢的工</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- C5 -->
+        <article class="cap-card" id="c5">
+          <header>
+            <span class="cap-id">L5 · C5</span>
+            <h3>反陷阱防御</h3>
+            <span class="cap-en">Trap Defense</span>
+            <a class="cap-link" href="the-psychology-of-money-ch5-cognitive-traps.html">→ Ch.5</a>
+          </header>
+          <p class="cap-def">在三个最隐蔽的陷阱前不被 hijack：(a) 数学最优 ≠ 行为可执行；(b) 历史回测漂亮 ≠ 未来不会有黑天鹅；(c) 悲观叙事更易得人信任 ≠ 悲观更准确。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>策略选"我能拿住的"，不是"Excel 算出最优 Sharpe 的"</li>
+                <li>有"black swan budget"——假设未来 30 年至少 1-2 次 -50%</li>
+                <li>实施"媒体节食"——不看每日行情，每周一次摘要</li>
+                <li>在悲观新闻潮里仍按预定规则定投</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>用回测漂亮的策略加杠杆</li>
+                <li>因为最近的悲观叙事改变仓位</li>
+                <li>每天打开 brokerage app 看红绿</li>
+                <li>"这次不一样"——把单次叙事当全样本证据</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- C6 -->
+        <article class="cap-card" id="c6">
+          <header>
+            <span class="cap-id">L6 · C6</span>
+            <h3>系统装配</h3>
+            <span class="cap-en">System Assembly</span>
+            <a class="cap-link" href="the-psychology-of-money-ch6-your-money-os.html">→ Ch.6</a>
+          </header>
+          <p class="cap-def">把 L1-L5 的工具组装成一个<strong>你专属的金钱操作系统</strong>——明确你玩的是什么游戏；用 Munger 反向思维列"绝不"清单；写下"投资告白"；建立复盘节奏。这是 capstone，没有它前 5 层都白盖。</p>
+          <div class="cap-grid">
+            <div class="signals">
+              <h4>已建立 ✓</h4>
+              <ul>
+                <li>有一份书面的"投资告白" v1+，每年复盘</li>
+                <li>能在 30 秒内说清你玩的是什么游戏（time horizon / 目标 / 风险）</li>
+                <li>有明确的"绝不"清单（永不杠杆、单股 ≤ X%、不在 -30% 减仓...）</li>
+                <li>日历里有定期复盘事件，过去 12 个月真的执行了</li>
+              </ul>
+            </div>
+            <div class="dangers">
+              <h4>未建立 ✗</h4>
+              <ul>
+                <li>你的策略只在脑子里，没写下来</li>
+                <li>每次决策都是"临场判断"</li>
+                <li>读了书但 portfolio 没改变</li>
+                <li>从 day trader 那里听到"该减仓"会动摇</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- §3 Dependency -->
+      <section class="unit" id="s3">
+        <p class="unit-eyebrow">§3 · Dependency</p>
+        <h2 class="unit-h">能力依赖关系（为什么必须按顺序）</h2>
+
+        <p>这 6 种能力不是平行的清单。它们有<strong>严格的前置关系</strong>。</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:14%;">能力</th><th>需要的前置</th><th>跳过前置会怎样</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>L1 自我考古</strong></td><td>无（地基）</td><td>—</td></tr>
+            <tr><td><strong>L2 归因清醒</strong></td><td>L1</td><td>没看清自己的 bug，无法识别"我以为是技能其实是运气"</td></tr>
+            <tr><td><strong>L3 生存优先</strong></td><td>L1 + L2</td><td>没认清长尾和黑天鹅，会低估"破产可能"，杠杆变成毒药</td></tr>
+            <tr><td><strong>L4 目的明确</strong></td><td>L1 + L3</td><td>不知道自己 cohort 里"成功"的真定义，会模仿别人的 wealth 错把消费当目标</td></tr>
+            <tr><td><strong>L5 反陷阱</strong></td><td>L1 + L2 + L3 + L4</td><td>没有目的就没有"什么算偏离"，无法识别陷阱</td></tr>
+            <tr><td><strong>L6 系统装配</strong></td><td>全部 L1-L5</td><td>capstone：写出来的"投资告白"是<strong>别人的</strong>不是你的，压力下崩</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pullbox warn">
+          <h4>最常见的跳层错误</h4>
+          <p style="margin:0;">大多数人读完书直接跳到 L6 写"投资告白"——抄一个 60/40，立 5 条规则，然后宣告"我有系统了"。<strong>这是假装的 L6</strong>。三个月后市场 -20% 的时候这套系统会失效，因为下面 5 层是空的。<strong>真正的 L6 是从 L1 一层一层盖上来的副产品，不是直接抄的模板。</strong></p>
+        </div>
+      </section>
+
+      <!-- §4 Self-assessment -->
+      <section class="unit" id="s4">
+        <p class="unit-eyebrow">§4 · Self-Assessment</p>
+        <h2 class="unit-h">你目前在第几层？</h2>
+
+        <p>勾选你<strong>真的</strong>能做到的（不是"我觉得我懂"）。每一层至少需要勾 3 项才算建立。</p>
+
+        <div class="self-check">
+          <h4>L1 · 自我考古</h4>
+          <label><input type="checkbox"> 我能列出至少 3 个"我的金钱默认设置"以及它们的 cohort 来源</label>
+          <label><input type="checkbox"> 我承认 7 个认知 bug 我也有，且承认"知道"不能修复</label>
+          <label><input type="checkbox"> 看到一个清洁工比 MBA 富，我不会感到惊讶</label>
+          <label><input type="checkbox"> 评价别人金钱决定前我会先问"他的 cohort 是什么"</label>
+        </div>
+
+        <div class="self-check">
+          <h4>L2 · 归因清醒</h4>
+          <label><input type="checkbox"> 我能区分一笔成功投资里的 process 和 outcome</label>
+          <label><input type="checkbox"> 我策略的主 KPI 是"持续 30 年不中断"，不是"年化几个点"</label>
+          <label><input type="checkbox"> 我不再羡慕赚得比我快的人</label>
+          <label><input type="checkbox"> 我接受 4% 决定 100%，且核心仓位是宽基指数</label>
+        </div>
+
+        <div class="self-check">
+          <h4>L3 · 生存优先</h4>
+          <label><input type="checkbox"> 我有书面的应急金规则（金额 + 触发情境）</label>
+          <label><input type="checkbox"> 我的 portfolio 里没有"一夜归零会毁掉我"的部分</label>
+          <label><input type="checkbox"> 我有具体的"够了"数字（净资产 / 被动收入 / 自由月数）</label>
+          <label><input type="checkbox"> 我把致富和守富分账户管理</label>
+        </div>
+
+        <div class="self-check">
+          <h4>L4 · 目的明确</h4>
+          <label><input type="checkbox"> 我每年算一次"自由月数"</label>
+          <label><input type="checkbox"> 消费时我能区分"买物品"vs"买控制权"</label>
+          <label><input type="checkbox"> 升 TC 后我没有同步升级生活方式</label>
+          <label><input type="checkbox"> 我有具体的 FU money 数字</label>
+        </div>
+
+        <div class="self-check">
+          <h4>L5 · 反陷阱防御</h4>
+          <label><input type="checkbox"> 我的策略是"我拿得住的"，不是 Excel 最优的</label>
+          <label><input type="checkbox"> 我做过"black swan budget"——假设未来至少 1-2 次 -50%</label>
+          <label><input type="checkbox"> 我已实施"媒体节食"</label>
+          <label><input type="checkbox"> 上一次悲观新闻潮我没改变仓位</label>
+        </div>
+
+        <div class="self-check">
+          <h4>L6 · 系统装配</h4>
+          <label><input type="checkbox"> 我有一份书面的"投资告白" v1+</label>
+          <label><input type="checkbox"> 我能 30 秒说清我玩的是什么游戏</label>
+          <label><input type="checkbox"> 我有"绝不"清单</label>
+          <label><input type="checkbox"> 日历里有定期复盘事件，过去 12 个月真的执行了</label>
+        </div>
+
+        <div class="pullbox idea">
+          <h4>评分</h4>
+          <ul class="deep" style="margin:0;">
+            <li><strong>0-1 层建立</strong>（多数人）：从 L1 开始，老老实实做 ch1 的反思练习。<strong>这是真正的起点</strong>。</li>
+            <li><strong>2-3 层</strong>：你已经有认知层 + 价值层。下一步是 L5 反陷阱——这一层在压力下崩才暴露。</li>
+            <li><strong>4-5 层</strong>：你接近 capstone。剩下的是写出"投资告白"v1，开始季度复盘节奏。</li>
+            <li><strong>6 层全部</strong>：你已经有了系统。下一步不是再读金钱书，是<strong>开始研究投资的硬技能</strong>（估值、宏观、行业）——前提是 L1-L6 已稳。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- §5 Failure Modes -->
+      <section class="unit" id="s5">
+        <p class="unit-eyebrow">§5 · Common Failures</p>
+        <h2 class="unit-h">三种最常见的失败路径</h2>
+
+        <p>读这本书有三种典型的"读完没用"路径。每一种都是因为绕过了某一层。</p>
+
+        <h3>失败 A · "我懂了" 综合症（跳过 L1）</h3>
+        <p>读完书觉得"我都懂了"——能复述 7 个认知 bug，能聊 Bessembinder 的 4%——但<strong>从未做过 L1 的考古练习</strong>，不知道自己的 cohort 默认设置。结果：看到别人贪婪时知道是 bug，看到自己贪婪时仍然认为是"机会"。<strong>知识在你身上独立存在，但没接到行为</strong>。</p>
+        <p><em>解药：</em>停止阅读新书。回到 ch1 的 4 道反思练习，认真<strong>写下来</strong>。L1 没建好其他层都是空中楼阁。</p>
+
+        <h3>失败 B · 模板抄袭（跳过 L1-L4 直接到 L6）</h3>
+        <p>常见操作：读了"投资告白"模板，照抄一份 60/40 + 5 条规则，宣告"我有系统了"。<strong>这是假装的 L6</strong>。压力测试在第一次 -25% 来时——你会发现你"投资告白"里的数字其实是别人的，你拿不住，开始改规则。</p>
+        <p><em>解药：</em>承认 L6 是从 L1 一层一层盖上来的副产品。回到 §4 self-assessment 诚实评估。如果 L1-L5 加起来没勾够 12 个，<strong>不要</strong>写 L6 投资告白——因为它是假的。</p>
+
+        <h3>失败 C · 守富瘫痪（在 L3 卡住）</h3>
+        <p>读了 ch3 守富的哲学之后，心理上极度向"现金安全"倾斜——把 80% 资产堆在 HYSA，不再投资。把"守富 = 不冒险"等同。<strong>这是错的</strong>——守富要求你<strong>同时</strong>能致富，否则通胀会慢慢侵蚀你的购买力。</p>
+        <p><em>解药：</em>读 ch4 + ch5——认清"过度合理"和"行为不可执行"的区别。守富是<strong>分账户管理</strong>，不是<strong>单账户全保守</strong>。</p>
+
+        <div class="pullbox warn">
+          <h4>检查你正在哪一种里</h4>
+          <p style="margin:0;">未来 7 天观察自己：(a) 是不是在跟人聊投资时引用书里的金句却没改变自己的 portfolio——你在 A；(b) 是不是写了"投资告白"但没经过 §4 的 12 个 checkbox——你在 B；(c) 是不是 ch3 之后一切都堆现金不投资——你在 C。<strong>这三个失败是默认路径</strong>，不是少数派。</p>
+        </div>
+      </section>
+
+      <!-- §6 Recommended Path -->
+      <section class="unit" id="s6">
+        <p class="unit-eyebrow">§6 · Recommended Path</p>
+        <h2 class="unit-h">推荐学习路径（4 个 Phase，每 Phase 1-2 周）</h2>
+
+        <p>不是按章节顺序"快速过一遍"——是按<strong>能力构建顺序</strong>，每 Phase 都有可验证的产出。</p>
+
+        <div class="path-step">
+          <div class="step-num">P1</div>
+          <div>
+            <h4>Phase 1 · 认知层（L1+L2）— 1-2 周</h4>
+            <p>读：<a href="the-psychology-of-money-ch1-behavior-over-intelligence.html">ch1 行为胜过智能</a> + <a href="the-psychology-of-money-ch2-luck-risk-compounding-tails.html">ch2 运气与复利</a>。每章<strong>必须</strong>完成 4 题反思练习并写在 Obsidian 笔记里（<code>Projects/Investing/learning/</code> 目录）。</p>
+            <div class="step-out"><strong>产出：</strong>一份"我的 cohort 默认设置 + 我的 7 个认知 bug 中最危险的两个" 笔记 + "Process vs Outcome 的 3 个自审记录"。</div>
+          </div>
+        </div>
+
+        <div class="path-step">
+          <div class="step-num">P2</div>
+          <div>
+            <h4>Phase 2 · 价值层（L3+L4）— 1-2 周</h4>
+            <p>读：<a href="the-psychology-of-money-ch3-keeping-wealth.html">ch3 守富的哲学</a> + <a href="the-psychology-of-money-ch4-freedom-invisible-wealth.html">ch4 自由与隐形财富</a>。重点输出："我的'够了'数字" + "我的 FU money 数字" + "12-18 个月应急金的计算"。</p>
+            <div class="step-out"><strong>产出：</strong>一份 <code>Projects/Investing/plans/我的财务目标_v0.1.md</code>，包含具体数字和触发情境。</div>
+          </div>
+        </div>
+
+        <div class="path-step">
+          <div class="step-num">P3</div>
+          <div>
+            <h4>Phase 3 · 执行层（L5）— 1 周</h4>
+            <p>读：<a href="the-psychology-of-money-ch5-cognitive-traps.html">ch5 认知陷阱</a>。完成"媒体节食 7 天实验"——不看每日行情，不打开 brokerage app（除 401k 看一次），第 8 天复盘焦虑来源。</p>
+            <div class="step-out"><strong>产出：</strong>一份"我的 black swan budget"——假设未来 30 年至少 1-2 次 -50%，我的 portfolio 在那时是否还可执行。</div>
+          </div>
+        </div>
+
+        <div class="path-step">
+          <div class="step-num">P4</div>
+          <div>
+            <h4>Phase 4 · 装配（L6）— 1 周（capstone）</h4>
+            <p>读：<a href="the-psychology-of-money-ch6-your-money-os.html">ch6 你的金钱 OS</a>。完成 §5 的 8 部分"投资告白"模板——每一项至少 30 字，<strong>用前 3 个 Phase 的产出作为输入</strong>。</p>
+            <div class="step-out"><strong>产出：</strong><code>Projects/Investing/plans/我的投资告白_v0.1.md</code> + 日历里加好季度复盘事件（1月+7月）。</div>
+          </div>
+        </div>
+
+        <div class="path-step">
+          <div class="step-num">P5</div>
+          <div>
+            <h4>Phase 5 · 上线（持续）— 6 个月观察</h4>
+            <p>不再读新书。把 v0.1 投资告白<strong>真正执行 6 个月</strong>。期间观察：(a) 你违反过几条规则？(b) 哪些规则在压力下不可执行？(c) 哪些数字需要修订？6 个月后写 v0.2。</p>
+            <div class="step-out"><strong>产出：</strong>v0.2，并真正用过的 portfolio。这才是这本书<strong>真正的 ROI</strong>。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- §7 Capstone Test -->
+      <section class="unit" id="s7">
+        <p class="unit-eyebrow">§7 · Mastery Test</p>
+        <h2 class="unit-h">"已掌握"的 5 个客观判定</h2>
+
+        <p>判断你是否真的吸收这本书——不是问你能不能复述，是看 5 个具体行为信号。</p>
+
+        <ol class="deep">
+          <li><strong>你能写出一份让自己 5 年后看也不脸红的"投资告白"。</strong>不是抄的模板，是基于你 cohort + 你的"够了"数字 + 你的 FU money 目标定制的。</li>
+          <li><strong>你的 portfolio 在 -30% 时不需要你做任何决定。</strong>因为决策已经外包给规则——定投继续、再平衡触发、不看 daily。</li>
+          <li><strong>你能拒绝高 TC 的 toxic 工作。</strong>说明 FU money 概念已经从理论变成杠杆——你的钱给了你拒绝权。</li>
+          <li><strong>你不再每天看股价。</strong>不是"克制"，是<strong>不需要</strong>——因为你的系统不依赖你的临场判断。</li>
+          <li><strong>你能在 30 秒内回答：如果失业 12 个月你会怎样？</strong>因为答案是早就写下的预案，不是临时的恐慌应对。</li>
+        </ol>
+
+        <div class="pullbox idea">
+          <h4>最简单的 mastery 测试</h4>
+          <p style="margin:0;font-size:16px;">把这 5 项展示给一个你信任的人，请他随机抽问其中一项。如果你需要思考超过 30 秒——你还在路上。如果你能立刻给出有数字的具体回答——你已经把这本书装进身体了。</p>
+        </div>
+
+        <p style="margin-top:32px; padding-top:18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px;">
+          回到导览：<a href="the-psychology-of-money-outline.html">阅读大纲（按章节）</a> ·
+          <a href="the-psychology-of-money-ch1-behavior-over-intelligence.html">从 Ch.1 开始 →</a>
+        </p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
